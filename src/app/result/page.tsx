@@ -1,19 +1,69 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
-import { getTrainingMenu } from "@/lib/mockResult";
+import { TrainingMenu } from "@/lib/mockResult";
 
 function ResultContent() {
   const searchParams = useSearchParams();
+  const [menu, setMenu] = useState<TrainingMenu | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  const answers: string[] = [];
-  for (let i = 0; i < 6; i++) {
-    answers.push(searchParams.get(`q${i}`) || "");
+  useEffect(() => {
+    const answers: string[] = [];
+    for (let i = 0; i < 6; i++) {
+      answers.push(searchParams.get(`q${i}`) || "");
+    }
+
+    async function fetchMenu() {
+      try {
+        const res = await fetch("/api/generate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ answers }),
+        });
+
+        if (!res.ok) {
+          throw new Error("メニューの生成に失敗しました");
+        }
+
+        const data = await res.json();
+        setMenu(data);
+      } catch {
+        setError("メニューの生成に失敗しました。もう一度お試しください。");
+      }
+    }
+
+    fetchMenu();
+  }, [searchParams]);
+
+  if (error) {
+    return (
+      <div className="max-w-md w-full animate-slideUp text-center">
+        <h1 className="text-2xl font-bold text-orange-500 mb-4">サクトレ</h1>
+        <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
+          <p className="text-red-500 mb-4">{error}</p>
+          <Link
+            href="/questions"
+            className="inline-block py-3 px-6 rounded-xl bg-orange-500 text-white font-bold hover:bg-orange-600 transition-colors"
+          >
+            もう一度作る
+          </Link>
+        </div>
+      </div>
+    );
   }
 
-  const menu = getTrainingMenu(answers);
+  if (!menu) {
+    return (
+      <div className="max-w-md w-full text-center mt-20">
+        <h1 className="text-2xl font-bold text-orange-500 mb-6">サクトレ</h1>
+        <div className="inline-block w-10 h-10 border-4 border-orange-200 border-t-orange-500 rounded-full animate-spin mb-4" />
+        <p className="text-gray-500">AIがメニューを生成中...</p>
+      </div>
+    );
+  }
 
   const handleShare = () => {
     const text = `${menu.title}\n${menu.description}\n\nサクトレで作成しました！`;
