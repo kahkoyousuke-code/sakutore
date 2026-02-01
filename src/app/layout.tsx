@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
+import Link from "next/link";
 import "./globals.css";
 
 const notoSansJP = Noto_Sans_JP({
@@ -21,7 +22,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={`${notoSansJP.className} antialiased`}>{children}</body>
+      <body className={`${notoSansJP.className} antialiased`}>
+        {children}
+        <footer className="py-6 text-center text-xs text-gray-400">
+          <div className="flex justify-center gap-4">
+            <Link
+              href="/privacy"
+              className="hover:text-gray-600 transition-colors"
+            >
+              プライバシーポリシー
+            </Link>
+            <Link
+              href="/terms"
+              className="hover:text-gray-600 transition-colors"
+            >
+              利用規約
+            </Link>
+          </div>
+          <p className="mt-2">&copy; 2025 サクトレ</p>
+        </footer>
+      </body>
     </html>
   );
 }
