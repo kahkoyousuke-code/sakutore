@@ -22,6 +22,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
+      <head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2851344861391489"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body className={`${notoSansJP.className} antialiased`}>
         {children}
         <footer className="py-6 text-center text-xs text-gray-400">
