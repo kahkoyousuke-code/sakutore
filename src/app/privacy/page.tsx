@@ -8,13 +8,6 @@ export default function PrivacyPage() {
   return (
     <main className="min-h-screen flex flex-col items-center px-4 py-8">
       <div className="max-w-md w-full animate-slideUp">
-        <Link
-          href="/"
-          className="text-2xl font-bold text-orange-500 block text-center mb-6"
-        >
-          サクトレ
-        </Link>
-
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <h1 className="text-xl font-bold text-gray-800 mb-6">
             プライバシーポリシー

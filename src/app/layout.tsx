@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
+import Image from "next/image";
 import Link from "next/link";
 import "./globals.css";
 
@@ -30,6 +31,17 @@ export default function RootLayout({
         />
       </head>
       <body className={`${notoSansJP.className} antialiased`}>
+        <header className="py-4 px-4">
+          <Link href="/" className="flex items-center justify-center gap-2">
+            <Image
+              src="/sakura.png"
+              alt="サクラ"
+              width={32}
+              height={32}
+            />
+            <span className="text-xl font-bold text-orange-500">サクトレ</span>
+          </Link>
+        </header>
         {children}
         <footer className="py-6 text-center text-xs text-gray-400">
           <div className="flex justify-center gap-4">

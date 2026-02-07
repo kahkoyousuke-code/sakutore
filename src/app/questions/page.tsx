@@ -40,10 +40,6 @@ export default function QuestionsPage() {
   return (
     <main className="min-h-screen flex flex-col items-center px-4 py-8">
       <div className="max-w-md w-full">
-        <h1 className="text-2xl font-bold text-orange-500 text-center mb-6">
-          サクトレ
-        </h1>
-
         <StepIndicator current={currentStep} total={questions.length} />
 
         <div key={currentStep} className="mb-8">

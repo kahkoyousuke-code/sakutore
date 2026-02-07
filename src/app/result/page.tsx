@@ -48,9 +48,7 @@ function LoadingScreen() {
   }, []);
 
   return (
-    <div className="max-w-md w-full text-center mt-16 animate-slideUp">
-      <h1 className="text-2xl font-bold text-orange-500 mb-8">サクトレ</h1>
-
+    <div className="max-w-md w-full text-center mt-8 animate-slideUp">
       <div className="bg-white rounded-2xl shadow-lg p-8 mb-6">
         <Image
           src="/sakura.png"
@@ -184,7 +182,6 @@ function ResultContent() {
   if (error) {
     return (
       <div className="max-w-md w-full animate-slideUp text-center">
-        <h1 className="text-2xl font-bold text-orange-500 mb-4">サクトレ</h1>
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-red-500 mb-4">{error}</p>
           <Link
@@ -214,9 +211,6 @@ function ResultContent() {
 
   return (
     <div className="max-w-md w-full animate-slideUp">
-      <h1 className="text-2xl font-bold text-orange-500 text-center mb-2">
-        サクトレ
-      </h1>
       <p className="text-center text-gray-500 mb-6">
         あなたにぴったりのメニュー
       </p>
