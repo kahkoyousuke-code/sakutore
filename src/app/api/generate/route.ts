@@ -39,7 +39,10 @@ export async function POST(request: NextRequest) {
           "name": "種目名",
           "sets": 3,
           "reps": "10回",
-          "rest": "60秒"
+          "rest": "60秒",
+          "howTo": "簡潔な手順（2〜3ステップ）",
+          "formTips": "怪我を防ぐためのフォームのポイント（1〜2文）",
+          "muscleTips": "筋肉に効かせるための意識・コツ（1〜2文）"
         }
       ]
     }
@@ -55,7 +58,10 @@ export async function POST(request: NextRequest) {
 - 鍛えたい部位を重点的に含めること
 - トレーニング環境で使える器具に限定すること
 - 各日に3〜5種目を含めること
-- setsは数値、repsは文字列（"10回"や"30秒"など）、restは文字列（"60秒"など）で出力すること`;
+- setsは数値、repsは文字列（"10回"や"30秒"など）、restは文字列（"60秒"など）で出力すること
+- howToは簡潔な手順を2〜3ステップで書くこと
+- formTipsは怪我を防ぐためのフォームの注意点を1〜2文で書くこと
+- muscleTipsは対象筋肉に効かせるための意識やコツを1〜2文で書くこと`;
 
     const message = await client.messages.create({
       model: "claude-sonnet-4-5-20250929",

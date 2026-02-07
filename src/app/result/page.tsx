@@ -5,6 +5,71 @@ import { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
 import { TrainingMenu } from "@/lib/mockResult";
 
+function ExerciseCard({
+  exercise,
+}: {
+  exercise: TrainingMenu["days"][number]["exercises"][number];
+}) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="bg-orange-50 rounded-xl overflow-hidden">
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center justify-between px-4 py-3 text-left"
+      >
+        <div className="flex items-center gap-2">
+          <svg
+            className={`w-4 h-4 text-orange-400 transition-transform duration-200 ${open ? "rotate-90" : ""}`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+          <span className="font-medium text-gray-800 text-sm">
+            {exercise.name}
+          </span>
+        </div>
+        <div className="flex items-center gap-3 text-xs text-gray-500">
+          <span>
+            {exercise.sets}×{exercise.reps}
+          </span>
+          <span className="text-orange-400">休{exercise.rest}</span>
+        </div>
+      </button>
+
+      {open && (
+        <div className="px-4 pb-3 space-y-2 text-xs text-gray-600 border-t border-orange-100 pt-2 mx-2">
+          {exercise.howTo && (
+            <div>
+              <span className="font-semibold text-gray-700">📋 やり方：</span>
+              <span className="ml-1">{exercise.howTo}</span>
+            </div>
+          )}
+          {exercise.formTips && (
+            <div>
+              <span className="font-semibold text-gray-700">🛡️ フォーム：</span>
+              <span className="ml-1">{exercise.formTips}</span>
+            </div>
+          )}
+          {exercise.muscleTips && (
+            <div>
+              <span className="font-semibold text-gray-700">🎯 効かせるコツ：</span>
+              <span className="ml-1">{exercise.muscleTips}</span>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function ResultContent() {
   const searchParams = useSearchParams();
   const [menu, setMenu] = useState<TrainingMenu | null>(null);
@@ -100,20 +165,7 @@ function ResultContent() {
 
               <div className="space-y-2">
                 {day.exercises.map((exercise, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center justify-between bg-orange-50 rounded-xl px-4 py-3"
-                  >
-                    <span className="font-medium text-gray-800 text-sm">
-                      {exercise.name}
-                    </span>
-                    <div className="flex items-center gap-3 text-xs text-gray-500">
-                      <span>
-                        {exercise.sets}×{exercise.reps}
-                      </span>
-                      <span className="text-orange-400">休{exercise.rest}</span>
-                    </div>
-                  </div>
+                  <ExerciseCard key={i} exercise={exercise} />
                 ))}
               </div>
             </div>

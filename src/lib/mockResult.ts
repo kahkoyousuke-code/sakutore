@@ -3,6 +3,9 @@ export interface Exercise {
   sets: number;
   reps: string;
   rest: string;
+  howTo?: string;
+  formTips?: string;
+  muscleTips?: string;
 }
 
 export interface DayMenu {
