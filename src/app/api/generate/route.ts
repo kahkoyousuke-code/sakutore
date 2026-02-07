@@ -65,12 +65,21 @@ export async function POST(request: NextRequest) {
 
     const message = await client.messages.create({
       model: "claude-sonnet-4-5-20250929",
-      max_tokens: 4096,
+      max_tokens: 8192,
       messages: [{ role: "user", content: prompt }],
     });
 
     const text =
       message.content[0].type === "text" ? message.content[0].text : "";
+
+    // トークン上限で出力が途切れた場合はフォールバック
+    if (message.stop_reason !== "end_turn") {
+      console.warn("Response truncated (stop_reason:", message.stop_reason, ")");
+      return NextResponse.json(
+        { error: "メニューの生成に失敗しました。もう一度お試しください。" },
+        { status: 500 }
+      );
+    }
 
     // JSONブロックを抽出
     const jsonMatch = text.match(/\{[\s\S]*\}/);
