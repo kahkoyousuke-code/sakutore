@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
@@ -5,7 +6,14 @@ export default function Home() {
     <main className="min-h-screen flex flex-col items-center justify-center px-4">
       <div className="max-w-md w-full text-center animate-slideUp">
         <div className="mb-8">
-          <div className="text-6xl mb-4">🏋️</div>
+          <Image
+            src="/sakura.png"
+            alt="サクラ"
+            width={150}
+            height={150}
+            className="mx-auto mb-4"
+            priority
+          />
           <h1 className="text-4xl font-bold text-orange-500 mb-2">サクトレ</h1>
           <p className="text-gray-600 text-lg">
             サクッとトレーニングメニュー作成

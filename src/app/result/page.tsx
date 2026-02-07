@@ -2,6 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState, useCallback } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { TrainingMenu } from "@/lib/mockResult";
 
@@ -51,10 +52,16 @@ function LoadingScreen() {
       <h1 className="text-2xl font-bold text-orange-500 mb-8">サクトレ</h1>
 
       <div className="bg-white rounded-2xl shadow-lg p-8 mb-6">
-        <div className="text-5xl mb-6 animate-bounce">🏋️</div>
+        <Image
+          src="/sakura.png"
+          alt="サクラ"
+          width={120}
+          height={120}
+          className="mx-auto mb-6 animate-bounce"
+        />
 
         <p className="text-gray-700 font-semibold mb-6">
-          AIがあなた専用のメニューを作成中...
+          サクラがあなた専用のメニューを作成中...
         </p>
 
         <div className="w-full bg-orange-100 rounded-full h-2 mb-6 overflow-hidden">
