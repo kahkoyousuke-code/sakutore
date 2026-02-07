@@ -1,9 +1,80 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import { TrainingMenu } from "@/lib/mockResult";
+
+const LOADING_TIPS = [
+  "筋肉は休息中に成長します💪",
+  "タンパク質は体重×1.5〜2gが目安！",
+  "継続は力なり！まずは2週間続けてみよう",
+  "トレーニング前のウォームアップを忘れずに🔥",
+  "睡眠は最高のサプリメント💤",
+  "水分補給はパフォーマンスに直結します💧",
+  "正しいフォームは効果を2倍にする",
+  "筋トレ後30分以内の栄養補給が効果的🍗",
+];
+
+function LoadingScreen() {
+  const [tipIndex, setTipIndex] = useState(() =>
+    Math.floor(Math.random() * LOADING_TIPS.length)
+  );
+  const [fade, setFade] = useState(true);
+  const [progress, setProgress] = useState(0);
+
+  const cycleTip = useCallback(() => {
+    setFade(false);
+    setTimeout(() => {
+      setTipIndex((prev) => (prev + 1) % LOADING_TIPS.length);
+      setFade(true);
+    }, 300);
+  }, []);
+
+  useEffect(() => {
+    const tipTimer = setInterval(cycleTip, 3500);
+    return () => clearInterval(tipTimer);
+  }, [cycleTip]);
+
+  useEffect(() => {
+    const progressTimer = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 90) return prev;
+        return prev + Math.random() * 8 + 2;
+      });
+    }, 500);
+    return () => clearInterval(progressTimer);
+  }, []);
+
+  return (
+    <div className="max-w-md w-full text-center mt-16 animate-slideUp">
+      <h1 className="text-2xl font-bold text-orange-500 mb-8">サクトレ</h1>
+
+      <div className="bg-white rounded-2xl shadow-lg p-8 mb-6">
+        <div className="text-5xl mb-6 animate-bounce">🏋️</div>
+
+        <p className="text-gray-700 font-semibold mb-6">
+          AIがあなた専用のメニューを作成中...
+        </p>
+
+        <div className="w-full bg-orange-100 rounded-full h-2 mb-6 overflow-hidden">
+          <div
+            className="bg-orange-500 h-2 rounded-full transition-all duration-500 ease-out"
+            style={{ width: `${Math.min(progress, 90)}%` }}
+          />
+        </div>
+
+        <div className="h-12 flex items-center justify-center">
+          <p
+            className={`text-sm text-gray-500 transition-opacity duration-300 ${fade ? "opacity-100" : "opacity-0"}`}
+          >
+            {LOADING_TIPS[tipIndex]}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function ExerciseCard({
   exercise,
@@ -121,13 +192,7 @@ function ResultContent() {
   }
 
   if (!menu) {
-    return (
-      <div className="max-w-md w-full text-center mt-20">
-        <h1 className="text-2xl font-bold text-orange-500 mb-6">サクトレ</h1>
-        <div className="inline-block w-10 h-10 border-4 border-orange-200 border-t-orange-500 rounded-full animate-spin mb-4" />
-        <p className="text-gray-500">AIがメニューを生成中...</p>
-      </div>
-    );
+    return <LoadingScreen />;
   }
 
   const handleShare = () => {
