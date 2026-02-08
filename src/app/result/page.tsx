@@ -151,45 +151,76 @@ function ResultContent() {
   const [menu, setMenu] = useState<TrainingMenu | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
+  const fetchMenu = useCallback(async () => {
+    setError(null);
+    setMenu(null);
+
     const answers: string[] = [];
     for (let i = 0; i < 6; i++) {
       answers.push(searchParams.get(`q${i}`) || "");
     }
 
-    async function fetchMenu() {
-      try {
-        const res = await fetch("/api/generate", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ answers }),
-        });
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 60000);
 
-        if (!res.ok) {
-          throw new Error("メニューの生成に失敗しました");
-        }
+    try {
+      const res = await fetch("/api/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ answers }),
+        signal: controller.signal,
+      });
 
-        const data = await res.json();
-        setMenu(data);
-      } catch {
-        setError("メニューの生成に失敗しました。もう一度お試しください。");
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error || "メニューの生成に失敗しました。");
+        return;
       }
-    }
 
-    fetchMenu();
+      setMenu(data);
+    } catch (err) {
+      if (err instanceof DOMException && err.name === "AbortError") {
+        setError("通信がタイムアウトしました。通信環境を確認してもう一度お試しください。");
+      } else {
+        setError("通信エラーが発生しました。通信環境を確認してもう一度お試しください。");
+      }
+    } finally {
+      clearTimeout(timeoutId);
+    }
   }, [searchParams]);
+
+  useEffect(() => {
+    fetchMenu();
+  }, [fetchMenu]);
 
   if (error) {
     return (
       <div className="max-w-md w-full animate-slideUp text-center">
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
-          <p className="text-red-500 mb-4">{error}</p>
-          <Link
-            href="/questions"
-            className="inline-block py-3 px-6 rounded-xl bg-orange-500 text-white font-bold hover:bg-orange-600 transition-colors"
-          >
-            もう一度作る
-          </Link>
+        <div className="bg-white rounded-2xl shadow-lg p-8 mb-6">
+          <Image
+            src="/sakura.png"
+            alt="サクラ"
+            width={80}
+            height={80}
+            className="mx-auto mb-4"
+          />
+          <p className="text-red-500 font-semibold mb-2">メニューを作成できませんでした</p>
+          <p className="text-gray-500 text-sm mb-6">{error}</p>
+          <div className="flex gap-3">
+            <button
+              onClick={fetchMenu}
+              className="flex-1 py-3 px-6 rounded-xl bg-orange-500 text-white font-bold hover:bg-orange-600 transition-colors"
+            >
+              もう一度試す
+            </button>
+            <Link
+              href="/questions"
+              className="flex-1 py-3 px-6 rounded-xl border-2 border-orange-500 text-orange-500 font-bold text-center hover:bg-orange-50 transition-colors"
+            >
+              質問に戻る
+            </Link>
+          </div>
         </div>
       </div>
     );

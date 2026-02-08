@@ -1,20 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
 
-const client = new Anthropic();
+const client = new Anthropic({ timeout: 60 * 1000 });
 
-export async function POST(request: NextRequest) {
-  try {
-    const { answers } = await request.json();
-
-    if (!Array.isArray(answers) || answers.length !== 6) {
-      return NextResponse.json(
-        { error: "回答データが不正です" },
-        { status: 400 }
-      );
-    }
-
-    const prompt = `あなたはプロのパーソナルトレーナーです。以下のユーザーの回答に基づいて、最適なトレーニングメニューをJSON形式で生成してください。
+function buildPrompt(answers: string[]): string {
+  return `あなたはプロのパーソナルトレーナーです。以下のユーザーの回答に基づいて、最適なトレーニングメニューをJSON形式で生成してください。
 
 ## ユーザーの回答
 1. トレーニングの目的: ${answers[0]}
@@ -62,40 +52,86 @@ export async function POST(request: NextRequest) {
 - howToは簡潔な手順を2〜3ステップで書くこと
 - formTipsは怪我を防ぐためのフォームの注意点を1〜2文で書くこと
 - muscleTipsは対象筋肉に効かせるための意識やコツを1〜2文で書くこと`;
+}
 
-    const message = await client.messages.create({
-      model: "claude-sonnet-4-5-20250929",
-      max_tokens: 8192,
-      messages: [{ role: "user", content: prompt }],
-    });
+async function callClaude(prompt: string) {
+  const message = await client.messages.create({
+    model: "claude-sonnet-4-5-20250929",
+    max_tokens: 8192,
+    messages: [{ role: "user", content: prompt }],
+  });
 
-    const text =
-      message.content[0].type === "text" ? message.content[0].text : "";
+  const text =
+    message.content[0].type === "text" ? message.content[0].text : "";
 
-    // トークン上限で出力が途切れた場合はフォールバック
-    if (message.stop_reason !== "end_turn") {
-      console.warn("Response truncated (stop_reason:", message.stop_reason, ")");
+  if (message.stop_reason !== "end_turn") {
+    throw new Error(
+      `レスポンスが途中で切れました (stop_reason: ${message.stop_reason})`
+    );
+  }
+
+  const jsonMatch = text.match(/\{[\s\S]*\}/);
+  if (!jsonMatch) {
+    throw new Error("レスポンスからJSONを抽出できませんでした");
+  }
+
+  return JSON.parse(jsonMatch[0]);
+}
+
+function classifyError(error: unknown): { message: string; status: number } {
+  if (error instanceof Anthropic.APIConnectionError) {
+    return { message: "AIサービスに接続できませんでした。通信環境を確認してください。", status: 503 };
+  }
+  if (error instanceof Anthropic.RateLimitError) {
+    return { message: "リクエストが集中しています。しばらく待ってからお試しください。", status: 429 };
+  }
+  if (error instanceof Anthropic.APIError) {
+    return { message: "AIサービスで一時的なエラーが発生しました。しばらく待ってからお試しください。", status: 502 };
+  }
+  if (error instanceof SyntaxError) {
+    return { message: "メニューデータの解析に失敗しました。もう一度お試しください。", status: 500 };
+  }
+  if (error instanceof Error && error.message.includes("途中で切れました")) {
+    return { message: "メニューの生成が途中で終了しました。もう一度お試しください。", status: 500 };
+  }
+  return { message: "メニューの生成中にエラーが発生しました。もう一度お試しください。", status: 500 };
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    const { answers } = await request.json();
+
+    if (!Array.isArray(answers) || answers.length !== 6) {
       return NextResponse.json(
-        { error: "メニューの生成に失敗しました。もう一度お試しください。" },
-        { status: 500 }
+        { error: "回答データが不正です" },
+        { status: 400 }
       );
     }
 
-    // JSONブロックを抽出
-    const jsonMatch = text.match(/\{[\s\S]*\}/);
-    if (!jsonMatch) {
-      return NextResponse.json(
-        { error: "メニューの生成に失敗しました" },
-        { status: 500 }
-      );
-    }
+    const prompt = buildPrompt(answers);
 
-    const menu = JSON.parse(jsonMatch[0]);
-    return NextResponse.json(menu);
+    // 1回目の試行
+    try {
+      const menu = await callClaude(prompt);
+      return NextResponse.json(menu);
+    } catch (firstError) {
+      console.warn("[generate] 1回目の試行に失敗。リトライします:", firstError);
+
+      // 自動リトライ（1回）
+      try {
+        const menu = await callClaude(prompt);
+        console.info("[generate] リトライ成功");
+        return NextResponse.json(menu);
+      } catch (retryError) {
+        console.error("[generate] リトライも失敗:", retryError);
+        const { message, status } = classifyError(retryError);
+        return NextResponse.json({ error: message }, { status });
+      }
+    }
   } catch (error) {
-    console.error("API Error:", error);
+    console.error("[generate] リクエスト処理エラー:", error);
     return NextResponse.json(
-      { error: "メニューの生成中にエラーが発生しました" },
+      { error: "リクエストの処理中にエラーが発生しました。" },
       { status: 500 }
     );
   }
