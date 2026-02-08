@@ -1,63 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
 
-const client = new Anthropic({ timeout: 60 * 1000 });
+const client = new Anthropic({ timeout: 10 * 1000, maxRetries: 0 });
 
 function buildPrompt(answers: string[]): string {
-  return `あなたはプロのパーソナルトレーナーです。以下のユーザーの回答に基づいて、最適なトレーニングメニューをJSON形式で生成してください。
-
-## ユーザーの回答
-1. トレーニングの目的: ${answers[0]}
-2. 週のトレーニング回数: ${answers[1]}
-3. 1回のトレーニング時間: ${answers[2]}
-4. トレーニング経験: ${answers[3]}
-5. 特に鍛えたい部位: ${answers[4]}
-6. トレーニング環境: ${answers[5]}
-
-## 出力形式
-以下のJSON形式で出力してください。JSONのみを出力し、他のテキストは一切含めないでください。
-
-{
-  "title": "メニュータイトル（絵文字1つ付き）",
-  "description": "メニューの簡潔な説明（1〜2文）",
-  "days": [
-    {
-      "day": "Day 1",
-      "label": "その日のテーマ",
-      "exercises": [
-        {
-          "name": "種目名",
-          "sets": 3,
-          "reps": "10回",
-          "rest": "60秒",
-          "howTo": "簡潔な手順（2〜3ステップ）",
-          "formTips": "怪我を防ぐためのフォームのポイント（1〜2文）",
-          "muscleTips": "筋肉に効かせるための意識・コツ（1〜2文）"
-        }
-      ]
-    }
-  ]
-}
-
-## ルール
-- 日本語で出力すること
-- ユーザーの回答すべてを考慮してメニューを作ること
-- 週のトレーニング回数に合わせてdaysの数を決めること（例：週3回なら3日分）
-- トレーニング時間に収まるように種目数を調整すること
-- 経験レベルに応じて種目の難易度・重量設定を変えること
-- 鍛えたい部位を重点的に含めること
-- トレーニング環境で使える器具に限定すること
-- 各日に3〜5種目を含めること
-- setsは数値、repsは文字列（"10回"や"30秒"など）、restは文字列（"60秒"など）で出力すること
-- howToは簡潔な手順を2〜3ステップで書くこと
-- formTipsは怪我を防ぐためのフォームの注意点を1〜2文で書くこと
-- muscleTipsは対象筋肉に効かせるための意識やコツを1〜2文で書くこと`;
+  return `JSONのみ出力。目的:${answers[0]} 頻度:${answers[1]} 時間:${answers[2]} 経験:${answers[3]} 部位:${answers[4]} 環境:${answers[5]}
+形式:{"title":"絵文字+名前","description":"短い説明","days":[{"day":"Day 1","label":"部位","exercises":[{"name":"種目","sets":3,"reps":"10回","rest":"60秒","howTo":"10字以内","formTips":"10字以内","muscleTips":"10字以内"}]}]}
+days最大4日、各日3種目、環境の器具のみ、setsは数値、reps/restは文字列、tips各10字以内厳守`;
 }
 
 async function callClaude(prompt: string) {
   const message = await client.messages.create({
-    model: "claude-sonnet-4-5-20250929",
-    max_tokens: 8192,
+    model: "claude-haiku-4-5-20251001",
+    max_tokens: 2048,
     messages: [{ role: "user", content: prompt }],
   });
 
