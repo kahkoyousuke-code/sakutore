@@ -1,4 +1,4 @@
-export type QuestionType = "choice" | "text";
+export type QuestionType = "choice" | "text" | "multiselect";
 
 export interface Question {
   id: number;
@@ -35,9 +35,22 @@ export const questions: Question[] = [
   },
   {
     id: 5,
-    text: "特に鍛えたい部位は？",
-    type: "choice",
-    options: ["胸・肩・腕", "背中・腰", "脚・お尻", "全身バランスよく"],
+    text: "特に鍛えたい部位は？（複数選択可）",
+    type: "multiselect",
+    options: [
+      "胸",
+      "肩",
+      "腕（二頭筋）",
+      "腕（三頭筋）",
+      "背中（広背筋）",
+      "背中（僧帽筋）",
+      "腹筋",
+      "腰（脊柱起立筋）",
+      "お尻",
+      "脚（前もも）",
+      "脚（裏もも）",
+      "特にこだわりなし（全体的に鍛えたい）",
+    ],
   },
   {
     id: 6,

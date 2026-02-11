@@ -5,7 +5,7 @@ const client = new Anthropic({ timeout: 10 * 1000, maxRetries: 0 });
 
 function buildPrompt(answers: string[]): string {
   return `JSONのみ出力。トレーニングメニューを作成。
-条件:目的${answers[0]}/頻度${answers[1]}/時間${answers[2]}/経験${answers[3]}/部位${answers[4]}/環境${answers[5]}
+条件:目的${answers[0]}/頻度${answers[1]}/時間${answers[2]}/経験${answers[3]}/重点部位${answers[4]}(これらを重点的にメニューに含める)/環境${answers[5]}
 形式:{"title":"絵文字+名前","description":"短い説明","days":[{"day":"Day 1","label":"部位","exercises":[{"name":"種目","sets":3,"reps":"10回","rest":"60秒"}]}]}
 最大3日,各日3種目,${answers[5]}の器具のみ,setsは数値,reps/restは文字列`;
 }

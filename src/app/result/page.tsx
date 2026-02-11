@@ -250,6 +250,13 @@ function ResultContent() {
 
       <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
         <h2 className="text-xl font-bold text-gray-800 mb-2">{menu.title}</h2>
+        {searchParams.get("q4") &&
+          searchParams.get("q4") !== "特にこだわりなし（全体的に鍛えたい）" && (
+            <p className="text-orange-600 text-xs font-semibold mb-2">
+              重点部位：
+              {searchParams.get("q4")!.split(",").join("、")}
+            </p>
+          )}
         <p className="text-gray-500 text-sm mb-6">{menu.description}</p>
 
         <div className="space-y-6">
