@@ -121,23 +121,30 @@ function ExerciseCard({
       </button>
 
       {open && (
-        <div className="px-4 pb-3 space-y-2 text-xs text-gray-600 border-t border-orange-100 pt-2 mx-2">
+        <div className="px-4 pb-3 space-y-3 text-xs text-gray-600 border-t border-orange-100 pt-3 mx-2">
           {exercise.howTo && (
             <div>
-              <span className="font-semibold text-gray-700">📋 やり方：</span>
-              <span className="ml-1">{exercise.howTo}</span>
+              <p className="font-semibold text-gray-700 mb-1">📋 やり方</p>
+              <ol className="list-decimal list-inside space-y-0.5 ml-1">
+                {exercise.howTo
+                  .split(/\d+\.\s*/)
+                  .filter(Boolean)
+                  .map((step, i) => (
+                    <li key={i} className="text-gray-600">{step.trim()}</li>
+                  ))}
+              </ol>
             </div>
           )}
           {exercise.formTips && (
             <div>
-              <span className="font-semibold text-gray-700">🛡️ フォーム：</span>
-              <span className="ml-1">{exercise.formTips}</span>
+              <p className="font-semibold text-gray-700 mb-1">🛡️ フォームの注意点</p>
+              <p className="ml-1 text-gray-600">{exercise.formTips}</p>
             </div>
           )}
           {exercise.muscleTips && (
             <div>
-              <span className="font-semibold text-gray-700">🎯 効かせるコツ：</span>
-              <span className="ml-1">{exercise.muscleTips}</span>
+              <p className="font-semibold text-gray-700 mb-1">🎯 効かせるコツ</p>
+              <p className="ml-1 text-gray-600">{exercise.muscleTips}</p>
             </div>
           )}
         </div>
