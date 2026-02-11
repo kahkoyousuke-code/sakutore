@@ -95,10 +95,10 @@ export default function AboutPage() {
                 <span className="font-bold text-gray-800">メール：</span>
                 <br />
                 <a
-                  href="mailto:sakutore.contact@gmail.com"
+                  href="mailto:sakutore.info@gmail.com"
                   className="text-orange-500 hover:text-orange-600 transition-colors font-bold"
                 >
-                  sakutore.contact@gmail.com
+                  sakutore.info@gmail.com
                 </a>
               </p>
               <p className="mt-2 text-xs text-gray-400">
