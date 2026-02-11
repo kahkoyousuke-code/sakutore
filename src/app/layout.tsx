@@ -44,7 +44,27 @@ export default function RootLayout({
         </header>
         {children}
         <footer className="py-6 text-center text-xs text-gray-400">
-          <div className="flex justify-center gap-4">
+          <div className="flex justify-center gap-4 flex-wrap">
+            <Link
+              href="/guide"
+              className="hover:text-gray-600 transition-colors"
+            >
+              使い方ガイド
+            </Link>
+            <Link
+              href="/faq"
+              className="hover:text-gray-600 transition-colors"
+            >
+              よくある質問
+            </Link>
+            <Link
+              href="/about"
+              className="hover:text-gray-600 transition-colors"
+            >
+              運営者情報
+            </Link>
+          </div>
+          <div className="flex justify-center gap-4 mt-2">
             <Link
               href="/privacy"
               className="hover:text-gray-600 transition-colors"
