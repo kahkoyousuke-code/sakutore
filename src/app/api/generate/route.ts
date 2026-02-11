@@ -3,17 +3,30 @@ import Anthropic from "@anthropic-ai/sdk";
 
 const client = new Anthropic({ timeout: 10 * 1000, maxRetries: 0 });
 
+function exerciseCount(time: string): string {
+  if (time.includes("30分")) return "4";
+  if (time.includes("60分")) return "5〜6";
+  return "6〜7";
+}
+
 function buildPrompt(answers: string[]): string {
+  const count = exerciseCount(answers[2]);
+  const focus = answers[4];
+  const focusNote =
+    focus && focus !== "特にこだわりなし（全体的に鍛えたい）"
+      ? `重点部位:${focus}(これらの部位の種目を多めに含める)`
+      : "全身バランスよく";
   return `JSONのみ出力。トレーニングメニューを作成。
-条件:目的${answers[0]}/頻度${answers[1]}/時間${answers[2]}/経験${answers[3]}/重点部位${answers[4]}(これらを重点的にメニューに含める)/環境${answers[5]}
+条件:目的${answers[0]}/頻度${answers[1]}/時間${answers[2]}/経験${answers[3]}/${focusNote}/環境${answers[5]}
+各日${count}種目(メインのコンパウンド種目2つ+補助のアイソレーション種目を残り)
 形式:{"title":"絵文字+名前","description":"短い説明","days":[{"day":"Day 1","label":"部位","exercises":[{"name":"種目","sets":3,"reps":"10回","rest":"60秒"}]}]}
-最大3日,各日3種目,${answers[5]}の器具のみ,setsは数値,reps/restは文字列`;
+最大3日,${answers[5]}の器具のみ,setsは数値,reps/restは文字列`;
 }
 
 async function callClaude(prompt: string) {
   const message = await client.messages.create({
     model: "claude-haiku-4-5-20251001",
-    max_tokens: 1024,
+    max_tokens: 2048,
     messages: [{ role: "user", content: prompt }],
   });
 
