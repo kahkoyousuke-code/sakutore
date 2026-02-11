@@ -1,35 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
 
-const client = new Anthropic({ timeout: 15 * 1000, maxRetries: 0 });
+const client = new Anthropic({ timeout: 10 * 1000, maxRetries: 0 });
 
 function buildPrompt(answers: string[]): string {
-  return `経験豊富なパーソナルトレーナーとして、以下の条件でトレーニングメニューをJSON形式のみで出力せよ。
-
-【条件】目的:${answers[0]} 頻度:${answers[1]} 時間:${answers[2]} 経験:${answers[3]} 部位:${answers[4]} 環境:${answers[5]}
-
-【JSON形式】
-{"title":"絵文字+メニュー名","description":"一言説明","days":[{"day":"Day 1","label":"部位","exercises":[{"name":"種目名","sets":3,"reps":"10回","rest":"60秒","howTo":"1.具体的動作 2.具体的動作 3.具体的動作","formTips":"怪我防止の注意点","muscleTips":"効かせる部位と意識のコツ"}]}]}
-
-【重要：各種目に必ず以下を含めること】
-■howTo: 動作手順を必ず3ステップで書く。各ステップは具体的な体の動きを指示する。
-例:"1.バーを肩幅で握りラックから外す 2.胸の位置までゆっくり下ろす 3.息を吐きながら真上に押し上げる"
-■formTips: 怪我を防ぐフォームの注意点を具体的に書く。
-例:"肩甲骨を寄せて胸を張り、腰を反らさないこと"
-■muscleTips: どの筋肉にどう効かせるか意識のポイントを書く。
-例:"大胸筋の収縮を感じながら肘を閉じ気味に押す"
-
-【制約】
-- days最大3日、各日3種目
-- ${answers[5]}で使える器具のみ
-- setsは数値、reps/restは文字列
-- JSON以外の文字を出力しない`;
+  return `JSONのみ出力。トレーニングメニューを作成。
+条件:目的${answers[0]}/頻度${answers[1]}/時間${answers[2]}/経験${answers[3]}/部位${answers[4]}/環境${answers[5]}
+形式:{"title":"絵文字+名前","description":"短い説明","days":[{"day":"Day 1","label":"部位","exercises":[{"name":"種目","sets":3,"reps":"10回","rest":"60秒"}]}]}
+最大3日,各日3種目,${answers[5]}の器具のみ,setsは数値,reps/restは文字列`;
 }
 
 async function callClaude(prompt: string) {
   const message = await client.messages.create({
     model: "claude-haiku-4-5-20251001",
-    max_tokens: 4096,
+    max_tokens: 1024,
     messages: [{ role: "user", content: prompt }],
   });
 

@@ -86,69 +86,19 @@ function ExerciseCard({
 }: {
   exercise: TrainingMenu["days"][number]["exercises"][number];
 }) {
-  const [open, setOpen] = useState(false);
-
   return (
-    <div className="bg-orange-50 rounded-xl overflow-hidden">
-      <button
-        onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between px-4 py-3 text-left"
-      >
-        <div className="flex items-center gap-2">
-          <svg
-            className={`w-4 h-4 text-orange-400 transition-transform duration-200 ${open ? "rotate-90" : ""}`}
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
-          <span className="font-medium text-gray-800 text-sm">
-            {exercise.name}
-          </span>
-        </div>
+    <div className="bg-orange-50 rounded-xl px-4 py-3">
+      <div className="flex items-center justify-between">
+        <span className="font-medium text-gray-800 text-sm">
+          {exercise.name}
+        </span>
         <div className="flex items-center gap-3 text-xs text-gray-500">
           <span>
             {exercise.sets}×{exercise.reps}
           </span>
           <span className="text-orange-400">休{exercise.rest}</span>
         </div>
-      </button>
-
-      {open && (
-        <div className="px-4 pb-3 space-y-3 text-xs text-gray-600 border-t border-orange-100 pt-3 mx-2">
-          {exercise.howTo && (
-            <div>
-              <p className="font-semibold text-gray-700 mb-1">📋 やり方</p>
-              <ol className="list-decimal list-inside space-y-0.5 ml-1">
-                {exercise.howTo
-                  .split(/\d+\.\s*/)
-                  .filter(Boolean)
-                  .map((step, i) => (
-                    <li key={i} className="text-gray-600">{step.trim()}</li>
-                  ))}
-              </ol>
-            </div>
-          )}
-          {exercise.formTips && (
-            <div>
-              <p className="font-semibold text-gray-700 mb-1">🛡️ フォームの注意点</p>
-              <p className="ml-1 text-gray-600">{exercise.formTips}</p>
-            </div>
-          )}
-          {exercise.muscleTips && (
-            <div>
-              <p className="font-semibold text-gray-700 mb-1">🎯 効かせるコツ</p>
-              <p className="ml-1 text-gray-600">{exercise.muscleTips}</p>
-            </div>
-          )}
-        </div>
-      )}
+      </div>
     </div>
   );
 }
