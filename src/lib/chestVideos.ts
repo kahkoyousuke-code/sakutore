@@ -7,7 +7,7 @@ export interface ChestVideo {
   equipment: "バーベル" | "ダンベル" | "自重" | "マシン";
   youtubeUrl: string;
   thumbnail?: string;
-  advice: string; // 洋佑さんからのアドバイス
+  advice: string; // サクトレからのアドバイス
 }
 
 export const chestVideos: ChestVideo[] = [

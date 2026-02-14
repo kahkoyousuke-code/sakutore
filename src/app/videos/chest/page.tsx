@@ -56,7 +56,7 @@ function VideoCard({ video }: { video: ChestVideo }) {
         </h3>
         <p className="text-xs text-gray-500 mb-3">{video.youtuber}</p>
 
-        {/* 洋佑さんのアドバイス */}
+        {/* サクトレからのアドバイス */}
         <button
           onClick={() => setIsExpanded(!isExpanded)}
           className="w-full text-left"
@@ -69,7 +69,7 @@ function VideoCard({ video }: { video: ChestVideo }) {
               height={20}
               className="rounded-full"
             />
-            <span>洋佑さんからのアドバイス</span>
+            <span>サクトレからのアドバイス</span>
             <svg
               className={`w-4 h-4 transition-transform ${isExpanded ? "rotate-180" : ""}`}
               fill="none"
@@ -131,7 +131,7 @@ export default function ChestVideosPage() {
             <h1 className="text-3xl font-bold text-gray-800">胸トレ動画</h1>
           </div>
           <p className="text-gray-600">
-            洋佑さんが厳選した、胸を鍛える動画ライブラリ
+            サクトレが厳選した、胸を鍛える動画ライブラリ
           </p>
         </div>
 
