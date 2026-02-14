@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center px-4">
+    <main className="min-h-screen flex flex-col items-center justify-center px-4 py-8">
       <div className="max-w-md w-full text-center animate-slideUp">
         <div className="mb-8">
           <Image
@@ -25,7 +25,7 @@ export default function Home() {
           <br />
           あなたにぴったりのトレーニングメニューを
           <br />
-          サクッと作成します！
+          サクッと作成します!
         </p>
 
         <Link
@@ -35,7 +35,21 @@ export default function Home() {
           メニューを作る
         </Link>
 
-        <p className="mt-6 text-sm text-gray-400">所要時間：約1分</p>
+        <Link
+          href="/videos/chest"
+          className="inline-block w-full bg-white hover:bg-gray-50 text-orange-500 font-bold py-4 px-8 rounded-2xl text-lg border-2 border-orange-500 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 mt-4"
+        >
+          💪 胸トレ動画を見る
+        </Link>
+
+        <Link
+          href="/column"
+          className="inline-block w-full bg-white hover:bg-gray-50 text-gray-700 font-bold py-4 px-8 rounded-2xl text-lg border-2 border-gray-200 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 mt-4"
+        >
+          筋トレコラム
+        </Link>
+
+        <p className="mt-6 text-sm text-gray-400">所要時間:約1分</p>
       </div>
     </main>
   );

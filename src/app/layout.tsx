@@ -63,6 +63,12 @@ export default function RootLayout({
             >
               運営者情報
             </Link>
+            <Link
+              href="/column"
+              className="hover:text-gray-600 transition-colors"
+            >
+              コラム
+            </Link>
           </div>
           <div className="flex justify-center gap-4 mt-2">
             <Link
