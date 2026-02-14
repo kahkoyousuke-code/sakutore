@@ -1,7 +1,7 @@
 "use client";
 
 import VideoPageLayout from "@/components/VideoPageLayout";
-import { chestVideos } from "@/lib/chestVideos";
+import { shoulderVideos } from "@/lib/shoulderVideos";
 
 const filters = [
   { value: "all" as const, label: "すべて" },
@@ -12,12 +12,12 @@ const filters = [
   { value: "自重", label: "自重" },
 ];
 
-export default function ChestVideosPage() {
+export default function ShoulderVideosPage() {
   return (
     <VideoPageLayout
-      title="胸トレ動画"
-      description="サクトレが厳選した、胸を鍛える動画ライブラリ"
-      videos={chestVideos}
+      title="肩トレ動画"
+      description="サクトレが厳選した、肩を鍛える動画ライブラリ"
+      videos={shoulderVideos}
       filters={filters}
     />
   );

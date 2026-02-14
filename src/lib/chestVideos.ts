@@ -1,25 +1,10 @@
-export interface ChestVideo {
-  id: string;
-  title: string;
-  youtuber: string;
-  category: "ベンチプレス" | "ダンベル" | "自重" | "フォーム解説";
-  level: "初心者" | "中級者" | "上級者";
-  equipment: "バーベル" | "ダンベル" | "自重" | "マシン";
-  youtubeUrl: string;
-  thumbnail?: string;
-  advice: string; // サクトレからのアドバイス
-}
+import { Video, youtubeSearch } from "./videoTypes";
 
-function youtubeSearch(query: string): string {
-  return `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`;
-}
-
-export const chestVideos: ChestVideo[] = [
+export const chestVideos: Video[] = [
   {
     id: "sho-bench-beginner",
     title: "【初心者】正しいベンチプレス講座",
     youtuber: "Sho Fitness",
-    category: "ベンチプレス",
     level: "初心者",
     equipment: "バーベル",
     youtubeUrl: youtubeSearch("Sho Fitness 初心者 正しいベンチプレス講座"),
@@ -29,7 +14,6 @@ export const chestVideos: ChestVideo[] = [
     id: "goldsgym-bench",
     title: "ゴールドジム公式・ベンチプレス解説",
     youtuber: "ゴールドジム",
-    category: "ベンチプレス",
     level: "初心者",
     equipment: "バーベル",
     youtubeUrl: youtubeSearch("ゴールドジム ベンチプレス 解説"),
@@ -39,7 +23,6 @@ export const chestVideos: ChestVideo[] = [
     id: "sho-dumbbell-press",
     title: "ダンベルプレスの正しいやり方",
     youtuber: "Sho Fitness",
-    category: "ダンベル",
     level: "初心者",
     equipment: "ダンベル",
     youtubeUrl: youtubeSearch("Sho Fitness ダンベルプレス 正しいやり方"),
@@ -49,7 +32,6 @@ export const chestVideos: ChestVideo[] = [
     id: "yokokawa-dumbbell-fly",
     title: "【ダンベルフライ】日本王者のガチトレ",
     youtuber: "横川尚隆",
-    category: "ダンベル",
     level: "中級者",
     equipment: "ダンベル",
     youtubeUrl: youtubeSearch("横川尚隆 ダンベルフライ"),
@@ -59,7 +41,6 @@ export const chestVideos: ChestVideo[] = [
     id: "kinniku-pushup",
     title: "なかやまきんに君の正しい腕立て伏せ",
     youtuber: "なかやまきんに君",
-    category: "自重",
     level: "初心者",
     equipment: "自重",
     youtubeUrl: youtubeSearch("なかやまきんに君 正しい腕立て伏せ"),
@@ -69,7 +50,6 @@ export const chestVideos: ChestVideo[] = [
     id: "ufit-chest-8",
     title: "胸板を厚くする自重トレ8種【3分】",
     youtuber: "uFit 林ケイスケ",
-    category: "自重",
     level: "初心者",
     equipment: "自重",
     youtubeUrl: youtubeSearch("林ケイスケ uFit 胸 自重トレ"),
@@ -79,7 +59,6 @@ export const chestVideos: ChestVideo[] = [
     id: "sho-incline",
     title: "インクラインベンチプレスの角度設定",
     youtuber: "Sho Fitness",
-    category: "ベンチプレス",
     level: "中級者",
     equipment: "バーベル",
     youtubeUrl: youtubeSearch("Sho Fitness インクラインベンチプレス 角度"),
@@ -89,7 +68,6 @@ export const chestVideos: ChestVideo[] = [
     id: "metron-3min",
     title: "【3分間】短時間胸トレ",
     youtuber: "メトロンブログ",
-    category: "自重",
     level: "初心者",
     equipment: "自重",
     youtubeUrl: youtubeSearch("メトロンブログ 3分 胸トレ"),
@@ -99,7 +77,6 @@ export const chestVideos: ChestVideo[] = [
     id: "jin-bench-100kg",
     title: "ぷろたんとベンチプレス100kg挑戦",
     youtuber: "JIN",
-    category: "フォーム解説",
     level: "中級者",
     equipment: "バーベル",
     youtubeUrl: youtubeSearch("JIN ぷろたん ベンチプレス 100kg"),

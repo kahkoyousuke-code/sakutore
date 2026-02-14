@@ -36,10 +36,10 @@ export default function Home() {
         </Link>
 
         <Link
-          href="/videos/chest"
+          href="/videos"
           className="inline-block w-full bg-white hover:bg-gray-50 text-orange-500 font-bold py-4 px-8 rounded-2xl text-lg border-2 border-orange-500 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 mt-4"
         >
-          💪 胸トレ動画を見る
+          トレーニング動画を見る
         </Link>
 
         <Link
