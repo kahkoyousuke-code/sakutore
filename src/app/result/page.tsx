@@ -142,6 +142,14 @@ function ExerciseCard({
             <p className="font-semibold text-gray-700 mb-1">🎯 効かせるコツ</p>
             <p className="ml-1">{detail.muscleTips}</p>
           </div>
+          <a
+            href={`https://www.youtube.com/results?search_query=${encodeURIComponent(exercise.name + " やり方")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-orange-500 font-semibold hover:text-orange-600 transition-colors mt-1"
+          >
+            📺 動画で見る
+          </a>
         </div>
       )}
     </div>
