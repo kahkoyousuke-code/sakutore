@@ -12,14 +12,14 @@ function VideoCard({ video }: { video: ChestVideo }) {
 
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-      {/* サムネイル部分 */}
+      {/* サムネイル部分 - YouTubeで検索 */}
       <a
         href={video.youtubeUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="block relative aspect-video bg-gray-200 group"
+        className="block relative aspect-video bg-gray-100 group"
       >
-        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all flex items-center justify-center">
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
           <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
             <svg
               className="w-8 h-8 text-white ml-1"
@@ -29,6 +29,7 @@ function VideoCard({ video }: { video: ChestVideo }) {
               <path d="M8 5v14l11-7z" />
             </svg>
           </div>
+          <span className="text-sm text-gray-500 font-semibold">YouTubeで見る</span>
         </div>
       </a>
 

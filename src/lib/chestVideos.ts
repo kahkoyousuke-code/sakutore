@@ -10,6 +10,10 @@ export interface ChestVideo {
   advice: string; // サクトレからのアドバイス
 }
 
+function youtubeSearch(query: string): string {
+  return `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`;
+}
+
 export const chestVideos: ChestVideo[] = [
   {
     id: "sho-bench-beginner",
@@ -18,7 +22,7 @@ export const chestVideos: ChestVideo[] = [
     category: "ベンチプレス",
     level: "初心者",
     equipment: "バーベル",
-    youtubeUrl: "https://www.youtube.com/watch?v=example1",
+    youtubeUrl: youtubeSearch("Sho Fitness 初心者 正しいベンチプレス講座"),
     advice: "科学的根拠に基づいた解説で、フォームの基礎から重量設定まで網羅されています。初心者は必ず見てほしい動画です!",
   },
   {
@@ -28,7 +32,7 @@ export const chestVideos: ChestVideo[] = [
     category: "ベンチプレス",
     level: "初心者",
     equipment: "バーベル",
-    youtubeUrl: "https://www.youtube.com/watch?v=example2",
+    youtubeUrl: youtubeSearch("ゴールドジム ベンチプレス 解説"),
     advice: "プロボディビルダーによる解説で、安全面の注意点もしっかり学べます。特に肩を痛めないためのポイントが参考になります。",
   },
   {
@@ -38,7 +42,7 @@ export const chestVideos: ChestVideo[] = [
     category: "ダンベル",
     level: "初心者",
     equipment: "ダンベル",
-    youtubeUrl: "https://www.youtube.com/watch?v=example3",
+    youtubeUrl: youtubeSearch("Sho Fitness ダンベルプレス 正しいやり方"),
     advice: "肩甲骨の使い方が本当にわかりやすいです。可動域を広く取れるダンベルプレスは、ベンチプレスと組み合わせると効果的!",
   },
   {
@@ -48,7 +52,7 @@ export const chestVideos: ChestVideo[] = [
     category: "ダンベル",
     level: "中級者",
     equipment: "ダンベル",
-    youtubeUrl: "https://www.youtube.com/watch?v=example4",
+    youtubeUrl: youtubeSearch("横川尚隆 ダンベルフライ"),
     advice: "トップビルダーの実践的テクニックが学べます。可動域の取り方と、胸にしっかり効かせる感覚を掴みましょう。",
   },
   {
@@ -58,7 +62,7 @@ export const chestVideos: ChestVideo[] = [
     category: "自重",
     level: "初心者",
     equipment: "自重",
-    youtubeUrl: "https://www.youtube.com/watch?v=example5",
+    youtubeUrl: youtubeSearch("なかやまきんに君 正しい腕立て伏せ"),
     advice: "超わかりやすい!よくある間違いを丁寧に指摘してくれます。自重トレでも正しいフォームなら十分効きます。",
   },
   {
@@ -68,7 +72,7 @@ export const chestVideos: ChestVideo[] = [
     category: "自重",
     level: "初心者",
     equipment: "自重",
-    youtubeUrl: "https://www.youtube.com/watch?v=example6",
+    youtubeUrl: youtubeSearch("林ケイスケ uFit 胸 自重トレ"),
     advice: "バリエーション豊富で飽きません。動画を見ながら一緒にやれるので、自宅トレに最適です!",
   },
   {
@@ -78,7 +82,7 @@ export const chestVideos: ChestVideo[] = [
     category: "ベンチプレス",
     level: "中級者",
     equipment: "バーベル",
-    youtubeUrl: "https://www.youtube.com/watch?v=example7",
+    youtubeUrl: youtubeSearch("Sho Fitness インクラインベンチプレス 角度"),
     advice: "大胸筋上部を狙うなら30-45度の角度設定が重要。フラットベンチプレスと組み合わせてバランス良く鍛えましょう。",
   },
   {
@@ -88,8 +92,8 @@ export const chestVideos: ChestVideo[] = [
     category: "自重",
     level: "初心者",
     equipment: "自重",
-    youtubeUrl: "https://www.youtube.com/watch?v=example8",
-    advice: "忙しい日でもこれならできる!短時間でも追い込めます。週5回ジムに通う私も、時間がない日はこういうトレーニングをします。",
+    youtubeUrl: youtubeSearch("メトロンブログ 3分 胸トレ"),
+    advice: "忙しい日でもこれならできる!短時間でも追い込めます。時間がない日はこういう短時間トレーニングが最適です。",
   },
   {
     id: "jin-bench-100kg",
@@ -98,7 +102,7 @@ export const chestVideos: ChestVideo[] = [
     category: "フォーム解説",
     level: "中級者",
     equipment: "バーベル",
-    youtubeUrl: "https://www.youtube.com/watch?v=example9",
+    youtubeUrl: youtubeSearch("JIN ぷろたん ベンチプレス 100kg"),
     advice: "重量を伸ばすコツが学べます。フィジーク選手のJINさんの解説は実践的で参考になります!",
   },
 ];
