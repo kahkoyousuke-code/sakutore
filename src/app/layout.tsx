@@ -10,10 +10,40 @@ const notoSansJP = Noto_Sans_JP({
   display: "swap",
 });
 
+const siteUrl = "https://sakutore.vercel.app";
+
 export const metadata: Metadata = {
-  title: "サクトレ - サクッとトレーニングメニュー作成",
+  title: "サクトレ | AIがあなた専用の筋トレメニューを作成",
   description:
-    "6つの質問に答えるだけで、あなたにぴったりのトレーニングメニューをサクッと作成！",
+    "6つの質問に答えるだけで、あなたにぴったりのトレーニングメニューをサクッと作成。初心者から中級者まで、無料で使えます。",
+  openGraph: {
+    title: "サクトレ | AIがあなた専用の筋トレメニューを作成",
+    description:
+      "6つの質問に答えるだけで、あなたにぴったりのトレーニングメニューをサクッと作成。初心者から中級者まで、無料で使えます。",
+    url: siteUrl,
+    siteName: "サクトレ",
+    images: [
+      {
+        url: `${siteUrl}/ogp.png`,
+        width: 1200,
+        height: 630,
+        alt: "サクトレ - AIがあなた専用の筋トレメニューを作成",
+      },
+    ],
+    locale: "ja_JP",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "サクトレ | AIがあなた専用の筋トレメニューを作成",
+    description:
+      "6つの質問に答えるだけで、あなたにぴったりのトレーニングメニューをサクッと作成。初心者から中級者まで、無料で使えます。",
+    images: [`${siteUrl}/ogp.png`],
+  },
+  icons: {
+    icon: "/sakura.png",
+    apple: "/sakura.png",
+  },
 };
 
 export default function RootLayout({
