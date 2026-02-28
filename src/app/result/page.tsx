@@ -301,6 +301,18 @@ function ResultContent() {
           シェア
         </button>
       </div>
+
+      <a
+        href={process.env.NEXT_PUBLIC_SAKUMESHI_URL ?? "https://sakumeshi.vercel.app/"}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block mt-4 py-4 px-6 rounded-2xl bg-orange-50 border-2 border-orange-300 text-center hover:bg-orange-100 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
+      >
+        <p className="text-orange-600 font-bold text-base">
+          🍚 食事メニューも一緒に作ろう！
+        </p>
+        <p className="text-orange-500 text-sm mt-0.5">→ サクメシ</p>
+      </a>
     </div>
   );
 }
