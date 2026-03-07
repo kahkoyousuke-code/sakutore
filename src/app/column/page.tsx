@@ -37,6 +37,36 @@ const articles = [
     description:
       "動的ストレッチと静的ストレッチの使い分け、具体的なメニューを紹介します。",
   },
+  {
+    href: "/column/over40",
+    title: "40代からの筋トレ入門",
+    description:
+      "40代から始めるメリット、無理のない始め方、年齢を考慮した注意点をわかりやすく解説します。",
+  },
+  {
+    href: "/column/alcohol",
+    title: "筋トレとお酒の付き合い方",
+    description:
+      "アルコールが筋肉に与える影響、飲んでもOKなタイミング、お酒好きでも成果を出すコツを紹介します。",
+  },
+  {
+    href: "/column/chest-home",
+    title: "自宅でできる胸トレ完全ガイド",
+    description:
+      "器具なしの腕立て伏せバリエーションからダンベル種目まで、大胸筋を効果的に鍛える方法を解説します。",
+  },
+  {
+    href: "/column/back-benefits",
+    title: "背中を鍛えるべき3つの理由",
+    description:
+      "姿勢改善・腰痛予防・見た目の変化。背中の筋肉を鍛えることで得られる効果と具体的な種目を紹介します。",
+  },
+  {
+    href: "/column/metabolism",
+    title: "筋トレで痩せる仕組みを解説",
+    description:
+      "基礎代謝・筋肉量・アフターバーン効果など、筋トレがダイエットに効く理由を有酸素運動と比較しながら解説します。",
+  },
 ];
 
 export default function ColumnPage() {
