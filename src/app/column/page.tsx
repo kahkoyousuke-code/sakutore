@@ -67,6 +67,36 @@ const articles = [
     description:
       "基礎代謝・筋肉量・アフターバーン効果など、筋トレがダイエットに効く理由を有酸素運動と比較しながら解説します。",
   },
+  {
+    href: "/column/motivation",
+    title: "筋トレのモチベーション維持法",
+    description:
+      "続けるためのコツ、SMARTな目標設定の方法、停滞期の乗り越え方を具体的に解説します。",
+  },
+  {
+    href: "/column/gym-beginner",
+    title: "ジム初心者が最初にやるべきマシン5選",
+    description:
+      "レッグプレス・ラットプルダウンなど初心者向けマシンの使い方とNG行動をわかりやすく紹介します。",
+  },
+  {
+    href: "/column/protein-guide",
+    title: "プロテインの選び方ガイド",
+    description:
+      "ホエイ・カゼイン・ソイの違い、飲むタイミング、目的別のおすすめ選び方を解説します。",
+  },
+  {
+    href: "/column/sleep",
+    title: "筋トレと睡眠の関係",
+    description:
+      "成長ホルモンと睡眠の仕組み、理想の睡眠時間、睡眠の質を高めるための実践的なコツを紹介します。",
+  },
+  {
+    href: "/column/10years",
+    title: "10年筋トレを続けてわかったこと",
+    description:
+      "10年継続することで得られる体の変化・メンタルの変化・続けてよかったことを詳しく解説します。",
+  },
 ];
 
 export default function ColumnPage() {
