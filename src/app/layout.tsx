@@ -44,6 +44,9 @@ export const metadata: Metadata = {
     icon: "/sakura.png",
     apple: "/sakura.png",
   },
+  verification: {
+    google: "ZjWPPXKFHLaA28ucYVXLYd-MO0aZCkUEjSQ96J8qPJE",
+  },
 };
 
 export default function RootLayout({
