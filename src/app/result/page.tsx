@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { Suspense, useEffect, useState, useCallback } from "react";
+import { Suspense, useEffect, useState, useCallback, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { TrainingMenu } from "@/lib/mockResult";
@@ -160,6 +160,8 @@ function ResultContent() {
   const searchParams = useSearchParams();
   const [menu, setMenu] = useState<TrainingMenu | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [downloading, setDownloading] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
 
   const fetchMenu = useCallback(async () => {
     setError(null);
@@ -240,13 +242,49 @@ function ResultContent() {
     return <LoadingScreen />;
   }
 
-  const handleShare = () => {
-    const text = `${menu.title}\n${menu.description}\n\nサクトレで作成しました！`;
-    if (navigator.share) {
-      navigator.share({ title: "サクトレ", text });
-    } else {
-      navigator.clipboard.writeText(text);
-      alert("クリップボードにコピーしました！");
+  const exerciseNames = menu.days
+    .flatMap((d) => d.exercises.map((e) => e.name))
+    .slice(0, 3)
+    .join("・");
+
+  const shareUrl = "https://sakutore.vercel.app";
+
+  const handleShareX = () => {
+    const text = `AIが私の筋トレメニューを作ってくれた💪\n今日のメニュー：${exerciseNames}\n#サクトレ #筋トレ #AIトレーニング\n${shareUrl}`;
+    window.open(
+      `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
+
+  const handleShareLine = () => {
+    const text = `AIが私の筋トレメニューを作ってくれた💪\n今日のメニュー：${exerciseNames}\n#サクトレ #筋トレ #AIトレーニング\n${shareUrl}`;
+    window.open(
+      `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(text)}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
+
+  const handleDownloadImage = async () => {
+    if (!cardRef.current) return;
+    setDownloading(true);
+    try {
+      const html2canvas = (await import("html2canvas")).default;
+      const canvas = await html2canvas(cardRef.current, {
+        backgroundColor: "#fff7ed",
+        scale: 2,
+        useCORS: true,
+      });
+      const link = document.createElement("a");
+      link.download = "saktore-menu.png";
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    } catch {
+      alert("画像の生成に失敗しました。");
+    } finally {
+      setDownloading(false);
     }
   };
 
@@ -256,7 +294,7 @@ function ResultContent() {
         あなたにぴったりのメニュー
       </p>
 
-      <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
+      <div ref={cardRef} className="bg-white rounded-2xl shadow-lg p-6 mb-6">
         <h2 className="text-xl font-bold text-gray-800 mb-2">{menu.title}</h2>
         {searchParams.get("q4") &&
           searchParams.get("q4") !== "特にこだわりなし（全体的に鍛えたい）" && (
@@ -285,21 +323,67 @@ function ResultContent() {
             </div>
           ))}
         </div>
+
+        {/* カード下部のブランド表示（画像ダウンロード用） */}
+        <p className="text-center text-orange-400 text-xs mt-6 font-semibold">
+          サクトレ｜sakutore.vercel.app
+        </p>
       </div>
 
-      <div className="flex gap-3">
+      {/* SNSシェアボタン */}
+      <div className="bg-white rounded-2xl shadow-lg p-4 mb-4">
+        <p className="text-center text-gray-500 text-sm mb-3 font-semibold">シェアする</p>
+        <div className="flex gap-2">
+          {/* X（Twitter）シェア */}
+          <button
+            onClick={handleShareX}
+            className="flex-1 flex items-center justify-center gap-1.5 py-3 px-3 rounded-xl bg-black text-white font-bold text-sm hover:bg-gray-800 transition-colors"
+          >
+            <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.26 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+            <span>X</span>
+          </button>
+
+          {/* LINEシェア */}
+          <button
+            onClick={handleShareLine}
+            className="flex-1 flex items-center justify-center gap-1.5 py-3 px-3 rounded-xl bg-[#06C755] text-white font-bold text-sm hover:bg-[#05a847] transition-colors"
+          >
+            <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" />
+            </svg>
+            <span>LINE</span>
+          </button>
+
+          {/* 画像ダウンロード */}
+          <button
+            onClick={handleDownloadImage}
+            disabled={downloading}
+            className="flex-1 flex items-center justify-center gap-1.5 py-3 px-3 rounded-xl bg-blue-500 text-white font-bold text-sm hover:bg-blue-600 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+          >
+            {downloading ? (
+              <svg className="w-4 h-4 animate-spin flex-shrink-0" viewBox="0 0 24 24" fill="none">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
+              </svg>
+            ) : (
+              <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+            )}
+            <span>{downloading ? "生成中" : "画像"}</span>
+          </button>
+        </div>
+      </div>
+
+      <div className="flex gap-3 mb-4">
         <Link
           href="/questions"
           className="flex-1 py-3 px-6 rounded-xl border-2 border-orange-500 text-orange-500 font-bold text-center hover:bg-orange-50 transition-colors"
         >
           もう一度作る
         </Link>
-        <button
-          onClick={handleShare}
-          className="flex-1 py-3 px-6 rounded-xl bg-orange-500 text-white font-bold hover:bg-orange-600 transition-colors"
-        >
-          シェア
-        </button>
       </div>
 
       <a
