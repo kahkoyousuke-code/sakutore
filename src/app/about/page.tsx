@@ -46,6 +46,36 @@ export default function AboutPage() {
 
             <section>
               <h2 className="font-bold text-orange-500 text-base mb-3">
+                運営者プロフィール
+              </h2>
+              <div className="bg-orange-50 rounded-xl p-4 space-y-3">
+                <table className="w-full">
+                  <tbody className="divide-y divide-orange-100">
+                    <tr>
+                      <td className="py-2 font-bold text-gray-800 w-28 align-top">
+                        運営者名
+                      </td>
+                      <td className="py-2">yousuke</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 font-bold text-gray-800 align-top">
+                        筋トレ歴
+                      </td>
+                      <td className="py-2">10年以上</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p>
+                  20代の頃は体重90kg超えの典型的な運動不足。「このままではまずい」と一念発起して筋トレを始め、試行錯誤を繰り返しながら現在の体型（173cm/78kg）まで変化。筋トレ歴10年以上、ボディメイク大会への出場経験もあり。
+                </p>
+                <p>
+                  「何をすればいいかわからない」「自分に合ったメニューが見つからない」という、かつての自分と同じ悩みを持つ人を助けたくてサクトレを開発。AIの力で、誰でも最適なトレーニングメニューをすぐに手に入れられるサービスを目指しています。
+                </p>
+              </div>
+            </section>
+
+            <section>
+              <h2 className="font-bold text-orange-500 text-base mb-3">
                 サービスの目的
               </h2>
               <p>
