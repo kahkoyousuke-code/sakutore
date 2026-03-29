@@ -18,6 +18,9 @@ export default function AlcoholPage() {
 
           <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
             <section>
+              <p className="text-gray-500 italic border-l-2 border-orange-300 pl-3 mb-3">
+                正直に言うと、私はお酒が好きで毎晩飲んでいます。それでも10年以上筋トレを続けてこられた経験から、お酒との上手な付き合い方をお伝えします。
+              </p>
               <p>
                 筋トレをしているけれど、お酒も好き——そんな方にとって「飲んでいいのか、やめるべきか」は気になるテーマですよね。お酒を完全にやめる必要はありませんが、アルコールが筋肉や体に与える影響を正しく理解した上で付き合い方を考えることが大切です。この記事では、アルコールの影響と上手な付き合い方を解説します。
               </p>

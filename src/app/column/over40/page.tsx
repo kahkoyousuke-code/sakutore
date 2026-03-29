@@ -18,6 +18,9 @@ export default function Over40Page() {
 
           <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
             <section>
+              <p className="text-gray-500 italic border-l-2 border-orange-300 pl-3 mb-3">
+                私は40代でも週5回トレーニングを続けています。年齢を重ねてわかった、無理なく続けるためのコツをお伝えします。
+              </p>
               <p>
                 「40代になってから体が重くなった」「昔と同じ食事なのに太りやすくなった」「腰や膝が気になり始めた」——そんな悩みを抱えている方は少なくないはずです。これらはすべて、加齢に伴う筋肉量の低下が大きく関わっています。実は40代こそ、筋トレを始める絶好のタイミングです。この記事では、40代から筋トレを始めるメリットと、無理なく続けるための方法を解説します。
               </p>

@@ -18,6 +18,9 @@ export default function MotivationPage() {
 
           <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
             <section>
+              <p className="text-gray-500 italic border-l-2 border-orange-300 pl-3 mb-3">
+                筋トレ10年以上続けてきた私でも、モチベーションが落ちた時期は何度もあります。そこで実際に効果があった方法だけを厳選して紹介します。
+              </p>
               <p>
                 筋トレを始めたばかりの頃は意欲満々でも、数週間後には「なんとなくサボってしまう」「やる気が出ない」という状態に陥る方は少なくありません。実は筋トレを続けられるかどうかは、意志の強さよりも「仕組みと考え方」にかかっています。この記事では、筋トレを長期間続けるための実践的なモチベーション維持法を紹介します。
               </p>

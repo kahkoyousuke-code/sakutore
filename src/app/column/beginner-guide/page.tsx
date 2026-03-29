@@ -18,6 +18,9 @@ export default function BeginnerGuidePage() {
 
           <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
             <section>
+              <p className="text-gray-500 italic border-l-2 border-orange-300 pl-3 mb-3">
+                私も最初は何から始めればいいかまったくわからず、むやみにトレーニングして結果が出ない時期がありました。その経験をもとに、本当に最初にやるべきことをまとめました。
+              </p>
               <p>
                 「筋トレを始めたいけれど、何から手をつければいいかわからない」という方は多いのではないでしょうか。ジムに行っても器具の使い方がわからず、自宅でやるにしても正しいやり方がわからない。そんな初心者の方に向けて、筋トレを始めるときに最初にやるべき5つのことを解説します。
               </p>
