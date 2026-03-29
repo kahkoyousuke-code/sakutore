@@ -182,6 +182,17 @@ export default function BackBenefitsPage() {
           </div>
         </div>
 
+        <div className="bg-white rounded-2xl shadow-lg p-4 mb-6">
+          <div className="flex items-start gap-3">
+            <span className="text-3xl">👤</span>
+            <div>
+              <p className="text-xs text-orange-500 font-bold mb-1">著者</p>
+              <p className="font-bold text-gray-800 text-sm">yousuke</p>
+              <p className="text-xs text-gray-500 mt-1 leading-relaxed">筋トレ歴10年以上｜ボディメイク大会出場経験あり｜90kg超から現在の体型に変化</p>
+            </div>
+          </div>
+        </div>
+
         <div className="text-center space-y-3">
           <Link
             href="/questions"
