@@ -46,6 +46,13 @@ const categories = [
   },
 ];
 
+const womenCategory = {
+  href: "/videos/women",
+  title: "女性向け動画",
+  description: "自宅トレ・脚痩せ・引き締め系。人気YouTubeチャンネルまとめ",
+  count: 4,
+};
+
 export default function VideosPage() {
   return (
     <main className="min-h-screen flex flex-col items-center px-4 py-8">
@@ -104,6 +111,45 @@ export default function VideosPage() {
               </div>
             </Link>
           ))}
+        </div>
+
+        <div className="mb-6">
+          <p className="text-xs text-gray-400 font-bold uppercase tracking-wider mb-2 px-1">
+            特集
+          </p>
+          <Link
+            href={womenCategory.href}
+            className="block bg-gradient-to-r from-pink-50 to-orange-50 rounded-2xl shadow-md p-5 hover:shadow-lg transition-shadow border border-pink-100"
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="font-bold text-gray-800 text-base">
+                  {womenCategory.title}
+                </p>
+                <p className="text-xs text-gray-500 mt-1">
+                  {womenCategory.description}
+                </p>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs text-orange-500 font-bold">
+                  {womenCategory.count}ch
+                </span>
+                <svg
+                  className="w-5 h-5 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </div>
+            </div>
+          </Link>
         </div>
 
         <div className="text-center">
