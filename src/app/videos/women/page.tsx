@@ -16,14 +16,14 @@ const channels = [
     tags: ["自宅トレ", "初心者OK", "中級者"],
   },
   {
-    href: "https://www.youtube.com/@hinata_kato",
+    href: "https://www.youtube.com/@HinataKato",
     name: "ひなちゃんねる（加藤ひなた）",
     subscribers: "登録者280万人超",
     description: "脚痩せ・ダイエット特化。器具なしで始められる。",
     tags: ["脚痩せ", "ダイエット", "器具なし"],
   },
   {
-    href: "https://www.youtube.com/@nogachannel",
+    href: "https://www.youtube.com/@noga",
     name: "のがちゃんねる",
     subscribers: "登録者140万人超",
     description: "腹筋・引き締め系が特に強い。毎日続けやすい動画多数。",
