@@ -97,6 +97,36 @@ const articles = [
     description:
       "10年継続することで得られる体の変化・メンタルの変化・続けてよかったことを詳しく解説します。",
   },
+  {
+    href: "/column/women-muscle-slim",
+    title: "女性が筋トレしても「太くならない」理由を解説",
+    description:
+      "筋トレで体が大きくなるという誤解を解消し、女性こそ筋トレすべき理由をホルモンの違いやデータをもとに解説します。",
+  },
+  {
+    href: "/column/muscle-vs-cardio-women",
+    title: "脂肪燃焼に筋トレが有酸素運動より効果的な理由",
+    description:
+      "ランニングより筋トレの方が長期的に痩せやすい理由を、基礎代謝とアフターバーン効果から解説します。",
+  },
+  {
+    href: "/column/women-training-timing",
+    title: "女性が筋トレで痩せやすい時間帯と頻度",
+    description:
+      "脂肪燃焼効果が高まる時間帯、週の最適な頻度、忙しい人でも続けられるスケジュールを紹介します。",
+  },
+  {
+    href: "/column/diet-rebound-muscle",
+    title: "食事制限だけでリバウンドする理由と筋トレの関係",
+    description:
+      "食事制限だけでは筋肉が落ちてリバウンドしやすくなる仕組みと、筋トレを組み合わせるべき理由を解説します。",
+  },
+  {
+    href: "/column/women-40s-training",
+    title: "40代女性が筋トレで痩せにくい理由と対策",
+    description:
+      "40代以降のホルモン変化・基礎代謝低下の仕組みと、それに合わせた効果的なトレーニング・食事法を解説します。",
+  },
 ];
 
 export default function ColumnPage() {
