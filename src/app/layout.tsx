@@ -77,7 +77,7 @@ export default function RootLayout({
         </header>
         {children}
         <footer className="py-6 text-center text-xs text-gray-400">
-          <div className="mb-3">
+          <div className="mb-1">
             <a
               href={process.env.NEXT_PUBLIC_SAKUMESHI_URL ?? "https://sakumeshi.vercel.app/"}
               target="_blank"
@@ -85,6 +85,16 @@ export default function RootLayout({
               className="inline-flex items-center gap-1 text-orange-500 font-semibold hover:text-orange-600 transition-colors"
             >
               🍚 食事プランも作ろう → サクメシ
+            </a>
+          </div>
+          <div className="mb-3">
+            <a
+              href="https://sakusuppu.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-orange-500 font-semibold hover:text-orange-600 transition-colors"
+            >
+              🧴 サプリも診断してみよう → サクサプ
             </a>
           </div>
           <div className="flex justify-center gap-4 flex-wrap">
