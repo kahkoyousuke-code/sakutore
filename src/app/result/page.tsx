@@ -424,6 +424,29 @@ function ResultContent() {
           <p className="text-gray-400 text-xs mt-3">※ 本リンクはアフィリエイトリンクです</p>
         </div>
       </div>
+
+      {/* サクサプ */}
+      <div className="mt-6 rounded-2xl overflow-hidden shadow-lg border-2 border-purple-400 bg-gradient-to-br from-purple-50 to-pink-50">
+        <div className="bg-purple-500 px-4 py-2 text-center">
+          <p className="text-white text-xs font-bold tracking-wide">🧴 トレーニングと一緒にサプリも最適化しよう</p>
+        </div>
+        <div className="px-6 py-5 text-center">
+          <p className="text-gray-800 font-bold text-base mb-1">
+            あなたに合ったサプリをAIが無料診断
+          </p>
+          <p className="text-gray-500 text-sm mb-4">
+            目的・体質・ライフスタイルに合わせて最適なサプリをご提案
+          </p>
+          <a
+            href="https://sakusuppu.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block w-full py-4 px-6 rounded-xl bg-purple-500 text-white font-bold text-sm hover:bg-purple-600 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0"
+          >
+            サクサプで診断してみる →
+          </a>
+        </div>
+      </div>
     </div>
   );
 }
