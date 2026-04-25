@@ -59,6 +59,16 @@ export default function Home() {
           <span>食事メニューも作ろう → サクメシ</span>
         </a>
 
+        <a
+          href="https://sakusuppu.vercel.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center gap-2 w-full bg-orange-50 hover:bg-orange-100 text-orange-600 font-bold py-4 px-8 rounded-2xl text-lg border-2 border-orange-300 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 mt-4"
+        >
+          <span>🧴</span>
+          <span>サプリも診断してみよう → サクサプ</span>
+        </a>
+
         <p className="mt-6 text-sm text-gray-400">所要時間:約1分</p>
       </div>
     </main>
