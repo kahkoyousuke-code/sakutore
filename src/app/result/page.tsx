@@ -82,24 +82,94 @@ function LoadingScreen() {
   );
 }
 
+function parseRestSeconds(rest: string): number {
+  let seconds = 0;
+  const minMatch = rest.match(/(\d+)分/);
+  const secMatch = rest.match(/(\d+)秒/);
+  if (minMatch) seconds += parseInt(minMatch[1]) * 60;
+  if (secMatch) seconds += parseInt(secMatch[1]);
+  return seconds;
+}
+
+function playBeep() {
+  try {
+    const ctx = new AudioContext();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.frequency.value = 880;
+    gain.gain.setValueAtTime(0.3, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.8);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.8);
+  } catch {}
+}
+
 function ExerciseCard({
   exercise,
 }: {
   exercise: TrainingMenu["days"][number]["exercises"][number];
 }) {
   const [open, setOpen] = useState(false);
+  const [timerState, setTimerState] = useState<"idle" | "running" | "done">("idle");
+  const [timeLeft, setTimeLeft] = useState(0);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const detail = findExerciseDetail(exercise.name);
+  const totalSeconds = parseRestSeconds(exercise.rest);
+
+  useEffect(() => {
+    if (timerState !== "running") return;
+    intervalRef.current = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev <= 1) {
+          clearInterval(intervalRef.current!);
+          setTimerState("done");
+          playBeep();
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [timerState]);
+
+  useEffect(() => {
+    if (timerState !== "done") return;
+    const t = setTimeout(() => setTimerState("idle"), 3000);
+    return () => clearTimeout(t);
+  }, [timerState]);
+
+  const handleTimerClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (timerState === "idle") {
+      setTimeLeft(totalSeconds);
+      setTimerState("running");
+    } else {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      setTimerState("idle");
+      setTimeLeft(0);
+    }
+  };
+
+  const formatTime = (secs: number) => {
+    const m = Math.floor(secs / 60);
+    const s = secs % 60;
+    return m > 0 ? `${m}:${s.toString().padStart(2, "0")}` : `${s}秒`;
+  };
 
   return (
     <div className="bg-orange-50 rounded-xl overflow-hidden">
-      <button
-        onClick={() => detail && setOpen(!open)}
-        className={`w-full flex items-center justify-between px-4 py-3 text-left ${detail ? "cursor-pointer" : "cursor-default"}`}
-      >
-        <div className="flex items-center gap-2">
+      <div className="flex items-center justify-between px-4 py-3">
+        <button
+          onClick={() => detail && setOpen(!open)}
+          className={`flex items-center gap-2 flex-1 text-left min-w-0 ${detail ? "cursor-pointer" : "cursor-default"}`}
+        >
           {detail && (
             <svg
-              className={`w-4 h-4 text-orange-400 transition-transform duration-200 ${open ? "rotate-90" : ""}`}
+              className={`w-4 h-4 text-orange-400 flex-shrink-0 transition-transform duration-200 ${open ? "rotate-90" : ""}`}
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -112,17 +182,45 @@ function ExerciseCard({
               />
             </svg>
           )}
-          <span className="font-medium text-gray-800 text-sm">
+          <span className="font-medium text-gray-800 text-sm truncate">
             {exercise.name}
           </span>
-        </div>
-        <div className="flex items-center gap-3 text-xs text-gray-500">
+        </button>
+        <div className="flex items-center gap-2 text-xs text-gray-500 flex-shrink-0 ml-2">
           <span>
             {exercise.sets}×{exercise.reps}
           </span>
-          <span className="text-orange-400">休{exercise.rest}</span>
+          {totalSeconds > 0 ? (
+            <button
+              onClick={handleTimerClick}
+              className={`transition-all duration-200 text-xs leading-none py-1 px-2 rounded-full font-semibold ${
+                timerState === "idle"
+                  ? "text-orange-500 bg-orange-100 hover:bg-orange-200"
+                  : timerState === "running"
+                  ? "text-white bg-orange-500 tabular-nums"
+                  : "text-white bg-green-500"
+              }`}
+            >
+              {timerState === "idle"
+                ? `▶ 休${exercise.rest}`
+                : timerState === "running"
+                ? formatTime(timeLeft)
+                : "✓ 完了！"}
+            </button>
+          ) : (
+            <span className="text-orange-400">休{exercise.rest}</span>
+          )}
         </div>
-      </button>
+      </div>
+
+      {timerState === "running" && totalSeconds > 0 && (
+        <div className="h-1 bg-orange-100">
+          <div
+            className="h-1 bg-orange-500 transition-all duration-1000 ease-linear"
+            style={{ width: `${(timeLeft / totalSeconds) * 100}%` }}
+          />
+        </div>
+      )}
 
       {open && detail && (
         <div className="px-4 pb-3 space-y-3 text-xs text-gray-600 border-t border-orange-100 pt-3 mx-2">
