@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { TrainingMenu } from "@/lib/mockResult";
 import { findExerciseDetail } from "@/lib/exercises";
+import { recordWorkout, hasWorkedOutToday } from "@/lib/workoutLog";
 
 const LOADING_TIPS = [
   "筋肉は休息中に成長します💪",
@@ -259,7 +260,12 @@ export default function ResultClient() {
   const [menu, setMenu] = useState<TrainingMenu | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [downloading, setDownloading] = useState(false);
+  const [completed, setCompleted] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setCompleted(hasWorkedOutToday());
+  }, []);
 
   const fetchMenu = useCallback(async () => {
     setError(null);
@@ -437,6 +443,26 @@ export default function ResultClient() {
         <p className="text-center text-orange-400 text-xs mt-6 font-semibold">
           サクトレ｜sakutore.vercel.app
         </p>
+      </div>
+
+      <div className="bg-white rounded-2xl shadow-lg p-4 mb-4">
+        {completed ? (
+          <div className="text-center py-2">
+            <p className="text-3xl mb-1">🎉</p>
+            <p className="text-green-600 font-bold text-lg">今日のトレーニング完了！</p>
+            <p className="text-gray-400 text-sm mt-1">お疲れ様でした！</p>
+          </div>
+        ) : (
+          <button
+            onClick={() => {
+              recordWorkout();
+              setCompleted(true);
+            }}
+            className="w-full py-4 rounded-xl bg-green-500 hover:bg-green-600 text-white font-bold text-lg transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
+          >
+            💪 今日のトレーニング完了！
+          </button>
+        )}
       </div>
 
       <div className="bg-white rounded-2xl shadow-lg p-4 mb-4">
