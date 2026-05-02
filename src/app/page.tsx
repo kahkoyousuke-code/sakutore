@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import SavedMenuButton from "@/components/SavedMenuButton";
 
 export default function Home() {
   return (
@@ -34,6 +35,8 @@ export default function Home() {
         >
           メニューを作る
         </Link>
+
+        <SavedMenuButton />
 
         <Link
           href="/videos"

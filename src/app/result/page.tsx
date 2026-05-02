@@ -270,6 +270,16 @@ function ResultContent() {
       answers.push(searchParams.get(`q${i}`) || "");
     }
 
+    const currentParams = searchParams.toString();
+    const savedParams = localStorage.getItem("sakutore_saved_params");
+    const savedMenuStr = localStorage.getItem("sakutore_saved_menu");
+    if (savedParams === currentParams && savedMenuStr) {
+      try {
+        setMenu(JSON.parse(savedMenuStr));
+        return;
+      } catch {}
+    }
+
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 30000);
 
@@ -289,6 +299,8 @@ function ResultContent() {
       }
 
       setMenu(data);
+      localStorage.setItem("sakutore_saved_menu", JSON.stringify(data));
+      localStorage.setItem("sakutore_saved_params", currentParams);
     } catch (err) {
       if (err instanceof DOMException && err.name === "AbortError") {
         setError("通信がタイムアウトしました。通信環境を確認してもう一度お試しください。");
