@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { TrainingMenu } from "@/lib/mockResult";
 import { findExerciseDetail } from "@/lib/exercises";
-import { recordWorkout, hasWorkedOutToday } from "@/lib/workoutLog";
+import { recordWorkout } from "@/lib/workoutLog";
 import { saveMenuHistory } from "@/lib/menuHistory";
 import { getMemo, saveMemo } from "@/lib/trainingMemo";
 
@@ -342,10 +342,6 @@ export default function ResultClient() {
   const [downloading, setDownloading] = useState(false);
   const [completed, setCompleted] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setCompleted(hasWorkedOutToday());
-  }, []);
 
   const fetchMenu = useCallback(async () => {
     setError(null);
