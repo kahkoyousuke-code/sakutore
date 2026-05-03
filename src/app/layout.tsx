@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
+import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import "./globals.css";
 
 const notoSansJP = Noto_Sans_JP({
@@ -41,8 +42,14 @@ export const metadata: Metadata = {
     images: [`${siteUrl}/ogp.png`],
   },
   icons: {
-    icon: "/sakura.png",
-    apple: "/sakura.png",
+    icon: "/icon-192.png",
+    apple: "/icon-192.png",
+  },
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "サクトレ",
   },
   verification: {
     google: "ZjWPPXKFHLaA28ucYVXLYd-MO0aZCkUEjSQ96J8qPJE",
@@ -62,8 +69,11 @@ export default function RootLayout({
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2851344861391489"
           crossOrigin="anonymous"
         />
+        <meta name="theme-color" content="#f97316" />
+        <meta name="mobile-web-app-capable" content="yes" />
       </head>
       <body className={`${notoSansJP.className} antialiased`}>
+        <ServiceWorkerRegistration />
         <header className="py-4 px-4">
           <Link href="/" className="flex items-center justify-center gap-2">
             <Image
