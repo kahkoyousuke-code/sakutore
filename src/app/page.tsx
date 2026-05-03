@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import SavedMenuButton from "@/components/SavedMenuButton";
+import WorkoutCalendar from "@/components/WorkoutCalendar";
 
 export default function Home() {
   return (
@@ -37,6 +38,7 @@ export default function Home() {
         </Link>
 
         <SavedMenuButton />
+        <WorkoutCalendar />
 
         <Link
           href="/videos"
