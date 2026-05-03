@@ -8,6 +8,7 @@ import { TrainingMenu } from "@/lib/mockResult";
 import { findExerciseDetail } from "@/lib/exercises";
 import { recordWorkout, hasWorkedOutToday } from "@/lib/workoutLog";
 import { saveMenuHistory } from "@/lib/menuHistory";
+import { getMemo, saveMemo } from "@/lib/trainingMemo";
 
 const LOADING_TIPS = [
   "筋肉は休息中に成長します💪",
@@ -119,6 +120,22 @@ function ExerciseCard({
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const detail = findExerciseDetail(exercise.name);
   const totalSeconds = parseRestSeconds(exercise.rest);
+
+  const [memoOpen, setMemoOpen] = useState(false);
+  const [weight, setWeight] = useState("");
+  const [repCount, setRepCount] = useState("");
+  const [savedMemo, setSavedMemo] = useState<{ weight: string; reps: string } | null>(null);
+
+  useEffect(() => {
+    setSavedMemo(getMemo(exercise.name));
+  }, [exercise.name]);
+
+  const handleSaveMemo = () => {
+    if (!weight && !repCount) return;
+    saveMemo(exercise.name, weight, repCount);
+    setSavedMemo({ weight, reps: repCount });
+    setMemoOpen(false);
+  };
 
   useEffect(() => {
     if (timerState !== "running") return;
@@ -252,6 +269,68 @@ function ExerciseCard({
           </a>
         </div>
       )}
+
+      <div className="border-t border-orange-100 mx-2">
+        {!memoOpen ? (
+          <button
+            onClick={() => setMemoOpen(true)}
+            className="flex items-center justify-between w-full px-2 py-2 text-xs text-gray-400 hover:text-orange-500 transition-colors"
+          >
+            {savedMemo ? (
+              <span className="text-green-600 font-semibold">
+                ✓ {savedMemo.weight ? `${savedMemo.weight}kg` : ""}{savedMemo.weight && savedMemo.reps ? " × " : ""}{savedMemo.reps ? `${savedMemo.reps}回` : ""}　記録済み
+              </span>
+            ) : (
+              <span>📝 実績を記録する</span>
+            )}
+            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536M9 13l6.586-6.586a2 2 0 112.828 2.828L11.828 15.828a2 2 0 01-1.414.586H9v-2a2 2 0 01.586-1.414z" />
+            </svg>
+          </button>
+        ) : (
+          <div className="px-2 py-3 space-y-2">
+            <p className="text-xs font-semibold text-gray-500">今日の実績</p>
+            <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1 flex-1">
+                <input
+                  type="number"
+                  inputMode="decimal"
+                  placeholder="重量"
+                  value={weight}
+                  onChange={(e) => setWeight(e.target.value)}
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-center focus:outline-none focus:border-orange-400"
+                />
+                <span className="text-xs text-gray-400 flex-shrink-0">kg</span>
+              </div>
+              <div className="flex items-center gap-1 flex-1">
+                <input
+                  type="number"
+                  inputMode="numeric"
+                  placeholder="回数"
+                  value={repCount}
+                  onChange={(e) => setRepCount(e.target.value)}
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-center focus:outline-none focus:border-orange-400"
+                />
+                <span className="text-xs text-gray-400 flex-shrink-0">回</span>
+              </div>
+            </div>
+            <div className="flex gap-2">
+              <button
+                onClick={handleSaveMemo}
+                className="flex-1 py-2 rounded-lg bg-orange-500 text-white text-xs font-bold hover:bg-orange-600 transition-colors"
+              >
+                保存
+              </button>
+              <button
+                onClick={() => setMemoOpen(false)}
+                className="flex-1 py-2 rounded-lg border border-gray-200 text-gray-400 text-xs hover:bg-gray-50 transition-colors"
+              >
+                キャンセル
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
