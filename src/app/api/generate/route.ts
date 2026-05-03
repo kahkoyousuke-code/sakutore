@@ -14,19 +14,44 @@ function buildPrompt(answers: string[]): string {
   const focus = answers[4];
   const focusNote =
     focus && focus !== "特にこだわりなし（全体的に鍛えたい）"
-      ? `重点部位:${focus}(これらの部位の種目を多めに含める)`
+      ? `${focus}を重点的に(これらの部位の種目を多めに含める)`
       : "全身バランスよく";
-  return `JSONのみ出力。トレーニングメニューを作成。
-条件:目的${answers[0]}/頻度${answers[1]}/時間${answers[2]}/経験${answers[3]}/${focusNote}/環境${answers[5]}
-各日${count}種目(メインのコンパウンド種目2つ+補助のアイソレーション種目を残り)
-形式:{"title":"絵文字+名前","description":"短い説明","days":[{"day":"Day 1","label":"部位","exercises":[{"name":"種目","sets":3,"reps":"10回","rest":"60秒"}]}]}
-最大3日,${answers[5]}の器具のみ,setsは数値,reps/restは文字列`;
+
+  const repRange = answers[0].includes("筋肥大")
+    ? "6〜12rep"
+    : answers[0].includes("ダイエット")
+    ? "12〜20rep"
+    : answers[0].includes("健康")
+    ? "10〜15rep"
+    : "8〜15rep";
+
+  const experienceNote = answers[3].includes("初心者")
+    ? "基本的なコンパウンド種目・マシン種目中心で安全・習得しやすい種目を選ぶ"
+    : answers[3].includes("上級者")
+    ? "バリエーション種目や高強度テクニックも活用可"
+    : "標準的な種目で構成";
+
+  return `以下の条件でトレーニングメニューをJSONのみで出力。説明文不要。
+
+目的:${answers[0]} / 頻度:${answers[1]} / 時間:${answers[2]} / 経験:${answers[3]} / ${focusNote} / 環境:${answers[5]}
+
+設計ルール:
+- 各日${count}種目(コンパウンド2つ+アイソレーション)
+- レップ数:${repRange}
+- 種目選択:${experienceNote}
+- 日ごとに異なる部位・動作パターン(プッシュ/プル/レッグス等)で被りを避ける
+- ${answers[5]}の器具のみ使用
+
+出力形式:{"title":"絵文字+名前","description":"メニューの特徴を1〜2文","days":[{"day":"Day 1","label":"部位","exercises":[{"name":"種目名","sets":3,"reps":"10回","rest":"90秒"}]}]}
+日数は${answers[1]}に合わせて最大3日,setsは数値,reps/restは文字列`;
 }
 
 async function callClaude(prompt: string) {
   const message = await client.messages.create({
     model: "claude-haiku-4-5-20251001",
     max_tokens: 2048,
+    system:
+      "あなたはプロのパーソナルトレーナーです。利用者の条件に合わせた、科学的根拠のある効果的なトレーニングメニューをJSON形式で出力します。",
     messages: [{ role: "user", content: prompt }],
   });
 
