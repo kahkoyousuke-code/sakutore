@@ -28,8 +28,9 @@ export function saveMemo(exerciseName: string, sets: SetRecord[]): void {
   } catch {}
 }
 
-export function parseSetsCount(setsVal: string | number): number {
+export function parseSetsCount(setsVal: string | number | null | undefined): number {
   if (typeof setsVal === "number") return Math.max(1, setsVal);
-  const match = setsVal.match(/\d+/);
+  if (!setsVal) return 1;
+  const match = String(setsVal).match(/\d+/);
   return match ? Math.max(1, parseInt(match[0])) : 1;
 }

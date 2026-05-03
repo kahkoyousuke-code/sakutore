@@ -132,7 +132,7 @@ function ExerciseCard({
 
   const handleOpenMemo = () => {
     const memo = getMemo(exercise.name);
-    if (memo) {
+    if (memo?.sets?.length) {
       setSetRecords(memo.sets);
     } else {
       const count = parseSetsCount(exercise.sets);
