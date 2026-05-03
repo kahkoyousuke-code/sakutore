@@ -5,7 +5,7 @@ import Link from "next/link";
 import { getMenuHistory, type MenuHistoryEntry } from "@/lib/menuHistory";
 
 function formatDate(dateStr: string): string {
-  const [y, m, d] = dateStr.split("-");
+  const [, m, d] = dateStr.split("-");
   return `${m}/${d}`;
 }
 
