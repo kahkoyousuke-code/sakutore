@@ -127,7 +127,8 @@ function ExerciseCard({
 
   useEffect(() => {
     const memo = getMemo(exercise.name);
-    setSavedMemo(memo?.sets ?? null);
+    const sets = memo?.sets;
+    setSavedMemo(Array.isArray(sets) && sets.length > 0 ? sets : null);
   }, [exercise.name]);
 
   const handleOpenMemo = () => {
@@ -292,7 +293,7 @@ function ExerciseCard({
             onClick={handleOpenMemo}
             className="flex items-center justify-between w-full px-2 py-2 text-xs text-gray-400 hover:text-orange-500 transition-colors"
           >
-            {savedMemo ? (
+            {Array.isArray(savedMemo) && savedMemo.length > 0 ? (
               <span className="text-green-600 font-semibold truncate">
                 ✓ {savedMemo.map((s, i) => `S${i + 1}:${s.weight ? s.weight + "kg" : "-"}×${s.reps ? s.reps + "回" : "-"}`).join(" ")}
               </span>
