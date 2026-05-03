@@ -8,7 +8,7 @@ import { TrainingMenu } from "@/lib/mockResult";
 import { findExerciseDetail } from "@/lib/exercises";
 import { recordWorkout } from "@/lib/workoutLog";
 import { saveMenuHistory } from "@/lib/menuHistory";
-import { getMemo, saveMemo } from "@/lib/trainingMemo";
+import { getMemo, saveMemo, parseSetsCount, type SetRecord } from "@/lib/trainingMemo";
 
 const LOADING_TIPS = [
   "筋肉は休息中に成長します💪",
@@ -122,19 +122,35 @@ function ExerciseCard({
   const totalSeconds = parseRestSeconds(exercise.rest);
 
   const [memoOpen, setMemoOpen] = useState(false);
-  const [weight, setWeight] = useState("");
-  const [repCount, setRepCount] = useState("");
-  const [savedMemo, setSavedMemo] = useState<{ weight: string; reps: string } | null>(null);
+  const [setRecords, setSetRecords] = useState<SetRecord[]>([]);
+  const [savedMemo, setSavedMemo] = useState<SetRecord[] | null>(null);
 
   useEffect(() => {
-    setSavedMemo(getMemo(exercise.name));
+    const memo = getMemo(exercise.name);
+    setSavedMemo(memo?.sets ?? null);
   }, [exercise.name]);
 
+  const handleOpenMemo = () => {
+    const memo = getMemo(exercise.name);
+    if (memo) {
+      setSetRecords(memo.sets);
+    } else {
+      const count = parseSetsCount(exercise.sets);
+      setSetRecords(Array.from({ length: count }, () => ({ weight: "", reps: "" })));
+    }
+    setMemoOpen(true);
+  };
+
   const handleSaveMemo = () => {
-    if (!weight && !repCount) return;
-    saveMemo(exercise.name, weight, repCount);
-    setSavedMemo({ weight, reps: repCount });
+    const filled = setRecords.filter((s) => s.weight || s.reps);
+    if (filled.length === 0) return;
+    saveMemo(exercise.name, setRecords);
+    setSavedMemo(setRecords);
     setMemoOpen(false);
+  };
+
+  const updateSet = (i: number, field: keyof SetRecord, value: string) => {
+    setSetRecords((prev) => prev.map((s, idx) => idx === i ? { ...s, [field]: value } : s));
   };
 
   useEffect(() => {
@@ -273,48 +289,65 @@ function ExerciseCard({
       <div className="border-t border-orange-100 mx-2">
         {!memoOpen ? (
           <button
-            onClick={() => setMemoOpen(true)}
+            onClick={handleOpenMemo}
             className="flex items-center justify-between w-full px-2 py-2 text-xs text-gray-400 hover:text-orange-500 transition-colors"
           >
             {savedMemo ? (
-              <span className="text-green-600 font-semibold">
-                ✓ {savedMemo.weight ? `${savedMemo.weight}kg` : ""}{savedMemo.weight && savedMemo.reps ? " × " : ""}{savedMemo.reps ? `${savedMemo.reps}回` : ""}　記録済み
+              <span className="text-green-600 font-semibold truncate">
+                ✓ {savedMemo.map((s, i) => `S${i + 1}:${s.weight ? s.weight + "kg" : "-"}×${s.reps ? s.reps + "回" : "-"}`).join(" ")}
               </span>
             ) : (
               <span>📝 実績を記録する</span>
             )}
-            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-3 h-3 flex-shrink-0 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536M9 13l6.586-6.586a2 2 0 112.828 2.828L11.828 15.828a2 2 0 01-1.414.586H9v-2a2 2 0 01.586-1.414z" />
             </svg>
           </button>
         ) : (
           <div className="px-2 py-3 space-y-2">
             <p className="text-xs font-semibold text-gray-500">今日の実績</p>
-            <div className="flex items-center gap-2">
-              <div className="flex items-center gap-1 flex-1">
-                <input
-                  type="number"
-                  inputMode="decimal"
-                  placeholder="重量"
-                  value={weight}
-                  onChange={(e) => setWeight(e.target.value)}
-                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-center focus:outline-none focus:border-orange-400"
-                />
-                <span className="text-xs text-gray-400 flex-shrink-0">kg</span>
+            {setRecords.map((s, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <span className="text-xs text-gray-400 w-8 flex-shrink-0">S{i + 1}</span>
+                <div className="flex items-center gap-1 flex-1">
+                  <input
+                    type="number"
+                    inputMode="decimal"
+                    placeholder="重量"
+                    value={s.weight}
+                    onChange={(e) => updateSet(i, "weight", e.target.value)}
+                    className="w-full border border-gray-200 rounded-lg px-2 py-1.5 text-sm text-center focus:outline-none focus:border-orange-400"
+                  />
+                  <span className="text-xs text-gray-400 flex-shrink-0">kg</span>
+                </div>
+                <div className="flex items-center gap-1 flex-1">
+                  <input
+                    type="number"
+                    inputMode="numeric"
+                    placeholder="回数"
+                    value={s.reps}
+                    onChange={(e) => updateSet(i, "reps", e.target.value)}
+                    className="w-full border border-gray-200 rounded-lg px-2 py-1.5 text-sm text-center focus:outline-none focus:border-orange-400"
+                  />
+                  <span className="text-xs text-gray-400 flex-shrink-0">回</span>
+                </div>
+                {setRecords.length > 1 && (
+                  <button
+                    onClick={() => setSetRecords((prev) => prev.filter((_, idx) => idx !== i))}
+                    className="text-gray-300 hover:text-red-400 transition-colors flex-shrink-0"
+                  >
+                    ✕
+                  </button>
+                )}
               </div>
-              <div className="flex items-center gap-1 flex-1">
-                <input
-                  type="number"
-                  inputMode="numeric"
-                  placeholder="回数"
-                  value={repCount}
-                  onChange={(e) => setRepCount(e.target.value)}
-                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-center focus:outline-none focus:border-orange-400"
-                />
-                <span className="text-xs text-gray-400 flex-shrink-0">回</span>
-              </div>
-            </div>
-            <div className="flex gap-2">
+            ))}
+            <button
+              onClick={() => setSetRecords((prev) => [...prev, { weight: "", reps: "" }])}
+              className="text-xs text-orange-400 hover:text-orange-600 font-semibold transition-colors"
+            >
+              ＋ セットを追加
+            </button>
+            <div className="flex gap-2 pt-1">
               <button
                 onClick={handleSaveMemo}
                 className="flex-1 py-2 rounded-lg bg-orange-500 text-white text-xs font-bold hover:bg-orange-600 transition-colors"

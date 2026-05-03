@@ -1,6 +1,7 @@
 const STORAGE_KEY = "sakutore_training_memo";
 
-type MemoEntry = { weight: string; reps: string };
+export type SetRecord = { weight: string; reps: string };
+export type MemoEntry = { sets: SetRecord[] };
 type MemoStore = Record<string, MemoEntry>;
 
 function todayKey(exerciseName: string): string {
@@ -19,10 +20,16 @@ export function getMemo(exerciseName: string): MemoEntry | null {
   }
 }
 
-export function saveMemo(exerciseName: string, weight: string, reps: string): void {
+export function saveMemo(exerciseName: string, sets: SetRecord[]): void {
   try {
     const store: MemoStore = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
-    store[todayKey(exerciseName)] = { weight, reps };
+    store[todayKey(exerciseName)] = { sets };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
   } catch {}
+}
+
+export function parseSetsCount(setsVal: string | number): number {
+  if (typeof setsVal === "number") return Math.max(1, setsVal);
+  const match = setsVal.match(/\d+/);
+  return match ? Math.max(1, parseInt(match[0])) : 1;
 }
