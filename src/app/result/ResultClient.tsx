@@ -295,7 +295,7 @@ function ExerciseCard({
           >
             {Array.isArray(savedMemo) && savedMemo.length > 0 ? (
               <span className="text-green-600 font-semibold truncate">
-                ✓ {savedMemo.map((s, i) => `S${i + 1}:${s.weight ? s.weight + "kg" : "-"}×${s.reps ? s.reps + "回" : "-"}`).join(" ")}
+                ✓ {savedMemo.map((s, i) => (s.weight || s.reps) ? `S${i + 1}:${s.weight ? s.weight + "kg" : "-"}×${s.reps ? s.reps + "回" : "-"}` : null).filter(Boolean).join(" ")}
               </span>
             ) : (
               <span>📝 実績を記録する</span>

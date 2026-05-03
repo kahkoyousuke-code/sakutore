@@ -21,6 +21,7 @@ export function getMemo(exerciseName: string): MemoEntry | null {
 }
 
 export function saveMemo(exerciseName: string, sets: SetRecord[]): void {
+  if (typeof window === "undefined") return;
   try {
     const store: MemoStore = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
     store[todayKey(exerciseName)] = { sets };
