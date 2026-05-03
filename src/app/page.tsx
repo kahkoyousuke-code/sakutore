@@ -38,6 +38,13 @@ export default function Home() {
           メニューを作る
         </Link>
 
+        <Link
+          href="/guide"
+          className="inline-block mt-2 text-sm text-orange-400 hover:text-orange-600 transition-colors"
+        >
+          使い方・機能紹介を見る →
+        </Link>
+
         <SavedMenuButton />
         <MenuHistoryList />
         <WorkoutCalendar />
@@ -76,14 +83,7 @@ export default function Home() {
           <span>サプリも診断してみよう → サクサプ</span>
         </a>
 
-        <Link
-          href="/guide"
-          className="inline-block mt-4 text-sm text-gray-400 hover:text-orange-500 transition-colors underline underline-offset-2"
-        >
-          使い方・機能紹介を見る
-        </Link>
-
-        <p className="mt-3 text-sm text-gray-400">所要時間:約1分</p>
+        <p className="mt-6 text-sm text-gray-400">所要時間:約1分</p>
       </div>
     </main>
   );
