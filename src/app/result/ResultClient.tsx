@@ -7,6 +7,7 @@ import Link from "next/link";
 import { TrainingMenu } from "@/lib/mockResult";
 import { findExerciseDetail } from "@/lib/exercises";
 import { recordWorkout, hasWorkedOutToday } from "@/lib/workoutLog";
+import { saveMenuHistory } from "@/lib/menuHistory";
 
 const LOADING_TIPS = [
   "筋肉は休息中に成長します💪",
@@ -307,6 +308,7 @@ export default function ResultClient() {
       setMenu(data);
       localStorage.setItem("sakutore_saved_menu", JSON.stringify(data));
       localStorage.setItem("sakutore_saved_params", currentParams);
+      saveMenuHistory(currentParams, data.title);
     } catch (err) {
       if (err instanceof DOMException && err.name === "AbortError") {
         setError("通信がタイムアウトしました。通信環境を確認してもう一度お試しください。");
