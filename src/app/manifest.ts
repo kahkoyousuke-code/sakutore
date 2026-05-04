@@ -1,5 +1,15 @@
 import { MetadataRoute } from "next";
 
+type Screenshot = NonNullable<MetadataRoute.Manifest["screenshots"]>[number] & {
+  form_factor?: string;
+  label?: string;
+};
+
+const screenshots: Screenshot[] = [
+  { src: "/screenshot-mobile.png", sizes: "390x844", type: "image/png", form_factor: "narrow", label: "サクトレ - AIが筋トレメニューを作成" },
+  { src: "/ogp.png", sizes: "1200x630", type: "image/png", form_factor: "wide", label: "サクトレ - AIが筋トレメニューを作成" },
+];
+
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "サクトレ",
@@ -11,11 +21,7 @@ export default function manifest(): MetadataRoute.Manifest {
     background_color: "#ffffff",
     theme_color: "#f97316",
     orientation: "portrait",
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    screenshots: [
-      { src: "/screenshot-mobile.png", sizes: "390x844", type: "image/png", form_factor: "narrow", label: "サクトレ - AIが筋トレメニューを作成" },
-      { src: "/ogp.png", sizes: "1200x630", type: "image/png", form_factor: "wide", label: "サクトレ - AIが筋トレメニューを作成" },
-    ] as any,
+    screenshots: screenshots as MetadataRoute.Manifest["screenshots"],
     icons: [
       {
         src: "/icon-192.png",
