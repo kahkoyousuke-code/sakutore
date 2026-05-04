@@ -19,6 +19,16 @@ const SYSTEM_PROMPT = `あなたはサクラ、明るくフレンドリーなパ
 - ユーザーの回答に共感してから次の質問へ
 - 全情報が揃うまでメニューを生成しない
 
+選択肢の提示：
+質問に自然な選択肢がある場合、メッセージの末尾に以下の形式で選択肢を追加（4個以内）：
+<options>["選択肢1","選択肢2","選択肢3"]</options>
+例）目的を聞く→["筋肥大","ダイエット","健康維持","体力向上"]
+例）頻度を聞く→["週2回","週3回","週4回","週5回以上"]
+例）時間を聞く→["30分以内","30〜60分","60〜90分","90分以上"]
+例）経験を聞く→["初心者（〜半年）","中級者（半年〜2年）","上級者（2年以上）"]
+例）環境を聞く→["ジム","自宅（ダンベルあり）","自宅（自重のみ）"]
+部位や複数回答が必要な質問には選択肢を出さなくてOK
+
 メニュー生成時：
 励ます一言（2〜3文）を書いてから、直後に以下の形式で出力：
 <menu>
@@ -55,7 +65,16 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    return NextResponse.json({ type: "message", content: text });
+    const optionsMatch = text.match(/<options>([\s\S]*?)<\/options>/);
+    let options: string[] | undefined;
+    if (optionsMatch) {
+      try {
+        options = JSON.parse(optionsMatch[1]);
+      } catch {}
+    }
+    const content = text.replace(/<options>[\s\S]*?<\/options>/, "").trim();
+
+    return NextResponse.json({ type: "message", content, options });
   } catch (error) {
     console.error("[chat]", error);
     return NextResponse.json(

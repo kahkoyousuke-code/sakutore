@@ -13,6 +13,7 @@ const INITIAL_MESSAGE =
 type Message = {
   role: "user" | "assistant";
   content: string;
+  options?: string[];
 };
 
 function TypingIndicator() {
@@ -66,10 +67,11 @@ export default function ChatPage() {
     e.target.style.height = Math.min(e.target.scrollHeight, 120) + "px";
   };
 
-  const send = async () => {
-    if (!input.trim() || loading || redirecting) return;
+  const send = async (overrideText?: string) => {
+    const text = overrideText ?? input.trim();
+    if (!text || loading || redirecting) return;
 
-    const userMessage: Message = { role: "user", content: input.trim() };
+    const userMessage: Message = { role: "user", content: text };
     const newMessages = [...messages, userMessage];
     setMessages(newMessages);
     setInput("");
@@ -109,7 +111,7 @@ export default function ChatPage() {
       } else {
         setMessages((prev) => [
           ...prev,
-          { role: "assistant", content: data.content },
+          { role: "assistant", content: data.content, options: data.options },
         ]);
       }
     } catch {
@@ -156,31 +158,52 @@ export default function ChatPage() {
       </div>
 
       <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
-        {messages.map((msg, i) => (
-          <div
-            key={i}
-            className={`flex gap-2 items-end ${msg.role === "user" ? "justify-end" : "justify-start"}`}
-          >
-            {msg.role === "assistant" && (
-              <Image
-                src="/sakura.png"
-                alt="サクラ"
-                width={32}
-                height={32}
-                className="rounded-full flex-shrink-0"
-              />
-            )}
-            <div
-              className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm whitespace-pre-wrap leading-relaxed ${
-                msg.role === "user"
-                  ? "bg-orange-500 text-white rounded-br-sm"
-                  : "bg-white text-gray-800 shadow-sm rounded-bl-sm"
-              }`}
-            >
-              {msg.content}
+        {messages.map((msg, i) => {
+          const isLastAssistant =
+            msg.role === "assistant" &&
+            i === messages.reduce((acc, m, j) => (m.role === "assistant" ? j : acc), -1);
+          return (
+            <div key={i} className="space-y-2">
+              <div
+                className={`flex gap-2 items-end ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+              >
+                {msg.role === "assistant" && (
+                  <Image
+                    src="/sakura.png"
+                    alt="サクラ"
+                    width={32}
+                    height={32}
+                    className="rounded-full flex-shrink-0"
+                  />
+                )}
+                <div
+                  className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm whitespace-pre-wrap leading-relaxed ${
+                    msg.role === "user"
+                      ? "bg-orange-500 text-white rounded-br-sm"
+                      : "bg-white text-gray-800 shadow-sm rounded-bl-sm"
+                  }`}
+                >
+                  {msg.content}
+                </div>
+              </div>
+
+              {isLastAssistant && !loading && msg.options && msg.options.length > 0 && (
+                <div className="flex flex-wrap gap-2 pl-10">
+                  {msg.options.map((opt) => (
+                    <button
+                      key={opt}
+                      onClick={() => send(opt)}
+                      disabled={redirecting}
+                      className="px-3 py-1.5 rounded-full border border-orange-300 text-orange-600 text-sm bg-white hover:bg-orange-50 active:bg-orange-100 transition-colors disabled:opacity-40"
+                    >
+                      {opt}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
-          </div>
-        ))}
+          );
+        })}
 
         {loading && <TypingIndicator />}
 
@@ -207,7 +230,7 @@ export default function ChatPage() {
             style={{ maxHeight: "120px" }}
           />
           <button
-            onClick={send}
+            onClick={() => send()}
             disabled={!input.trim() || loading || redirecting}
             className="bg-orange-500 hover:bg-orange-600 disabled:bg-gray-200 text-white rounded-xl p-2.5 transition-colors flex-shrink-0"
           >
