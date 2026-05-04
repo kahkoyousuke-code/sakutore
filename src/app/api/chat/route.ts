@@ -41,11 +41,14 @@ export async function POST(request: NextRequest) {
   try {
     const { messages } = await request.json();
 
+    // options フィールドを除去して Anthropic API に渡す
+    const apiMessages = messages.map(({ role, content }: { role: string; content: string }) => ({ role, content }));
+
     const response = await client.messages.create({
       model: "claude-haiku-4-5-20251001",
       max_tokens: 2048,
       system: SYSTEM_PROMPT,
-      messages,
+      messages: apiMessages,
     });
 
     const text =

@@ -49,7 +49,11 @@ function TypingIndicator() {
 export default function ChatPage() {
   const router = useRouter();
   const [messages, setMessages] = useState<Message[]>([
-    { role: "assistant", content: INITIAL_MESSAGE },
+    {
+      role: "assistant",
+      content: INITIAL_MESSAGE,
+      options: ["筋肥大（筋肉をつけたい）", "ダイエット（体脂肪を減らしたい）", "健康維持", "体力・スポーツ向上"],
+    },
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
