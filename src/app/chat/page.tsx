@@ -133,8 +133,8 @@ export default function ChatPage() {
   };
 
   return (
-    <main className="min-h-screen flex flex-col bg-orange-50">
-      <div className="bg-white shadow-sm px-4 py-3 flex items-center gap-3 sticky top-0 z-10">
+    <main className="flex flex-col h-screen bg-orange-50" style={{ height: "100dvh" }}>
+      <div className="bg-white shadow-sm px-4 py-3 flex items-center gap-3 flex-shrink-0">
         <Link href="/" className="text-gray-400 hover:text-gray-600 mr-1">
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -155,7 +155,7 @@ export default function ChatPage() {
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3 pb-28">
+      <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
         {messages.map((msg, i) => (
           <div
             key={i}
@@ -193,7 +193,7 @@ export default function ChatPage() {
         <div ref={bottomRef} />
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 px-4 py-3 safe-area-bottom">
+      <div className="bg-white border-t border-gray-100 px-4 py-3 flex-shrink-0">
         <div className="max-w-md mx-auto flex gap-2 items-end">
           <textarea
             ref={textareaRef}
