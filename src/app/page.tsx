@@ -24,7 +24,7 @@ export default function Home() {
         </div>
 
         <p className="text-gray-500 mb-8 leading-relaxed">
-          6つの質問に答えるだけで、
+          サクラと会話するだけで、
           <br />
           あなたにぴったりのトレーニングメニューを
           <br />
@@ -32,10 +32,10 @@ export default function Home() {
         </p>
 
         <Link
-          href="/questions"
+          href="/chat"
           className="inline-block w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
         >
-          メニューを作る
+          サクラと話してメニューを作る
         </Link>
 
         <Link

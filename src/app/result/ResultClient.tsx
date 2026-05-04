@@ -381,6 +381,16 @@ export default function ResultClient() {
     setError(null);
     setMenu(null);
 
+    if (searchParams.get("source") === "chat") {
+      const chatMenuStr = localStorage.getItem("sakutore_chat_menu");
+      if (chatMenuStr) {
+        try {
+          setMenu(JSON.parse(chatMenuStr));
+          return;
+        } catch {}
+      }
+    }
+
     const answers: string[] = [];
     for (let i = 0; i < 6; i++) {
       answers.push(searchParams.get(`q${i}`) || "");
