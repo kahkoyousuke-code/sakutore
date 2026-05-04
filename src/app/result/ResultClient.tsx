@@ -218,7 +218,7 @@ function ExerciseCard({
               />
             </svg>
           )}
-          <span className="font-medium text-gray-800 text-sm truncate">
+          <span className="font-medium text-gray-800 text-sm break-words">
             {exercise.name}
           </span>
         </button>
