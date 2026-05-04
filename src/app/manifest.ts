@@ -11,24 +11,11 @@ export default function manifest(): MetadataRoute.Manifest {
     background_color: "#ffffff",
     theme_color: "#f97316",
     orientation: "portrait",
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     screenshots: [
-      {
-        src: "/screenshot-mobile.png",
-        sizes: "390x844",
-        type: "image/png",
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        form_factor: "narrow" as any,
-        label: "サクトレ - AIが筋トレメニューを作成",
-      },
-      {
-        src: "/ogp.png",
-        sizes: "1200x630",
-        type: "image/png",
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        form_factor: "wide" as any,
-        label: "サクトレ - AIが筋トレメニューを作成",
-      },
-    ],
+      { src: "/screenshot-mobile.png", sizes: "390x844", type: "image/png", form_factor: "narrow", label: "サクトレ - AIが筋トレメニューを作成" },
+      { src: "/ogp.png", sizes: "1200x630", type: "image/png", form_factor: "wide", label: "サクトレ - AIが筋トレメニューを作成" },
+    ] as any,
     icons: [
       {
         src: "/icon-192.png",
