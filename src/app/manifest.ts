@@ -16,14 +16,16 @@ export default function manifest(): MetadataRoute.Manifest {
         src: "/screenshot-mobile.png",
         sizes: "390x844",
         type: "image/png",
-        form_factor: "narrow",
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        form_factor: "narrow" as any,
         label: "サクトレ - AIが筋トレメニューを作成",
       },
       {
         src: "/ogp.png",
         sizes: "1200x630",
         type: "image/png",
-        form_factor: "wide",
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        form_factor: "wide" as any,
         label: "サクトレ - AIが筋トレメニューを作成",
       },
     ],
