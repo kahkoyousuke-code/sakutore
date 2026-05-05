@@ -8,6 +8,7 @@ import {
   type MuscleGroupInfo,
   type NextDaySuggestion,
 } from "@/lib/muscleGroupSuggestion";
+import { getMenuHistory } from "@/lib/menuHistory";
 
 const STATUS_CONFIG: Record<string, { label: string; bg: string; text: string; dot: string }> = {
   ready:     { label: "準備OK",  bg: "bg-green-100",  text: "text-green-700",  dot: "bg-green-500" },
@@ -19,11 +20,14 @@ const STATUS_CONFIG: Record<string, { label: string; bg: string; text: string; d
 export default function TodaySuggestion() {
   const [groups, setGroups] = useState<MuscleGroupInfo[]>([]);
   const [nextDay, setNextDay] = useState<NextDaySuggestion | null>(null);
+  const [lastMenuUrl, setLastMenuUrl] = useState("/result?source=chat");
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     setGroups(getMuscleGroupStatuses());
     setNextDay(getNextDaySuggestion());
+    const latest = getMenuHistory()[0];
+    if (latest) setLastMenuUrl(`/result?${latest.params}`);
     setLoaded(true);
   }, []);
 
@@ -53,7 +57,7 @@ export default function TodaySuggestion() {
             ))}
           </div>
           <Link
-            href="/result?source=chat"
+            href={lastMenuUrl}
             className="inline-block w-full text-center bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-xl text-sm transition-colors"
           >
             このメニューでトレーニングする

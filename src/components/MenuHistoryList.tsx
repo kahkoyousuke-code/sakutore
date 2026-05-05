@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { getMenuHistory, type MenuHistoryEntry } from "@/lib/menuHistory";
+import { getStreak } from "@/lib/workoutLog";
 
 function formatDate(dateStr: string): string {
   const [, m, d] = dateStr.split("-");
@@ -11,10 +12,12 @@ function formatDate(dateStr: string): string {
 
 export default function MenuHistoryList() {
   const [history, setHistory] = useState<MenuHistoryEntry[]>([]);
+  const [streak, setStreak] = useState(0);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
     setHistory(getMenuHistory());
+    setStreak(getStreak());
   }, []);
 
   if (history.length === 0) return null;
@@ -23,6 +26,11 @@ export default function MenuHistoryList() {
 
   return (
     <div className="w-full mt-4">
+      {streak > 0 && (
+        <p className="text-center text-orange-500 font-bold mb-2">
+          🔥 {streak}日連続トレーニング中！
+        </p>
+      )}
       <button
         onClick={() => setOpen((v) => !v)}
         className="flex items-center justify-between w-full px-4 py-2 text-sm font-semibold text-gray-500 hover:text-orange-500 transition-colors"

@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import SavedMenuButton from "@/components/SavedMenuButton";
 import WorkoutCalendar from "@/components/WorkoutCalendar";
 import MenuHistoryList from "@/components/MenuHistoryList";
 import TodaySuggestion from "@/components/TodaySuggestion";
@@ -9,7 +8,7 @@ export default function Home() {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center px-4 py-8">
       <div className="max-w-md w-full text-center animate-slideUp">
-        <div className="mb-8">
+        <div className="mb-6">
           <Image
             src="/sakura.png"
             alt="サクラ"
@@ -24,7 +23,9 @@ export default function Home() {
           </p>
         </div>
 
-        <p className="text-gray-500 mb-8 leading-relaxed">
+        <TodaySuggestion />
+
+        <p className="text-gray-500 mt-6 mb-4 leading-relaxed">
           サクラと会話するだけで、
           <br />
           あなたにぴったりのトレーニングメニューを
@@ -46,8 +47,6 @@ export default function Home() {
           使い方・機能紹介を見る →
         </Link>
 
-        <TodaySuggestion />
-        <SavedMenuButton />
         <MenuHistoryList />
         <WorkoutCalendar />
 

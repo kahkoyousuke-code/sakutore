@@ -105,7 +105,7 @@ export default function ChatPage() {
       if (data.type === "menu") {
         const menu = data.menu as TrainingMenu;
         localStorage.setItem("sakutore_chat_menu", JSON.stringify(menu));
-        saveMenuHistory("chat", menu.title);
+        saveMenuHistory("source=chat", menu.title);
         setMessages((prev) => [
           ...prev,
           { role: "assistant", content: data.message },
