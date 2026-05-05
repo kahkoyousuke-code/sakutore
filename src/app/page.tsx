@@ -3,6 +3,7 @@ import Link from "next/link";
 import WorkoutCalendar from "@/components/WorkoutCalendar";
 import MenuHistoryList from "@/components/MenuHistoryList";
 import TodaySuggestion from "@/components/TodaySuggestion";
+import ResetDataButton from "@/components/ResetDataButton";
 
 export default function Home() {
   return (
@@ -85,6 +86,8 @@ export default function Home() {
         </a>
 
         <p className="mt-6 text-sm text-gray-400">所要時間:約1分</p>
+
+        <ResetDataButton />
       </div>
     </main>
   );
