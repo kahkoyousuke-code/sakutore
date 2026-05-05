@@ -3,6 +3,7 @@ import Link from "next/link";
 import SavedMenuButton from "@/components/SavedMenuButton";
 import WorkoutCalendar from "@/components/WorkoutCalendar";
 import MenuHistoryList from "@/components/MenuHistoryList";
+import TodaySuggestion from "@/components/TodaySuggestion";
 
 export default function Home() {
   return (
@@ -45,6 +46,7 @@ export default function Home() {
           使い方・機能紹介を見る →
         </Link>
 
+        <TodaySuggestion />
         <SavedMenuButton />
         <MenuHistoryList />
         <WorkoutCalendar />
