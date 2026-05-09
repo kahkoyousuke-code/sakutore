@@ -250,6 +250,12 @@ export default function CalorieCalculatorPage() {
             RM換算計算ツールを使う
           </Link>
           <Link
+            href="/weight-checker"
+            className="inline-block w-full bg-white hover:bg-gray-50 text-orange-500 font-bold py-4 px-8 rounded-2xl border-2 border-orange-500 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5"
+          >
+            筋トレ適正重量診断を使う
+          </Link>
+          <Link
             href="/"
             className="inline-block text-orange-500 font-bold hover:text-orange-600 transition-colors text-sm"
           >

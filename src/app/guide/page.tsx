@@ -103,6 +103,11 @@ export default function GuidePage() {
               title="カロリー消費計算ツール"
               desc="体重・種目・時間を入力するとMETs値をもとに消費カロリーを自動計算。脂肪換算グラムも表示し、トレーニングの効果を数値で実感できます。"
             />
+            <Feature
+              icon="🎯"
+              title="筋トレ適正重量診断"
+              desc="性別・体重・経験レベルを入力するだけで、ビッグ3（ベンチプレス・スクワット・デッドリフト）の目標重量を自動算出。次のレベルまでの差分も表示します。"
+            />
           </div>
         </div>
 
@@ -148,6 +153,12 @@ export default function GuidePage() {
             className="inline-block w-full bg-white hover:bg-gray-50 text-orange-500 font-bold py-4 px-8 rounded-2xl border-2 border-orange-500 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5"
           >
             カロリー消費計算ツールを使う
+          </Link>
+          <Link
+            href="/weight-checker"
+            className="inline-block w-full bg-white hover:bg-gray-50 text-orange-500 font-bold py-4 px-8 rounded-2xl border-2 border-orange-500 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5"
+          >
+            筋トレ適正重量診断を使う
           </Link>
           <Link
             href="/"
