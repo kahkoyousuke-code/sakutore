@@ -93,6 +93,11 @@ export default function GuidePage() {
               title="前回のメニューを引き継ぎ"
               desc="直前に作ったメニューはトップページの「前回のメニューを見る」からすぐに確認できます。毎回質問に答え直す必要はありません。"
             />
+            <Feature
+              icon="⚖️"
+              title="RM換算計算ツール"
+              desc="ベンチプレス・スクワット・デッドリフトの使用重量と回数を入力するだけで、1RMと2〜15RMの換算表を自動生成。トレーニング強度の設定に役立ちます。"
+            />
           </div>
         </div>
 
@@ -126,6 +131,12 @@ export default function GuidePage() {
             className="inline-block w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5"
           >
             さっそくメニューを作る
+          </Link>
+          <Link
+            href="/rm-calculator"
+            className="inline-block w-full bg-white hover:bg-gray-50 text-orange-500 font-bold py-4 px-8 rounded-2xl border-2 border-orange-500 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5"
+          >
+            RM換算計算ツールを使う
           </Link>
           <Link
             href="/"
