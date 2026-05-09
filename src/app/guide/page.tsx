@@ -98,6 +98,11 @@ export default function GuidePage() {
               title="RM換算計算ツール"
               desc="ベンチプレス・スクワット・デッドリフトの使用重量と回数を入力するだけで、1RMと2〜15RMの換算表を自動生成。トレーニング強度の設定に役立ちます。"
             />
+            <Feature
+              icon="🔥"
+              title="カロリー消費計算ツール"
+              desc="体重・種目・時間を入力するとMETs値をもとに消費カロリーを自動計算。脂肪換算グラムも表示し、トレーニングの効果を数値で実感できます。"
+            />
           </div>
         </div>
 
@@ -137,6 +142,12 @@ export default function GuidePage() {
             className="inline-block w-full bg-white hover:bg-gray-50 text-orange-500 font-bold py-4 px-8 rounded-2xl border-2 border-orange-500 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5"
           >
             RM換算計算ツールを使う
+          </Link>
+          <Link
+            href="/calorie-calculator"
+            className="inline-block w-full bg-white hover:bg-gray-50 text-orange-500 font-bold py-4 px-8 rounded-2xl border-2 border-orange-500 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5"
+          >
+            カロリー消費計算ツールを使う
           </Link>
           <Link
             href="/"
