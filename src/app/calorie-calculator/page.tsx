@@ -238,7 +238,7 @@ export default function CalorieCalculatorPage() {
 
         <div className="text-center space-y-3 pb-4">
           <Link
-            href="/chat"
+            href="/questions"
             className="inline-block w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5"
           >
             トレーニングメニューを作る

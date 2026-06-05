@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
 
-const client = new Anthropic({ timeout: 10 * 1000, maxRetries: 0 });
+const client = new Anthropic({ timeout: 20 * 1000, maxRetries: 0 });
 
 function exerciseCount(time: string): string {
   if (time.includes("30分")) return "4";

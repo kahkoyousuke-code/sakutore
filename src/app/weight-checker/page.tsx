@@ -244,7 +244,7 @@ export default function WeightCheckerPage() {
             </div>
 
             <Link
-              href="/chat"
+              href="/questions"
               className="inline-block w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-2xl text-lg text-center transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
             >
               この重量でトレーニングメニューを作る
@@ -306,7 +306,7 @@ export default function WeightCheckerPage() {
 
         <div className="text-center space-y-3 pb-4">
           <Link
-            href="/chat"
+            href="/questions"
             className="inline-block w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5"
           >
             メニューを作る

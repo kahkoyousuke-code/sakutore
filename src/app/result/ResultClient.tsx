@@ -407,7 +407,7 @@ export default function ResultClient() {
     }
 
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 30000);
+    const timeoutId = setTimeout(() => controller.abort(), 45000);
 
     try {
       const res = await fetch("/api/generate", {
@@ -464,10 +464,10 @@ export default function ResultClient() {
               もう一度試す
             </button>
             <Link
-              href="/chat"
+              href="/questions"
               className="flex-1 py-3 px-6 rounded-xl border-2 border-orange-500 text-orange-500 font-bold text-center hover:bg-orange-50 transition-colors"
             >
-              チャットに戻る
+              質問に戻る
             </Link>
           </div>
         </div>
@@ -631,7 +631,7 @@ export default function ResultClient() {
 
       <div className="flex gap-3 mb-4">
         <Link
-          href="/chat"
+          href="/questions"
           className="flex-1 py-3 px-6 rounded-xl border-2 border-orange-500 text-orange-500 font-bold text-center hover:bg-orange-50 transition-colors"
         >
           もう一度作る
