@@ -279,8 +279,12 @@ function ExerciseCard({
             <p className="ml-1">{detail.formTips}</p>
           </div>
           <div>
-            <p className="font-semibold text-gray-700 mb-1">🎯 効かせるコツ</p>
-            <p className="ml-1">{detail.muscleTips}</p>
+            <p className="font-semibold text-gray-700 mb-1">🎯 効かせるコツ（プロ目線）</p>
+            <ul className="list-disc list-inside space-y-0.5 ml-1">
+              {detail.muscleTips.map((tip, i) => (
+                <li key={i}>{tip}</li>
+              ))}
+            </ul>
           </div>
           <a
             href={`https://www.youtube.com/results?search_query=${encodeURIComponent(exercise.name + " やり方")}`}
