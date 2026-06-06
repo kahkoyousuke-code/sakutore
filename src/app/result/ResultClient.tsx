@@ -264,6 +264,21 @@ function ExerciseCard({
         </div>
       )}
 
+      {detail && !open && (
+        <button
+          onClick={() => setOpen(true)}
+          className="w-full text-left px-4 pb-3 -mt-1"
+        >
+          <p className="flex gap-1.5 text-xs text-gray-600 leading-snug">
+            <span className="flex-shrink-0">💡</span>
+            <span>{detail.muscleTips[0]}</span>
+          </p>
+          <p className="text-xs text-orange-500 font-semibold mt-1 ml-5">
+            やり方・他のコツを見る →
+          </p>
+        </button>
+      )}
+
       {open && detail && (
         <div className="px-4 pb-3 space-y-3 text-xs text-gray-600 border-t border-orange-100 pt-3 mx-2">
           <div>
