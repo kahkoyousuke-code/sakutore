@@ -7,7 +7,7 @@ import Link from "next/link";
 import { TrainingMenu } from "@/lib/mockResult";
 import { findExerciseDetail } from "@/lib/exercises";
 import { recordWorkout } from "@/lib/workoutLog";
-import { saveMenuHistory } from "@/lib/menuHistory";
+import { saveMenuHistory, getMenuHistoryEntry } from "@/lib/menuHistory";
 import { getMuscleGroupStatuses } from "@/lib/muscleGroupSuggestion";
 import { getMemo, saveMemo, parseSetsCount, type SetRecord } from "@/lib/trainingMemo";
 
@@ -402,9 +402,70 @@ export default function ResultClient() {
   const [completed, setCompleted] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
+  const generateMenu = useCallback(
+    async (answers: string[], currentParams: string) => {
+      const today = todayStr();
+      const recovery = getMuscleGroupStatuses();
+
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 45000);
+
+      try {
+        const res = await fetch("/api/generate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ answers, recovery }),
+          signal: controller.signal,
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+          setError(data.error || "メニューの生成に失敗しました。");
+          return;
+        }
+
+        setMenu(data);
+        localStorage.setItem("sakutore_saved_menu", JSON.stringify(data));
+        localStorage.setItem("sakutore_saved_params", currentParams);
+        localStorage.setItem("sakutore_saved_date", today);
+        saveMenuHistory(currentParams, data.title, data);
+      } catch (err) {
+        if (err instanceof DOMException && err.name === "AbortError") {
+          setError("通信がタイムアウトしました。通信環境を確認してもう一度お試しください。");
+        } else {
+          setError("通信エラーが発生しました。通信環境を確認してもう一度お試しください。");
+        }
+      } finally {
+        clearTimeout(timeoutId);
+      }
+    },
+    []
+  );
+
   const fetchMenu = useCallback(async () => {
     setError(null);
     setMenu(null);
+
+    // 過去のメニュー履歴からの表示：保存済みメニューをそのまま使い、再生成しない
+    if (searchParams.get("source") === "history") {
+      const hid = searchParams.get("hid");
+      const entry = hid ? getMenuHistoryEntry(hid) : null;
+      if (entry?.menu) {
+        setMenu(entry.menu);
+        return;
+      }
+      // メニュー本体が無い旧データはフォールバックで条件から再生成する
+      if (entry) {
+        const sp = new URLSearchParams(entry.params);
+        const answers: string[] = [];
+        for (let i = 0; i < 5; i++) answers.push(sp.get(`q${i}`) || "");
+        await generateMenu(answers, entry.params);
+        return;
+      }
+      setError("メニューが見つかりませんでした。");
+      return;
+    }
 
     if (searchParams.get("source") === "chat") {
       const chatMenuStr = localStorage.getItem("sakutore_chat_menu");
@@ -434,41 +495,8 @@ export default function ResultClient() {
       } catch {}
     }
 
-    const recovery = getMuscleGroupStatuses();
-
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 45000);
-
-    try {
-      const res = await fetch("/api/generate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ answers, recovery }),
-        signal: controller.signal,
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        setError(data.error || "メニューの生成に失敗しました。");
-        return;
-      }
-
-      setMenu(data);
-      localStorage.setItem("sakutore_saved_menu", JSON.stringify(data));
-      localStorage.setItem("sakutore_saved_params", currentParams);
-      localStorage.setItem("sakutore_saved_date", today);
-      saveMenuHistory(currentParams, data.title);
-    } catch (err) {
-      if (err instanceof DOMException && err.name === "AbortError") {
-        setError("通信がタイムアウトしました。通信環境を確認してもう一度お試しください。");
-      } else {
-        setError("通信エラーが発生しました。通信環境を確認してもう一度お試しください。");
-      }
-    } finally {
-      clearTimeout(timeoutId);
-    }
-  }, [searchParams]);
+    await generateMenu(answers, currentParams);
+  }, [searchParams, generateMenu]);
 
   useEffect(() => {
     fetchMenu();

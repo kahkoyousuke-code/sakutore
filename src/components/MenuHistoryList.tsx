@@ -49,8 +49,8 @@ export default function MenuHistoryList() {
       <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
         {displayed.map((entry, i) => (
           <Link
-            key={entry.params}
-            href={`/result?${entry.params}`}
+            key={entry.id}
+            href={`/result?source=history&hid=${entry.id}`}
             className={`flex items-center justify-between px-4 py-3 hover:bg-orange-50 transition-colors ${
               i < displayed.length - 1 ? "border-b border-gray-100" : ""
             }`}

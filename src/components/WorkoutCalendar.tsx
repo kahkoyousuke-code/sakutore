@@ -104,7 +104,7 @@ export default function WorkoutCalendar() {
             return (
               <button
                 key={dateStr}
-                onClick={() => router.push(`/result?${entry.params}`)}
+                onClick={() => router.push(`/result?source=history&hid=${entry.id}`)}
                 className="flex items-center justify-center"
                 title={entry.title}
               >
