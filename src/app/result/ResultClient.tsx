@@ -733,17 +733,17 @@ export default function ResultClient() {
 
       <div className="mt-6 rounded-2xl overflow-hidden shadow-lg border-2 border-red-400 bg-gradient-to-br from-red-50 to-orange-50">
         <div className="bg-red-500 px-4 py-2 text-center">
-          <p className="text-white text-xs font-bold tracking-wide">💪 本格的に鍛えたい方へ</p>
+          <p className="text-white text-xs font-bold tracking-wide">💪 せっかく始めるなら、最短で結果を出したい方へ</p>
         </div>
         <div className="px-6 py-5 text-center">
           <p className="text-gray-800 font-bold text-base mb-1">
-            プロのサポートで確実に結果を出したい方へ
+            AIメニューで迷わず動ける。次は「確実に変わる」ための一歩を。
           </p>
           <p className="text-gray-500 text-sm mb-1">
-            専属トレーナーがマンツーマンで指導
+            ライザップなら専属トレーナーが結果にコミット
           </p>
           <p className="text-red-500 font-semibold text-sm mb-4">
-            🎁 無料カウンセリング実施中！
+            🎁 無料カウンセリングで自分に合ったプランを確認できます
           </p>
           <a
             href="https://px.a8.net/svt/ejp?a8mat=2NIA6D+5B45YQ+3D3Q+62MDE"
@@ -751,7 +751,7 @@ export default function ResultClient() {
             rel="noopener noreferrer"
             className="block w-full py-4 px-6 rounded-xl bg-red-500 text-white font-bold text-sm hover:bg-red-600 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0"
           >
-            ライザップの無料カウンセリングを予約する →
+            無料カウンセリングを予約する（完全無料）→
           </a>
           <p className="text-gray-400 text-xs mt-3">※ 本リンクはアフィリエイトリンクです</p>
         </div>
