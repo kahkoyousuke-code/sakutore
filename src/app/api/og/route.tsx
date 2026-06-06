@@ -87,7 +87,7 @@ export async function GET(req: NextRequest) {
             </div>
           )}
           <div style={{ fontSize: 20, color: "#9ca3af", marginTop: 4 }}>
-            6つの質問でサクッと作成・完全無料
+            質問に答えて今日のメニューをサクッと作成・完全無料
           </div>
         </div>
 

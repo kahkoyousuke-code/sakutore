@@ -68,7 +68,7 @@ export default function QuestionsPage() {
                 : "bg-gray-300 cursor-not-allowed"
             }`}
           >
-            {currentStep < questions.length - 1 ? "次へ" : "結果を見る"}
+            {currentStep < questions.length - 1 ? "次へ" : "今日のメニューを作る"}
           </button>
         </div>
       </div>

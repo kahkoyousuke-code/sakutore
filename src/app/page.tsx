@@ -27,9 +27,9 @@ export default function Home() {
         <TodaySuggestion />
 
         <p className="text-gray-500 mt-6 mb-4 leading-relaxed">
-          6つの質問に答えるだけで、
+          いくつかの質問に答えるだけで、
           <br />
-          あなたにぴったりのトレーニングメニューを
+          今日のあなたにぴったりのメニューを
           <br />
           サクッと作成します!
         </p>
@@ -38,7 +38,7 @@ export default function Home() {
           href="/questions"
           className="inline-block w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
         >
-          メニューを作る
+          今日のメニューを作る
         </Link>
 
         <Link

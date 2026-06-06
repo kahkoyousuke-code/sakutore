@@ -3,19 +3,35 @@ import Anthropic from "@anthropic-ai/sdk";
 
 const client = new Anthropic({ timeout: 20 * 1000, maxRetries: 0 });
 
+interface RecoveryInfo {
+  group: string;
+  daysSince: number | null;
+  status?: string;
+}
+
 function exerciseCount(time: string): string {
   if (time.includes("30分")) return "4";
   if (time.includes("60分")) return "5〜6";
   return "6〜7";
 }
 
-function buildPrompt(answers: string[]): string {
-  const count = exerciseCount(answers[2]);
-  const focus = answers[4];
-  const focusNote =
-    focus && focus !== "特にこだわりなし（全体的に鍛えたい）"
-      ? `${focus}を重点的に(これらの部位の種目を多めに含める)`
-      : "全身バランスよく";
+function recoveryLine(recovery?: RecoveryInfo[]): string {
+  if (!Array.isArray(recovery) || recovery.length === 0) return "";
+  const parts = recovery.map((r) => {
+    if (r.daysSince === null) return `${r.group}=未実施`;
+    if (r.daysSince === 0) return `${r.group}=本日実施済み`;
+    return `${r.group}=${r.daysSince}日前`;
+  });
+  return `\n部位別の回復状況:${parts.join(" / ")}`;
+}
+
+function buildPrompt(answers: string[], recovery?: RecoveryInfo[]): string {
+  const count = exerciseCount(answers[1]);
+  const focus = answers[3];
+  const hasFocus = focus && focus !== "特にこだわりなし（全体的に鍛えたい）";
+  const focusNote = hasFocus
+    ? `${focus}を中心に`
+    : "回復状況をふまえて鍛える部位を選ぶ";
 
   const repRange = answers[0].includes("筋肥大")
     ? "6〜12rep"
@@ -25,25 +41,30 @@ function buildPrompt(answers: string[]): string {
     ? "10〜15rep"
     : "8〜15rep";
 
-  const experienceNote = answers[3].includes("初心者")
+  const experienceNote = answers[2].includes("初心者")
     ? "基本的なコンパウンド種目・マシン種目中心で安全・習得しやすい種目を選ぶ"
-    : answers[3].includes("上級者")
+    : answers[2].includes("上級者")
     ? "バリエーション種目や高強度テクニックも活用可"
     : "標準的な種目で構成";
 
-  return `以下の条件でトレーニングメニューをJSONのみで出力。説明文不要。
+  const recoveryRule =
+    Array.isArray(recovery) && recovery.length > 0
+      ? "\n- 回復済み(2日以上空いている/未実施)の部位を優先し、本日や前日に実施した部位は避ける"
+      : "";
 
-目的:${answers[0]} / 頻度:${answers[1]} / 時間:${answers[2]} / 経験:${answers[3]} / ${focusNote} / 環境:${answers[5]}
+  return `今日のトレーニング1回分だけをJSONのみで出力。説明文不要。
+
+目的:${answers[0]} / 時間:${answers[1]} / 経験:${answers[2]} / 重点:${focusNote} / 環境:${answers[4]}${recoveryLine(recovery)}
 
 設計ルール:
-- 各日${count}種目(コンパウンド2つ+アイソレーション)
+- 本日1回分のみ。鍛える部位は1〜2部位に絞る(例:胸+三頭、背中+二頭、脚、肩+腕など)
+- ${count}種目(コンパウンド中心+アイソレーション)
 - レップ数:${repRange}
 - 種目選択:${experienceNote}
-- 日ごとに異なる部位・動作パターン(プッシュ/プル/レッグス等)で被りを避ける
-- ${answers[5]}の器具のみ使用
+- ${answers[4]}の器具のみ使用${recoveryRule}
 
-出力形式:{"title":"絵文字+名前","description":"メニューの特徴を1〜2文","days":[{"day":"Day 1","label":"部位","exercises":[{"name":"種目名","sets":3,"reps":"10回","rest":"90秒"}]}]}
-日数は${answers[1]}に合わせて最大3日,setsは数値,reps/restは文字列`;
+出力形式:{"title":"絵文字+今日のメニュー名","description":"今日のメニューの狙いを1〜2文","days":[{"day":"本日のメニュー","label":"鍛える部位","exercises":[{"name":"種目名","sets":3,"reps":"10回","rest":"90秒"}]}]}
+daysは必ず1要素のみ。setsは数値、reps/restは文字列`;
 }
 
 async function callClaude(prompt: string) {
@@ -93,16 +114,16 @@ function classifyError(error: unknown): { message: string; status: number } {
 
 export async function POST(request: NextRequest) {
   try {
-    const { answers } = await request.json();
+    const { answers, recovery } = await request.json();
 
-    if (!Array.isArray(answers) || answers.length !== 6) {
+    if (!Array.isArray(answers) || answers.length !== 5) {
       return NextResponse.json(
         { error: "回答データが不正です" },
         { status: 400 }
       );
     }
 
-    const prompt = buildPrompt(answers);
+    const prompt = buildPrompt(answers, recovery);
 
     // 1回目の試行
     try {

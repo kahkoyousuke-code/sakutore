@@ -47,9 +47,9 @@ export default function GuidePage() {
         <div className="bg-white rounded-2xl shadow-lg p-6">
           <h2 className="font-bold text-orange-500 text-base mb-4">基本の使い方</h2>
           <div className="space-y-4 text-sm text-gray-700">
-            <Step num={1} title="「メニューを作る」をタップ" desc="トップページのボタンから質問画面に進みます。" />
-            <Step num={2} title="6つの質問に回答（約1分）" desc="目的・頻度・時間・経験・部位・環境の6項目を選択肢から選ぶだけ。" />
-            <Step num={3} title="AIがメニューを自動生成" desc="回答をもとに、あなた専用のトレーニングメニューが数秒で完成します。" />
+            <Step num={1} title="「今日のメニューを作る」をタップ" desc="トップページのボタンから質問画面に進みます。" />
+            <Step num={2} title="5つの質問に回答（約1分）" desc="目的・時間・経験・部位・環境の5項目を選択肢から選ぶだけ。" />
+            <Step num={3} title="AIが今日のメニューを自動生成" desc="回答とこれまでの履歴をもとに、今日のあなた専用のメニューが数秒で完成します。" />
             <Step num={4} title="メニューを確認してトレーニング開始" desc="種目名をタップするとやり方・フォームのコツも確認できます。" />
           </div>
         </div>

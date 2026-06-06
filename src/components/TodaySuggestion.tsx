@@ -4,11 +4,10 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
   getMuscleGroupStatuses,
-  getNextDaySuggestion,
+  getTodayFocus,
   type MuscleGroupInfo,
-  type NextDaySuggestion,
+  type TodayFocus,
 } from "@/lib/muscleGroupSuggestion";
-import { getMenuHistory } from "@/lib/menuHistory";
 
 const STATUS_CONFIG: Record<string, { label: string; bg: string; text: string; dot: string }> = {
   ready:     { label: "準備OK",  bg: "bg-green-100",  text: "text-green-700",  dot: "bg-green-500" },
@@ -17,50 +16,41 @@ const STATUS_CONFIG: Record<string, { label: string; bg: string; text: string; d
   unknown:   { label: "未記録",  bg: "bg-gray-100",   text: "text-gray-400",   dot: "bg-gray-300"  },
 };
 
+function focusReason(daysSince: number | null): string {
+  if (daysSince === null) return "まだ鍛えていない部位です";
+  if (daysSince >= 2) return `${daysSince}日休めていて準備OK`;
+  if (daysSince === 1) return "1日経過、そろそろOK";
+  return "本日鍛えたばかりです";
+}
+
 export default function TodaySuggestion() {
   const [groups, setGroups] = useState<MuscleGroupInfo[]>([]);
-  const [nextDay, setNextDay] = useState<NextDaySuggestion | null>(null);
-  const [lastMenuUrl, setLastMenuUrl] = useState("/result?source=chat");
+  const [focus, setFocus] = useState<TodayFocus | null>(null);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     setGroups(getMuscleGroupStatuses());
-    setNextDay(getNextDaySuggestion());
-    const latest = getMenuHistory()[0];
-    if (latest) setLastMenuUrl(`/result?${latest.params}`);
+    setFocus(getTodayFocus());
     setLoaded(true);
   }, []);
 
   if (!loaded) return null;
 
   const hasRecoveryData = groups.some((g) => g.status !== "unknown");
-  if (!nextDay && !hasRecoveryData) return null;
+  if (!focus && !hasRecoveryData) return null;
 
   return (
     <div className="w-full mt-4 space-y-3">
-      {nextDay && (
+      {focus && (
         <div className="bg-orange-50 border-2 border-orange-200 rounded-2xl p-4 text-left">
-          <p className="text-xs font-bold text-orange-400 mb-1">今日のおすすめ</p>
-          <p className="text-base font-bold text-gray-800">
-            {nextDay.day.day}：{nextDay.day.label}
-          </p>
-          <p className="text-xs text-gray-500 mb-3 truncate">{nextDay.menuTitle}</p>
-          <div className="space-y-1 mb-3">
-            {nextDay.day.exercises.map((ex) => (
-              <div key={ex.name} className="flex items-center gap-2 text-sm text-gray-700">
-                <span className="text-orange-400 flex-shrink-0">•</span>
-                <span className="truncate">{ex.name}</span>
-                <span className="text-gray-400 text-xs flex-shrink-0">
-                  {ex.sets}セット × {ex.reps}
-                </span>
-              </div>
-            ))}
-          </div>
+          <p className="text-xs font-bold text-orange-400 mb-1">今日のおすすめ部位</p>
+          <p className="text-lg font-bold text-gray-800">{focus.group}</p>
+          <p className="text-xs text-gray-500 mb-3">{focusReason(focus.daysSince)}</p>
           <Link
-            href={lastMenuUrl}
+            href="/questions"
             className="inline-block w-full text-center bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-xl text-sm transition-colors"
           >
-            このメニューでトレーニングする
+            今日のメニューを作る
           </Link>
         </div>
       )}

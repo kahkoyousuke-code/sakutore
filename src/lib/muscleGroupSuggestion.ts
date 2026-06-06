@@ -1,5 +1,3 @@
-import type { DayMenu, TrainingMenu } from "./mockResult";
-
 const MUSCLE_MAP: Record<string, string> = {
   // 胸
   "ベンチプレス": "胸",
@@ -61,11 +59,9 @@ export interface MuscleGroupInfo {
   status: RecoveryStatus;
 }
 
-export interface NextDaySuggestion {
-  day: DayMenu;
-  dayNumber: number;
-  totalDays: number;
-  menuTitle: string;
+export interface TodayFocus {
+  group: string;
+  daysSince: number | null;
 }
 
 function getMemoStore(): Record<string, unknown> {
@@ -118,43 +114,22 @@ export function getMuscleGroupStatuses(): MuscleGroupInfo[] {
   });
 }
 
-export function getNextDaySuggestion(): NextDaySuggestion | null {
-  if (typeof window === "undefined") return null;
-  try {
-    const menuStr = localStorage.getItem("sakutore_chat_menu");
-    if (!menuStr) return null;
-    const menu: TrainingMenu = JSON.parse(menuStr);
-    if (!menu.days || menu.days.length === 0) return null;
+/**
+ * 回復状況をもとに「今日鍛えるのがおすすめの部位」を返す。
+ * 一番長く休めている部位（または未実施の部位）を優先する。
+ * トレーニング履歴がまだ無い場合は null。
+ */
+export function getTodayFocus(): TodayFocus | null {
+  const statuses = getMuscleGroupStatuses();
+  const hasAnyData = statuses.some((s) => s.status !== "unknown");
+  if (!hasAnyData) return null;
 
-    const store = getMemoStore();
-    const memoKeys = Object.keys(store);
+  const sorted = [...statuses].sort((a, b) => {
+    const av = a.daysSince === null ? Infinity : a.daysSince;
+    const bv = b.daysSince === null ? Infinity : b.daysSince;
+    return bv - av;
+  });
 
-    let latestDayIndex = -1;
-    let latestDate = "";
-
-    for (let i = 0; i < menu.days.length; i++) {
-      for (const exercise of menu.days[i].exercises) {
-        for (const key of memoKeys) {
-          const sep = key.indexOf("_");
-          if (sep === -1) continue;
-          const date = key.substring(0, sep);
-          const name = key.substring(sep + 1);
-          if (name === exercise.name && date > latestDate) {
-            latestDate = date;
-            latestDayIndex = i;
-          }
-        }
-      }
-    }
-
-    const nextIndex = latestDayIndex === -1 ? 0 : (latestDayIndex + 1) % menu.days.length;
-    return {
-      day: menu.days[nextIndex],
-      dayNumber: nextIndex + 1,
-      totalDays: menu.days.length,
-      menuTitle: menu.title,
-    };
-  } catch {
-    return null;
-  }
+  const top = sorted[0];
+  return { group: top.group, daysSince: top.daysSince };
 }

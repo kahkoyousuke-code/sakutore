@@ -97,7 +97,7 @@ export default function AboutPage() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-orange-500 font-bold mt-0.5">●</span>
-                  <span>6つの質問に答えるだけの簡単操作</span>
+                  <span>いくつかの質問に答えるだけの簡単操作</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-orange-500 font-bold mt-0.5">●</span>

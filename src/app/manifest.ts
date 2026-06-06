@@ -15,7 +15,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "サクトレ",
     short_name: "サクトレ",
     description:
-      "6つの質問に答えるだけで、あなた専用の筋トレメニューをサクッと作成",
+      "いくつかの質問に答えるだけで、今日のあなた専用の筋トレメニューをサクッと作成",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",

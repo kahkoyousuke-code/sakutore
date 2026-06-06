@@ -8,7 +8,13 @@ import { TrainingMenu } from "@/lib/mockResult";
 import { findExerciseDetail } from "@/lib/exercises";
 import { recordWorkout } from "@/lib/workoutLog";
 import { saveMenuHistory } from "@/lib/menuHistory";
+import { getMuscleGroupStatuses } from "@/lib/muscleGroupSuggestion";
 import { getMemo, saveMemo, parseSetsCount, type SetRecord } from "@/lib/trainingMemo";
+
+function todayStr(): string {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
 
 const LOADING_TIPS = [
   "筋肉は休息中に成長します💪",
@@ -392,19 +398,24 @@ export default function ResultClient() {
     }
 
     const answers: string[] = [];
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 5; i++) {
       answers.push(searchParams.get(`q${i}`) || "");
     }
 
+    // 同じ条件 × 同じ日ならキャッシュを再利用（今日のメニューは日付が変われば作り直す）
+    const today = todayStr();
     const currentParams = searchParams.toString();
     const savedParams = localStorage.getItem("sakutore_saved_params");
+    const savedDate = localStorage.getItem("sakutore_saved_date");
     const savedMenuStr = localStorage.getItem("sakutore_saved_menu");
-    if (savedParams === currentParams && savedMenuStr) {
+    if (savedParams === currentParams && savedDate === today && savedMenuStr) {
       try {
         setMenu(JSON.parse(savedMenuStr));
         return;
       } catch {}
     }
+
+    const recovery = getMuscleGroupStatuses();
 
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 45000);
@@ -413,7 +424,7 @@ export default function ResultClient() {
       const res = await fetch("/api/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ answers }),
+        body: JSON.stringify({ answers, recovery }),
         signal: controller.signal,
       });
 
@@ -427,6 +438,7 @@ export default function ResultClient() {
       setMenu(data);
       localStorage.setItem("sakutore_saved_menu", JSON.stringify(data));
       localStorage.setItem("sakutore_saved_params", currentParams);
+      localStorage.setItem("sakutore_saved_date", today);
       saveMenuHistory(currentParams, data.title);
     } catch (err) {
       if (err instanceof DOMException && err.name === "AbortError") {
@@ -528,16 +540,16 @@ export default function ResultClient() {
   return (
     <div className="max-w-md w-full animate-slideUp">
       <p className="text-center text-gray-500 mb-6">
-        あなたにぴったりのメニュー
+        今日のあなたのメニュー
       </p>
 
       <div ref={cardRef} className="bg-white rounded-2xl shadow-lg p-6 mb-6">
         <h2 className="text-xl font-bold text-gray-800 mb-2">{menu.title}</h2>
-        {searchParams.get("q4") &&
-          searchParams.get("q4") !== "特にこだわりなし（全体的に鍛えたい）" && (
+        {searchParams.get("q3") &&
+          searchParams.get("q3") !== "特にこだわりなし（全体的に鍛えたい）" && (
             <p className="text-orange-600 text-xs font-semibold mb-2">
               重点部位：
-              {searchParams.get("q4")!.split(",").join("、")}
+              {searchParams.get("q3")!.split(",").join("、")}
             </p>
           )}
         <p className="text-gray-500 text-sm mb-6">{menu.description}</p>

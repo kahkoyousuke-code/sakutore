@@ -10,7 +10,7 @@ type Props = {
 
 export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
   const purpose = (searchParams.q0 as string) || "";
-  const parts = (searchParams.q4 as string) || "";
+  const parts = (searchParams.q3 as string) || "";
 
   const ogUrl =
     `${BASE_URL}/api/og` +
@@ -18,8 +18,8 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
     `&parts=${encodeURIComponent(parts)}`;
 
   const description = purpose
-    ? `${purpose}向けのオリジナル筋トレメニューをAIが無料作成。6つの質問に答えるだけ！`
-    : "AIがあなた専用の筋トレメニューを無料作成。6つの質問に答えるだけ！";
+    ? `${purpose}向けの今日の筋トレメニューをAIが無料作成。質問に答えるだけ！`
+    : "AIが今日のあなた専用の筋トレメニューを無料作成。質問に答えるだけ！";
 
   return {
     title: "サクトレ | あなた専用の筋トレメニュー",
