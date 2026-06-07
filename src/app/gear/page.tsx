@@ -108,7 +108,7 @@ const proteins: Product[] = [
   },
   {
     name: "マイプロテイン Impact Whey Protein",
-    asin: "B00MGCB9MS",
+    asin: "B00I95ZWA6",
     tags: ["愛用", "本格派向け"],
     comment:
       "タンパク質含有量と価格のバランスが絶妙。セール時にまとめ買いするのが鉄板。中級者以上に特におすすめ。",
@@ -120,7 +120,7 @@ const proteins: Product[] = [
   },
   {
     name: "ザバス ホエイプロテイン100 リッチショコラ味 1kg",
-    asin: "B005F0ONGU",
+    asin: "B0B9G4QR1M",
     tags: ["初心者におすすめ", "定番"],
     comment:
       "プロテイン初心者に迷わず勧められる定番品。Amazonベストセラー常連で飲みやすく失敗がない。",
@@ -132,7 +132,7 @@ const proteins: Product[] = [
   },
   {
     name: "ザバス ソイプロテイン100 ココア味 920g",
-    asin: "B0030FCZR6",
+    asin: "B0DGFTDTJD",
     tags: ["ダイエット向け", "女性におすすめ"],
     comment:
       "減量期や女性に特におすすめ。腹持ちが良くカロリーを抑えながらタンパク質を補給できる。",
@@ -171,7 +171,7 @@ const belts: Product[] = [
   },
   {
     name: "GronG トレーニングベルト ワイドタイプ",
-    asin: "B07QM3BQTJ",
+    asin: "B071RS73DL",
     tags: ["コスパ重視"],
     comment:
       "サクラ評価0%・高評価の信頼できるコスパベルト。価格を抑えたい人の第一候補。",
@@ -186,7 +186,7 @@ const belts: Product[] = [
 const grips: Product[] = [
   {
     name: "ALLOUT パワーグリップ PRO",
-    asin: "B07QHKZP9Q",
+    asin: "B0CP784N3Q",
     tags: ["愛用", "背中トレに必須"],
     comment:
       "背中のトレーニングで握力が先に限界を迎える問題を解決してくれる。1年以上使い続けても壊れない耐久性が◎。ラットプルダウン・デッドリフトに必須。",
