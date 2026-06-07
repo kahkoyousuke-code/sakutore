@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/questions`, priority: 0.9 },
     { url: `${BASE_URL}/column`, priority: 0.8 },
     { url: `${BASE_URL}/videos`, priority: 0.8 },
+    { url: `${BASE_URL}/gear`, priority: 0.7 },
     { url: `${BASE_URL}/guide`, priority: 0.7 },
     { url: `${BASE_URL}/faq`, priority: 0.7 },
     { url: `${BASE_URL}/about`, priority: 0.5 },

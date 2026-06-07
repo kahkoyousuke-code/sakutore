@@ -132,6 +132,12 @@ export default function RootLayout({
             >
               コラム
             </Link>
+            <Link
+              href="/gear"
+              className="hover:text-gray-600 transition-colors"
+            >
+              おすすめギア
+            </Link>
           </div>
           <div className="flex justify-center gap-4 mt-2">
             <Link

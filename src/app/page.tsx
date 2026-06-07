@@ -86,6 +86,14 @@ export default function Home() {
           筋トレコラム
         </Link>
 
+        <Link
+          href="/gear"
+          className="inline-flex items-center justify-center gap-2 w-full bg-white hover:bg-gray-50 text-orange-500 font-bold py-4 px-8 rounded-2xl text-lg border-2 border-orange-500 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 mt-4"
+        >
+          <span>🏋️</span>
+          <span>おすすめギア</span>
+        </Link>
+
         <a
           href={process.env.NEXT_PUBLIC_SAKUMESHI_URL ?? "https://sakumeshi.vercel.app/"}
           target="_blank"

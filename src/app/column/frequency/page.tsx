@@ -117,6 +117,19 @@ export default function FrequencyPage() {
           </div>
         </div>
 
+        <Link
+          href="/gear"
+          className="block bg-orange-50 hover:bg-orange-100 rounded-2xl p-4 mb-6 border-2 border-orange-200 transition-colors"
+        >
+          <div className="flex items-center gap-3">
+            <span className="text-2xl flex-shrink-0">🏋️</span>
+            <div>
+              <p className="font-bold text-orange-600 text-sm">運営者厳選のおすすめギア</p>
+              <p className="text-xs text-gray-500 mt-0.5">実際に使って選んだプロテイン・ベルト・グリップを見る →</p>
+            </div>
+          </div>
+        </Link>
+
         <div className="bg-white rounded-2xl shadow-lg p-4 mb-6">
           <div className="flex items-start gap-3">
             <span className="text-3xl">👤</span>
