@@ -41,7 +41,10 @@ export default function PrivacyPage() {
                 アクセス解析について
               </h2>
               <p>
-                当サービスでは、サービス改善のためにアクセス解析ツールを導入する予定です。アクセス解析ではトラフィックデータの収集を行いますが、個人を特定する情報は収集しません。
+                当サービスでは、サービス改善のためにアクセス解析ツール「Googleアナリティクス」を利用しています。Googleアナリティクスはトラフィックデータの収集のためにCookieを使用しますが、このデータは匿名で収集されており、個人を特定するものではありません。
+              </p>
+              <p className="mt-2">
+                この機能はCookieを無効にすることで収集を拒否できます。Googleアナリティクスの利用規約およびプライバシーポリシーについては、Google公式サイトをご確認ください。
               </p>
             </section>
 
@@ -55,8 +58,27 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-gray-800 mb-2">運営者</h2>
-              <p>当サービスは個人が運営しています。</p>
+              <h2 className="font-bold text-gray-800 mb-2">運営者・お問い合わせ</h2>
+              <p>
+                当サービスは個人が運営しています。運営者の詳細は
+                <Link
+                  href="/about"
+                  className="text-orange-500 font-semibold hover:text-orange-600 transition-colors"
+                >
+                  運営者情報
+                </Link>
+                をご覧ください。
+              </p>
+              <p className="mt-2">
+                本ポリシーに関するお問い合わせは{" "}
+                <a
+                  href="mailto:sakutore.contact@gmail.com"
+                  className="text-orange-500 font-semibold hover:text-orange-600 transition-colors"
+                >
+                  sakutore.contact@gmail.com
+                </a>{" "}
+                までご連絡ください。
+              </p>
             </section>
 
             <section>

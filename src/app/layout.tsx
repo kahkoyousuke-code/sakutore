@@ -3,6 +3,7 @@ import { Noto_Sans_JP } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import "./globals.css";
 
 const notoSansJP = Noto_Sans_JP({
@@ -73,6 +74,7 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
       </head>
       <body className={`${notoSansJP.className} antialiased`}>
+        <GoogleAnalytics />
         <ServiceWorkerRegistration />
         <header className="py-4 px-4">
           <Link href="/" className="flex items-center justify-center gap-2">
