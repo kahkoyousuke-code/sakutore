@@ -1,4 +1,5 @@
 import Link from "next/link";
+import RizapCta from "@/components/RizapCta";
 
 export const metadata = {
   title: "筋トレで痩せる仕組みを解説 - サクトレ",
@@ -175,6 +176,8 @@ export default function MetabolismPage() {
             </section>
           </div>
         </div>
+
+        <RizapCta lead="「痩せやすい体質」をつくるには継続が命。一人で挫折しがちな人ほど伴走者がいると変わります。" />
 
         <Link
           href="/gear"

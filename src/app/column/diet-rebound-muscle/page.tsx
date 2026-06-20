@@ -1,4 +1,5 @@
 import Link from "next/link";
+import RizapCta from "@/components/RizapCta";
 
 export const metadata = {
   title: "食事制限だけでリバウンドする理由と筋トレの関係 - サクトレ",
@@ -146,6 +147,8 @@ export default function DietReboundMusclePage() {
             </section>
           </div>
         </div>
+
+        <RizapCta lead="何度もリバウンドを繰り返してきたなら、今度こそ「自己流をやめる」のが近道かもしれません。" />
 
         <Link
           href="/gear"

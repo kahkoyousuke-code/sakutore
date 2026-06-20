@@ -709,6 +709,18 @@ export default function ResultClient() {
         <p className="text-orange-500 text-sm mt-0.5">→ サクメシ</p>
       </a>
 
+      <Link
+        href="/gear"
+        className="block mt-4 py-4 px-6 rounded-2xl bg-amber-50 border-2 border-amber-300 text-center hover:bg-amber-100 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
+      >
+        <p className="text-amber-700 font-bold text-base">
+          🏋️ このメニュー、道具があるともっと効く
+        </p>
+        <p className="text-amber-600 text-sm mt-0.5">
+          運営者が実際に使って選んだプロテイン・ベルト・グリップを見る →
+        </p>
+      </Link>
+
       <div className="mt-4 rounded-2xl overflow-hidden shadow-lg border-2 border-purple-400 bg-gradient-to-br from-purple-50 to-pink-50">
         <div className="bg-purple-500 px-4 py-2 text-center">
           <p className="text-white text-xs font-bold tracking-wide">🧴 トレーニングと一緒にサプリも最適化しよう</p>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import RizapCta from "@/components/RizapCta";
 
 export const metadata = {
   title: "40代からの筋トレ入門 - サクトレ",
@@ -165,6 +166,8 @@ export default function Over40Page() {
             </section>
           </div>
         </div>
+
+        <RizapCta lead="40代からのスタートこそ、フォームや負荷の調整をプロに任せるとケガなく最短で変われます。" />
 
         <Link
           href="/gear"

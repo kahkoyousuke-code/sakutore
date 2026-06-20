@@ -1,4 +1,5 @@
 import Link from "next/link";
+import RizapCta from "@/components/RizapCta";
 
 export const metadata = {
   title: "40代女性が筋トレで痩せにくい理由と対策 - サクトレ",
@@ -160,6 +161,8 @@ export default function Women40sTrainingPage() {
             </section>
           </div>
         </div>
+
+        <RizapCta lead="40代の体は変化が出るまで時間がかかるぶん、正しいやり方で迷わず続けられるかが分かれ道です。" />
 
         <Link
           href="/gear"
