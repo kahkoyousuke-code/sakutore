@@ -1,10 +1,12 @@
 import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "筋トレ前後のストレッチの効果とやり方 - サクトレ",
   description:
     "筋トレ前後のストレッチの重要性と具体的なやり方を解説。動的ストレッチと静的ストレッチの違い、効果的なメニューを紹介します。",
-};
+  path: "/column/stretch",
+});
 
 export default function StretchPage() {
   return (

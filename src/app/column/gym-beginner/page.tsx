@@ -1,10 +1,12 @@
 import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "ジム初心者が最初にやるべきマシン5選 - サクトレ",
   description:
     "ジムデビューしたばかりの方に向けて、初心者が使いやすいマシン5選を紹介。使い方のポイントと避けるべきNG行動も解説します。",
-};
+  path: "/column/gym-beginner",
+});
 
 export default function GymBeginnerPage() {
   return (

@@ -1,10 +1,13 @@
 import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "おすすめトレーニングギア | 厳選のプロテイン・ベルト・グリップ",
   description:
     "筋トレ歴10年以上・ボディメイク大会出場の運営者が実際に使って選んだトレーニングギアを厳選紹介。プロテイン・リフティングベルト・パワーグリップ・リストラップを目的別・レベル別におすすめ。",
-};
+  path: "/gear",
+  type: "website",
+});
 
 const AFFILIATE_TAG = "kahko5458-22";
 

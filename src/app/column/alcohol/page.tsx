@@ -1,10 +1,12 @@
 import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "筋トレとお酒の付き合い方 - サクトレ",
   description:
     "アルコールが筋肉や筋トレの効果に与える影響を解説。飲んでもいいタイミングや、お酒好きでも成果を出すためのコツを紹介します。",
-};
+  path: "/column/alcohol",
+});
 
 export default function AlcoholPage() {
   return (

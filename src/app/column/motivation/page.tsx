@@ -1,10 +1,12 @@
 import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "筋トレのモチベーション維持法 - サクトレ",
   description:
     "筋トレを長く続けるためのコツ、効果的な目標設定の方法、停滞期の乗り越え方をわかりやすく解説します。",
-};
+  path: "/column/motivation",
+});
 
 export default function MotivationPage() {
   return (

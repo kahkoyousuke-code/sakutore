@@ -1,10 +1,12 @@
 import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "女性が筋トレで痩せやすい時間帯と頻度 - サクトレ",
   description:
     "脂肪燃焼効果が高まる時間帯、週の最適な頻度、忙しい人でも続けられるスケジュールを紹介。仕事をしながら週5で続けてきた経験から解説します。",
-};
+  path: "/column/women-training-timing",
+});
 
 export default function WomenTrainingTimingPage() {
   return (

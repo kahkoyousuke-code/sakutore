@@ -1,10 +1,12 @@
 import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "週に何回筋トレすればいい？最適な頻度を解説 - サクトレ",
   description:
     "筋トレの最適な頻度をレベル別に解説。初心者から上級者まで、週何回トレーニングすべきか、分割法の考え方もわかりやすく紹介します。",
-};
+  path: "/column/frequency",
+});
 
 export default function FrequencyPage() {
   return (

@@ -1,11 +1,13 @@
 import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 import RizapCta from "@/components/RizapCta";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "40代からの筋トレ入門 - サクトレ",
   description:
     "40代から筋トレを始めるメリットと正しい始め方を解説。中年以降に特有の体の変化を理解し、無理なく続けられるトレーニング法を紹介します。",
-};
+  path: "/column/over40",
+});
 
 export default function Over40Page() {
   return (

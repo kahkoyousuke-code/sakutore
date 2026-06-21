@@ -1,10 +1,12 @@
 import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "筋肉を育てる休息の重要性 - サクトレ",
   description:
     "筋トレにおける休息の重要性を解説。超回復の仕組み、最適な休息日の取り方、睡眠や栄養の関係をわかりやすく紹介します。",
-};
+  path: "/column/rest",
+});
 
 export default function RestPage() {
   return (

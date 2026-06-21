@@ -1,11 +1,14 @@
 import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 import Image from "next/image";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "トレーニング動画 - サクトレ",
   description:
     "部位別のトレーニング動画を厳選して紹介。胸・背中・肩・腕・脚・腹筋の各部位ごとに、初心者から中級者向けの動画をまとめています。",
-};
+  path: "/videos",
+  type: "website",
+});
 
 const categories = [
   {

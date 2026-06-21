@@ -1,11 +1,13 @@
 import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 import RizapCta from "@/components/RizapCta";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "筋トレで痩せる仕組みを解説 - サクトレ",
   description:
     "基礎代謝と筋肉量の関係、筋トレで痩せるメカニズムをわかりやすく解説。有酸素運動との比較や、効率よく体脂肪を落とすための方法を紹介します。",
-};
+  path: "/column/metabolism",
+});
 
 export default function MetabolismPage() {
   return (

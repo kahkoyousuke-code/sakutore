@@ -1,11 +1,13 @@
 import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 import RizapCta from "@/components/RizapCta";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "食事制限だけでリバウンドする理由と筋トレの関係 - サクトレ",
   description:
     "食事制限だけでは筋肉が落ちてリバウンドしやすくなる仕組みと、筋トレを組み合わせるべき理由を解説。リバウンドを繰り返した経験から具体的な対策を紹介します。",
-};
+  path: "/column/diet-rebound-muscle",
+});
 
 export default function DietReboundMusclePage() {
   return (

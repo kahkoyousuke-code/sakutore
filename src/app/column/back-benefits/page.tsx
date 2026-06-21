@@ -1,10 +1,12 @@
 import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "背中を鍛えるべき3つの理由 - サクトレ",
   description:
     "背中の筋肉を鍛えることで得られる姿勢改善・腰痛予防・見た目の変化を詳しく解説。背中トレのメリットとおすすめ種目を紹介します。",
-};
+  path: "/column/back-benefits",
+});
 
 export default function BackBenefitsPage() {
   return (

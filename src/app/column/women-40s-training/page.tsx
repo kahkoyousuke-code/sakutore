@@ -1,11 +1,13 @@
 import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 import RizapCta from "@/components/RizapCta";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "40代女性が筋トレで痩せにくい理由と対策 - サクトレ",
   description:
     "40代以降のホルモン変化・基礎代謝低下の仕組みと、それに合わせた効果的なトレーニング・食事法を解説。週5で続けてきた経験から具体的な対策を紹介します。",
-};
+  path: "/column/women-40s-training",
+});
 
 export default function Women40sTrainingPage() {
   return (

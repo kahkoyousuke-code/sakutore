@@ -1,10 +1,12 @@
 import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "筋トレ初心者が最初にやるべき5つのこと - サクトレ",
   description:
     "筋トレを始めたい初心者に向けて、最初にやるべき5つのポイントをわかりやすく解説。正しいフォーム、適切な負荷設定、継続のコツまで紹介します。",
-};
+  path: "/column/beginner-guide",
+});
 
 export default function BeginnerGuidePage() {
   return (

@@ -1,10 +1,13 @@
 import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "筋トレコラム - サクトレ",
   description:
     "筋トレ初心者から中級者に向けたコラム記事。トレーニングの基礎知識、栄養、休息、ストレッチなど、筋トレに役立つ情報をわかりやすく解説します。",
-};
+  path: "/column",
+  type: "website",
+});
 
 const articles = [
   {

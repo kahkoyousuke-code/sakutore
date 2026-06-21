@@ -1,10 +1,12 @@
 import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "筋トレと睡眠の関係 - サクトレ",
   description:
     "睡眠が筋肉の成長に与える影響、理想の睡眠時間、睡眠の質を上げるための具体的なコツをわかりやすく解説します。",
-};
+  path: "/column/sleep",
+});
 
 export default function SleepPage() {
   return (

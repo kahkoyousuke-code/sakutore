@@ -1,10 +1,12 @@
 import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "女性が筋トレしても「太くならない」理由を解説 - サクトレ",
   description:
     "筋トレで体が大きくなるという誤解を解消し、女性こそ筋トレすべき理由を解説。ホルモンの違いやデータをもとに詳しく説明します。",
-};
+  path: "/column/women-muscle-slim",
+});
 
 export default function WomenMuscleSlimPage() {
   return (

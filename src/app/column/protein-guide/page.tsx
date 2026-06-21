@@ -1,10 +1,12 @@
 import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "プロテインの選び方ガイド - サクトレ",
   description:
     "ホエイ・カゼイン・ソイの違いや特徴、飲むタイミング、自分に合ったプロテインの選び方をわかりやすく解説します。",
-};
+  path: "/column/protein-guide",
+});
 
 export default function ProteinGuidePage() {
   return (

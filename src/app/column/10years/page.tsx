@@ -1,10 +1,12 @@
 import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "10年筋トレを続けてわかったこと - サクトレ",
   description:
     "10年間筋トレを続けることで得られる体の変化、メンタルの変化、そして続けてよかったと感じる理由を体験談をもとに解説します。",
-};
+  path: "/column/10years",
+});
 
 export default function TenYearsPage() {
   return (

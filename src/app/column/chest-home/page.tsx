@@ -1,10 +1,12 @@
 import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "自宅でできる胸トレ完全ガイド - サクトレ",
   description:
     "器具なしの腕立て伏せバリエーションからダンベル種目まで、自宅でできる胸トレを完全解説。大胸筋に効かせるためのコツも紹介します。",
-};
+  path: "/column/chest-home",
+});
 
 export default function ChestHomePage() {
   return (

@@ -1,10 +1,12 @@
 import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "筋トレに必要なタンパク質の量と摂り方 - サクトレ",
   description:
     "筋トレの効果を最大化するために必要なタンパク質の量、摂取タイミング、おすすめの食材をわかりやすく解説します。",
-};
+  path: "/column/protein",
+});
 
 export default function ProteinPage() {
   return (

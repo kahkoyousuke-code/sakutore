@@ -1,10 +1,12 @@
 import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "脂肪燃焼に筋トレが有酸素運動より効果的な理由 - サクトレ",
   description:
     "ランニングより筋トレの方が長期的に痩せやすい理由を、基礎代謝とアフターバーン効果から解説。女性が結果を出すための運動選びを紹介します。",
-};
+  path: "/column/muscle-vs-cardio-women",
+});
 
 export default function MuscleVsCardioWomenPage() {
   return (
