@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import RizapCta from "@/components/RizapCta";
 
@@ -166,6 +167,7 @@ export default function Women40sTrainingPage() {
 
         <RizapCta lead="40代の体は変化が出るまで時間がかかるぶん、正しいやり方で迷わず続けられるかが分かれ道です。" />
 
+        <ShareButtons url="https://sakutore.vercel.app/column/women-40s-training" title="40代女性が筋トレで痩せにくい理由と対策" />
         <Link
           href="/gear"
           className="block bg-orange-50 hover:bg-orange-100 rounded-2xl p-4 mb-6 border-2 border-orange-200 transition-colors"

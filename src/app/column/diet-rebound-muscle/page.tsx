@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import RizapCta from "@/components/RizapCta";
 
@@ -152,6 +153,7 @@ export default function DietReboundMusclePage() {
 
         <RizapCta lead="何度もリバウンドを繰り返してきたなら、今度こそ「自己流をやめる」のが近道かもしれません。" />
 
+        <ShareButtons url="https://sakutore.vercel.app/column/diet-rebound-muscle" title="食事制限だけでリバウンドする理由と筋トレの関係" />
         <Link
           href="/gear"
           className="block bg-orange-50 hover:bg-orange-100 rounded-2xl p-4 mb-6 border-2 border-orange-200 transition-colors"

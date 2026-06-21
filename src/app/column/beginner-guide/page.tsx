@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
@@ -108,6 +109,7 @@ export default function BeginnerGuidePage() {
           </div>
         </div>
 
+        <ShareButtons url="https://sakutore.vercel.app/column/beginner-guide" title="筋トレ初心者が最初にやるべき5つのこと" />
         <Link
           href="/gear"
           className="block bg-orange-50 hover:bg-orange-100 rounded-2xl p-4 mb-6 border-2 border-orange-200 transition-colors"

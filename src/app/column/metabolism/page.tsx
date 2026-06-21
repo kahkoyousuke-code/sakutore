@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import RizapCta from "@/components/RizapCta";
 
@@ -181,6 +182,7 @@ export default function MetabolismPage() {
 
         <RizapCta lead="「痩せやすい体質」をつくるには継続が命。一人で挫折しがちな人ほど伴走者がいると変わります。" />
 
+        <ShareButtons url="https://sakutore.vercel.app/column/metabolism" title="筋トレで痩せる仕組みを解説" />
         <Link
           href="/gear"
           className="block bg-orange-50 hover:bg-orange-100 rounded-2xl p-4 mb-6 border-2 border-orange-200 transition-colors"

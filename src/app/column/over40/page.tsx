@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import RizapCta from "@/components/RizapCta";
 
@@ -171,6 +172,7 @@ export default function Over40Page() {
 
         <RizapCta lead="40代からのスタートこそ、フォームや負荷の調整をプロに任せるとケガなく最短で変われます。" />
 
+        <ShareButtons url="https://sakutore.vercel.app/column/over40" title="40代からの筋トレ入門" />
         <Link
           href="/gear"
           className="block bg-orange-50 hover:bg-orange-100 rounded-2xl p-4 mb-6 border-2 border-orange-200 transition-colors"

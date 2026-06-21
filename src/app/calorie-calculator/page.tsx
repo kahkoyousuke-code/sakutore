@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import ShareButtons from "@/components/ShareButtons";
 
 const EXERCISES = [
   { id: "bench", label: "ベンチプレス", icon: "🏋️", mets: 6.0 },
@@ -235,6 +236,8 @@ export default function CalorieCalculatorPage() {
             </table>
           </div>
         </div>
+
+        <ShareButtons url="https://sakutore.vercel.app/calorie-calculator" title="筋トレカロリー消費計算ツール" />
 
         <div className="text-center space-y-3 pb-4">
           <Link

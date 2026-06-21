@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
@@ -159,6 +160,7 @@ export default function MuscleVsCardioWomenPage() {
           </div>
         </div>
 
+        <ShareButtons url="https://sakutore.vercel.app/column/muscle-vs-cardio-women" title="脂肪燃焼に筋トレが有酸素運動より効果的な理由" />
         <Link
           href="/gear"
           className="block bg-orange-50 hover:bg-orange-100 rounded-2xl p-4 mb-6 border-2 border-orange-200 transition-colors"

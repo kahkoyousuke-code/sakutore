@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import ShareButtons from "@/components/ShareButtons";
 
 type CalcResult = {
   oneRM: number;
@@ -223,6 +224,8 @@ export default function RMCalculatorPage() {
             ))}
           </div>
         </div>
+
+        <ShareButtons url="https://sakutore.vercel.app/rm-calculator" title="RM計算機｜ビッグ3の1RM換算ツール" />
 
         <div className="text-center space-y-3 pb-4">
           <Link

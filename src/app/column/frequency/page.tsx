@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
@@ -119,6 +120,7 @@ export default function FrequencyPage() {
           </div>
         </div>
 
+        <ShareButtons url="https://sakutore.vercel.app/column/frequency" title="週に何回筋トレすればいい？最適な頻度を解説" />
         <Link
           href="/gear"
           className="block bg-orange-50 hover:bg-orange-100 rounded-2xl p-4 mb-6 border-2 border-orange-200 transition-colors"
