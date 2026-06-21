@@ -59,8 +59,8 @@ export default function RMCalculatorPage() {
       <div className="max-w-md w-full animate-slideUp space-y-4">
 
         <div className="text-center mb-2">
-          <h1 className="text-2xl font-bold text-gray-800">RM換算計算ツール</h1>
-          <p className="text-gray-500 text-sm mt-1">ビッグ3対応・Epley式</p>
+          <h1 className="text-2xl font-bold text-gray-800">RM計算機</h1>
+          <p className="text-gray-500 text-sm mt-1">ビッグ3対応・1RM換算・Epley式</p>
         </div>
 
         <div className="bg-orange-50 rounded-2xl p-4 text-sm text-gray-700 leading-relaxed">
