@@ -14,7 +14,25 @@ const notoSansJP = Noto_Sans_JP({
 
 const siteUrl = "https://sakutore.vercel.app";
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "サクトレ",
+  url: siteUrl,
+  description:
+    "いくつかの質問に答えるだけで、AIが今日のあなた専用の筋トレメニューを無料で作成するWebアプリ。",
+  applicationCategory: "HealthApplication",
+  operatingSystem: "Web",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "JPY",
+  },
+  inLanguage: "ja",
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "サクトレ | AIがあなた専用の筋トレメニューを作成",
   description:
     "いくつかの質問に答えるだけで、今日のあなたにぴったりのトレーニングメニューをサクッと作成。初心者から中級者まで、無料で使えます。",
@@ -72,6 +90,10 @@ export default function RootLayout({
         />
         <meta name="theme-color" content="#f97316" />
         <meta name="mobile-web-app-capable" content="yes" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body className={`${notoSansJP.className} antialiased`}>
         <GoogleAnalytics />
@@ -108,6 +130,32 @@ export default function RootLayout({
             >
               🧴 サプリも診断してみよう → サクサプ
             </a>
+          </div>
+          <div className="flex justify-center gap-4 flex-wrap mb-2 px-4">
+            <Link
+              href="/rm-calculator"
+              className="hover:text-gray-600 transition-colors"
+            >
+              RM換算計算
+            </Link>
+            <Link
+              href="/calorie-calculator"
+              className="hover:text-gray-600 transition-colors"
+            >
+              消費カロリー計算
+            </Link>
+            <Link
+              href="/weight-checker"
+              className="hover:text-gray-600 transition-colors"
+            >
+              適正重量診断
+            </Link>
+            <Link
+              href="/videos"
+              className="hover:text-gray-600 transition-colors"
+            >
+              トレーニング動画
+            </Link>
           </div>
           <div className="flex justify-center gap-4 flex-wrap">
             <Link
@@ -155,7 +203,7 @@ export default function RootLayout({
               利用規約
             </Link>
           </div>
-          <p className="mt-2">&copy; 2025 サクトレ</p>
+          <p className="mt-2">&copy; 2025-2026 サクトレ</p>
         </footer>
       </body>
     </html>

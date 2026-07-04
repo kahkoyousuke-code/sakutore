@@ -1,8 +1,13 @@
 import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "プライバシーポリシー - サクトレ",
-};
+  description:
+    "サクトレのプライバシーポリシー。個人情報の取り扱い、アクセス解析、広告配信についてご案内します。",
+  path: "/privacy",
+  type: "website",
+});
 
 export default function PrivacyPage() {
   return (

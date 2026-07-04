@@ -1,11 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "女性向けトレーニング動画 - サクトレ",
   description:
     "女性向けトレーニング動画のおすすめYouTubeチャンネルを紹介。自宅でできる脚痩せ・ダイエット・腹筋引き締めなど、目的別に人気チャンネルをまとめています。",
-};
+  path: "/videos/women",
+  type: "website",
+});
 
 const channels = [
   {

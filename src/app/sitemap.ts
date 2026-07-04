@@ -3,7 +3,17 @@ import fs from "fs";
 import path from "path";
 
 const BASE_URL = "https://sakutore.vercel.app";
-const LAST_MODIFIED = new Date("2026-06-21");
+const LAST_MODIFIED = new Date("2026-07-04");
+
+const VIDEO_CATEGORIES = [
+  "chest",
+  "back",
+  "shoulder",
+  "arm",
+  "leg",
+  "abs",
+  "women",
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [
@@ -41,5 +51,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticPages, ...columnPages];
+  const videoPages = VIDEO_CATEGORIES.map((slug) => ({
+    url: `${BASE_URL}/videos/${slug}`,
+    lastModified: LAST_MODIFIED,
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  return [...staticPages, ...columnPages, ...videoPages];
 }

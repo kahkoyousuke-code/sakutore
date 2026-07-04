@@ -1,8 +1,13 @@
 import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "利用規約 - サクトレ",
-};
+  description:
+    "サクトレの利用規約。サービスの利用条件、免責事項、禁止事項についてご案内します。",
+  path: "/terms",
+  type: "website",
+});
 
 export default function TermsPage() {
   return (

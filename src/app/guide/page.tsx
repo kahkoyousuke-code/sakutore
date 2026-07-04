@@ -1,10 +1,13 @@
 import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "使い方・機能紹介 - サクトレ",
   description:
     "サクトレの使い方と機能を紹介。AIメニュー生成・トレーニング記録・カレンダー・実績メモなど、継続をサポートする機能が揃っています。",
-};
+  path: "/guide",
+  type: "website",
+});
 
 function Step({ num, title, desc }: { num: number; title: string; desc: string }) {
   return (

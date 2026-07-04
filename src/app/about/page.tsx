@@ -1,10 +1,13 @@
 import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "運営者情報 - サクトレ",
   description:
     "サクトレの運営者情報、サービスの目的、お問い合わせ先をご案内します。",
-};
+  path: "/about",
+  type: "website",
+});
 
 export default function AboutPage() {
   return (

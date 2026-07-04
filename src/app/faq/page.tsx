@@ -1,10 +1,13 @@
 import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "よくある質問（FAQ） - サクトレ",
   description:
     "サクトレに関するよくある質問と回答をまとめました。料金、使い方、対象者など、疑問を解決します。",
-};
+  path: "/faq",
+  type: "website",
+});
 
 interface FaqItem {
   question: string;
