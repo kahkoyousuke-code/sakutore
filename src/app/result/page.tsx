@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { Metadata } from "next";
 import ResultClient from "./ResultClient";
 
-const BASE_URL = "https://sakutore.vercel.app";
+const BASE_URL = "https://sakutore.jp";
 
 type Props = {
   searchParams: { [key: string]: string | string[] | undefined };

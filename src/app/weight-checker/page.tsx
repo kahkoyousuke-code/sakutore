@@ -305,7 +305,7 @@ export default function WeightCheckerPage() {
           </div>
         </div>
 
-        <ShareButtons url="https://sakutore.vercel.app/weight-checker" title="筋トレ適正重量診断｜ビッグ3の目標重量を判定" />
+        <ShareButtons url="https://sakutore.jp/weight-checker" title="筋トレ適正重量診断｜ビッグ3の目標重量を判定" />
 
         <div className="text-center space-y-3 pb-4">
           <Link

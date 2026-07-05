@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import { AUTHOR } from "@/lib/author";
 import "./globals.css";
 
 const notoSansJP = Noto_Sans_JP({
@@ -12,7 +13,7 @@ const notoSansJP = Noto_Sans_JP({
   display: "swap",
 });
 
-const siteUrl = "https://sakutore.vercel.app";
+const siteUrl = "https://sakutore.jp";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -29,6 +30,13 @@ const jsonLd = {
     priceCurrency: "JPY",
   },
   inLanguage: "ja",
+  creator: {
+    "@type": "Person",
+    name: AUTHOR.name,
+    url: `${siteUrl}/about`,
+    description: "筋トレ歴15年・フィジーク大会入賞",
+    sameAs: [AUTHOR.xUrl],
+  },
 };
 
 export const metadata: Metadata = {

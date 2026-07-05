@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import fs from "fs";
 import path from "path";
 
-const BASE_URL = "https://sakutore.vercel.app";
+const BASE_URL = "https://sakutore.jp";
 const LAST_MODIFIED = new Date("2026-07-04");
 
 const VIDEO_CATEGORIES = [

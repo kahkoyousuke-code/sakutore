@@ -543,7 +543,7 @@ export default function ResultClient() {
     .slice(0, 3)
     .join("・");
 
-  const shareUrl = "https://sakutore.vercel.app";
+  const shareUrl = "https://sakutore.jp";
 
   const handleShareX = () => {
     const text = `AIが私の筋トレメニューを作ってくれた💪\n今日のメニュー：${exerciseNames}\n#サクトレ #筋トレ #AIトレーニング\n${shareUrl}`;
@@ -621,7 +621,7 @@ export default function ResultClient() {
         </div>
 
         <p className="text-center text-orange-400 text-xs mt-6 font-semibold">
-          サクトレ｜sakutore.vercel.app
+          サクトレ｜sakutore.jp
         </p>
       </div>
 

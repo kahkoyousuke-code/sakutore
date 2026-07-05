@@ -59,7 +59,7 @@
 
 種目・重量目安・休憩タイマー・実績記録まで全部入り。完全無料。
 "何やればいいか分からない" を技術で消したかった。
-sakutore.vercel.app
+sakutore.jp
 #個人開発 #claudecode
 ```
 ```
@@ -93,7 +93,7 @@ sakutore.vercel.app
 種目・重量の目安・休憩時間まで全部出る。しかも無料。
 
 これ毎朝の "考える時間" がゼロになるの強い。
-sakutore.vercel.app
+sakutore.jp
 ```
 → 結果ページの「画像」ボタンでスクショDL→添付。**画像付きはリーチが伸びる。**
 
@@ -104,14 +104,14 @@ RM換算：
 "今の自分の限界" を知らずに組むメニューは効率が悪い。
 
 ビッグ3の換算、ここで一発で出る👇
-sakutore.vercel.app/rm-calculator
+sakutore.jp/rm-calculator
 ```
 消費カロリー：
 ```
 体重70kgの人がランニング30分で消費するカロリー、
 だいたい何kcalか即答できる人は意外と少ない。
 
-答え合わせ→ sakutore.vercel.app/calorie-calculator
+答え合わせ→ sakutore.jp/calorie-calculator
 ```
 適正重量：
 ```
@@ -119,7 +119,7 @@ sakutore.vercel.app/rm-calculator
 軽すぎても重すぎても伸びない。
 
 身長体重から適正重量を診断👇
-sakutore.vercel.app/weight-checker
+sakutore.jp/weight-checker
 ```
 
 ### C. 知識1ツイート（リンクなし・毎日の主力）

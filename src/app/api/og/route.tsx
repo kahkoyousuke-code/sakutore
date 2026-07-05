@@ -92,7 +92,7 @@ export async function GET(req: NextRequest) {
         </div>
 
         <div style={{ fontSize: 22, color: "#f97316", marginTop: 36, fontWeight: 600 }}>
-          sakutore.vercel.app
+          sakutore.jp
         </div>
       </div>
     ),

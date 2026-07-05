@@ -7,7 +7,7 @@
 サクトレなら6つの質問に答えるだけで、AIがあなた専用の筋トレメニューを自動作成✨
 無料・登録不要・たった1分！
 
-https://sakutore.vercel.app
+https://sakutore.jp
 
 #筋トレ初心者 #サクトレ #筋トレメニュー
 
@@ -16,7 +16,7 @@ https://sakutore.vercel.app
 「何からやればいいの？」を解決するアプリができました💡
 50種目以上から、あなたにピッタリのメニューをAIが提案します。もちろん無料🆓
 
-https://sakutore.vercel.app
+https://sakutore.jp
 
 #筋トレ #サクトレ #無料アプリ
 
@@ -25,7 +25,7 @@ https://sakutore.vercel.app
 サクトレはトレーニング環境に合わせたメニューを作れます。
 ダンベルだけ？自重だけ？どんな環境でも大丈夫👌
 
-https://sakutore.vercel.app
+https://sakutore.jp
 
 #宅トレ #サクトレ #筋トレ
 
@@ -34,7 +34,7 @@ https://sakutore.vercel.app
 目標・頻度・時間・レベルを選ぶだけ。
 AIが最適な週間メニューを1分で生成します🤖✨
 
-https://sakutore.vercel.app
+https://sakutore.jp
 
 #筋トレメニュー #サクトレ #AI
 
@@ -43,7 +43,7 @@ https://sakutore.vercel.app
 登録なし・無料でAIトレーニングメニューが手に入る💪
 初心者から上級者まで、あなたのレベルに合わせて提案します。
 
-https://sakutore.vercel.app
+https://sakutore.jp
 
 #サクトレ #筋トレ #トレーニング
 
@@ -57,7 +57,7 @@ https://sakutore.vercel.app
 サクトレなら胸トレメニューもAIが自動で組んでくれます💪
 フォーム動画付きで初心者も安心✨
 
-https://sakutore.vercel.app
+https://sakutore.jp
 
 #胸トレ #サクトレ #ベンチプレス
 
@@ -67,7 +67,7 @@ https://sakutore.vercel.app
 キツいけど一番大事な脚トレ🔥
 サクトレでメニューを自動作成しよう！
 
-https://sakutore.vercel.app
+https://sakutore.jp
 
 #脚トレ #サクトレ #スクワット
 
@@ -77,7 +77,7 @@ https://sakutore.vercel.app
 広い背中は後ろ姿を変える✨
 サクトレであなた専用メニューを作ろう💪
 
-https://sakutore.vercel.app
+https://sakutore.jp
 
 #背中トレ #サクトレ #デッドリフト
 
@@ -87,7 +87,7 @@ https://sakutore.vercel.app
 太い腕を手に入れたいならサクトレでメニュー作成🔥
 種目ごとのフォーム動画も見れます📹
 
-https://sakutore.vercel.app
+https://sakutore.jp
 
 #腕トレ #サクトレ #筋トレ
 
@@ -97,7 +97,7 @@ https://sakutore.vercel.app
 丸い肩はかっこいい体の必須条件✨
 サクトレでバランスの良いメニューを組もう！
 
-https://sakutore.vercel.app
+https://sakutore.jp
 
 #肩トレ #サクトレ #サイドレイズ
 
@@ -111,7 +111,7 @@ https://sakutore.vercel.app
 60kgなら1日90〜120g。鶏むね肉なら約400g分🍗
 食事も大事だけど、まずはメニューから👇
 
-https://sakutore.vercel.app
+https://sakutore.jp
 
 #筋トレ豆知識 #タンパク質 #サクトレ
 
@@ -121,7 +121,7 @@ https://sakutore.vercel.app
 同じ部位は48〜72時間空けるのがベスト。
 サクトレなら休息も考慮した週間メニューを作れます✨
 
-https://sakutore.vercel.app
+https://sakutore.jp
 
 #筋トレ豆知識 #サクトレ #休息日
 
@@ -131,7 +131,7 @@ https://sakutore.vercel.app
 正しいフォームでやれば軽い重量でも効果あり💪
 サクトレでは種目ごとのフォーム動画も見れます📹
 
-https://sakutore.vercel.app
+https://sakutore.jp
 
 #筋トレ豆知識 #フォーム #サクトレ
 
@@ -141,7 +141,7 @@ https://sakutore.vercel.app
 脚→背中→胸の順で消費カロリーもUP⬆️
 どこから始めるか迷ったらサクトレに相談👇
 
-https://sakutore.vercel.app
+https://sakutore.jp
 
 #筋トレ豆知識 #ダイエット #サクトレ
 
@@ -151,7 +151,7 @@ https://sakutore.vercel.app
 体重の2%の脱水でパフォーマンスが低下します😱
 メニュー作りはサクトレにお任せ👇
 
-https://sakutore.vercel.app
+https://sakutore.jp
 
 #筋トレ豆知識 #水分補給 #サクトレ
 
@@ -165,7 +165,7 @@ https://sakutore.vercel.app
 「何やればいいかわからない」って人はサクラに任せて！
 1分であなた専用メニュー作っちゃうよ💪
 
-https://sakutore.vercel.app
+https://sakutore.jp
 
 #サクトレ #サクラ #筋トレ
 
@@ -175,7 +175,7 @@ https://sakutore.vercel.app
 まずは週2回から始めてみよう！
 サクラがぴったりのメニュー考えるからね✨
 
-https://sakutore.vercel.app
+https://sakutore.jp
 
 #サクトレ #筋トレ継続 #サクラ
 
@@ -185,7 +185,7 @@ https://sakutore.vercel.app
 だからサクトレ作ったんだよ〜😊
 無料だから気軽に試してみてね👇
 
-https://sakutore.vercel.app
+https://sakutore.jp
 
 #サクトレ #サクラ #筋トレ初心者
 
@@ -195,7 +195,7 @@ https://sakutore.vercel.app
 でも未来の自分がきっと感謝するから！
 メニューに迷ったらサクラのとこおいで💪✨
 
-https://sakutore.vercel.app
+https://sakutore.jp
 
 #サクトレ #筋トレモチベ #サクラ
 
@@ -205,6 +205,6 @@ https://sakutore.vercel.app
 胸・背中・肩・腕・脚・腹筋、全部おまかせ！
 フォーム動画も用意してるからね📹
 
-https://sakutore.vercel.app
+https://sakutore.jp
 
 #サクトレ #サクラ #筋トレ

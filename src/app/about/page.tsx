@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { pageMetadata } from "@/lib/metadata";
+import { AUTHOR } from "@/lib/author";
 
 export const metadata = pageMetadata({
   title: "運営者情報 - サクトレ",
@@ -34,7 +35,7 @@ export default function AboutPage() {
                       URL
                     </td>
                     <td className="py-3 break-all">
-                      https://sakutore.vercel.app
+                      https://sakutore.jp
                     </td>
                   </tr>
                   <tr>
@@ -58,18 +59,48 @@ export default function AboutPage() {
                       <td className="py-2 font-bold text-gray-800 w-28 align-top">
                         運営者名
                       </td>
-                      <td className="py-2">yousuke</td>
+                      <td className="py-2">{AUTHOR.name}</td>
                     </tr>
                     <tr>
                       <td className="py-2 font-bold text-gray-800 align-top">
                         筋トレ歴
                       </td>
-                      <td className="py-2">10年以上</td>
+                      <td className="py-2">15年</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 font-bold text-gray-800 align-top">
+                        実績
+                      </td>
+                      <td className="py-2">フィジーク大会入賞</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 font-bold text-gray-800 align-top">
+                        体型
+                      </td>
+                      <td className="py-2">173cm／78kg（最大時90kg超から−12kg以上）</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 font-bold text-gray-800 align-top">
+                        X（旧Twitter）
+                      </td>
+                      <td className="py-2">
+                        <a
+                          href={AUTHOR.xUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-orange-500 hover:text-orange-600 transition-colors font-bold"
+                        >
+                          {AUTHOR.handle}
+                        </a>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
                 <p>
-                  20代の頃は体重90kg超えの典型的な運動不足。「このままではまずい」と一念発起して筋トレを始め、試行錯誤を繰り返しながら現在の体型（173cm/78kg）まで変化。筋トレ歴10年以上、ボディメイク大会への出場経験もあり。
+                  20代の頃は体重90kg超えの典型的な運動不足でした。「このままではまずい」と一念発起して筋トレを始め、独学での失敗とリバウンドを何度も繰り返しながら、15年かけて現在の体型（173cm／78kg）まで変化。フィジーク大会に出場し、入賞するまでになりました。
+                </p>
+                <p>
+                  トレーニングもダイエットも、遠回りや挫折を人一倍経験してきました。だからこそ「何が本当に効いて、何が時間の無駄だったか」を実体験として語れます。当サイトのコラムやツールは、すべてこの経験にもとづいて作っています。
                 </p>
                 <p>
                   「何をすればいいかわからない」「自分に合ったメニューが見つからない」という、かつての自分と同じ悩みを持つ人を助けたくてサクトレを開発。AIの力で、誰でも最適なトレーニングメニューをすぐに手に入れられるサービスを目指しています。

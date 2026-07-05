@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
+import AuthorBox from "@/components/AuthorBox";
 
 export const metadata = pageMetadata({
   title: "ジム初心者が最初にやるべきマシン5選 - サクトレ",
@@ -180,7 +181,7 @@ export default function GymBeginnerPage() {
           </div>
         </div>
 
-        <ShareButtons url="https://sakutore.vercel.app/column/gym-beginner" title="ジム初心者が最初にやるべきマシン5選" />
+        <ShareButtons url="https://sakutore.jp/column/gym-beginner" title="ジム初心者が最初にやるべきマシン5選" />
         <Link
           href="/gear"
           className="block bg-orange-50 hover:bg-orange-100 rounded-2xl p-4 mb-6 border-2 border-orange-200 transition-colors"
@@ -194,16 +195,7 @@ export default function GymBeginnerPage() {
           </div>
         </Link>
 
-        <div className="bg-white rounded-2xl shadow-lg p-4 mb-6">
-          <div className="flex items-start gap-3">
-            <span className="text-3xl">👤</span>
-            <div>
-              <p className="text-xs text-orange-500 font-bold mb-1">著者</p>
-              <p className="font-bold text-gray-800 text-sm">yousuke</p>
-              <p className="text-xs text-gray-500 mt-1 leading-relaxed">筋トレ歴10年以上｜ボディメイク大会出場経験あり｜90kg超から現在の体型に変化</p>
-            </div>
-          </div>
-        </div>
+        <AuthorBox />
 
         <div className="text-center space-y-3">
           <Link

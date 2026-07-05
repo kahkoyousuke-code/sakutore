@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
+import AuthorBox from "@/components/AuthorBox";
 
 export const metadata = pageMetadata({
   title: "筋トレとお酒の付き合い方 - サクトレ",
@@ -22,7 +23,7 @@ export default function AlcoholPage() {
           <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
             <section>
               <p className="text-gray-500 italic border-l-2 border-orange-300 pl-3 mb-3">
-                正直に言うと、私はお酒が好きで毎晩飲んでいます。それでも10年以上筋トレを続けてこられた経験から、お酒との上手な付き合い方をお伝えします。
+                正直に言うと、私はお酒が好きで毎晩飲んでいます。それでも15年筋トレを続けてこられた経験から、お酒との上手な付き合い方をお伝えします。
               </p>
               <p>
                 筋トレをしているけれど、お酒も好き——そんな方にとって「飲んでいいのか、やめるべきか」は気になるテーマですよね。お酒を完全にやめる必要はありませんが、アルコールが筋肉や体に与える影響を正しく理解した上で付き合い方を考えることが大切です。この記事では、アルコールの影響と上手な付き合い方を解説します。
@@ -173,7 +174,7 @@ export default function AlcoholPage() {
           </div>
         </div>
 
-        <ShareButtons url="https://sakutore.vercel.app/column/alcohol" title="筋トレとお酒の付き合い方" />
+        <ShareButtons url="https://sakutore.jp/column/alcohol" title="筋トレとお酒の付き合い方" />
         <Link
           href="/gear"
           className="block bg-orange-50 hover:bg-orange-100 rounded-2xl p-4 mb-6 border-2 border-orange-200 transition-colors"
@@ -187,16 +188,7 @@ export default function AlcoholPage() {
           </div>
         </Link>
 
-        <div className="bg-white rounded-2xl shadow-lg p-4 mb-6">
-          <div className="flex items-start gap-3">
-            <span className="text-3xl">👤</span>
-            <div>
-              <p className="text-xs text-orange-500 font-bold mb-1">著者</p>
-              <p className="font-bold text-gray-800 text-sm">yousuke</p>
-              <p className="text-xs text-gray-500 mt-1 leading-relaxed">筋トレ歴10年以上｜ボディメイク大会出場経験あり｜90kg超から現在の体型に変化</p>
-            </div>
-          </div>
-        </div>
+        <AuthorBox />
 
         <div className="text-center space-y-3">
           <Link

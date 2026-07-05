@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-const SITE_URL = "https://sakutore.vercel.app";
+const SITE_URL = "https://sakutore.jp";
 const SITE_NAME = "サクトレ";
 const OG_IMAGE = `${SITE_URL}/ogp.png`;
 

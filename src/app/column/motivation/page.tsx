@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
+import AuthorBox from "@/components/AuthorBox";
 
 export const metadata = pageMetadata({
   title: "筋トレのモチベーション維持法 - サクトレ",
@@ -22,7 +23,7 @@ export default function MotivationPage() {
           <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
             <section>
               <p className="text-gray-500 italic border-l-2 border-orange-300 pl-3 mb-3">
-                筋トレ10年以上続けてきた私でも、モチベーションが落ちた時期は何度もあります。そこで実際に効果があった方法だけを厳選して紹介します。
+                筋トレ15年続けてきた私でも、モチベーションが落ちた時期は何度もあります。そこで実際に効果があった方法だけを厳選して紹介します。
               </p>
               <p>
                 筋トレを始めたばかりの頃は意欲満々でも、数週間後には「なんとなくサボってしまう」「やる気が出ない」という状態に陥る方は少なくありません。実は筋トレを続けられるかどうかは、意志の強さよりも「仕組みと考え方」にかかっています。この記事では、筋トレを長期間続けるための実践的なモチベーション維持法を紹介します。
@@ -176,7 +177,7 @@ export default function MotivationPage() {
           </div>
         </div>
 
-        <ShareButtons url="https://sakutore.vercel.app/column/motivation" title="筋トレのモチベーション維持法" />
+        <ShareButtons url="https://sakutore.jp/column/motivation" title="筋トレのモチベーション維持法" />
         <Link
           href="/gear"
           className="block bg-orange-50 hover:bg-orange-100 rounded-2xl p-4 mb-6 border-2 border-orange-200 transition-colors"
@@ -190,16 +191,7 @@ export default function MotivationPage() {
           </div>
         </Link>
 
-        <div className="bg-white rounded-2xl shadow-lg p-4 mb-6">
-          <div className="flex items-start gap-3">
-            <span className="text-3xl">👤</span>
-            <div>
-              <p className="text-xs text-orange-500 font-bold mb-1">著者</p>
-              <p className="font-bold text-gray-800 text-sm">yousuke</p>
-              <p className="text-xs text-gray-500 mt-1 leading-relaxed">筋トレ歴10年以上｜ボディメイク大会出場経験あり｜90kg超から現在の体型に変化</p>
-            </div>
-          </div>
-        </div>
+        <AuthorBox />
 
         <div className="text-center space-y-3">
           <Link
