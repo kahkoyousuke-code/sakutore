@@ -79,7 +79,10 @@ export const metadata: Metadata = {
     title: "サクトレ",
   },
   verification: {
-    google: "ZjWPPXKFHLaA28ucYVXLYd-MO0aZCkUEjSQ96J8qPJE",
+    google: [
+      "ZjWPPXKFHLaA28ucYVXLYd-MO0aZCkUEjSQ96J8qPJE",
+      "2Wv1DNAoAAx3n2WXEVoMJfF8Z1Ob0H1CGDti9WrAggA",
+    ],
   },
 };
 
