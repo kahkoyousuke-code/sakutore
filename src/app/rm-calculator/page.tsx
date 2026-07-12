@@ -225,6 +225,21 @@ export default function RMCalculatorPage() {
           </div>
         </div>
 
+        <Link
+          href="/column/strength-standards"
+          className="block bg-orange-50 hover:bg-orange-100 rounded-2xl p-4 border-2 border-orange-200 transition-colors"
+        >
+          <div className="flex items-center gap-3">
+            <span className="text-2xl flex-shrink-0">📊</span>
+            <div>
+              <p className="font-bold text-orange-600 text-sm">その1RM、上と下どっち？</p>
+              <p className="text-xs text-gray-500 mt-0.5">
+                BIG3の重量目安を体重別・レベル別の一覧表で確認する →
+              </p>
+            </div>
+          </div>
+        </Link>
+
         <ShareButtons url="https://sakutore.jp/rm-calculator" title="RM計算機｜ビッグ3の1RM換算ツール" />
 
         <div className="text-center space-y-3 pb-4">
