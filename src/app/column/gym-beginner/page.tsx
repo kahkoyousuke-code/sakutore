@@ -124,7 +124,11 @@ export default function GymBeginnerPage() {
                   <div>
                     <p className="font-bold">重量を上げすぎる</p>
                     <p className="mt-1 text-gray-600">
-                      「重い方がかっこいい」「周りに負けたくない」という気持ちで重量を上げすぎるのは危険です。フォームが崩れ、狙った筋肉に効かないだけでなく、関節や腱を痛めます。最初は10〜15回ギリギリできる重量から始めましょう。
+                      「重い方がかっこいい」「周りに負けたくない」という気持ちで重量を上げすぎるのは危険です。フォームが崩れ、狙った筋肉に効かないだけでなく、関節や腱を痛めます。最初は10〜15回ギリギリできる重量から始めましょう。目安が知りたい方は
+                      <Link href="/weight-checker" className="text-orange-600 font-bold underline">
+                        適正重量診断
+                      </Link>
+                      で確認できます。
                     </p>
                   </div>
                 </div>

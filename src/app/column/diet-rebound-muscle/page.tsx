@@ -92,6 +92,13 @@ export default function DietReboundMusclePage() {
                 筋肉量を保つことで基礎代謝の低下を防ぎ、ダイエット後も「食べても太りにくい体」を維持できます。むしろ筋トレで筋肉が増えれば、ダイエット前より基礎代謝が高くなり、リバウンドどころかさらに痩せやすい体質になります。
               </p>
 
+              <div className="bg-orange-50 border border-orange-100 rounded-xl p-4 mt-3">
+                <p className="font-bold text-orange-600 mb-1">筆者の場合：90kg → 78kg</p>
+                <p className="text-xs leading-relaxed">
+                  筆者自身、90kgから78kgまで約1年かけて12kg落としました。過去に食事制限だけで痩せようとして戻った経験があるからこそ、このときは「筋トレを続けながら、食事はゆるやかに削る」方針を最後まで崩しませんでした。時間はかかりましたが、筋肉を残して落とした体重は戻りにくい——これが12kg分の実感です。
+                </p>
+              </div>
+
               <div className="bg-gray-50 rounded-xl p-4 mt-3">
                 <p className="font-bold text-gray-800 mb-2">食事制限のみ vs 食事制限＋筋トレ</p>
                 <ul className="space-y-2 text-gray-600">

@@ -79,6 +79,17 @@ export default function BeginnerGuidePage() {
               <p className="mt-2">
                 また、同じ重量でずっとトレーニングしていると筋肉が慣れてしまいます。2〜4週間ごとに少しずつ重量を増やす「漸進的過負荷」を意識すると、効率よく筋力がアップしていきます。
               </p>
+              <p className="mt-3 text-xs bg-orange-50 border border-orange-100 rounded-xl p-3">
+                💡 最初の重量に迷ったら
+                <Link href="/weight-checker" className="text-orange-600 font-bold underline">
+                  適正重量診断
+                </Link>
+                で目安を確認できます。伸びてきたら
+                <Link href="/column/strength-standards" className="text-orange-600 font-bold underline">
+                  BIG3の重量目安表
+                </Link>
+                で自分の現在地をチェックしてみてください。
+              </p>
             </section>
 
             <section>

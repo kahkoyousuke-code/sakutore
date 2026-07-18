@@ -37,6 +37,40 @@ export default function FrequencyPage() {
               <p className="mt-2">
                 この回復が完了する前に同じ部位をトレーニングすると、筋肉が十分に修復されず、かえって筋力が落ちたり怪我のリスクが高まったりします。一方、回復後にトレーニングしないまま時間が経つと、せっかくの超回復の効果が薄れてしまいます。
               </p>
+              <div className="overflow-x-auto -mx-2 px-2 mt-3">
+                <table className="w-full text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700">
+                        部位
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        回復の目安
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        次に鍛えるまで
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 text-gray-700">胸・背中・脚（大筋群）</td>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800 whitespace-nowrap">48〜72時間</td>
+                      <td className="border border-gray-200 px-2 py-2 text-gray-600 whitespace-nowrap">中2〜3日</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 text-gray-700">肩・腕（小筋群）</td>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800 whitespace-nowrap">約48時間</td>
+                      <td className="border border-gray-200 px-2 py-2 text-gray-600 whitespace-nowrap">中1〜2日</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 text-gray-700">腹筋・ふくらはぎ</td>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800 whitespace-nowrap">約24時間</td>
+                      <td className="border border-gray-200 px-2 py-2 text-gray-600 whitespace-nowrap">毎日でも可</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </section>
 
             <section>
@@ -61,7 +95,11 @@ export default function FrequencyPage() {
                 ある程度経験を積んだ中級者は、週3〜4回に頻度を上げるとよいでしょう。この段階では「分割法」を取り入れ、日によって鍛える部位を分けるのが効果的です。
               </p>
               <p className="mt-2">
-                例えば「上半身の日」と「下半身の日」に分ける2分割や、「胸・三頭筋の日」「背中・二頭筋の日」「脚の日」に分ける3分割が一般的です。部位を分けることで、各筋肉に十分な刺激を与えつつ、回復時間も確保できます。
+                例えば「上半身の日」と「下半身の日」に分ける2分割や、「胸・三頭筋の日」「背中・二頭筋の日」「脚の日」に分ける3分割が一般的です。部位を分けることで、各筋肉に十分な刺激を与えつつ、回復時間も確保できます。頻度別の具体的な組み方は
+                <Link href="/column/split-routine" className="text-orange-600 font-bold underline">
+                  分割法の早見表
+                </Link>
+                にまとめています。
               </p>
 
               <h3 className="font-bold text-gray-800 mt-4 mb-2">

@@ -58,6 +58,13 @@ export default function ProteinPage() {
               <p className="mt-3">
                 運動をしていない一般的な成人の場合は体重1kgあたり0.8g程度で十分ですが、筋トレをしている場合はその2倍以上が必要になります。初心者のうちは、まず体重1kgあたり1.6gを目標にするとよいでしょう。
               </p>
+              <p className="mt-3 text-xs bg-orange-50 border border-orange-100 rounded-xl p-3">
+                💡 タンパク質だけでなく、1日に必要な総カロリーも知りたい方は
+                <Link href="/calorie-calculator" className="text-orange-600 font-bold underline">
+                  カロリー計算機
+                </Link>
+                で目的別（増量・減量）の摂取カロリーを計算できます。
+              </p>
             </section>
 
             <section>
@@ -67,23 +74,48 @@ export default function ProteinPage() {
               <p>
                 日常の食事からしっかりタンパク質を摂るためには、高タンパクな食材を意識的に取り入れることが大切です。以下に代表的な食材とタンパク質量をまとめました。
               </p>
-              <div className="bg-gray-50 rounded-xl p-4 mt-3">
-                <p className="font-bold text-gray-800 mb-2">
-                  食材ごとのタンパク質量（100gあたり）
-                </p>
-                <ul className="space-y-1 text-gray-600">
-                  <li>鶏むね肉（皮なし）：約23g</li>
-                  <li>鶏ささみ：約24g</li>
-                  <li>豚ヒレ肉：約22g</li>
-                  <li>鮭：約20g</li>
-                  <li>卵1個（約50g）：約6g</li>
-                  <li>納豆1パック（40g）：約7g</li>
-                  <li>木綿豆腐：約7g</li>
-                  <li>ギリシャヨーグルト：約10g</li>
-                </ul>
+              <div className="overflow-x-auto -mx-2 px-2 mt-3">
+                <table className="w-full text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700">
+                        食材
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        タンパク質
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        1食の目安
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      { food: "鶏むね肉（皮なし）100g", protein: "約23g", serving: "1/2枚で約27g" },
+                      { food: "鶏ささみ 100g", protein: "約24g", serving: "2〜3本で約24g" },
+                      { food: "豚ヒレ肉 100g", protein: "約22g", serving: "とんかつ1枚分" },
+                      { food: "鮭 100g", protein: "約20g", serving: "切り身1切れで約16g" },
+                      { food: "卵 1個（約50g）", protein: "約6g", serving: "2個で約12g" },
+                      { food: "納豆 1パック（40g）", protein: "約7g", serving: "1パックで約7g" },
+                      { food: "木綿豆腐 100g", protein: "約7g", serving: "半丁で約10g" },
+                      { food: "ギリシャヨーグルト 100g", protein: "約10g", serving: "1カップで約10g" },
+                      { food: "プロテイン 1杯", protein: "約20g", serving: "水に溶かすだけ" },
+                    ].map((row) => (
+                      <tr key={row.food}>
+                        <td className="border border-gray-200 px-2 py-2 text-gray-700">{row.food}</td>
+                        <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800 whitespace-nowrap">{row.protein}</td>
+                        <td className="border border-gray-200 px-2 py-2 text-gray-600 whitespace-nowrap">{row.serving}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
               <p className="mt-3">
-                肉・魚・卵・大豆製品・乳製品をバランスよく組み合わせることで、無理なく必要量を摂取できます。食事だけで足りない場合は、プロテインパウダーを活用するのも効果的です。
+                肉・魚・卵・大豆製品・乳製品をバランスよく組み合わせることで、無理なく必要量を摂取できます。表を見るとわかる通り、体重70kgの人が食事だけで110g以上を毎日揃えるのはかなりの量です。足りない分は、プロテインパウダーで補うのが現実的です。プロテインの種類と選び方は
+                <Link href="/column/protein-guide" className="text-orange-600 font-bold underline">
+                  プロテインの選び方ガイド
+                </Link>
+                で詳しく解説しています。
               </p>
             </section>
 
