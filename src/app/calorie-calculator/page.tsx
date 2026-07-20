@@ -57,7 +57,7 @@ export default function CalorieCalculatorPage() {
     setResult(calcCalories(w, exercise, m));
   };
 
-  const sakumeshiUrl = process.env.NEXT_PUBLIC_SAKUMESHI_URL ?? "https://sakumeshi.vercel.app/";
+  const sakumeshiUrl = process.env.NEXT_PUBLIC_SAKUMESHI_URL ?? "https://sakumeshi.app/";
 
   return (
     <main className="min-h-screen flex flex-col items-center px-4 py-8">

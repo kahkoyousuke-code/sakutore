@@ -139,7 +139,7 @@ export default function Home() {
           </h2>
           <div className="space-y-3">
             <a
-              href={process.env.NEXT_PUBLIC_SAKUMESHI_URL ?? "https://sakumeshi.vercel.app/"}
+              href={process.env.NEXT_PUBLIC_SAKUMESHI_URL ?? "https://sakumeshi.app/"}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 w-full bg-orange-50 hover:bg-orange-100 rounded-2xl border-2 border-orange-200 p-4 transition-all duration-200 hover:shadow-md"
@@ -154,7 +154,7 @@ export default function Home() {
               <span className="text-orange-300">→</span>
             </a>
             <a
-              href="https://sakusuppu.vercel.app"
+              href="https://sakusapu.com"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 w-full bg-orange-50 hover:bg-orange-100 rounded-2xl border-2 border-orange-200 p-4 transition-all duration-200 hover:shadow-md"

@@ -124,7 +124,7 @@ export default function RootLayout({
         <footer className="py-6 text-center text-xs text-gray-400">
           <div className="mb-1">
             <a
-              href={process.env.NEXT_PUBLIC_SAKUMESHI_URL ?? "https://sakumeshi.vercel.app/"}
+              href={process.env.NEXT_PUBLIC_SAKUMESHI_URL ?? "https://sakumeshi.app/"}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-orange-500 font-semibold hover:text-orange-600 transition-colors"
@@ -134,7 +134,7 @@ export default function RootLayout({
           </div>
           <div className="mb-3">
             <a
-              href="https://sakusuppu.vercel.app"
+              href="https://sakusapu.com"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-orange-500 font-semibold hover:text-orange-600 transition-colors"

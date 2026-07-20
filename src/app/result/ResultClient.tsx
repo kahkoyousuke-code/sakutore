@@ -698,7 +698,7 @@ export default function ResultClient() {
       </div>
 
       <a
-        href={process.env.NEXT_PUBLIC_SAKUMESHI_URL ?? "https://sakumeshi.vercel.app/"}
+        href={process.env.NEXT_PUBLIC_SAKUMESHI_URL ?? "https://sakumeshi.app/"}
         target="_blank"
         rel="noopener noreferrer"
         className="block mt-4 py-4 px-6 rounded-2xl bg-orange-50 border-2 border-orange-300 text-center hover:bg-orange-100 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
@@ -733,7 +733,7 @@ export default function ResultClient() {
             目的・体質・ライフスタイルに合わせて最適なサプリをご提案
           </p>
           <a
-            href="https://sakusuppu.vercel.app"
+            href="https://sakusapu.com"
             target="_blank"
             rel="noopener noreferrer"
             className="block w-full py-4 px-6 rounded-xl bg-purple-500 text-white font-bold text-sm hover:bg-purple-600 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0"
