@@ -15,17 +15,27 @@ export function pageMetadata({
   description,
   path,
   type = "article",
+  noindex = false,
 }: {
   title: string;
   description: string;
   path: string;
   type?: "website" | "article";
+  /**
+   * 検索結果に載せたくないページ（外部リンク集・ツールのUIのみで
+   * 読み物としての実体がないページ）に付ける。発リンクは辿らせたいので
+   * follow は残す。
+   */
+  noindex?: boolean;
 }): Metadata {
   const url = `${SITE_URL}${path}`;
   return {
     title,
     description,
     alternates: { canonical: url },
+    ...(noindex
+      ? { robots: { index: false, follow: true } }
+      : {}),
     openGraph: {
       title,
       description,

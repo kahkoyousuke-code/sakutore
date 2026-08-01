@@ -6,6 +6,7 @@ export const metadata = pageMetadata({
     "腹筋を鍛えるトレーニング動画を厳選。クランチ・プランク・レッグレイズなど、初心者向けから中級者向けまでフォーム解説動画をまとめています。",
   path: "/videos/abs",
   type: "website",
+  noindex: true,
 });
 
 export default function AbsVideosLayout({

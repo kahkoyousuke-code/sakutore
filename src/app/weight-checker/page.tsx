@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
+import WeightCheckerGuide from "@/components/guides/WeightCheckerGuide";
 
 type Gender = "male" | "female";
 type LevelId = "beginner" | "novice" | "intermediate" | "advanced";
@@ -304,6 +305,8 @@ export default function WeightCheckerPage() {
             </p>
           </div>
         </div>
+
+        <WeightCheckerGuide />
 
         <ShareButtons url="https://sakutore.jp/weight-checker" title="筋トレ適正重量診断｜ビッグ3の目標重量を判定" />
 

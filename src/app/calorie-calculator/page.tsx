@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
+import CalorieCalculatorGuide from "@/components/guides/CalorieCalculatorGuide";
 
 const EXERCISES = [
   { id: "bench", label: "ベンチプレス", icon: "🏋️", mets: 6.0 },
@@ -236,6 +237,8 @@ export default function CalorieCalculatorPage() {
             </table>
           </div>
         </div>
+
+        <CalorieCalculatorGuide />
 
         <ShareButtons url="https://sakutore.jp/calorie-calculator" title="筋トレカロリー消費計算ツール" />
 

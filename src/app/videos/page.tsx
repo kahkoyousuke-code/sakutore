@@ -8,6 +8,7 @@ export const metadata = pageMetadata({
     "部位別のトレーニング動画を厳選して紹介。胸・背中・肩・腕・脚・腹筋の各部位ごとに、初心者から中級者向けの動画をまとめています。",
   path: "/videos",
   type: "website",
+  noindex: true,
 });
 
 const categories = [

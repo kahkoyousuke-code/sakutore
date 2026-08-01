@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
+import RmCalculatorGuide from "@/components/guides/RmCalculatorGuide";
 
 type CalcResult = {
   oneRM: number;
@@ -224,6 +225,8 @@ export default function RMCalculatorPage() {
             ))}
           </div>
         </div>
+
+        <RmCalculatorGuide />
 
         <Link
           href="/column/strength-standards"

@@ -8,6 +8,7 @@ export const metadata = pageMetadata({
     "女性向けトレーニング動画のおすすめYouTubeチャンネルを紹介。自宅でできる脚痩せ・ダイエット・腹筋引き締めなど、目的別に人気チャンネルをまとめています。",
   path: "/videos/women",
   type: "website",
+  noindex: true,
 });
 
 const channels = [

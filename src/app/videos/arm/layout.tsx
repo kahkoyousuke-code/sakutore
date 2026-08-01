@@ -6,6 +6,7 @@ export const metadata = pageMetadata({
     "腕（上腕二頭筋・上腕三頭筋）を鍛えるトレーニング動画を厳選。アームカール・トライセプス系種目など、初心者向けから中級者向けまでフォーム解説動画をまとめています。",
   path: "/videos/arm",
   type: "website",
+  noindex: true,
 });
 
 export default function ArmVideosLayout({

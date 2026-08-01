@@ -6,6 +6,7 @@ export const metadata = pageMetadata({
     "大胸筋を鍛えるトレーニング動画を厳選。ベンチプレス・ダンベルフライ・腕立て伏せなど、初心者向けから中級者向けまでフォーム解説動画をまとめています。",
   path: "/videos/chest",
   type: "website",
+  noindex: true,
 });
 
 export default function ChestVideosLayout({

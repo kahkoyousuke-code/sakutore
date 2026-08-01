@@ -6,6 +6,7 @@ export const metadata = pageMetadata({
     "背中（広背筋・僧帽筋）を鍛えるトレーニング動画を厳選。デッドリフト・懸垂・ラットプルダウンなど、初心者向けから中級者向けまでフォーム解説動画をまとめています。",
   path: "/videos/back",
   type: "website",
+  noindex: true,
 });
 
 export default function BackVideosLayout({

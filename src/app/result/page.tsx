@@ -24,6 +24,8 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   return {
     title: "サクトレ | あなた専用の筋トレメニュー",
     description,
+    // 回答パラメータごとに無限に生成されるページなので検索結果には載せない。
+    robots: { index: false, follow: true },
     openGraph: {
       title: "AIがあなた専用の筋トレメニューを作成！",
       description,

@@ -4,6 +4,7 @@ import WorkoutCalendar from "@/components/WorkoutCalendar";
 import MenuHistoryList from "@/components/MenuHistoryList";
 import TodaySuggestion from "@/components/TodaySuggestion";
 import ResetDataButton from "@/components/ResetDataButton";
+import HomeIntro from "@/components/HomeIntro";
 
 function ToolCard({
   href,
@@ -122,7 +123,7 @@ export default function Home() {
               href="/column"
               icon="📖"
               title="筋トレコラム"
-              description="頻度・栄養・休息など、続けるための知識を20本で解説"
+              description="頻度・栄養・休息など、続けるための知識を23本で解説"
             />
             <ToolCard
               href="/gear"
@@ -170,6 +171,8 @@ export default function Home() {
             </a>
           </div>
         </section>
+
+        <HomeIntro />
 
         <ResetDataButton />
       </div>

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { questions } from "@/lib/questions";
 import StepIndicator from "@/components/StepIndicator";
 import QuestionCard from "@/components/QuestionCard";
+import QuestionsGuide from "@/components/guides/QuestionsGuide";
 
 export default function QuestionsPage() {
   const router = useRouter();
@@ -71,6 +72,8 @@ export default function QuestionsPage() {
             {currentStep < questions.length - 1 ? "次へ" : "今日のメニューを作る"}
           </button>
         </div>
+
+        <QuestionsGuide />
       </div>
     </main>
   );
