@@ -4,9 +4,9 @@ import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
 
 export const metadata = pageMetadata({
-  title: "女性が筋トレで痩せやすい時間帯と頻度 - サクトレ",
+  title: "筋トレは朝と夜どっち？｜時間帯別メリット比較表 - サクトレ",
   description:
-    "脂肪燃焼効果が高まる時間帯、週の最適な頻度、忙しい人でも続けられるスケジュールを紹介。仕事をしながら週5で続けてきた経験から解説します。",
+    "朝・昼・夕方〜夜の強みと弱みを比較表で整理。ただし時間帯の差は「続くかどうか」の差に比べれば誤差です。潰れにくい時間帯の選び方と、週の頻度の決め方を解説します。",
   path: "/column/women-training-timing",
 });
 
@@ -23,7 +23,7 @@ export default function WomenTrainingTimingPage() {
           <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
             <section>
               <p className="text-gray-500 italic border-l-2 border-orange-300 pl-3 mb-3">
-                仕事をしながら週5でトレーニングを続けてきた経験から、本当に続けやすい時間帯と頻度を紹介します。
+                私は男性なので、女性ホルモンの周期に合わせた調整について体感で語ることはできません。ただ仕事をしながら40代でいまも週5回続けている立場から、時間帯と頻度をどう決めれば潰れにくいかは書けます。そこに絞って紹介します。
               </p>
               <p>
                 「筋トレはいつやるのが一番効果的？」「週に何回やればいい？」——これは筋トレを始めた多くの方が抱く疑問です。実は、トレーニングの時間帯や頻度を少し工夫するだけで、同じ努力でも得られる効果が変わってきます。この記事では、女性が脂肪燃焼効果を最大化するための時間帯と頻度を、科学的な根拠をもとに解説します。
@@ -58,17 +58,60 @@ export default function WomenTrainingTimingPage() {
                 高強度のトレーニングが行えるということは、それだけ多くのカロリーを消費し、アフターバーン効果（運動後の代謝亢進）も高くなります。筋肥大や筋力向上を重視するなら、夕方のトレーニングが有利です。
               </p>
 
-              <div className="bg-gray-50 rounded-xl p-4 mt-3">
-                <p className="font-bold text-gray-800 mb-2">時間帯別の特徴まとめ</p>
-                <ul className="space-y-2 text-gray-600">
-                  <li>
-                    <span className="font-bold text-gray-700">朝：</span>脂肪燃焼優先・習慣化しやすい・グリコーゲン枯渇状態で脂肪を使いやすい
-                  </li>
-                  <li>
-                    <span className="font-bold text-gray-700">夕方〜夜：</span>体温が高くパフォーマンス向上・高強度トレーニングに向く・筋肉づくりに有利
-                  </li>
-                </ul>
+              <div className="overflow-x-auto -mx-2 px-2 mt-3">
+                <table className="w-full text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        時間帯
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        強み
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        弱み
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        向いている人
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">朝</td>
+                      <td className="border border-gray-200 px-2 py-2">習慣化しやすい。予定に潰されない</td>
+                      <td className="border border-gray-200 px-2 py-2">体温が低く力が出にくい。ウォームアップ必須</td>
+                      <td className="border border-gray-200 px-2 py-2">夜の予定が読めない人</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">昼</td>
+                      <td className="border border-gray-200 px-2 py-2">体温が上がりきっている</td>
+                      <td className="border border-gray-200 px-2 py-2">まとまった時間を取りにくい</td>
+                      <td className="border border-gray-200 px-2 py-2">在宅勤務・時間の自由が利く人</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">夕方〜夜</td>
+                      <td className="border border-gray-200 px-2 py-2">体温がピークで最も力が出る</td>
+                      <td className="border border-gray-200 px-2 py-2">予定に潰されやすい。寝つきに影響することも</td>
+                      <td className="border border-gray-200 px-2 py-2">決まった時間を確保できる人</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+
+              <p className="mt-3">
+                ここまで時間帯別の特徴を書いてきましたが、正直なところを書きます。<strong className="text-gray-800">「痩せやすい時間帯」の差は、続けられるかどうかの差に比べれば誤差です</strong>。朝は脂肪が使われやすい、夜は力が出る——どちらも事実ですが、その差で最終的な体型が決まることはありません。
+              </p>
+              <p className="mt-2">
+                決まるのは、<strong className="text-gray-800">週2回を1年続けられたかどうか</strong>のほうです。時間帯を最適化して3週間でやめるより、ベストではない時間帯でも1年続いたほうが確実に結果が出ます。上の表は「どれが優れているか」ではなく<strong className="text-gray-800">「自分の生活で潰れにくいのはどれか」で選んでください</strong>。
+              </p>
+              <p className="mt-2">
+                ひとつだけ実務的な注意点として、就寝直前の高強度トレーニングは寝つきを悪くすることがあります。夜にやるなら就寝の2〜3時間前までに終えるのが目安です（
+                <Link href="/column/sleep" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  筋トレと睡眠の関係
+                </Link>
+                に逆算スケジュール表があります）。
+              </p>
             </section>
 
             <section>
@@ -156,11 +199,23 @@ export default function WomenTrainingTimingPage() {
               <h2 className="font-bold text-orange-500 text-base mb-3">
                 まとめ
               </h2>
-              <p>
-                脂肪燃焼を優先するなら朝、パフォーマンスを重視するなら夕方がおすすめですが、最終的には「自分が継続できる時間帯」が一番の正解です。頻度は初心者なら週2〜3回から始め、体が慣れてきたら徐々に増やしましょう。
-              </p>
-              <p className="mt-2">
-                サクトレではいくつかの質問に答えるだけで、あなたの生活スタイルや目的に合ったメニューを提案しています。まずは自分に合ったペースでスタートしてみてください。
+              <ul className="space-y-1">
+                <li>・朝は脂肪が使われやすく習慣化しやすい。夕方は体温がピークで最も力が出る</li>
+                <li>・ただし<strong>時間帯の差は、続くかどうかの差に比べれば誤差</strong></li>
+                <li>・選ぶ基準は「優れているか」ではなく「自分の生活で潰れにくいか」</li>
+                <li>・夜にやるなら就寝の2〜3時間前までに終える</li>
+                <li>・頻度は週2〜3回から。増やすときは休みを削らず、部位の分け方を変える</li>
+              </ul>
+              <p className="mt-3">
+                時間帯を最適化して3週間でやめるより、ベストでない時間でも1年続いたほうが確実に結果が出ます。頻度の考え方は
+                <Link href="/column/frequency" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  筋トレの頻度
+                </Link>
+                、続ける仕組みは
+                <Link href="/column/motivation" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  モチベーション維持法
+                </Link>
+                にまとめています。サクトレでは生活スタイルに合わせたメニューを提案します。
               </p>
             </section>
           </div>

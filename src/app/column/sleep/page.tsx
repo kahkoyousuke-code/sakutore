@@ -4,9 +4,9 @@ import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
 
 export const metadata = pageMetadata({
-  title: "筋トレと睡眠の関係 - サクトレ",
+  title: "筋トレと睡眠の関係｜就寝までの逆算スケジュール表つき - サクトレ",
   description:
-    "睡眠が筋肉の成長に与える影響、理想の睡眠時間、睡眠の質を上げるための具体的なコツをわかりやすく解説します。",
+    "成長ホルモンの7〜8割は睡眠中に分泌されます。トレーニング量別の必要睡眠時間と、カフェイン・食事・入浴・スマホをいつやめるかを逆算した表を掲載。睡眠が確保できないなら頻度を上げない理由も解説します。",
   path: "/column/sleep",
 });
 
@@ -84,23 +84,111 @@ export default function SleepPage() {
                 一般的な成人の推奨睡眠時間は7〜9時間とされていますが、定期的に筋トレをしている方にはそれ以上の睡眠が必要な場合もあります。
               </p>
 
-              <div className="bg-gray-50 rounded-xl p-4 mt-3">
-                <p className="font-bold text-gray-800 mb-2">レベル別の目安睡眠時間</p>
-                <ul className="space-y-2 text-gray-600">
-                  <li>
-                    <span className="font-bold text-gray-800">週1〜2回の軽い筋トレ</span>：7〜8時間
-                  </li>
-                  <li>
-                    <span className="font-bold text-gray-800">週3〜4回の中程度の筋トレ</span>：7.5〜8.5時間
-                  </li>
-                  <li>
-                    <span className="font-bold text-gray-800">週5回以上のハードなトレーニング</span>：8〜9時間以上
-                  </li>
-                </ul>
+              <div className="overflow-x-auto -mx-2 px-2 mt-3">
+                <table className="w-full text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        トレーニング量
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        目安の睡眠時間
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">週1〜2回（軽め）</td>
+                      <td className="border border-gray-200 px-2 py-2">7〜8時間</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">週3〜4回（中程度）</td>
+                      <td className="border border-gray-200 px-2 py-2">7.5〜8.5時間</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">週5回以上（ハード）</td>
+                      <td className="border border-gray-200 px-2 py-2">8〜9時間以上</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
 
               <p className="mt-3">
                 大切なのは「時間の長さ」だけでなく「睡眠の質」です。8時間眠っていても、途中で何度も目が覚めたり、深い睡眠が少なかったりすると、成長ホルモンの分泌が不十分になります。
+              </p>
+              <p className="mt-2">
+                ここで注意したいのは、<strong className="text-gray-800">この表を「頻度を上げれば睡眠も増やせる」と読まないこと</strong>です。現実には仕事も家庭もあるので、睡眠時間はそう簡単に増やせません。<strong className="text-gray-800">睡眠を8時間確保できないなら、週5回にはしない</strong>——という順番で考えるほうが正しいです。回復が追いついていないサインの見分け方は
+                <Link href="/column/rest" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  筋肉を育てる休息の重要性
+                </Link>
+                に5つのチェック項目としてまとめています。
+              </p>
+            </section>
+
+            <section>
+              <h2 className="font-bold text-orange-500 text-base mb-3">
+                就寝までの逆算スケジュール
+              </h2>
+              <p>
+                「睡眠の質を上げましょう」と言われても何をすればいいか迷うので、<strong className="text-gray-800">就寝時刻から逆算した表</strong>にしておきます。上から順にやめていくだけです。
+              </p>
+
+              <div className="overflow-x-auto -mx-2 px-2 mt-3">
+                <table className="w-full text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        就寝の
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        やめること
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        理由
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">6時間前</td>
+                      <td className="border border-gray-200 px-2 py-2">カフェイン</td>
+                      <td className="border border-gray-200 px-2 py-2">半減期が約5〜6時間あり夜まで残る</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">3時間前</td>
+                      <td className="border border-gray-200 px-2 py-2">食事</td>
+                      <td className="border border-gray-200 px-2 py-2">消化中は深い睡眠に入りにくい</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">2〜3時間前</td>
+                      <td className="border border-gray-200 px-2 py-2">激しい運動</td>
+                      <td className="border border-gray-200 px-2 py-2">交感神経が優位のままになる</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">1〜2時間前</td>
+                      <td className="border border-gray-200 px-2 py-2">入浴を済ませる</td>
+                      <td className="border border-gray-200 px-2 py-2">体温が下がるときに眠気が来る</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">1時間前</td>
+                      <td className="border border-gray-200 px-2 py-2">スマホ・PC</td>
+                      <td className="border border-gray-200 px-2 py-2">光と情報の刺激で寝つきが悪くなる</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">寝る直前</td>
+                      <td className="border border-gray-200 px-2 py-2">寝酒</td>
+                      <td className="border border-gray-200 px-2 py-2">寝つきは良くなるが深い睡眠が減る</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p className="mt-3">
+                全部やる必要はありません。<strong className="text-gray-800">効果が大きいのは上の2つ（カフェインと食事）</strong>です。夕方のコーヒーをやめるだけで寝つきが変わる人はかなり多いので、まずそこからで十分です。最後の寝酒については
+                <Link href="/column/alcohol" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  筋トレとお酒の付き合い方
+                </Link>
+                に詳しく書いています。
               </p>
             </section>
 
@@ -172,11 +260,19 @@ export default function SleepPage() {
               <h2 className="font-bold text-orange-500 text-base mb-3">
                 まとめ
               </h2>
-              <p>
-                筋トレの成果は「トレーニング・栄養・睡眠」の3つが揃って初めて最大化されます。睡眠中に成長ホルモンが分泌され筋肉が修復・成長するため、睡眠はトレーニングと同じくらい重要な要素です。7〜9時間の睡眠時間を確保し、就寝環境とルーティンを整えることで、トレーニングの効果を大きく高められます。
-              </p>
-              <p className="mt-2">
-                サクトレでは、あなたのトレーニング頻度に合わせた最適なメニューを作成します。トレーニングと睡眠・栄養の3本柱を整えて、理想の体に近づきましょう。
+              <ul className="space-y-1">
+                <li>・成長ホルモンの7〜8割は睡眠中、特に入眠後1〜3時間に出る</li>
+                <li>・睡眠5時間が1週間続くとテストステロンが10〜15%下がるという報告がある</li>
+                <li>・トレーニング量に応じて必要な睡眠は増える。<strong>確保できないなら頻度を上げない</strong></li>
+                <li>・質を上げるなら、まず夕方のカフェインと就寝3時間前の食事から</li>
+                <li>・寝酒は寝つきを良くするが、深い睡眠を減らすので逆効果</li>
+              </ul>
+              <p className="mt-3">
+                睡眠は「増やす」より「削らない」ほうが現実的です。私は40代で週5回トレーニングしていますが、それが成立しているのは1部位あたりの頻度を抑えているからで、睡眠を削って回数を稼いでいるわけではありません（
+                <Link href="/column/frequency" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  筋トレの頻度
+                </Link>
+                に週セット数の考え方を書いています）。サクトレでは、あなたのトレーニング頻度に合わせたメニューを作成します。
               </p>
             </section>
           </div>

@@ -4,9 +4,9 @@ import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
 
 export const metadata = pageMetadata({
-  title: "背中を鍛えるべき3つの理由 - サクトレ",
+  title: "背中を鍛えるべき3つの理由｜引く方向で鍛わる場所が変わる - サクトレ",
   description:
-    "背中の筋肉を鍛えることで得られる姿勢改善・腰痛予防・見た目の変化を詳しく解説。背中トレのメリットとおすすめ種目を紹介します。",
+    "背中の5つの筋肉と、それぞれに効く動き・種目を一覧表で整理。上から引くと広がり、手前に引くと厚みができます。姿勢改善・腰痛予防・見た目の3つの効果と、筆者のデッドリフト体重比1.9倍の実データつき。",
   path: "/column/back-benefits",
 });
 
@@ -24,6 +24,75 @@ export default function BackBenefitsPage() {
             <section>
               <p>
                 筋トレを始めると、胸・腕・お腹など「見える部位」を優先しがちです。しかし、背中の筋肉（広背筋・脊柱起立筋・僧帽筋など）を鍛えることは、見た目の改善だけでなく、姿勢の改善や腰痛予防など日常生活の質を上げる効果も大きいのです。この記事では、背中を鍛えるべき3つの理由と、具体的なトレーニング方法を解説します。
+              </p>
+            </section>
+
+            <section>
+              <h2 className="font-bold text-orange-500 text-base mb-3">
+                まず「背中」を分解する
+              </h2>
+              <p>
+                背中トレがわかりにくいのは、背中が1つの筋肉ではないからです。胸なら「胸を張って押す」で済みますが、背中は<strong className="text-gray-800">引く方向によって鍛わる場所がまるごと変わります</strong>。まずここを整理しておくと、以降の話が一気に通ります。
+              </p>
+
+              <div className="overflow-x-auto -mx-2 px-2 mt-3">
+                <table className="w-full text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        筋肉
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        場所
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        効かせる動き
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        主な種目
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">広背筋</td>
+                      <td className="border border-gray-200 px-2 py-2">脇の下〜腰</td>
+                      <td className="border border-gray-200 px-2 py-2">上から下に引く</td>
+                      <td className="border border-gray-200 px-2 py-2">ラットプルダウン／懸垂</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">僧帽筋</td>
+                      <td className="border border-gray-200 px-2 py-2">首〜肩〜背中中央</td>
+                      <td className="border border-gray-200 px-2 py-2">手前に引く／すくめる</td>
+                      <td className="border border-gray-200 px-2 py-2">シーテッドロウ／シュラッグ</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">菱形筋</td>
+                      <td className="border border-gray-200 px-2 py-2">左右の肩甲骨の間</td>
+                      <td className="border border-gray-200 px-2 py-2">肩甲骨を内側に寄せる</td>
+                      <td className="border border-gray-200 px-2 py-2">フェイスプル／ワンハンドロウ</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">脊柱起立筋</td>
+                      <td className="border border-gray-200 px-2 py-2">背骨に沿って縦</td>
+                      <td className="border border-gray-200 px-2 py-2">上体を起こす／支える</td>
+                      <td className="border border-gray-200 px-2 py-2">デッドリフト／バックエクステンション</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">多裂筋</td>
+                      <td className="border border-gray-200 px-2 py-2">背骨の深層</td>
+                      <td className="border border-gray-200 px-2 py-2">姿勢を保って耐える</td>
+                      <td className="border border-gray-200 px-2 py-2">バードドッグ／プランク</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-xs text-gray-500 mt-2">
+                ※種目名はサクトレのメニュー生成で使っている名称に合わせています。
+              </p>
+
+              <p className="mt-3">
+                ポイントは上2行です。<strong className="text-gray-800">上から引くと「広がり」、手前に引くと「厚み」</strong>ができます。背中トレを1種目しかやっていない人は、たいていどちらか片方だけをやっています。逆三角形になりたいのに水平の種目しかしていない、あるいは姿勢を直したいのに懸垂だけ、というパターンです。<strong className="text-gray-800">背中は最低2種目、方向を変えて入れる</strong>のが基本になります。
               </p>
             </section>
 
@@ -160,7 +229,7 @@ export default function BackBenefitsPage() {
                 <div className="flex items-start gap-2">
                   <span className="text-orange-500 font-bold">▸</span>
                   <p>
-                    <span className="font-bold">ダンベルロウ</span>：片手でダンベルを持ち、腰を曲げて引き上げます。広背筋に強い刺激を与えられます。
+                    <span className="font-bold">ワンハンドロウ</span>：片手でダンベルを持ち、ベンチに手をついて引き上げます。広背筋に強い刺激を与えられます。
                   </p>
                 </div>
                 <div className="flex items-start gap-2">
@@ -174,13 +243,44 @@ export default function BackBenefitsPage() {
 
             <section>
               <h2 className="font-bold text-orange-500 text-base mb-3">
-                まとめ
+                私のBIG3で、いちばん強いのは背中でした
               </h2>
               <p>
-                背中を鍛えることで得られる効果は「姿勢の改善」「腰痛の予防・改善」「見た目の大きな変化」の3つです。背中は自分では直接見えない部位のため後回しにされがちですが、実は日常生活の質と見た目の両方に影響する最重要部位の一つです。
+                自分の数字を出しておきます。自己ベストはベンチプレス120kg・スクワット120kg・デッドリフト160kg。体重80kg台の頃なので、体重比にすると約1.4倍・1.4倍・<strong className="text-gray-800">1.9倍</strong>です。
               </p>
               <p className="mt-2">
-                サクトレでは、背中を含む全身をバランスよく鍛えるメニューを自動で作成します。「背中を重点的に鍛えたい」という方は、ぜひメニュー作成で部位を指定してみてください。
+                3種目のうちデッドリフトだけが突出しています。これは私が背中を熱心にやったからというより、<strong className="text-gray-800">背中まわりが体で最も大きな筋肉群なので、そもそも強い重量を扱える</strong>からです。裏を返すと、背中を飛ばしている人は体の中で一番大きな伸びしろを丸ごと放置していることになります。
+              </p>
+              <p className="mt-2">
+                自分の数字が目安のどのあたりかは
+                <Link href="/column/strength-standards" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  BIG3の重量目安表
+                </Link>
+                で確認できます。
+              </p>
+            </section>
+
+            <section>
+              <h2 className="font-bold text-orange-500 text-base mb-3">
+                まとめ
+              </h2>
+              <ul className="space-y-1">
+                <li>・背中は1つの筋肉ではない。上から引くと「広がり」、手前に引くと「厚み」</li>
+                <li>・だから背中は最低2種目、方向を変えて入れる</li>
+                <li>・効果は姿勢改善・腰痛予防・見た目の3つ。日常生活の質にも直結する</li>
+                <li>・すでに腰痛がある場合は自己判断で負荷をかけず、医師や理学療法士に相談する</li>
+                <li>・体で最も大きい筋肉群なので、飛ばすと伸びしろを丸ごと放置することになる</li>
+              </ul>
+              <p className="mt-3">
+                サクトレでは背中を含む全身をバランスよく鍛えるメニューを自動で作成します。重量の目安は
+                <Link href="/weight-checker" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  適正重量チェッカー
+                </Link>
+                、ジムのマシンから始めるなら
+                <Link href="/column/gym-beginner" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  ジム初心者が最初にやるべきマシン5選
+                </Link>
+                を参考にしてください。
               </p>
             </section>
           </div>

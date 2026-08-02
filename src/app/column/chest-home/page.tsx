@@ -4,9 +4,9 @@ import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
 
 export const metadata = pageMetadata({
-  title: "自宅でできる胸トレ完全ガイド - サクトレ",
+  title: "自宅でできる胸トレ完全ガイド｜腕立ては何kg挙げているのか - サクトレ",
   description:
-    "器具なしの腕立て伏せバリエーションからダンベル種目まで、自宅でできる胸トレを完全解説。大胸筋に効かせるためのコツも紹介します。",
+    "腕立て伏せ5種の負荷を体重比で数値化した表つき（標準は体重の約64%＝70kgなら約45kg）。回数を増やしても負荷が変わらない理由と、自宅トレで停滞したときの正しい進め方を解説します。",
   path: "/column/chest-home",
 });
 
@@ -79,6 +79,74 @@ export default function ChestHomePage() {
                   机や椅子の縁に手をつき、斜め上から体を押し上げます。大胸筋の下部に効果的で、初心者や筋力が弱い方のウォームアップにも最適。15〜20回 × 3セット。
                 </p>
               </div>
+
+              <div className="bg-orange-50 border border-orange-100 rounded-xl p-4 mt-4">
+                <p className="font-bold text-orange-600 mb-1">名前がベンチプレスと逆なので注意</p>
+                <p className="text-xs leading-relaxed">
+                  ベンチプレスでは「インクライン＝頭が高い＝胸の上部」ですが、腕立て伏せでは<strong>手を高くするインクラインが胸の下部、足を高くするデクラインが胸の上部</strong>になります。基準になっている体の向きが逆だからです。ここを取り違えて、鍛えたい部位と反対の種目をやっている人はかなり多いです。
+                </p>
+              </div>
+
+              <h3 className="font-bold text-gray-800 mt-4 mb-2">
+                腕立て伏せは「何kgを挙げているのか」
+              </h3>
+              <p>
+                自重トレの弱点は、負荷が数字で見えないことです。ただ腕立て伏せについては、体重の何%が腕にかかるかが計測されていて、目安がわかっています。
+              </p>
+
+              <div className="overflow-x-auto -mx-2 px-2 mt-3">
+                <table className="w-full text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        種目
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        体重に対する負荷
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        体重70kgなら
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">膝つき腕立て</td>
+                      <td className="border border-gray-200 px-2 py-2">約49%</td>
+                      <td className="border border-gray-200 px-2 py-2">約34kg</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">インクライン<br />（手を台に）</td>
+                      <td className="border border-gray-200 px-2 py-2">約55%</td>
+                      <td className="border border-gray-200 px-2 py-2">約39kg</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">標準の腕立て</td>
+                      <td className="border border-gray-200 px-2 py-2">約64%</td>
+                      <td className="border border-gray-200 px-2 py-2">約45kg</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">デクライン<br />（足を台に）</td>
+                      <td className="border border-gray-200 px-2 py-2">約70〜75%</td>
+                      <td className="border border-gray-200 px-2 py-2">約49〜53kg</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-xs text-gray-500 mt-2">
+                ※台の高さや手幅で変わるので、あくまで目安です。
+              </p>
+
+              <p className="mt-3">
+                ここからわかるのは、<strong className="text-gray-800">標準の腕立て伏せは、体重70kgの人にとって約45kgのベンチプレスに近い負荷だということ</strong>です。そして負荷が体重で固定されるので、回数が20回、30回と伸びていっても、かかる重さは45kgのまま変わりません。
+              </p>
+              <p className="mt-2">
+                つまり自宅の胸トレで停滞したら、回数を増やすのではなく<strong className="text-gray-800">足を台に乗せて負荷そのものを上げる</strong>のが正解です。デクラインまで到達したら次はダンベル、という順番になります。ちなみに一般的な目安ではベンチプレス体重1.0倍が中級の入口なので、腕立てだけで到達できる範囲には限りがあります（
+                <Link href="/column/strength-standards" className="text-orange-600 font-bold underline">
+                  BIG3の重量目安表
+                </Link>
+                で自分の位置を確認できます）。
+              </p>
             </section>
 
             <section>
@@ -181,11 +249,18 @@ export default function ChestHomePage() {
               <h2 className="font-bold text-orange-500 text-base mb-3">
                 まとめ
               </h2>
-              <p>
-                自宅でも腕立て伏せのバリエーションやダンベル種目を組み合わせることで、大胸筋を効果的に鍛えることができます。大切なのは、正しいフォームで胸に意識を集中させながら行うことです。
-              </p>
-              <p className="mt-2">
-                サクトレでは自宅トレーニングに最適化したメニューも作成できます。「自宅」「器具なし」などの条件に合わせたメニューを自動で生成しますので、ぜひ活用してみてください。
+              <ul className="space-y-1">
+                <li>・標準の腕立ては体重の約64%（70kgなら約45kg）。数字にすると意外と重い</li>
+                <li>・回数を増やしても負荷は変わらない。停滞したら足を台に乗せて負荷を上げる</li>
+                <li>・腕立てのインクライン/デクラインはベンチプレスと上下が逆。取り違えに注意</li>
+                <li>・伸ばせる範囲には限りがある。次はダンベル、その次はジムという順番</li>
+              </ul>
+              <p className="mt-3">
+                自宅トレの弱点は負荷が頭打ちになることですが、逆に言えば<strong className="text-gray-800">最初の1年はこれで十分伸びます</strong>。サクトレでは「自宅」「器具なし」などの条件に合わせたメニューを自動で生成します。ダンベルを買うか迷っているなら
+                <Link href="/gear" className="text-orange-600 font-bold underline">
+                  ギア紹介
+                </Link>
+                も参考にしてください。
               </p>
             </section>
           </div>

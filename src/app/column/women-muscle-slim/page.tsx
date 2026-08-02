@@ -4,9 +4,9 @@ import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
 
 export const metadata = pageMetadata({
-  title: "女性が筋トレしても「太くならない」理由を解説 - サクトレ",
+  title: "女性が筋トレしても「太くならない」理由｜張りの正体はむくみ - サクトレ",
   description:
-    "筋トレで体が大きくなるという誤解を解消し、女性こそ筋トレすべき理由を解説。ホルモンの違いやデータをもとに詳しく説明します。",
+    "始めた直後に脚が張るのは筋肥大ではなくむくみです。「太くなった気がする」の原因と実際を一覧表で整理し、テストステロン量の差や筋肉と脂肪の体積差をデータで解説します。",
   path: "/column/women-muscle-slim",
 });
 
@@ -23,7 +23,7 @@ export default function WomenMuscleSlimPage() {
           <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
             <section>
               <p className="text-gray-500 italic border-l-2 border-orange-300 pl-3 mb-3">
-                15年トレーニングを続けてきた経験上、女性から「筋トレしたら太くなりそうで怖い」という声をよく聞きます。データと経験をもとにその誤解を解説します。
+                私は男性なので、女性の体感そのものを語ることはできません。ただ15年トレーニングを続けるなかで「筋トレしたら太くなりそうで怖い」という声を本当によく聞いてきました。ここではデータで説明できる部分に絞って、その誤解を解きます。
               </p>
               <p>
                 「筋トレをしたら筋肉がついて体が大きくなってしまうのでは？」——これは多くの女性が筋トレを始める際に抱く不安の一つです。結論から言うと、一般的な女性が筋トレをしても、ボディビルダーのような大きな筋肉がつくことはほぼありません。この記事では、その理由をホルモンや生理学的な観点から解説し、女性こそ積極的に筋トレすべき理由をお伝えします。
@@ -71,6 +71,57 @@ export default function WomenMuscleSlimPage() {
                   <li>・筋肉1kg：約900ml（脂肪より約20〜30%小さい）</li>
                 </ul>
               </div>
+
+              <p className="mt-3">
+                「太くなった気がする」という感覚には、たいてい原因があります。多いものから順に並べておきます。
+              </p>
+
+              <div className="overflow-x-auto -mx-2 px-2 mt-3">
+                <table className="w-full text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        感じること
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        実際に起きていること
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        どうなるか
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2">始めて数週間で脚が張った</td>
+                      <td className="border border-gray-200 px-2 py-2">一時的なむくみ（炎症と水分）</td>
+                      <td className="border border-gray-200 px-2 py-2">数週間で落ち着く</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2">体重が増えた</td>
+                      <td className="border border-gray-200 px-2 py-2">筋肉は脂肪より20〜30%体積が小さい</td>
+                      <td className="border border-gray-200 px-2 py-2">体重が同じでもサイズは下がる</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2">脚だけ太く見える</td>
+                      <td className="border border-gray-200 px-2 py-2">脂肪の下に筋肉がついた段階</td>
+                      <td className="border border-gray-200 px-2 py-2">脂肪が減ると引き締まって見える</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2">このままムキムキになりそう</td>
+                      <td className="border border-gray-200 px-2 py-2">テストステロンが男性の10〜20分の1</td>
+                      <td className="border border-gray-200 px-2 py-2">意図しても簡単には大きくならない</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p className="mt-3">
+                1行目が特に多いパターンです。<strong className="text-gray-800">始めた直後に脚が張るのは筋肥大ではなく、むくみです</strong>。ここで「太くなった」と判断してやめてしまうのが、いちばんもったいない離脱の仕方だと思っています。<strong className="text-gray-800">見た目の判断は最低でも3ヶ月続けてから</strong>にしてください。
+              </p>
+              <p className="mt-2">
+                判断の材料としては、体重よりもサイズ（ウエスト・太もも周り）を測っておくほうが確実です。体重は同じでも数字が下がっていれば、正しい方向に進んでいます。
+              </p>
 
               <p className="mt-3">
                 つまり、脂肪が1kg減って筋肉が1kg増えたとすると、体重は変わらなくても体積は小さくなります。「体重は変わらないのに服のサイズが下がった」という現象は、まさにこのメカニズムによるものです。
@@ -147,11 +198,22 @@ export default function WomenMuscleSlimPage() {
               <h2 className="font-bold text-orange-500 text-base mb-3">
                 まとめ
               </h2>
-              <p>
-                女性が筋トレで「太くなる」という心配はほぼ不要です。ホルモンの違いから、一般的なトレーニングでは女性の体が大きくなることはありません。むしろ、筋トレは体を引き締め、代謝を上げ、姿勢を改善するなど、多くのメリットをもたらします。
-              </p>
-              <p className="mt-2">
-                「細くなりたい」「引き締めたい」という目標がある方こそ、筋トレを取り入れることをおすすめします。サクトレではいくつかの質問に答えるだけで、あなたの目標に合ったメニューを提案しています。ぜひ試してみてください。
+              <ul className="space-y-1">
+                <li>・テストステロンが男性の10〜20分の1なので、意図しても簡単には大きくならない</li>
+                <li>・始めた直後に脚が張るのは筋肥大ではなく<strong>むくみ</strong>。数週間で落ち着く</li>
+                <li>・筋肉は脂肪より20〜30%体積が小さい。体重が同じでもサイズは下がる</li>
+                <li>・判断は体重ではなくサイズで。見た目の評価は最低3ヶ月続けてから</li>
+              </ul>
+              <p className="mt-3">
+                「細くなりたい」「引き締めたい」という目標がある人こそ、筋トレが近道です。ただし代謝アップへの期待は控えめに——筋肉1kgが増やす基礎代謝は1日13kcal程度なので、痩せる主役はあくまで食事です（
+                <Link href="/column/metabolism" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  筋トレで痩せる仕組み
+                </Link>
+                で計算しています）。40代以降の体の変化については
+                <Link href="/column/women-40s-training" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  40代女性が筋トレで痩せにくい理由
+                </Link>
+                に書いています。サクトレでは5つの質問に答えるだけでメニューを提案します。
               </p>
             </section>
           </div>

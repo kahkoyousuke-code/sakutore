@@ -4,9 +4,9 @@ import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
 
 export const metadata = pageMetadata({
-  title: "ジム初心者が最初にやるべきマシン5選 - サクトレ",
+  title: "ジム初心者が最初にやるべきマシン5選｜回る順番つき - サクトレ",
   description:
-    "ジムデビューしたばかりの方に向けて、初心者が使いやすいマシン5選を紹介。使い方のポイントと避けるべきNG行動も解説します。",
+    "初心者向けマシン5台を、回る順番と理由の表つきで解説（大きい筋肉から先、肩は最後）。使い方のポイントとNG行動、15年通ってわかったジム選びで唯一効いたことも紹介します。",
   path: "/column/gym-beginner",
 });
 
@@ -31,6 +31,70 @@ export default function GymBeginnerPage() {
               <h2 className="font-bold text-orange-500 text-base mb-3">
                 初心者におすすめのマシン5選
               </h2>
+
+              <p>
+                先に結論から。この5台を、この順番で回してください。順番には理由があります。
+              </p>
+
+              <div className="overflow-x-auto -mx-2 px-2 mt-3">
+                <table className="w-full text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        順
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        マシン
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        部位
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        この順番の理由
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">1</td>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">レッグプレス</td>
+                      <td className="border border-gray-200 px-2 py-2">脚全体</td>
+                      <td className="border border-gray-200 px-2 py-2">体で一番大きい筋肉。元気なうちに終わらせる</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">2</td>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">ラットプルダウン</td>
+                      <td className="border border-gray-200 px-2 py-2">背中（広がり）</td>
+                      <td className="border border-gray-200 px-2 py-2">上半身で最大の筋肉</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">3</td>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">チェストプレス</td>
+                      <td className="border border-gray-200 px-2 py-2">胸</td>
+                      <td className="border border-gray-200 px-2 py-2">大きい筋肉。押す動作の主役</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">4</td>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">シーテッドロウ</td>
+                      <td className="border border-gray-200 px-2 py-2">背中（厚み）</td>
+                      <td className="border border-gray-200 px-2 py-2">2と方向が違う。姿勢改善に効く</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">5</td>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">ショルダープレス</td>
+                      <td className="border border-gray-200 px-2 py-2">肩</td>
+                      <td className="border border-gray-200 px-2 py-2">小さく怪我しやすいので最後</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p className="mt-3">
+                原則は<strong className="text-gray-800">「大きい筋肉から先、小さい筋肉は後」</strong>です。肩を先に疲れさせると、そのあとのチェストプレスもラットプルダウンも力が入らなくなります。逆の順番でやっている人はかなり多いので、ここを直すだけで同じ時間の効果が変わります。
+              </p>
+              <p className="mt-2">
+                2番と4番がどちらも背中なのは間違いではありません。<strong className="text-gray-800">ラットプルダウンは上から引く＝背中の広がり、シーテッドロウは水平に引く＝背中の厚み</strong>で、鍛わる方向が違います。背中は体の中で最も面積が大きいので、2種目入れる価値があります。
+              </p>
 
               <h3 className="font-bold text-gray-800 mt-4 mb-2">
                 1. レッグプレス（脚全体）
@@ -173,13 +237,44 @@ export default function GymBeginnerPage() {
 
             <section>
               <h2 className="font-bold text-orange-500 text-base mb-3">
-                まとめ
+                15年通ってわかった、ジム選びで唯一効いたこと
               </h2>
               <p>
-                ジム初心者は、まずレッグプレス・ラットプルダウン・チェストプレス・ショルダープレス・シーテッドロウの5種目から始めるのがおすすめです。これらは軌道が固定されていて使いやすく、全身の主要な筋肉をまんべんなく鍛えられます。
+                私は15年、月8,000円ほどの一般的なジムに通ってきました。設備の差でトレーニングの質が決まると思っていましたが、振り返るとそうではありませんでした。
               </p>
               <p className="mt-2">
-                最初の数回は軽い重量でフォームを覚えることに集中し、正しい動きを身につけてから少しずつ重量を上げていきましょう。サクトレで自分のレベルに合ったメニューを作れば、ジムで何をすべきかが明確になります。
+                ベンチプレスが長く止まっていた時期があって、それを動かしたのは新しいマシンでも新しいメニューでもなく、<strong className="text-gray-800">ジムを変えて、補助と指導を受けられる環境に入ったこと</strong>でした。潰れる心配なく限界まで追い込めることと、フォームを外から見てもらえること。この2つは、ひとりでいくら通っても手に入りません。
+              </p>
+              <p className="mt-2">
+                初心者のうちは、正直どのジムでも大きな差は出ません。マシンが5台揃っていれば十分です。ただ<strong className="text-gray-800">「見てもらえるかどうか」だけは、続けるほど効いてきます</strong>。見学のときに、スタッフがフォームを見てくれる時間があるかを聞いておくと後で効きます。費用感の比較は
+                <Link href="/column/personal-gym-cost" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  パーソナルジムの費用相場
+                </Link>
+                にまとめています。
+              </p>
+            </section>
+
+            <section>
+              <h2 className="font-bold text-orange-500 text-base mb-3">
+                まとめ
+              </h2>
+              <ul className="space-y-1">
+                <li>・レッグプレス→ラットプルダウン→チェストプレス→シーテッドロウ→ショルダープレスの順</li>
+                <li>・原則は「大きい筋肉から先、小さい筋肉は後」。肩を先にやると全部が中途半端になる</li>
+                <li>・背中が2種目あるのは、上から引く（広がり）と水平に引く（厚み）で別物だから</li>
+                <li>・最初は軽い重量でフォームを覚える。重量はあとからいくらでも増やせる</li>
+                <li>・設備より「見てもらえる環境かどうか」が長期では効く</li>
+              </ul>
+              <p className="mt-3">
+                重量に迷ったら
+                <Link href="/weight-checker" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  適正重量チェッカー
+                </Link>
+                で目安を出せます。マシンに慣れてフリーウエイトに移りたくなったら
+                <Link href="/column/beginner-guide" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  初心者が最初にやるべき5つのこと
+                </Link>
+                へ。サクトレで自分に合ったメニューを作れば、ジムで何をすべきかが明確になります。
               </p>
             </section>
           </div>

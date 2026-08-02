@@ -4,9 +4,9 @@ import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
 
 export const metadata = pageMetadata({
-  title: "筋トレのモチベーション維持法 - サクトレ",
+  title: "筋トレのモチベーション維持法｜意志ではなく仕組みで続ける - サクトレ",
   description:
-    "筋トレを長く続けるためのコツ、効果的な目標設定の方法、停滞期の乗り越え方をわかりやすく解説します。",
+    "続かない理由を「意志で解決」と「仕組みで解決」に分けた対処表つき。やる気が落ちるのは自然なことで、筋肉の増えるペースは4年目で1年目の5分の1以下になります。15年続けた筆者の切り替え方も解説します。",
   path: "/column/motivation",
 });
 
@@ -120,6 +120,127 @@ export default function MotivationPage() {
 
             <section>
               <h2 className="font-bold text-orange-500 text-base mb-3">
+                続かない理由は、意志では解決できない
+              </h2>
+              <p>
+                「やる気が出ない」と感じるとき、その裏にはたいてい具体的な原因があります。そして<strong className="text-gray-800">そのほとんどは、気合いではなく仕組みで解決するもの</strong>です。
+              </p>
+
+              <div className="overflow-x-auto -mx-2 px-2 mt-3">
+                <table className="w-full text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        続かない理由
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        意志で解決しようとすると
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        仕組みで解決するなら
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">時間がない</td>
+                      <td className="border border-gray-200 px-2 py-2">早起きする（たいてい続かない）</td>
+                      <td className="border border-gray-200 px-2 py-2">種目を3つに減らす。週2回に下げる</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">効果を感じない</td>
+                      <td className="border border-gray-200 px-2 py-2">もっと追い込む（回復が破綻する）</td>
+                      <td className="border border-gray-200 px-2 py-2">記録をつけて数字で変化を見る</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">ジムが遠い</td>
+                      <td className="border border-gray-200 px-2 py-2">気合いを入れる</td>
+                      <td className="border border-gray-200 px-2 py-2">自宅種目に切り替える。近いジムに移る</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">飽きた</td>
+                      <td className="border border-gray-200 px-2 py-2">我慢して同じことを続ける</td>
+                      <td className="border border-gray-200 px-2 py-2">種目を入れ替える。目標の種類を変える</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">疲れが抜けない</td>
+                      <td className="border border-gray-200 px-2 py-2">根性で行く（怪我に近づく）</td>
+                      <td className="border border-gray-200 px-2 py-2">休養日を増やす。睡眠を確保する</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p className="mt-3">
+                右の列を見てもらうとわかりますが、<strong className="text-gray-800">仕組みでの解決はどれも「減らす」方向</strong>です。続かないときに量を増やす方向で解決しようとするのは、ほぼ確実に裏目に出ます。種目を減らす方法は
+                <Link href="/column/frequency" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  筋トレの頻度
+                </Link>
+                、疲れの判断は
+                <Link href="/column/rest" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  休息の重要性
+                </Link>
+                を参考にしてください。
+              </p>
+            </section>
+
+            <section>
+              <h2 className="font-bold text-orange-500 text-base mb-3">
+                やる気が落ちるのは、実際に伸びが小さくなっているから
+              </h2>
+              <p>
+                精神論ではなく数字の話をします。筋肉が増えるペースは、続けた年数によってはっきり落ちていきます。よく引用される目安ではこうなります。
+              </p>
+
+              <div className="overflow-x-auto -mx-2 px-2 mt-3">
+                <table className="w-full text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        経験
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        月あたりの増加
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        1年目との比
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">1年目</td>
+                      <td className="border border-gray-200 px-2 py-2">体重の1〜1.5%</td>
+                      <td className="border border-gray-200 px-2 py-2">—</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">2〜3年目</td>
+                      <td className="border border-gray-200 px-2 py-2">体重の0.5〜1%</td>
+                      <td className="border border-gray-200 px-2 py-2">約半分</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">4年目〜</td>
+                      <td className="border border-gray-200 px-2 py-2">体重の0.25〜0.5%</td>
+                      <td className="border border-gray-200 px-2 py-2"><strong>5分の1以下</strong></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p className="mt-3">
+                <strong className="text-gray-800">同じ努力に対して返ってくる量が、年々小さくなっていく</strong>ということです。3年目でやる気が落ちるのは、意志が弱くなったからではありません。実際に手応えが減っているからです。
+              </p>
+              <p className="mt-2">
+                私は15年続けていますが、10年を超えたあたりから重量が伸びること自体は少なくなりました。それでも続けているのは、目的が変わったからです。<strong className="text-gray-800">伸ばすためではなく、維持している状態そのものが同年代に対しての差になる</strong>と気づいた時点で、続ける理由が「成長」から「維持」に移りました。ここを切り替えられるかどうかが、5年目以降の分かれ道だと思っています（
+                <Link href="/column/10years" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  10年筋トレを続けてわかったこと
+                </Link>
+                に詳しく書いています）。
+              </p>
+            </section>
+
+            <section>
+              <h2 className="font-bold text-orange-500 text-base mb-3">
                 停滞期の乗り越え方
               </h2>
               <p>
@@ -167,11 +288,19 @@ export default function MotivationPage() {
               <h2 className="font-bold text-orange-500 text-base mb-3">
                 まとめ
               </h2>
-              <p>
-                筋トレのモチベーションを維持するためには、意志の力に頼らず「仕組みと習慣」で動ける状態を作ることが大切です。ハードルを下げてルーティン化し、具体的な目標と記録で成長を実感しながら、停滞期も焦らず乗り越えていきましょう。
-              </p>
-              <p className="mt-2">
-                サクトレでは、あなたのペースや目標に合わせたトレーニングメニューを自動で作成します。まず「何をすればいいか」を明確にすることが、続けるための第一歩です。
+              <ul className="space-y-1">
+                <li>・続かない理由はたいてい具体的。意志ではなく仕組みで解決する</li>
+                <li>・仕組みでの解決は基本「減らす」方向。続かないときに量を増やすのは裏目に出る</li>
+                <li>・やる気が落ちるのは自然なこと。筋肉の増えるペースは4年目で1年目の5分の1以下になる</li>
+                <li>・5年目以降は、続ける理由を「成長」から「維持」に切り替える</li>
+                <li>・比較対象は先週ではなく3ヶ月前・半年前の自分にする</li>
+              </ul>
+              <p className="mt-3">
+                私も15年のあいだにモチベーションが落ちた時期は何度もありました。そのたびに効いたのは気合いではなく、環境や量を調整することでした。停滞を実際に破ったのがジムを変えて指導を受けたことだった話は
+                <Link href="/column/10years" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  10年筋トレを続けてわかったこと
+                </Link>
+                に書いています。サクトレでは、あなたのペースや目標に合わせたメニューを自動で作成します。まず「何をすればいいか」を明確にすることが、続けるための第一歩です。
               </p>
             </section>
           </div>

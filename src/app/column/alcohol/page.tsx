@@ -4,9 +4,9 @@ import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
 
 export const metadata = pageMetadata({
-  title: "筋トレとお酒の付き合い方 - サクトレ",
+  title: "筋トレとお酒の付き合い方｜種類別カロリー比較表つき - サクトレ",
   description:
-    "アルコールが筋肉や筋トレの効果に与える影響を解説。飲んでもいいタイミングや、お酒好きでも成果を出すためのコツを紹介します。",
+    "アルコールは1gあたり7kcal。糖質ゼロでもカロリーは残ります。お酒6種のカロリー・糖質比較表と、毎晩飲みながら90kg→78kgを達成した筆者の考え方を解説します。",
   path: "/column/alcohol",
 });
 
@@ -68,6 +68,95 @@ export default function AlcoholPage() {
               <p>
                 アルコールは男性ホルモンであるテストステロンの分泌を抑制します。テストステロンは筋肉の合成を促進する重要なホルモンであるため、慢性的な大量飲酒は筋肉がつきにくい体質につながる可能性があります。
               </p>
+            </section>
+
+            <section>
+              <h2 className="font-bold text-orange-500 text-base mb-3">
+                お酒のカロリーを数字で見る
+              </h2>
+              <p>
+                筋肉への影響と並んで現実的な問題が、カロリーです。まず前提として、<strong className="text-gray-800">アルコールそのものが1gあたり7kcal</strong>あります。糖質やタンパク質が4kcal、脂質が9kcalなので、位置づけとしては脂質寄りです。つまり「糖質ゼロ」でもカロリーはしっかり残ります。
+              </p>
+
+              <div className="overflow-x-auto -mx-2 px-2 mt-3">
+                <table className="w-full text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        種類
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        量
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        カロリー
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        糖質
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">ハイボール</td>
+                      <td className="border border-gray-200 px-2 py-2">350ml</td>
+                      <td className="border border-gray-200 px-2 py-2">約70kcal</td>
+                      <td className="border border-gray-200 px-2 py-2">0g</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">焼酎ロック</td>
+                      <td className="border border-gray-200 px-2 py-2">60ml</td>
+                      <td className="border border-gray-200 px-2 py-2">約85kcal</td>
+                      <td className="border border-gray-200 px-2 py-2">0g</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">赤ワイン</td>
+                      <td className="border border-gray-200 px-2 py-2">グラス120ml</td>
+                      <td className="border border-gray-200 px-2 py-2">約85kcal</td>
+                      <td className="border border-gray-200 px-2 py-2">約2g</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">ビール</td>
+                      <td className="border border-gray-200 px-2 py-2">350ml</td>
+                      <td className="border border-gray-200 px-2 py-2">約140kcal</td>
+                      <td className="border border-gray-200 px-2 py-2">約11g</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">日本酒</td>
+                      <td className="border border-gray-200 px-2 py-2">1合180ml</td>
+                      <td className="border border-gray-200 px-2 py-2">約190kcal</td>
+                      <td className="border border-gray-200 px-2 py-2">約8g</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">缶チューハイ<br />（7%）</td>
+                      <td className="border border-gray-200 px-2 py-2">350ml</td>
+                      <td className="border border-gray-200 px-2 py-2">約200kcal</td>
+                      <td className="border border-gray-200 px-2 py-2">約13g</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-xs text-gray-500 mt-2">
+                ※商品によって差があるので目安です。
+              </p>
+
+              <p className="mt-3">
+                ビール350mlの内訳を分解すると、糖質11g（44kcal）に対してアルコール由来が約98kcal。<strong className="text-gray-800">カロリーの7割はアルコールそのもの</strong>です。だから糖質ゼロビールに変えても、カロリーは半分程度にしかなりません。「糖質ゼロだから大丈夫」は成り立たないということです。
+              </p>
+
+              <div className="bg-gray-50 rounded-xl p-4 mt-3">
+                <p className="font-bold text-gray-800 mb-2">毎晩ビール2本を1ヶ月続けると</p>
+                <p className="text-gray-600">
+                  140kcal × 2本 × 30日 ＝ <strong className="text-gray-800">8,400kcal</strong>。体脂肪1kgが約7,200kcalなので、<strong className="text-gray-800">ひと月あたり脂肪1.1kg分</strong>に相当します。1年なら13kg分です。もちろん実際には食事全体のバランスで決まりますが、飲む分をどこかで削らなければこの計算が効いてきます。
+                </p>
+                <p className="text-gray-600 mt-2">
+                  私は毎晩飲みますが、90kgから78kgまで落とせました。矛盾しているようで、していません。<strong className="text-gray-800">飲む前提で1日の総カロリーを組んでいた</strong>だけです。お酒をやめるか続けるかではなく、飲む分の枠をどこから持ってくるかという話になります。自分の1日の消費カロリーは
+                  <Link href="/calorie-calculator" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                    カロリー計算機
+                  </Link>
+                  で確認できます。
+                </p>
+              </div>
             </section>
 
             <section>
@@ -164,11 +253,23 @@ export default function AlcoholPage() {
               <h2 className="font-bold text-orange-500 text-base mb-3">
                 まとめ
               </h2>
-              <p>
-                お酒が筋肉に悪影響を与えることは事実ですが、完全に禁酒しなければ筋トレの効果がゼロになるわけではありません。タイミングと量を管理し、食事と水分補給を工夫することで、お酒を楽しみながら筋トレの成果を出すことは十分可能です。
-              </p>
-              <p className="mt-2">
-                まずはサクトレであなたに合ったトレーニングメニューを作成し、自分のライフスタイルに合わせた筋トレを継続していきましょう。
+              <ul className="space-y-1">
+                <li>・アルコールは1gあたり7kcal。糖質ゼロでもカロリーは残る（ビールの7割はアルコール由来）</li>
+                <li>・毎晩ビール2本で月8,400kcal＝脂肪1.1kg分。飲む枠をどこかから持ってくる必要がある</li>
+                <li>・飲むならトレ後3〜4時間空けてから。オフ日に寄せるのがいちばん影響が小さい</li>
+                <li>・選ぶなら蒸留酒（ハイボール・焼酎）。同じ酔いでカロリーが半分以下になる</li>
+                <li>・禁酒しなくても成果は出る。実際、私は毎晩飲みながら12kg落としました</li>
+              </ul>
+              <p className="mt-3">
+                大事なのは「やめるか続けるか」ではなく、飲む前提で1日の総量を組めるかどうかです。摂取カロリーの枠は
+                <Link href="/calorie-calculator" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  カロリー計算機
+                </Link>
+                で、削るべきは何かは
+                <Link href="/column/diet-rebound-muscle" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  食事制限だけでリバウンドする理由
+                </Link>
+                を参考にしてください（タンパク質だけは削らないことです）。サクトレで自分のライフスタイルに合ったメニューを作成しましょう。
               </p>
             </section>
           </div>

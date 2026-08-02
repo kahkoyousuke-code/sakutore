@@ -4,9 +4,9 @@ import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
 
 export const metadata = pageMetadata({
-  title: "脂肪燃焼に筋トレが有酸素運動より効果的な理由 - サクトレ",
+  title: "脂肪燃焼は筋トレと有酸素どっち？｜消費カロリー比較表つき - サクトレ",
   description:
-    "ランニングより筋トレの方が長期的に痩せやすい理由を、基礎代謝とアフターバーン効果から解説。女性が結果を出すための運動選びを紹介します。",
+    "運動中の消費カロリーだけならランニングの勝ちです。METsで計算した比較表を出したうえで、それでも筋トレを土台に置くべき理由を解説。「筋肉1kgで代謝が50〜100kcal上がる」という誇張も訂正します。",
   path: "/column/muscle-vs-cardio-women",
 });
 
@@ -23,7 +23,7 @@ export default function MuscleVsCardioWomenPage() {
           <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
             <section>
               <p className="text-gray-500 italic border-l-2 border-orange-300 pl-3 mb-3">
-                20代の頃、走るだけのダイエットで全然結果が出なかった経験があります。筋トレを始めてから体が変わった理由を解説します。
+                私（男性・筋トレ歴15年）は20代の頃、体重90kg超の状態から走るだけのダイエットをして、まったく結果が出ませんでした。筋トレを軸に変えてから12kg落とせた理由を、数字で説明します。
               </p>
               <p>
                 「痩せたいならランニング」というイメージは根強くあります。しかし実際には、長期的な脂肪燃焼において筋トレは有酸素運動を上回る効果を発揮します。この記事では、筋トレが脂肪燃焼に優れている理由を「基礎代謝」と「アフターバーン効果」という2つの観点から詳しく解説します。
@@ -66,23 +66,25 @@ export default function MuscleVsCardioWomenPage() {
               </h2>
 
               <h3 className="font-bold text-gray-800 mt-4 mb-2">
-                1. 基礎代謝が上がる
+                1. 減量中に筋肉が減るのを防げる（これが本命）
               </h3>
               <p>
-                筋肉は安静時でも多くのエネルギーを消費する「代謝が高い組織」です。筋肉量が1kg増えると、1日あたりの基礎代謝が約50〜100kcal程度上がると言われています。
+                ここで多くの記事が「筋肉が1kg増えると基礎代謝が50〜100kcal上がる」と書いていますが、<strong className="text-gray-800">この数字は誇張です</strong>。実際に測定されている骨格筋の代謝量は<strong className="text-gray-800">1kgあたり1日約13kcal</strong>で、筋肉を2kg増やしても増える基礎代謝は26kcal程度。おにぎり1個にもなりません（
+                <Link href="/column/metabolism" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  筋トレで痩せる仕組み
+                </Link>
+                に組織別の代謝率表を載せています）。
               </p>
               <p className="mt-2">
-                たとえば筋肉を2kg増やすだけで、1日100〜200kcal余分に消費できるようになります。1ヶ月で3,000〜6,000kcal、体脂肪に換算すると約400〜800gの差になります。何も意識しなくても、筋肉があるだけで自動的に脂肪が燃え続けるのです。
+                では筋トレの何が効くのかというと、<strong className="text-gray-800">減量中に筋肉が減るのを防ぐこと</strong>です。食事制限だけで10kg落とすと、そのうち2.5kg前後が筋肉などの除脂肪量になります。筋トレを併用するとこれを1kg以下に抑えられます。同じ10kg減でも、中身がまったく違うということです。
               </p>
-
-              <div className="bg-gray-50 rounded-xl p-4 mt-3">
-                <p className="font-bold text-gray-800 mb-2">基礎代謝の比較イメージ</p>
-                <ul className="space-y-1 text-gray-600">
-                  <li>・筋肉なし：1日1,200kcal消費（例）</li>
-                  <li>・筋肉2kg増：1日1,400kcal消費（例）</li>
-                  <li>・1ヶ月の差：約6,000kcal ≒ 体脂肪約800g</li>
-                </ul>
-              </div>
+              <p className="mt-2">
+                この差が効いてくるのは、痩せた後です。筋肉を残して落とした体は戻りにくく、筋肉ごと落とした体は戻したときに脂肪だけが増えます。<strong className="text-gray-800">筋トレの役割は「落とすこと」ではなく「落とした後に戻らないこと」</strong>だと考えるほうが、期待値として正確です（
+                <Link href="/column/diet-rebound-muscle" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  食事制限だけでリバウンドする理由
+                </Link>
+                に内訳の比較表があります）。
+              </p>
 
               <h3 className="font-bold text-gray-800 mt-4 mb-2">
                 2. アフターバーン効果（EPOC）
@@ -103,7 +105,58 @@ export default function MuscleVsCardioWomenPage() {
                 最も効果的なのは「筋トレ＋有酸素運動」の組み合わせ
               </h2>
               <p>
-                筋トレが優れているとはいえ、有酸素運動をまったく行わなくていいというわけではありません。最も効果的なのは、両方を組み合わせることです。
+                筋トレが優れているとはいえ、有酸素運動をまったく行わなくていいというわけではありません。むしろ<strong className="text-gray-800">運動中に消費するカロリーだけを見れば、有酸素運動のほうが上です</strong>。ここは正直に数字で見ておきます。
+              </p>
+
+              <div className="overflow-x-auto -mx-2 px-2 mt-3">
+                <table className="w-full text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        30分やった場合
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        強度（METs）
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        体重60kgの消費
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">ウォーキング</td>
+                      <td className="border border-gray-200 px-2 py-2">約3.5</td>
+                      <td className="border border-gray-200 px-2 py-2">約110kcal</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">筋トレ（中程度）</td>
+                      <td className="border border-gray-200 px-2 py-2">約5.0</td>
+                      <td className="border border-gray-200 px-2 py-2">約158kcal</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">ジョギング</td>
+                      <td className="border border-gray-200 px-2 py-2">約7.0</td>
+                      <td className="border border-gray-200 px-2 py-2">約221kcal</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">ランニング</td>
+                      <td className="border border-gray-200 px-2 py-2">約8.3</td>
+                      <td className="border border-gray-200 px-2 py-2">約261kcal</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-xs text-gray-500 mt-2">
+                ※METs式（METs × 体重kg × 時間h × 1.05）で計算。この式には安静時の代謝も含まれるので、実際の「上乗せ分」は1〜2割少なくなります。自分の体重での計算は
+                <Link href="/calorie-calculator" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  カロリー計算機
+                </Link>
+                でできます。
+              </p>
+
+              <p className="mt-3">
+                表の通り、その場で燃やす量ならランニングの勝ちです。<strong className="text-gray-800">それでも筋トレを土台に置くべきなのは、有酸素だけで落とすと筋肉ごと減るから</strong>。「どちらが優れているか」ではなく、役割が違うと考えてください。最も効果的なのは両方を組み合わせることです。
               </p>
               <p className="mt-2">
                 理想的な順番は「筋トレ→有酸素運動」です。先に筋トレで糖質を消費しておくことで、その後の有酸素運動で脂肪が燃えやすい状態をつくれます。また、有酸素運動は心肺機能を高め、筋トレのパフォーマンス向上にもつながります。
@@ -151,11 +204,15 @@ export default function MuscleVsCardioWomenPage() {
               <h2 className="font-bold text-orange-500 text-base mb-3">
                 まとめ
               </h2>
-              <p>
-                有酸素運動は運動中だけ脂肪を燃やしますが、筋トレは「基礎代謝の向上」と「アフターバーン効果」によって24時間脂肪を燃やし続ける体をつくります。長期的に痩せた体を維持したいなら、筋トレを中心に据えることが最も効率的な選択です。
-              </p>
-              <p className="mt-2">
-                サクトレではいくつかの質問に答えるだけで、あなたの体型・目的に合った筋トレメニューを提案します。まずは一歩踏み出してみてください。
+              <ul className="space-y-1">
+                <li>・運動中に燃やす量だけならランニングの勝ち。ここは正直に認めるべきところ</li>
+                <li>・「筋肉1kgで代謝が50〜100kcal上がる」は誇張。実際は約13kcal</li>
+                <li>・筋トレの本命は代謝アップではなく、<strong>減量中に筋肉が減るのを防ぐこと</strong></li>
+                <li>・同じ10kg減でも、筋肉を残したかどうかで戻りやすさが変わる</li>
+                <li>・順番は筋トレ→有酸素。役割が違うので、どちらが上かではなく両方使う</li>
+              </ul>
+              <p className="mt-3">
+                「走っても痩せない」と悩んでいるなら、走る量を増やすより先に筋トレを土台に入れてください。私自身、20代の頃に走るだけで結果が出なかったところから、筋トレを軸にして90kgから78kgまで落としました。サクトレでは5つの質問に答えるだけで、目的に合ったメニューを提案します。
               </p>
             </section>
           </div>

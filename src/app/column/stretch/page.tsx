@@ -4,9 +4,9 @@ import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
 
 export const metadata = pageMetadata({
-  title: "筋トレ前後のストレッチの効果とやり方 - サクトレ",
+  title: "筋トレ前後のストレッチ｜前に静的ストレッチをしてはいけない理由 - サクトレ",
   description:
-    "筋トレ前後のストレッチの重要性と具体的なやり方を解説。動的ストレッチと静的ストレッチの違い、効果的なメニューを紹介します。",
+    "動的と静的の違いを比較表で整理。直前の長い静的ストレッチは筋力を一時的に下げます。前後それぞれのメニューと、ストレッチにまつわる3つの誤解を解説します。",
   path: "/column/stretch",
 });
 
@@ -34,18 +34,57 @@ export default function StretchPage() {
               <p>
                 ストレッチには大きく分けて「動的ストレッチ（ダイナミックストレッチ）」と「静的ストレッチ（スタティックストレッチ）」の2種類があります。それぞれ効果と適したタイミングが異なるため、正しく使い分けることが重要です。
               </p>
-              <div className="bg-gray-50 rounded-xl p-4 mt-3">
-                <p className="font-bold text-gray-800 mb-2">動的ストレッチ</p>
-                <p className="text-gray-600">
-                  体を動かしながら筋肉を伸ばすストレッチ。関節の可動域を広げ、筋温を上げる効果があります。筋トレ前に最適です。
-                </p>
+              <div className="overflow-x-auto -mx-2 px-2 mt-3">
+                <table className="w-full text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        動的ストレッチ
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        静的ストレッチ
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">やり方</td>
+                      <td className="border border-gray-200 px-2 py-2">動かしながら伸ばす</td>
+                      <td className="border border-gray-200 px-2 py-2">止めた姿勢で伸ばす</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">タイミング</td>
+                      <td className="border border-gray-200 px-2 py-2">筋トレ前</td>
+                      <td className="border border-gray-200 px-2 py-2">筋トレ後・入浴後</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">1部位の目安</td>
+                      <td className="border border-gray-200 px-2 py-2">10〜15回</td>
+                      <td className="border border-gray-200 px-2 py-2">20〜30秒</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">直後の筋力</td>
+                      <td className="border border-gray-200 px-2 py-2">維持〜向上</td>
+                      <td className="border border-gray-200 px-2 py-2"><strong>一時的に低下する</strong></td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">主な狙い</td>
+                      <td className="border border-gray-200 px-2 py-2">可動域・筋温を上げる</td>
+                      <td className="border border-gray-200 px-2 py-2">柔軟性を伸ばす</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
-              <div className="bg-gray-50 rounded-xl p-4 mt-3">
-                <p className="font-bold text-gray-800 mb-2">静的ストレッチ</p>
-                <p className="text-gray-600">
-                  一定のポーズで筋肉をじっくり伸ばすストレッチ。柔軟性の向上や筋肉の緊張をほぐす効果があります。筋トレ後に最適です。
-                </p>
-              </div>
+
+              <p className="mt-3">
+                注目してほしいのは4行目です。<strong className="text-gray-800">静的ストレッチを筋トレの直前に長くやると、そのあとの筋力が一時的に落ちることがわかっています</strong>。特に1部位を60秒以上伸ばした場合に顕著だと報告されています。「トレーニング前は念入りに伸ばすもの」と思っている人が多いのですが、少なくとも高重量を扱う直前には向きません。
+              </p>
+              <p className="mt-2">
+                「ストレッチをサボると怪我をする」のではなく、<strong className="text-gray-800">前にやるものと後にやるものが違う</strong>だけです。前は動的、後は静的。これだけ覚えておけば十分です。
+              </p>
             </section>
 
             <section>
@@ -196,13 +235,70 @@ export default function StretchPage() {
 
             <section>
               <h2 className="font-bold text-orange-500 text-base mb-3">
-                まとめ
+                よくある3つの誤解
               </h2>
               <p>
-                筋トレの効果を最大化し、怪我を予防するためには、トレーニング前の動的ストレッチとトレーニング後の静的ストレッチが重要です。それぞれ5〜10分程度で十分なので、トレーニングの一部として習慣化しましょう。
+                ストレッチは「やっておけば間違いない」と思われがちですが、実際には効果が誤解されている部分があります。
+              </p>
+
+              <div className="overflow-x-auto -mx-2 px-2 mt-3">
+                <table className="w-full text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        よく言われること
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        実際のところ
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2">トレ前に念入りに伸ばすほど怪我をしにくい</td>
+                      <td className="border border-gray-200 px-2 py-2">直前の長い静的ストレッチは筋力を一時的に下げる。前は動的にする</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2">ストレッチをすれば筋肉痛を防げる</td>
+                      <td className="border border-gray-200 px-2 py-2">軽減効果はごくわずかという報告が多い。期待しすぎない</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2">体が硬いと筋トレを始められない</td>
+                      <td className="border border-gray-200 px-2 py-2">必要な可動域は種目ごとに違う。硬くてもできる種目から始めればいい</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p className="mt-3">
+                では静的ストレッチは無駄なのかというと、そうではありません。<strong className="text-gray-800">柔軟性そのものを伸ばす効果は確かにあります</strong>。ただしそれは「筋肉痛予防」ではなく「可動域を広げてフォームを作りやすくする」という別の効果です。狙いを取り違えなければ十分に価値があります。
               </p>
               <p className="mt-2">
-                ストレッチを含めたトータルのトレーニング時間を考慮して、サクトレであなたに合ったメニューを作成してみてください。
+                私は40代で週5回トレーニングしていますが、年齢が上がるほどウォームアップを削ったときのリスクは上がります。関節の違和感は放置すると数週間から数ヶ月の離脱に直結するので、<strong className="text-gray-800">時間がない日は種目数を減らしてでもウォームアップは残す</strong>という順番にしています。回復の判断基準は
+                <Link href="/column/rest" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  休息の重要性
+                </Link>
+                にまとめています。
+              </p>
+            </section>
+
+            <section>
+              <h2 className="font-bold text-orange-500 text-base mb-3">
+                まとめ
+              </h2>
+              <ul className="space-y-1">
+                <li>・前は動的（動かしながら10〜15回）、後は静的（止めて20〜30秒）</li>
+                <li>・高重量の直前に長い静的ストレッチをすると、筋力が一時的に落ちる</li>
+                <li>・静的ストレッチの価値は筋肉痛予防ではなく、柔軟性と可動域のほう</li>
+                <li>・体が硬くても始められる。硬さは始めない理由にならない</li>
+                <li>・時間がない日は、種目を削ってでもウォームアップは残す</li>
+              </ul>
+              <p className="mt-3">
+                ストレッチを含めたトータルの時間を考えてメニューを組みたいときは、サクトレで所要時間に合わせたメニューを作成できます。フォームが固まるまでの重量設定は
+                <Link href="/weight-checker" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  適正重量チェッカー
+                </Link>
+                を使ってください。
               </p>
             </section>
           </div>
