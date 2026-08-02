@@ -4,9 +4,9 @@ import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
 
 export const metadata = pageMetadata({
-  title: "筋トレに必要なタンパク質の量と摂り方 - サクトレ",
+  title: "筋トレに必要なタンパク質の量と摂り方｜1日112gの献立例つき - サクトレ",
   description:
-    "筋トレの効果を最大化するために必要なタンパク質の量、摂取タイミング、おすすめの食材をわかりやすく解説します。",
+    "体重別の必要量と高タンパク食材の一覧表に加え、1日112gを実際に組んだ献立例を掲載。目標量が「意識しないと絶対に届かない量」であることが具体的にわかります。",
   path: "/column/protein",
 });
 
@@ -121,6 +121,71 @@ export default function ProteinPage() {
 
             <section>
               <h2 className="font-bold text-orange-500 text-base mb-3">
+                1日112gを実際に組むとこうなる
+              </h2>
+              <p>
+                「体重70kgなら112g」と言われても、それが1日の食事としてどれくらいの量なのかは想像しにくいと思います。先ほどの表の食材で、実際に組み立ててみます。
+              </p>
+
+              <div className="overflow-x-auto -mx-2 px-2 mt-3">
+                <table className="w-full text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        タイミング
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        内容
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        タンパク質
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">朝</td>
+                      <td className="border border-gray-200 px-2 py-2">卵2個＋納豆1パック＋ギリシャヨーグルト100g</td>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800">約29g</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">昼</td>
+                      <td className="border border-gray-200 px-2 py-2">鶏むね肉150g</td>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800">約35g</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">間食</td>
+                      <td className="border border-gray-200 px-2 py-2">プロテイン1杯</td>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800">約20g</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">夜</td>
+                      <td className="border border-gray-200 px-2 py-2">鮭1切れ＋木綿豆腐半丁</td>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800">約26g</td>
+                    </tr>
+                    <tr className="bg-orange-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">合計</td>
+                      <td className="border border-gray-200 px-2 py-2">＋ごはん・パンからも少し加算される</td>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-orange-600">約110g</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p className="mt-3">
+                この献立を見て「毎日これは無理だ」と思ったなら、それが正常な感想です。<strong className="text-gray-800">タンパク質の目標量は、意識しないと絶対に届かない量</strong>だということが、組んでみるとわかります。特に朝食を抜いている人は、それだけで約29g——1日の目標の4分の1を落としていることになります。
+              </p>
+              <p className="mt-2">
+                なお私は体重78kgなので、必要量は125〜172g。上の献立でもまだ足りません。だからこそ、<strong className="text-gray-800">90kgから78kgに落とす間も、削ったのは糖質と脂質でタンパク質は削りませんでした</strong>。減量中にタンパク質まで減らすと、落ちるのが脂肪ではなく筋肉になります（
+                <Link href="/column/diet-rebound-muscle" className="text-orange-600 font-bold underline">
+                  食事制限だけでリバウンドする理由
+                </Link>
+                に内訳の比較表があります）。
+              </p>
+            </section>
+
+            <section>
+              <h2 className="font-bold text-orange-500 text-base mb-3">
                 効果的な摂取タイミング
               </h2>
               <p>
@@ -152,11 +217,22 @@ export default function ProteinPage() {
               <h2 className="font-bold text-orange-500 text-base mb-3">
                 まとめ
               </h2>
-              <p>
-                筋トレの効果を最大化するには、体重1kgあたり1.6〜2.2gのタンパク質を毎日摂取することが重要です。肉・魚・卵・大豆製品を中心にバランスよく食べ、1日を通してこまめに摂取しましょう。食事だけでは難しい場合は、プロテインも上手に活用してください。
-              </p>
-              <p className="mt-2">
-                まずはサクトレであなたに合ったトレーニングメニューを作り、栄養管理と合わせて理想の体づくりを始めましょう。
+              <ul className="space-y-1">
+                <li>・目安は体重1kgあたり1.6〜2.2g。運動していない人の2倍以上が必要</li>
+                <li>・献立に落とすと、意識しないと絶対に届かない量になる（朝食を抜くだけで約29g減る）</li>
+                <li>・1回20〜40gを目安に、3〜5回に分ける</li>
+                <li>・減量中こそ削らない。タンパク質を削ると落ちるのが脂肪でなく筋肉になる</li>
+              </ul>
+              <p className="mt-3">
+                まずは1日分を書き出して、いま何g摂れているかを数えてみてください。足りない分をどう埋めるかは
+                <Link href="/column/protein-guide" className="text-orange-600 font-bold underline">
+                  プロテインの選び方ガイド
+                </Link>
+                に、総カロリーとのバランスは
+                <Link href="/calorie-calculator" className="text-orange-600 font-bold underline">
+                  カロリー計算機
+                </Link>
+                で確認できます。トレーニングメニューはサクトレで作れます。
               </p>
             </section>
           </div>

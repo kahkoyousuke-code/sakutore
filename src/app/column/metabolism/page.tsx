@@ -5,9 +5,9 @@ import AuthorBox from "@/components/AuthorBox";
 import RizapCta from "@/components/RizapCta";
 
 export const metadata = pageMetadata({
-  title: "筋トレで痩せる仕組みを解説 - サクトレ",
+  title: "筋トレで痩せる仕組み｜筋肉1kgで代謝は何kcal上がるのか - サクトレ",
   description:
-    "基礎代謝と筋肉量の関係、筋トレで痩せるメカニズムをわかりやすく解説。有酸素運動との比較や、効率よく体脂肪を落とすための方法を紹介します。",
+    "組織別の代謝率データをもとに「筋肉を増やせば代謝が激増する」の実際を検証。筋肉1kgは1日13kcal、5kg増やしても65kcalです。筆者が12kg落としたときの内訳計算つきで、筋トレの本当の役割を解説します。",
   path: "/column/metabolism",
 });
 
@@ -60,13 +60,74 @@ export default function MetabolismPage() {
               </p>
 
               <h3 className="font-bold text-gray-800 mt-4 mb-2">
-                基礎代謝を決める最大の要因は筋肉量
+                「筋肉を増やせば代謝が激増する」は言いすぎ
               </h3>
               <p>
-                基礎代謝の大きさを決める要因はいくつかありますが、最も影響が大きいのが「筋肉量」です。筋肉は脂肪と比べてエネルギーを消費しやすい組織であり、筋肉量が多いほど基礎代謝が高くなります。
+                ここで多くのサイトが「基礎代謝を決める最大の要因は筋肉量」と書きますが、数字を見ると少し話が違います。組織ごとの1日あたりの消費カロリー（体重1kgあたり）はこうなっています。
+              </p>
+
+              <div className="overflow-x-auto -mx-2 px-2 mt-3">
+                <table className="w-full text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        組織
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        1kgあたり/日
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        メモ
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">心臓・腎臓</td>
+                      <td className="border border-gray-200 px-2 py-2">約440kcal</td>
+                      <td className="border border-gray-200 px-2 py-2">最も燃費が悪いが増やせない</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">脳</td>
+                      <td className="border border-gray-200 px-2 py-2">約240kcal</td>
+                      <td className="border border-gray-200 px-2 py-2">重量は軽いが消費は大きい</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">肝臓</td>
+                      <td className="border border-gray-200 px-2 py-2">約200kcal</td>
+                      <td className="border border-gray-200 px-2 py-2">基礎代謝の主役のひとつ</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">骨格筋</td>
+                      <td className="border border-gray-200 px-2 py-2">約13kcal</td>
+                      <td className="border border-gray-200 px-2 py-2">量が多いので合計では大きい</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">脂肪</td>
+                      <td className="border border-gray-200 px-2 py-2">約4.5kcal</td>
+                      <td className="border border-gray-200 px-2 py-2">筋肉の約3分の1</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-xs text-gray-500 mt-2">
+                ※Elia（1992）の組織別代謝率としてよく引用される数値です。
+              </p>
+
+              <p className="mt-3">
+                注目すべきは骨格筋の<strong className="text-gray-800">13kcal</strong>という数字です。仮に筋トレを頑張って筋肉を5kg増やしても、基礎代謝の増加は
+                <strong className="text-gray-800">1日65kcal</strong>
+                。おにぎり半分にもなりません。しかも筋肉5kgは、初心者でも1年以上かかる相当な増量です。
               </p>
               <p className="mt-2">
-                参考として、筋肉1kgあたりの基礎代謝への寄与は1日約13kcalと言われています。一方、脂肪1kgは約4〜5kcalです。筋肉をつけることで、じわじわと基礎代謝を底上げできます。
+                では「筋トレで痩せる」は嘘なのかというと、そうではありません。ただし理由が世間で言われているものとは違います。<strong className="text-gray-800">筋トレが効くのは基礎代謝の底上げではなく、この後で説明する「減量中に筋肉を守ること」と「消費側の習慣が変わること」のほう</strong>です。数字を知らないまま「代謝が上がるから痩せる」と期待すると、思ったほど減らずに続かなくなります。
+              </p>
+              <p className="mt-2">
+                自分の基礎代謝と1日の消費カロリーの概算は
+                <Link href="/calorie-calculator" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  カロリー計算機
+                </Link>
+                で出せます。まず今の数字を知るところからです。
               </p>
             </section>
 
@@ -130,7 +191,8 @@ export default function MetabolismPage() {
                   <p className="font-bold text-gray-800">筋トレの特徴</p>
                   <ul className="mt-1 space-y-1 text-gray-600">
                     <li>・運動中の直接的な脂肪燃焼は少ない</li>
-                    <li>・筋肉量が増えて基礎代謝が上がる</li>
+                    <li>・減量中に筋肉が落ちるのを防げる（これが本命）</li>
+                    <li>・基礎代謝も上がるが、増加幅は小さい（筋肉1kgで約13kcal）</li>
                     <li>・アフターバーン効果で長時間燃焼が続く</li>
                     <li>・リバウンドしにくい体質になる</li>
                     <li>・体型が引き締まって見える（体重変化が少なくても）</li>
@@ -169,13 +231,76 @@ export default function MetabolismPage() {
 
             <section>
               <h2 className="font-bold text-orange-500 text-base mb-3">
-                まとめ
+                筆者が12kg落としたときの内訳
               </h2>
               <p>
-                筋トレで痩せる仕組みは「筋肉量を増やすことで基礎代謝を底上げし、アフターバーン効果によってトレーニング後も長時間カロリーを消費し続ける」ことにあります。有酸素運動が運動中の脂肪燃焼に優れているのに対し、筋トレは長期的な痩せやすい体質づくりに優れています。
+                私は体重90kg超から78kgまで、約1年で12kg落としました。この数字を先ほどの代謝の話に当てはめてみると、何が効いていたのかがはっきりします。
+              </p>
+
+              <div className="overflow-x-auto -mx-2 px-2 mt-3">
+                <table className="w-full text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        項目
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        数字
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">減った体重</td>
+                      <td className="border border-gray-200 px-2 py-2">12kg（約1年）</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">仮に全部が脂肪なら</td>
+                      <td className="border border-gray-200 px-2 py-2">7,200kcal × 12 ＝ 86,400kcal</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">1日あたりの赤字</td>
+                      <td className="border border-gray-200 px-2 py-2">86,400 ÷ 365 ≒ <strong>約237kcal</strong></td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">筋肉5kg増でまかなえる分</td>
+                      <td className="border border-gray-200 px-2 py-2">13 × 5 ＝ 65kcal（約27%）</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-xs text-gray-500 mt-2">
+                ※減った12kgのすべてが脂肪とは限らないので、あくまで上限の試算です。
+              </p>
+
+              <p className="mt-3">
+                つまり、<strong className="text-gray-800">仮に筋肉を5kg増やせていたとしても、必要な赤字の3割弱しか説明できません</strong>。残りの7割は食事と日々の活動量です。「筋トレしているから食べても大丈夫」という考え方が通用しないのは、この計算のためです。
               </p>
               <p className="mt-2">
-                ダイエット目的でも、筋トレは非常に効果的な手段です。サクトレであなたの目標（体脂肪を落としたい・引き締めたいなど）に合ったメニューを作成し、理想の体を目指しましょう。
+                では筋トレは無駄だったのかというと逆で、私が12kg落としたあと今も78kgを維持できているのは筋トレを続けているからだと思っています。食事制限だけで落とすと筋肉ごと減って、戻したときに脂肪だけが増えます。<strong className="text-gray-800">筋トレの役割は「落とすこと」ではなく「落とした後に戻らないこと」</strong>です。この話は
+                <Link href="/column/diet-rebound-muscle" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  リバウンドと筋肉の関係
+                </Link>
+                に詳しく書いています。
+              </p>
+            </section>
+
+            <section>
+              <h2 className="font-bold text-orange-500 text-base mb-3">
+                まとめ
+              </h2>
+              <ul className="space-y-1">
+                <li>・筋肉1kgが増やす基礎代謝は1日約13kcal。5kg増やしても65kcalで、思っているより小さい</li>
+                <li>・体重を落とす主役はあくまで食事。筋トレで代謝が激増するわけではない</li>
+                <li>・筋トレの本当の役割は、減量中に筋肉を守り、落とした後に戻らない体にすること</li>
+                <li>・筆者の12kg減も、計算上は筋肉の寄与では3割弱しか説明できない</li>
+              </ul>
+              <p className="mt-3">
+                期待値を正しく持てれば、続けられます。まずは
+                <Link href="/calorie-calculator" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  カロリー計算機
+                </Link>
+                で自分の消費カロリーを把握し、サクトレで目標に合ったメニューを作成してみてください。
               </p>
             </section>
           </div>

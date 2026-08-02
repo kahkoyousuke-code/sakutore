@@ -5,9 +5,9 @@ import AuthorBox from "@/components/AuthorBox";
 import RizapCta from "@/components/RizapCta";
 
 export const metadata = pageMetadata({
-  title: "食事制限だけでリバウンドする理由と筋トレの関係 - サクトレ",
+  title: "食事制限だけでリバウンドする理由｜10kg減の中身を比較 - サクトレ",
   description:
-    "食事制限だけでは筋肉が落ちてリバウンドしやすくなる仕組みと、筋トレを組み合わせるべき理由を解説。リバウンドを繰り返した経験から具体的な対策を紹介します。",
+    "同じ10kg減でも食事制限のみと筋トレ併用では中身が違います。脂肪と筋肉の内訳を数字で比較し、筋肉を残せる減量ペースの目安表も掲載。90kg→78kgを1年かけて落とした筆者の実ペースも公開します。",
   path: "/column/diet-rebound-muscle",
 });
 
@@ -99,17 +99,125 @@ export default function DietReboundMusclePage() {
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-xl p-4 mt-3">
-                <p className="font-bold text-gray-800 mb-2">食事制限のみ vs 食事制限＋筋トレ</p>
-                <ul className="space-y-2 text-gray-600">
-                  <li>
-                    <span className="font-bold text-gray-700">食事制限のみ：</span>体重は落ちるが筋肉も落ちる→基礎代謝低下→リバウンドしやすい
-                  </li>
-                  <li>
-                    <span className="font-bold text-gray-700">食事制限＋筋トレ：</span>脂肪が落ちて筋肉が保たれる→基礎代謝維持→リバウンドしにくい
-                  </li>
-                </ul>
+              <p className="mt-3">
+                この差を数字にすると、わかりやすくなります。同じ「10kg減」でも中身がまったく違います。
+              </p>
+
+              <div className="overflow-x-auto -mx-2 px-2 mt-3">
+                <table className="w-full text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        10kg落としたとき
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        食事制限のみ
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        食事制限＋筋トレ
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">うち脂肪</td>
+                      <td className="border border-gray-200 px-2 py-2">約7.5kg</td>
+                      <td className="border border-gray-200 px-2 py-2">約9kg以上</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">うち筋肉など</td>
+                      <td className="border border-gray-200 px-2 py-2">約2.5kg</td>
+                      <td className="border border-gray-200 px-2 py-2">約1kg以下</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">基礎代謝の変化</td>
+                      <td className="border border-gray-200 px-2 py-2">約−33kcal/日</td>
+                      <td className="border border-gray-200 px-2 py-2">約−13kcal/日</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">戻したときの結果</td>
+                      <td className="border border-gray-200 px-2 py-2">前より脂肪が増える</td>
+                      <td className="border border-gray-200 px-2 py-2">戻りにくい</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+              <p className="text-xs text-gray-500 mt-2">
+                ※食事制限のみだと減量分の2〜3割が除脂肪量になるという報告をもとにした目安です。基礎代謝は筋肉1kg＝1日約13kcalで換算しています（
+                <Link href="/column/metabolism" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  筋トレで痩せる仕組み
+                </Link>
+                に組織別の代謝率表があります）。
+              </p>
+              <p className="mt-3">
+                注目してほしいのは、基礎代謝の差が<strong className="text-gray-800">1日20kcal程度しかない</strong>ことです。「筋肉が落ちると代謝が激減してリバウンドする」とよく説明されますが、代謝の差だけならおにぎり1個にも届きません。本当の問題は<strong className="text-gray-800">見た目と、戻したときに増えるのが脂肪だけになること</strong>です。同じ体重に戻っても、体脂肪率は前より高くなります。
+              </p>
+            </section>
+
+            <section>
+              <h2 className="font-bold text-orange-500 text-base mb-3">
+                筋肉を残せる減量ペース
+              </h2>
+              <p>
+                筋トレをしていても、落とすペースが速すぎれば筋肉は減ります。目安は週あたり体重の0.5〜1%です。
+              </p>
+
+              <div className="overflow-x-auto -mx-2 px-2 mt-3">
+                <table className="w-full text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        週あたりの減量
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        体重80kgなら
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        筋肉への影響
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">0.5%以下</td>
+                      <td className="border border-gray-200 px-2 py-2">週0.4kg以下</td>
+                      <td className="border border-gray-200 px-2 py-2">残しやすい。ただし時間がかかる</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">0.5〜1%</td>
+                      <td className="border border-gray-200 px-2 py-2">週0.4〜0.8kg</td>
+                      <td className="border border-gray-200 px-2 py-2">一般的な推奨範囲</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">1%超</td>
+                      <td className="border border-gray-200 px-2 py-2">週0.8kg以上</td>
+                      <td className="border border-gray-200 px-2 py-2">筋肉が落ちやすい・戻りやすい</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div className="bg-orange-50 border border-orange-100 rounded-xl p-4 mt-3">
+                <p className="font-bold text-orange-600 mb-1">私のペースを計算するとこうなります</p>
+                <p className="text-xs leading-relaxed">
+                  12kgを約1年（52週）なので、週あたり約0.23kg。当時の体重90kgに対して<strong>週0.26%</strong>です。推奨範囲の下限（0.5%）よりさらに遅い、いちばん遅い帯でした。正直に言えば意図してこのペースにしたわけではなく、月1kg程度しか減らないのに焦らず続けた結果です。ただ、筋肉を残して落とせた理由を後から考えると、この遅さが効いていたのだと思います。
+                </p>
+                <p className="text-xs leading-relaxed mt-2">
+                  逆に言うと、<strong>1ヶ月で5kg落とすようなペースはこの表の外側</strong>です。落ちているのは脂肪だけではありません。
+                </p>
+              </div>
+
+              <p className="mt-3">
+                自分の維持カロリーと、そこから何kcal減らせばこのペースになるかは
+                <Link href="/calorie-calculator" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  カロリー計算機
+                </Link>
+                で確認できます。減量中こそタンパク質は減らせないので、量の目安は
+                <Link href="/column/protein-guide" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  プロテインの選び方ガイド
+                </Link>
+                の早見表を使ってください。
+              </p>
             </section>
 
             <section>

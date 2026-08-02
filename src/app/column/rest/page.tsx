@@ -4,9 +4,9 @@ import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
 
 export const metadata = pageMetadata({
-  title: "筋肉を育てる休息の重要性 - サクトレ",
+  title: "筋肉を育てる休息の重要性｜休めているか判断する5つの数字 - サクトレ",
   description:
-    "筋トレにおける休息の重要性を解説。超回復の仕組み、最適な休息日の取り方、睡眠や栄養の関係をわかりやすく紹介します。",
+    "超回復の仕組みと、休息が足りているかを起床時心拍数・挙上重量・睡眠などで判断するセルフチェック表。40代で週5回トレーニングしている筆者が、休みながら頻度を上げる考え方を解説します。",
   path: "/column/rest",
 });
 
@@ -61,7 +61,76 @@ export default function RestPage() {
                 </ul>
               </div>
               <p className="mt-3">
-                オーバートレーニングに陥ると、回復までに数週間〜数ヶ月かかることもあります。「休むことも トレーニングの一部」という意識を持つことが大切です。
+                オーバートレーニングに陥ると、回復までに数週間〜数ヶ月かかることもあります。「休むこともトレーニングの一部」という意識を持つことが大切です。
+              </p>
+            </section>
+
+            <section>
+              <h2 className="font-bold text-orange-500 text-base mb-3">
+                休めているかを判断する5つの数字
+              </h2>
+              <p>
+                「疲れている気がする」という感覚は当てになりません。前日の仕事や気分にも左右されるからです。私は次の5つを目安にしています。感覚ではなく、前回との比較で判断できるものを選んでいます。
+              </p>
+
+              <div className="overflow-x-auto -mx-2 px-2 mt-3">
+                <table className="w-full text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        見るもの
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        回復できている
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        要注意
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        休むべき
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">起床時の心拍数</td>
+                      <td className="border border-gray-200 px-2 py-2">いつも通り</td>
+                      <td className="border border-gray-200 px-2 py-2">+5〜10拍</td>
+                      <td className="border border-gray-200 px-2 py-2">+10拍以上が数日続く</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">前回と同じ重量</td>
+                      <td className="border border-gray-200 px-2 py-2">同じか、それ以上挙がる</td>
+                      <td className="border border-gray-200 px-2 py-2">回数が1〜2回落ちる</td>
+                      <td className="border border-gray-200 px-2 py-2">明らかに挙がらない</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">睡眠</td>
+                      <td className="border border-gray-200 px-2 py-2">7〜8時間眠れる</td>
+                      <td className="border border-gray-200 px-2 py-2">寝つきが悪い</td>
+                      <td className="border border-gray-200 px-2 py-2">寝ても疲れが残る</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">関節・腱</td>
+                      <td className="border border-gray-200 px-2 py-2">痛みなし</td>
+                      <td className="border border-gray-200 px-2 py-2">動作の入りだけ違和感</td>
+                      <td className="border border-gray-200 px-2 py-2">日常生活でも痛む</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">気持ち</td>
+                      <td className="border border-gray-200 px-2 py-2">ジムに行きたい</td>
+                      <td className="border border-gray-200 px-2 py-2">少し億劫</td>
+                      <td className="border border-gray-200 px-2 py-2">考えるだけで嫌になる</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p className="mt-3">
+                一番わかりやすいのは<strong className="text-gray-800">2番目の「前回と同じ重量」</strong>です。同じ種目・同じ重量で回数が落ちたら、それは気のせいではなく回復が間に合っていない客観的なサインです。逆にここが維持できているなら、多少だるくても進めて問題ありません。
+              </p>
+              <p className="mt-2">
+                「休むべき」が2つ以上当てはまったら、その週は思い切って1〜2日多く休むほうが結果的に早いです。特に4番目の関節の痛みを無視すると、数週間から数ヶ月の離脱につながります。
               </p>
             </section>
 
@@ -76,6 +145,24 @@ export default function RestPage() {
               <p>
                 週に最低1〜2日は、筋トレをしない完全休養日を設けましょう。初心者なら2〜3日、中級者以上でも最低1日は完全に体を休める日が必要です。この日は体の修復に集中させる日と考えてください。
               </p>
+
+              <div className="bg-gray-50 rounded-xl p-4 mt-3">
+                <p className="font-bold text-gray-800 mb-2">週5回やっても回復が間に合う理由</p>
+                <p className="text-gray-600">
+                  私は40代ですが、いまも週5回トレーニングしています。完全休養は週2日だけです。こう書くと超回復の48〜72時間と矛盾するように見えますが、そうではありません。<strong className="text-gray-800">超回復の48〜72時間は「同じ部位」の話</strong>だからです。週5回でも、部位を分けていれば1つの部位あたりは週1〜2回にしかなりません。
+                </p>
+                <p className="text-gray-600 mt-2">
+                  つまり頻度を上げたいなら、休みを削るのではなく分け方を変えるのが正解です。逆に全身を毎回やる組み方のまま週5回にすると、確実に回復が破綻します。頻度別の具体的な分け方は
+                  <Link href="/column/split-routine" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                    筋トレ分割法の早見表
+                  </Link>
+                  に、週何回が自分に合うかは
+                  <Link href="/column/frequency" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                    筋トレの頻度
+                  </Link>
+                  にまとめています。
+                </p>
+              </div>
 
               <h3 className="font-bold text-gray-800 mt-4 mb-2">
                 アクティブレストを活用する
@@ -118,7 +205,15 @@ export default function RestPage() {
                 休息日だからといってタンパク質の摂取を減らしてはいけません。筋肉は休息日にこそ修復・成長しているため、トレーニング日と同じくらいのタンパク質が必要です。
               </p>
               <p className="mt-2">
-                ただし、トレーニング日に比べて消費カロリーは少なくなるため、炭水化物や脂質の量を少し控えめにするとよいでしょう。水分補給も忘れずに行い、体の回復をサポートしましょう。
+                ただし、トレーニング日に比べて消費カロリーは少なくなるため、炭水化物や脂質の量を少し控えめにするとよいでしょう。水分補給も忘れずに行い、体の回復をサポートしましょう。必要なタンパク質量は
+                <Link href="/column/protein-guide" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  プロテインの選び方ガイド
+                </Link>
+                に体重別の早見表を、休息日の消費カロリーは
+                <Link href="/calorie-calculator" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  カロリー計算機
+                </Link>
+                で概算できます。
               </p>
             </section>
 
@@ -126,11 +221,14 @@ export default function RestPage() {
               <h2 className="font-bold text-orange-500 text-base mb-3">
                 まとめ
               </h2>
-              <p>
-                筋肉の成長には、トレーニングと同じくらい休息が重要です。超回復のメカニズムを理解し、適切な休息日を設け、質の高い睡眠と栄養を確保することで、トレーニングの効果を最大化できます。
-              </p>
-              <p className="mt-2">
-                「休むこともトレーニング」と考え、計画的に休息を取りましょう。サクトレでは、あなたのトレーニング頻度に合わせた最適なメニューを作成し、休息日も考慮した効果的なプランを提案します。
+              <ul className="space-y-1">
+                <li>・超回復の48〜72時間は「同じ部位」の話。部位を分ければ週5回でも成立する</li>
+                <li>・休めているかは感覚ではなく、前回と同じ重量で回数が落ちていないかで判断する</li>
+                <li>・関節の痛みだけは我慢しない。数週間〜数ヶ月の離脱に直結する</li>
+                <li>・休息日もタンパク質は減らさない。修復しているのは休息日のほう</li>
+              </ul>
+              <p className="mt-3">
+                「休むこともトレーニング」と考え、計画的に休息を取りましょう。サクトレでは、直近でどの部位をやったかの履歴をもとに、回復が間に合っていない部位を避けたメニューを提案します。
               </p>
             </section>
           </div>

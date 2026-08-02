@@ -4,9 +4,9 @@ import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
 
 export const metadata = pageMetadata({
-  title: "プロテインの選び方ガイド - サクトレ",
+  title: "プロテインの選び方ガイド｜種類別比較表と必要量の早見表 - サクトレ",
   description:
-    "ホエイ・カゼイン・ソイの違いや特徴、飲むタイミング、自分に合ったプロテインの選び方をわかりやすく解説します。",
+    "ホエイWPC・WPI・カゼイン・ソイを吸収速度・含有率・1食コストで比較した表と、体重別に1日何g必要か・プロテイン何杯分かの早見表付き。筋トレ歴15年の筆者が選び方を解説します。",
   path: "/column/protein-guide",
 });
 
@@ -32,7 +32,64 @@ export default function ProteinGuidePage() {
                 プロテインの種類と特徴
               </h2>
               <p>
-                プロテインには大きく分けて動物性と植物性があり、それぞれ異なる特徴を持っています。
+                プロテインには大きく分けて動物性と植物性があり、それぞれ異なる特徴を持っています。細かい説明の前に、4種類を一覧で比較しておきます。迷ったらこの表だけ見れば選べます。
+              </p>
+
+              <div className="overflow-x-auto -mx-2 px-2 mt-3">
+                <table className="w-full text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        種類
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        吸収の速さ
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        タンパク質含有率
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        価格帯
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        向いている場面
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">ホエイWPC</td>
+                      <td className="border border-gray-200 px-2 py-2">速い（30分〜1時間）</td>
+                      <td className="border border-gray-200 px-2 py-2">約70〜80%</td>
+                      <td className="border border-gray-200 px-2 py-2">安い</td>
+                      <td className="border border-gray-200 px-2 py-2">迷ったらこれ。トレ後・コスパ重視</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">ホエイWPI</td>
+                      <td className="border border-gray-200 px-2 py-2">速い（30分〜1時間）</td>
+                      <td className="border border-gray-200 px-2 py-2">約85〜90%</td>
+                      <td className="border border-gray-200 px-2 py-2">高い</td>
+                      <td className="border border-gray-200 px-2 py-2">牛乳でお腹を下す人・減量中</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">カゼイン</td>
+                      <td className="border border-gray-200 px-2 py-2">遅い（数時間）</td>
+                      <td className="border border-gray-200 px-2 py-2">約80%前後</td>
+                      <td className="border border-gray-200 px-2 py-2">やや高い</td>
+                      <td className="border border-gray-200 px-2 py-2">就寝前・間食の置き換え</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">ソイ</td>
+                      <td className="border border-gray-200 px-2 py-2">中間</td>
+                      <td className="border border-gray-200 px-2 py-2">約80%前後</td>
+                      <td className="border border-gray-200 px-2 py-2">安い〜普通</td>
+                      <td className="border border-gray-200 px-2 py-2">乳製品NG・植物性にしたい</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-xs text-gray-500 mt-2">
+                ※含有率・価格帯は市販品でよく見る範囲の目安です。商品ごとに差があるので、購入前に成分表示を確認してください。
               </p>
 
               <h3 className="font-bold text-gray-800 mt-4 mb-2">
@@ -85,6 +142,90 @@ export default function ProteinGuidePage() {
                   <li>・コレステロールゼロ、脂質が少ない</li>
                   <li>・必須アミノ酸のバランスはホエイよりやや劣る</li>
                 </ul>
+              </div>
+            </section>
+
+            <section>
+              <h2 className="font-bold text-orange-500 text-base mb-3">
+                そもそも何杯必要か（体重別の早見表）
+              </h2>
+              <p>
+                種類選びの前に、自分に何g足りていないかを知るほうが先です。筋トレをしている人の目安は体重1kgあたり1.6〜2.2g。一方、日本人成人の平均的なタンパク質摂取量は1日70g前後です。この差がプロテインで埋める量になります。
+              </p>
+
+              <div className="overflow-x-auto -mx-2 px-2 mt-3">
+                <table className="w-full text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        体重
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        必要量（1.6g/kg）
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        必要量（2.2g/kg）
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        平均食事70gとの差
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        プロテイン換算
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">50kg</td>
+                      <td className="border border-gray-200 px-2 py-2">80g</td>
+                      <td className="border border-gray-200 px-2 py-2">110g</td>
+                      <td className="border border-gray-200 px-2 py-2">10〜40g</td>
+                      <td className="border border-gray-200 px-2 py-2">0.5〜2杯</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">60kg</td>
+                      <td className="border border-gray-200 px-2 py-2">96g</td>
+                      <td className="border border-gray-200 px-2 py-2">132g</td>
+                      <td className="border border-gray-200 px-2 py-2">26〜62g</td>
+                      <td className="border border-gray-200 px-2 py-2">1.5〜3杯</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">70kg</td>
+                      <td className="border border-gray-200 px-2 py-2">112g</td>
+                      <td className="border border-gray-200 px-2 py-2">154g</td>
+                      <td className="border border-gray-200 px-2 py-2">42〜84g</td>
+                      <td className="border border-gray-200 px-2 py-2">2〜4杯</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">80kg</td>
+                      <td className="border border-gray-200 px-2 py-2">128g</td>
+                      <td className="border border-gray-200 px-2 py-2">176g</td>
+                      <td className="border border-gray-200 px-2 py-2">58〜106g</td>
+                      <td className="border border-gray-200 px-2 py-2">3〜5杯</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-xs text-gray-500 mt-2">
+                ※プロテイン1杯＝タンパク質20gで換算。食事量には個人差が大きいので、実際は自分の食事内容で計算し直してください。
+              </p>
+
+              <div className="bg-gray-50 rounded-xl p-4 mt-3">
+                <p className="font-bold text-gray-800 mb-2">筆者の場合（体重78kg）</p>
+                <p className="text-gray-600">
+                  計算すると1日125〜172g。平均的な食事だけだと3〜5杯分足りない計算になります。ただし現実にプロテインを1日5杯飲むのはきついし、コストも跳ね上がります。この表を作って改めて思うのは、<strong className="text-gray-800">プロテインを増やすより先に、食事のタンパク質を増やすほうが早い</strong>ということです。鶏むね肉100gで約23g、卵1個で約6g、納豆1パックで約8g入っています。
+                </p>
+                <p className="text-gray-600 mt-2">
+                  食材ごとの含有量は
+                  <Link href="/column/protein" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                    タンパク質の摂り方
+                  </Link>
+                  に表でまとめています。1日の総カロリーとのバランスは
+                  <Link href="/calorie-calculator" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                    カロリー計算機
+                  </Link>
+                  で確認できます。
+                </p>
               </div>
             </section>
 
@@ -186,7 +327,7 @@ export default function ProteinGuidePage() {
                     <span className="font-bold text-gray-800">味と続けやすさ</span>：毎日飲むものなので、自分が好きな味を選ぶことも重要です。初めての方はプレーン・チョコ・バニラなど定番フレーバーから試してみましょう。
                   </li>
                   <li>
-                    <span className="font-bold text-gray-800">コストパフォーマンス</span>：1食あたりのコストを計算して選びましょう。国内メーカーより海外ブランドの方がコスパが良い場合も多いです。
+                    <span className="font-bold text-gray-800">コストパフォーマンス</span>：袋の価格ではなく<strong>タンパク質1gあたりの単価</strong>で比べます。計算式は「価格 ÷（内容量g × タンパク質含有率）」。たとえば1kg3,500円・含有率75%なら 3,500 ÷ 750 ＝ 約4.7円/g。1kg5,000円でも含有率90%のWPIなら 5,000 ÷ 900 ＝ 約5.6円/gで、思ったほど差は開きません。袋の値段だけで比べると、含有率の低い商品を割安だと勘違いします。
                   </li>
                 </ul>
               </div>
@@ -196,11 +337,21 @@ export default function ProteinGuidePage() {
               <h2 className="font-bold text-orange-500 text-base mb-3">
                 まとめ
               </h2>
-              <p>
-                プロテインの種類は大きくホエイ・カゼイン・ソイの3種類。筋肉をつけたい方には吸収の速いホエイプロテインがおすすめで、特にトレーニング後すぐに飲むのが効果的です。就寝前にはカゼインを組み合わせると、24時間筋肉の修復をサポートできます。
+              <ul className="space-y-1">
+                <li>・迷ったらホエイWPC。安くて含有率も十分で、トレーニング後に合っています</li>
+                <li>・牛乳でお腹を下す人はWPI、就寝前に足すならカゼイン、乳製品を避けるならソイ</li>
+                <li>・比べるときはタンパク質1gあたりの単価（価格 ÷ 内容量 × 含有率）で見る</li>
+                <li>・種類選びより先に「自分は1日何g足りないのか」を計算する</li>
+              </ul>
+              <p className="mt-3">
+                最後に正直なところを書いておくと、私は15年やってきて、<strong className="text-gray-800">サプリメントを変えたことで停滞が動いた経験はありません</strong>。実際に効いたのは環境とトレーニングのほうでした（詳しくは
+                <Link href="/column/10years" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  10年筋トレを続けてわかったこと
+                </Link>
+                に書いています）。プロテインは「不足を埋めるための道具」であって、伸ばすための切り札ではありません。そのつもりで選ぶと、値段でも広告でも迷わなくなります。
               </p>
               <p className="mt-2">
-                プロテインはあくまで食事の補助です。まずは食事でタンパク質をしっかり摂ることを基本とし、足りない分をプロテインで補うという考え方で活用してください。サクトレでトレーニングメニューを作成し、食事・栄養と合わせて理想の体を目指しましょう。
+                まずは食事でタンパク質を確保し、足りない分をプロテインで補う。この順番が基本です。サクトレでトレーニングメニューを作成し、食事・栄養と合わせて理想の体を目指しましょう。
               </p>
             </section>
           </div>

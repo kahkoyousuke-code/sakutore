@@ -4,9 +4,9 @@ import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
 
 export const metadata = pageMetadata({
-  title: "週に何回筋トレすればいい？最適な頻度を解説 - サクトレ",
+  title: "週に何回筋トレすればいい？｜回数より週セット数で決まる - サクトレ",
   description:
-    "筋トレの最適な頻度をレベル別に解説。初心者から上級者まで、週何回トレーニングすべきか、分割法の考え方もわかりやすく紹介します。",
+    "レベル別の頻度目安と、部位別の回復時間表を掲載。さらに「本質は回数ではなく1部位あたり週何セットか」を表で解説します。40代で週5回続けている筆者が、その回数にしている理由も公開します。",
   path: "/column/frequency",
 });
 
@@ -115,6 +115,68 @@ export default function FrequencyPage() {
 
             <section>
               <h2 className="font-bold text-orange-500 text-base mb-3">
+                本当に大事なのは回数より「週あたりのセット数」
+              </h2>
+              <p>
+                ここまで回数の話をしてきましたが、正直に言うと<strong className="text-gray-800">週何回かということ自体は、それほど本質ではありません</strong>。筋肉の成長を決めているのは、1つの部位に対して週に何セットやったかという総量（ボリューム）のほうです。
+              </p>
+
+              <div className="overflow-x-auto -mx-2 px-2 mt-3">
+                <table className="w-full text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        目的
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        1部位あたり週セット数
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        分け方の目安
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">今の体を維持</td>
+                      <td className="border border-gray-200 px-2 py-2">4〜6セット</td>
+                      <td className="border border-gray-200 px-2 py-2">週1回でも足りる</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">筋肉を増やす</td>
+                      <td className="border border-gray-200 px-2 py-2">10〜20セット</td>
+                      <td className="border border-gray-200 px-2 py-2">週2回に分けるのが効率的</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">さらに追い込む</td>
+                      <td className="border border-gray-200 px-2 py-2">20セット超</td>
+                      <td className="border border-gray-200 px-2 py-2">週2〜3回に分割しないと消化できない</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p className="mt-3">
+                ここで頻度が効いてきます。<strong className="text-gray-800">同じ週10セットでも、週1回で10セットまとめてやるより、週2回に5セットずつ分けたほうが質が保てます</strong>。1回のセッションで10セットも同じ部位をやると、後半は疲労で重量も動作の質も落ちるからです。つまり「週何回やるか」は、<strong className="text-gray-800">やりたい総量を消化するために何回に分ける必要があるか</strong>という順番で決まります。
+              </p>
+
+              <div className="bg-gray-50 rounded-xl p-4 mt-3">
+                <p className="font-bold text-gray-800 mb-2">私が週5回にしている理由</p>
+                <p className="text-gray-600">
+                  私は40代でいまも週5回トレーニングしていますが、これは体力に任せて回数を増やしているわけではありません。やりたい種目数が多くて、週2〜3回では1回あたりが長くなりすぎるからです。<strong className="text-gray-800">1つの部位で見れば週1〜2回</strong>で、上の表の範囲に収まっています。
+                </p>
+                <p className="text-gray-600 mt-2">
+                  逆に、週2回しか取れない人が無理に種目を詰め込むと、後半のセットが消化試合になります。<strong className="text-gray-800">回数を増やせないなら、種目を減らして質を上げるほうが正解</strong>です。回復が追いついているかの判断方法は
+                  <Link href="/column/rest" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                    筋肉を育てる休息の重要性
+                  </Link>
+                  に、5つのチェック項目としてまとめています。
+                </p>
+              </div>
+            </section>
+
+            <section>
+              <h2 className="font-bold text-orange-500 text-base mb-3">
                 頻度を決めるときの注意点
               </h2>
               <div className="space-y-2">
@@ -149,11 +211,19 @@ export default function FrequencyPage() {
               <h2 className="font-bold text-orange-500 text-base mb-3">
                 まとめ
               </h2>
-              <p>
-                筋トレの最適な頻度は、初心者なら週2〜3回、中級者なら週3〜4回、上級者なら週4〜6回が目安です。大切なのは、自分の生活リズムや体の状態に合わせて無理なく続けられるペースを見つけることです。
-              </p>
-              <p className="mt-2">
-                サクトレでは、あなたのトレーニング頻度に合わせた最適なメニューを自動で作成します。週何回トレーニングできるかを選ぶだけで、その頻度に最適化されたメニューが完成します。
+              <ul className="space-y-1">
+                <li>・目安は初心者 週2〜3回、中級者 週3〜4回、上級者 週4〜6回</li>
+                <li>・ただし本質は回数ではなく、1部位あたり週何セットやったか（増やしたいなら10〜20セット）</li>
+                <li>・同じ総量なら、1回にまとめるより2回に分けたほうが質が保てる</li>
+                <li>・週2回しか取れないなら、詰め込まず種目を減らして1種目の質を上げる</li>
+                <li>・回復の判断は気分ではなく「前回と同じ重量で回数が落ちていないか」</li>
+              </ul>
+              <p className="mt-3">
+                自分の生活で続けられる回数がまずあって、そこから逆算して総量と分け方を決める——この順番が現実的です。頻度別の具体的な組み方は
+                <Link href="/column/split-routine" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  分割法の早見表
+                </Link>
+                に、サクトレでは週何回トレーニングできるかを選ぶだけで、その頻度に最適化されたメニューが出ます。
               </p>
             </section>
           </div>

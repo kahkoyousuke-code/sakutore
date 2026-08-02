@@ -5,9 +5,9 @@ import AuthorBox from "@/components/AuthorBox";
 import RizapCta from "@/components/RizapCta";
 
 export const metadata = pageMetadata({
-  title: "40代からの筋トレ入門 - サクトレ",
+  title: "40代からの筋トレ入門｜何もしないと70歳までに筋肉は何kg減るか - サクトレ",
   description:
-    "40代から筋トレを始めるメリットと正しい始め方を解説。中年以降に特有の体の変化を理解し、無理なく続けられるトレーニング法を紹介します。",
+    "何もしなければ筋肉は年1〜2%ずつ減ります。40歳から70歳までの推移を試算した表つきで、40代から筋トレを始めるメリットと、怪我をせず続けるための週2回の始め方を解説します。",
   path: "/column/over40",
 });
 
@@ -43,10 +43,64 @@ export default function Over40Page() {
                 基礎代謝の低下を食い止める
               </h3>
               <p>
-                人間の筋肉量は30代をピークに、何もしなければ1年に約1〜2％ずつ減少していきます。これを「サルコペニア（筋肉減少症）」と呼びます。筋肉が減ると基礎代謝（何もしなくても消費するエネルギー量）が下がり、同じ食事量でも太りやすい体になっていきます。
+                人間の筋肉量は30代をピークに、何もしなければ1年に約1〜2％ずつ減少していきます。これを「サルコペニア（筋肉減少症）」と呼びます。年1%と聞くと小さく感じますが、これは複利で効いてくる数字です。40歳時点で骨格筋量が30kgの人が、何もしなかった場合にどうなるかを計算するとこうなります。
+              </p>
+
+              <div className="overflow-x-auto -mx-2 px-2 mt-3">
+                <table className="w-full text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        年齢
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        年1%減
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        年2%減
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        40歳比
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">40歳</td>
+                      <td className="border border-gray-200 px-2 py-2">30.0kg</td>
+                      <td className="border border-gray-200 px-2 py-2">30.0kg</td>
+                      <td className="border border-gray-200 px-2 py-2">—</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">50歳</td>
+                      <td className="border border-gray-200 px-2 py-2">27.1kg</td>
+                      <td className="border border-gray-200 px-2 py-2">24.5kg</td>
+                      <td className="border border-gray-200 px-2 py-2">−10〜18%</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">60歳</td>
+                      <td className="border border-gray-200 px-2 py-2">24.5kg</td>
+                      <td className="border border-gray-200 px-2 py-2">20.0kg</td>
+                      <td className="border border-gray-200 px-2 py-2">−18〜33%</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">70歳</td>
+                      <td className="border border-gray-200 px-2 py-2">22.2kg</td>
+                      <td className="border border-gray-200 px-2 py-2">16.4kg</td>
+                      <td className="border border-gray-200 px-2 py-2">−26〜45%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-xs text-gray-500 mt-2">
+                ※40歳・骨格筋量30kgを起点に、減少率をそのまま複利で当てはめた単純計算です。実際は生活習慣によって大きく変わります。
+              </p>
+
+              <p className="mt-3">
+                悪いほうに転ぶと、<strong className="text-gray-800">70歳までに筋肉の4割以上を失う</strong>計算になります。ここまで減ると、立ち上がる・階段を上るといった日常動作そのものがきつくなります。40代の筋トレが「体型づくり」より「その先30年の生活を守る」話だと言われるのは、この表が理由です。
               </p>
               <p className="mt-2">
-                筋トレを始めることで筋肉量の減少を食い止め、代謝を維持・向上させることができます。40代で筋トレを始めた人が「食事を変えていないのに体が締まってきた」と感じるのは、まさにこの効果によるものです。
+                そして重要なのは、<strong className="text-gray-800">この減少は止められるということ</strong>です。筋トレを続けている人は、この曲線から外れます。40代で筋トレを始めた人が「食事を変えていないのに体が締まってきた」と感じるのは、減っていくはずだったものが減らなくなった結果でもあります。
               </p>
 
               <h3 className="font-bold text-gray-800 mt-4 mb-2">
@@ -86,7 +140,18 @@ export default function Over40Page() {
                 40代の初心者には、週2回のトレーニングが最適なスタートです。たとえば月曜と木曜、または火曜と金曜のように、2〜3日の間隔を空けてトレーニングを行いましょう。この頻度なら筋肉の回復時間を十分に確保できます。
               </p>
               <p className="mt-2">
-                まずは2〜3ヶ月継続することを目標にしてください。体が筋トレに慣れ、基礎的な筋力がついてきたら、徐々に頻度や強度を上げていきましょう。
+                週2回という数字には根拠があります。筋肉の回復（超回復）には部位にもよりますが48〜72時間かかるため、間隔を空けずに詰め込んでも回復が追いつかないだけです。年齢が上がるほど回復に時間がかかるので、40代はこの間隔を守る優先度がさらに高くなります。頻度と分割の決め方は
+                <Link href="/column/split-routine" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  筋トレ分割法の早見表
+                </Link>
+                にまとめています。
+              </p>
+              <p className="mt-2">
+                まずは2〜3ヶ月継続することを目標にしてください。体が筋トレに慣れ、基礎的な筋力がついてきたら、徐々に頻度や強度を上げていきましょう。器具を使い始めるときは、いきなり重量を狙わず
+                <Link href="/weight-checker" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  適正重量チェッカー
+                </Link>
+                で自分に合う重さを確認するところからにしてください。40代の怪我は、若い頃と違って復帰に何ヶ月もかかります。
               </p>
 
               <h3 className="font-bold text-gray-800 mt-4 mb-2">

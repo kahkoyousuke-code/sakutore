@@ -5,9 +5,9 @@ import AuthorBox from "@/components/AuthorBox";
 import RizapCta from "@/components/RizapCta";
 
 export const metadata = pageMetadata({
-  title: "40代女性が筋トレで痩せにくい理由と対策 - サクトレ",
+  title: "40代女性が筋トレで痩せにくい理由と対策｜種目表つき - サクトレ",
   description:
-    "40代以降のホルモン変化・基礎代謝低下の仕組みと、それに合わせた効果的なトレーニング・食事法を解説。週5で続けてきた経験から具体的な対策を紹介します。",
+    "エストロゲン減少・筋肉量低下・基礎代謝低下という3つの変化を整理し、40代から始めるための種目表（自宅代替つき）を掲載。40代で週5回トレーニングしている運営者が、年齢に合わせた組み直し方を解説します。",
   path: "/column/women-40s-training",
 });
 
@@ -24,7 +24,7 @@ export default function Women40sTrainingPage() {
           <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
             <section>
               <p className="text-gray-500 italic border-l-2 border-orange-300 pl-3 mb-3">
-                40代でも週5でトレーニングを続けている経験から、年齢による体の変化と具体的な対策を解説します。
+                先に断っておくと、私は男性です。40代で週5回トレーニングを続けている当事者ではありますが、エストロゲンの変化を体感として語ることはできません。この記事で書けるのは、数字の部分と、年齢が上がったときにトレーニングをどう組み直すかの部分です。体調そのものの変化については医師や専門家に相談してください。
               </p>
               <p>
                 「40代に入ってから急に太りやすくなった」「同じ食事・運動量なのに体重が落ちなくなった」——40代女性からよく聞かれる悩みです。これは意志や努力の問題ではなく、体の内側で起きているホルモン変化や代謝の変化が原因です。この記事では、40代女性の体で何が起きているのかを解説し、それに対応した効果的なトレーニング・食事法を紹介します。
@@ -63,15 +63,53 @@ export default function Women40sTrainingPage() {
                 基礎代謝は20代をピークに低下し続け、40代では20代と比べて1日100〜200kcal程度低くなっていることが多いです。20代と同じ食生活を続けると、年齢を重ねるほど体重が増えやすくなるのはこのためです。
               </p>
 
-              <div className="bg-gray-50 rounded-xl p-4 mt-3">
-                <p className="font-bold text-gray-800 mb-2">40代女性の体の変化まとめ</p>
-                <ul className="space-y-1 text-gray-600">
-                  <li>・エストロゲン減少→内臓脂肪がつきやすくなる</li>
-                  <li>・筋肉量低下（年1〜2%）→基礎代謝が落ちる</li>
-                  <li>・代謝低下→同じ食事量でも太りやすくなる</li>
-                  <li>・骨密度低下→骨粗しょう症リスクが高まる</li>
-                </ul>
+              <div className="overflow-x-auto -mx-2 px-2 mt-3">
+                <table className="w-full text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        起きる変化
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        体で何が起きるか
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        筋トレで変えられるか
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">エストロゲン減少</td>
+                      <td className="border border-gray-200 px-2 py-2">皮下脂肪より内臓脂肪がつきやすくなる</td>
+                      <td className="border border-gray-200 px-2 py-2">ホルモン自体は変えられない</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">筋肉量の低下</td>
+                      <td className="border border-gray-200 px-2 py-2">年1〜2%ずつ減る</td>
+                      <td className="border border-gray-200 px-2 py-2"><strong>変えられる（最重要）</strong></td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">基礎代謝の低下</td>
+                      <td className="border border-gray-200 px-2 py-2">20代比で1日100〜200kcal低い</td>
+                      <td className="border border-gray-200 px-2 py-2">一部だけ。過度な期待は禁物</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">骨密度の低下</td>
+                      <td className="border border-gray-200 px-2 py-2">骨粗しょう症リスクが上がる</td>
+                      <td className="border border-gray-200 px-2 py-2"><strong>変えられる</strong>（荷重刺激が有効）</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+
+              <p className="mt-3">
+                この表で大事なのは<strong className="text-gray-800">「変えられる」と書いた2行に集中すること</strong>です。エストロゲンの減少は止められませんし、基礎代謝も筋トレで劇的には戻りません（
+                <Link href="/column/metabolism" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  筋トレで痩せる仕組み
+                </Link>
+                で計算していますが、筋肉1kgが増やす代謝は1日13kcal程度です）。一方で、筋肉量と骨密度は明確に自分でコントロールできます。<strong className="text-gray-800">「痩せる」より先に「減っていくものを止める」ほうが、40代では現実的で効果も確実</strong>です。
+              </p>
             </section>
 
             <section>
@@ -93,16 +131,72 @@ export default function Women40sTrainingPage() {
                 時間効率よく代謝を上げるには、複数の筋肉を同時に動かす「複合種目」が最も効果的です。
               </p>
 
-              <div className="bg-gray-50 rounded-xl p-4 mt-3">
-                <p className="font-bold text-gray-800 mb-2">40代女性におすすめの種目</p>
-                <ul className="space-y-1 text-gray-600">
-                  <li>・スクワット：下半身の大きな筋肉全体を鍛える</li>
-                  <li>・デッドリフト（軽めの重量で）：背中・臀部・ハムストリングスを鍛える</li>
-                  <li>・グルートブリッジ：内臓脂肪が気になるお腹周りの引き締めに効果的</li>
-                  <li>・ダンベルロウ：背中を鍛えて姿勢を改善する</li>
-                  <li>・プランク：体幹を強化してウエストを引き締める</li>
-                </ul>
+              <div className="overflow-x-auto -mx-2 px-2 mt-3">
+                <table className="w-full text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        種目
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        鍛える場所
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        自宅でやるなら
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        目安
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">スクワット</td>
+                      <td className="border border-gray-200 px-2 py-2">太もも・お尻</td>
+                      <td className="border border-gray-200 px-2 py-2">ゴブレットスクワット</td>
+                      <td className="border border-gray-200 px-2 py-2">10〜15回×2〜3</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">ルーマニアン<br />デッドリフト</td>
+                      <td className="border border-gray-200 px-2 py-2">お尻・もも裏・背中下部</td>
+                      <td className="border border-gray-200 px-2 py-2">ヒップスラスト</td>
+                      <td className="border border-gray-200 px-2 py-2">10〜12回×2〜3</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">ワンハンドロウ</td>
+                      <td className="border border-gray-200 px-2 py-2">背中（姿勢改善）</td>
+                      <td className="border border-gray-200 px-2 py-2">インバーテッドロウ</td>
+                      <td className="border border-gray-200 px-2 py-2">10〜12回×2〜3</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">ヒップスラスト</td>
+                      <td className="border border-gray-200 px-2 py-2">お尻</td>
+                      <td className="border border-gray-200 px-2 py-2">床でそのまま可</td>
+                      <td className="border border-gray-200 px-2 py-2">12〜15回×2〜3</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">プランク</td>
+                      <td className="border border-gray-200 px-2 py-2">体幹</td>
+                      <td className="border border-gray-200 px-2 py-2">床でそのまま可</td>
+                      <td className="border border-gray-200 px-2 py-2">20〜40秒×2〜3</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+              <p className="text-xs text-gray-500 mt-2">
+                ※種目名はサクトレのメニュー生成で使っている名称に合わせています。
+                <Link href="/questions" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  5つの質問
+                </Link>
+                に答えると、この中から今日やるべき組み合わせが出ます。
+              </p>
+              <p className="mt-3">
+                いわゆる腹筋種目を入れていないのは意図的です。<strong className="text-gray-800">お腹の脂肪はお腹を動かしても落ちません</strong>（部分痩せは起きません）。ウエストに効かせたいなら、大きい筋肉を使う上の4種目のほうが結果的に近道です。重量の決め方は
+                <Link href="/weight-checker" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  適正重量チェッカー
+                </Link>
+                を使ってください。
+              </p>
 
               <h3 className="font-bold text-gray-800 mt-4 mb-2">
                 週2〜3回から始めて回復を重視する
@@ -156,11 +250,23 @@ export default function Women40sTrainingPage() {
               <h2 className="font-bold text-orange-500 text-base mb-3">
                 まとめ
               </h2>
-              <p>
-                40代女性が痩せにくくなる原因は、エストロゲンの減少・筋肉量の低下・基礎代謝の低下という体の変化にあります。これは避けられない変化ですが、適切な筋トレと食事管理によって十分に対策できます。
-              </p>
-              <p className="mt-2">
-                大切なのは「なぜ痩せにくいのか」を正しく理解した上で、適切なアプローチを選ぶことです。40代以降こそ、筋トレが最も重要な投資になります。サクトレではいくつかの質問に答えるだけで、40代の体に合ったメニューを提案しています。ぜひ始めてみてください。
+              <ul className="space-y-1">
+                <li>・痩せにくさの原因は意志ではなく、エストロゲン減少・筋肉量低下・基礎代謝低下という体の変化</li>
+                <li>・このうち筋トレで確実に変えられるのは「筋肉量」と「骨密度」の2つ。ここに集中する</li>
+                <li>・代謝アップへの期待は控えめに。筋肉1kgで1日13kcal程度しか増えない</li>
+                <li>・腹筋種目より、大きい筋肉を使う複合種目のほうがウエストには近道</li>
+                <li>・週2〜3回から。40代は回復に時間がかかるので、詰め込むより間隔を守る</li>
+              </ul>
+              <p className="mt-3">
+                「痩せる」より先に「減っていくものを止める」。40代以降はこの順番で考えるほうが、結果も気持ちも続きます。年代共通の始め方は
+                <Link href="/column/over40" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  40代からの筋トレ入門
+                </Link>
+                に、休息の取り方は
+                <Link href="/column/rest" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  筋肉を育てる休息の重要性
+                </Link>
+                にまとめています。サクトレでは5つの質問に答えるだけで、今日やるメニューを提案します。
               </p>
             </section>
           </div>
