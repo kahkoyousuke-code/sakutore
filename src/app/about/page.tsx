@@ -94,6 +94,21 @@ export default function AboutPage() {
                         </a>
                       </td>
                     </tr>
+                    <tr>
+                      <td className="py-2 font-bold text-gray-800 align-top">
+                        note
+                      </td>
+                      <td className="py-2">
+                        <a
+                          href={AUTHOR.noteUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-orange-500 hover:text-orange-600 transition-colors font-bold"
+                        >
+                          note（{AUTHOR.name}）
+                        </a>
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
                 <p>
@@ -104,6 +119,27 @@ export default function AboutPage() {
                 </p>
                 <p>
                   「何をすればいいかわからない」「自分に合ったメニューが見つからない」という、かつての自分と同じ悩みを持つ人を助けたくてサクトレを開発。AIの力で、誰でも最適なトレーニングメニューをすぐに手に入れられるサービスを目指しています。
+                </p>
+                <p>
+                  食事を扱う
+                  <a
+                    href="https://sakumeshi.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-orange-500 hover:text-orange-600 transition-colors font-bold"
+                  >
+                    サクメシ
+                  </a>
+                  、サプリメントを扱う
+                  <a
+                    href="https://sakusapu.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-orange-500 hover:text-orange-600 transition-colors font-bold"
+                  >
+                    サクサプ
+                  </a>
+                  も同じ運営者です。
                 </p>
               </div>
             </section>

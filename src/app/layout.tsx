@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
-import { AUTHOR } from "@/lib/author";
+import { AUTHOR, AUTHOR_SAME_AS } from "@/lib/author";
 import "./globals.css";
 
 const notoSansJP = Noto_Sans_JP({
@@ -35,7 +35,7 @@ const jsonLd = {
     name: AUTHOR.name,
     url: `${siteUrl}/about`,
     description: "筋トレ歴15年・フィジーク大会入賞",
-    sameAs: [AUTHOR.xUrl],
+    sameAs: AUTHOR_SAME_AS,
   },
 };
 
