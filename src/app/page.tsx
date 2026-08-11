@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import WorkoutCalendar from "@/components/WorkoutCalendar";
@@ -5,6 +6,16 @@ import MenuHistoryList from "@/components/MenuHistoryList";
 import TodaySuggestion from "@/components/TodaySuggestion";
 import ResetDataButton from "@/components/ResetDataButton";
 import HomeIntro from "@/components/HomeIntro";
+
+/**
+ * トップページはlayout.tsxのmetadataをそのまま継承するため、
+ * 明示しないとcanonicalが一切出力されない。utm付きURLなどが
+ * 「重複・正規ページ未選択」でインデックスから外れる原因になる。
+ * title/description/openGraphはlayout側が既にトップ用なので上書きしない。
+ */
+export const metadata: Metadata = {
+  alternates: { canonical: "https://sakutore.jp" },
+};
 
 function ToolCard({
   href,
