@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 
 const BASE_URL = "https://sakutore.jp";
-const LAST_MODIFIED = new Date("2026-08-01");
+const LAST_MODIFIED = new Date("2026-08-15");
 
 /**
  * 収録するのは読み物として実体のあるページだけにする。

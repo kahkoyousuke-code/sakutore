@@ -6,50 +6,81 @@ import AuthorBox from "@/components/AuthorBox";
 export const metadata = pageMetadata({
   title: "BIG3の重量目安一覧｜ベンチプレス・スクワット・デッドリフトの体重別早見表 - サクトレ",
   description:
-    "ベンチプレス・スクワット・デッドリフトの重量目安を体重別・レベル別の一覧表で解説。さらに筋トレ歴15年・フィジーク大会入賞の筆者が、自身のBIG3の実重量（60kg→120/120/160kg）と目安表とのズレまで公開します。",
+    "ビッグ3（ベンチプレス・スクワット・デッドリフト）の重量目安を体重50〜100kg別・レベル別の早見表で解説。BIG3合計の目安と1RM換算表つき。筋トレ歴15年・フィジーク大会入賞の筆者が、自身の実重量（60kg→120/120/160kg）と目安表とのズレまで公開します。",
   path: "/column/strength-standards",
 });
 
 type Row = {
   level: string;
-  ratio: string;
-  w60: string;
-  w70: string;
-  w80: string;
+  ratio: number;
   note: string;
 };
 
+// Body weights used as table columns. Men cover the common 50-100kg range,
+// women a lighter band, so "BIG3 by body weight" queries land on a real number.
+const MEN_WEIGHTS = [50, 60, 70, 80, 90, 100];
+const WOMEN_WEIGHTS = [45, 50, 55, 60, 65];
+
 const benchRows: Row[] = [
-  { level: "未経験", ratio: "0.5", w60: "30kg", w70: "35kg", w80: "40kg", note: "はじめてバーベルを握る段階" },
-  { level: "初心者", ratio: "0.75", w60: "45kg", w70: "53kg", w80: "60kg", note: "数ヶ月続ければ届く" },
-  { level: "中級者", ratio: "1.0", w60: "60kg", w70: "70kg", w80: "80kg", note: "体重と同じ重さ。最初の大きな壁" },
-  { level: "上級者", ratio: "1.25", w60: "75kg", w70: "88kg", w80: "100kg", note: "ジムで一目置かれるライン" },
-  { level: "エリート", ratio: "1.5", w60: "90kg", w70: "105kg", w80: "120kg", note: "競技志向の領域" },
+  { level: "未経験", ratio: 0.5, note: "はじめてバーベルを握る段階" },
+  { level: "初心者", ratio: 0.75, note: "数ヶ月続ければ届く" },
+  { level: "中級者", ratio: 1.0, note: "体重と同じ重さ。最初の大きな壁" },
+  { level: "上級者", ratio: 1.25, note: "ジムで一目置かれるライン" },
+  { level: "エリート", ratio: 1.5, note: "競技志向の領域" },
 ];
 
 const squatRows: Row[] = [
-  { level: "未経験", ratio: "0.75", w60: "45kg", w70: "53kg", w80: "60kg", note: "フォーム習得が最優先" },
-  { level: "初心者", ratio: "1.25", w60: "75kg", w70: "88kg", w80: "100kg", note: "体重の1.25倍" },
-  { level: "中級者", ratio: "1.5", w60: "90kg", w70: "105kg", w80: "120kg", note: "下半身が「使える」ラインに" },
-  { level: "上級者", ratio: "2.0", w60: "120kg", w70: "140kg", w80: "160kg", note: "体重の2倍。到達者は少数" },
-  { level: "エリート", ratio: "2.5", w60: "150kg", w70: "175kg", w80: "200kg", note: "競技志向の領域" },
+  { level: "未経験", ratio: 0.75, note: "フォーム習得が最優先" },
+  { level: "初心者", ratio: 1.25, note: "体重の1.25倍" },
+  { level: "中級者", ratio: 1.5, note: "下半身が「使える」ラインに" },
+  { level: "上級者", ratio: 2.0, note: "体重の2倍。到達者は少数" },
+  { level: "エリート", ratio: 2.5, note: "競技志向の領域" },
 ];
 
 const deadliftRows: Row[] = [
-  { level: "未経験", ratio: "1.0", w60: "60kg", w70: "70kg", w80: "80kg", note: "背中を丸めないことが全て" },
-  { level: "初心者", ratio: "1.5", w60: "90kg", w70: "105kg", w80: "120kg", note: "BIG3で最も伸びが速い" },
-  { level: "中級者", ratio: "2.0", w60: "120kg", w70: "140kg", w80: "160kg", note: "体重の2倍" },
-  { level: "上級者", ratio: "2.5", w60: "150kg", w70: "175kg", w80: "200kg", note: "ベルトとグリップが必須に" },
-  { level: "エリート", ratio: "3.0", w60: "180kg", w70: "210kg", w80: "240kg", note: "競技志向の領域" },
+  { level: "未経験", ratio: 1.0, note: "背中を丸めないことが全て" },
+  { level: "初心者", ratio: 1.5, note: "BIG3で最も伸びが速い" },
+  { level: "中級者", ratio: 2.0, note: "体重の2倍" },
+  { level: "上級者", ratio: 2.5, note: "ベルトとグリップが必須に" },
+  { level: "エリート", ratio: 3.0, note: "競技志向の領域" },
 ];
 
-const womenRows = [
-  { level: "初心者", bench: "体重×0.4", squat: "体重×0.75", deadlift: "体重×1.0" },
-  { level: "中級者", bench: "体重×0.6", squat: "体重×1.1", deadlift: "体重×1.3" },
-  { level: "上級者", bench: "体重×0.8", squat: "体重×1.5", deadlift: "体重×1.8" },
+// Sum of the three lifts at the same level. Quoted as "BIG3 total".
+const totalRows: Row[] = [
+  { level: "未経験", ratio: 2.25, note: "3種目とも始めたばかり" },
+  { level: "初心者", ratio: 3.5, note: "半年〜1年で届く人が多い" },
+  { level: "中級者", ratio: 4.5, note: "BIG3合計の最初の目標地点" },
+  { level: "上級者", ratio: 5.75, note: "3種目とも高い水準で揃っている" },
+  { level: "エリート", ratio: 7.0, note: "競技志向の領域" },
 ];
 
-function LiftTable({ rows }: { rows: Row[] }) {
+const womenBenchRows: Row[] = [
+  { level: "初心者", ratio: 0.4, note: "バーベル（20kg）だけでも十分な段階" },
+  { level: "中級者", ratio: 0.6, note: "上半身で最も伸びにくい種目" },
+  { level: "上級者", ratio: 0.8, note: "続けている女性でも到達者は多くない" },
+];
+
+const womenSquatRows: Row[] = [
+  { level: "初心者", ratio: 0.75, note: "自重で深くしゃがめてから重量へ" },
+  { level: "中級者", ratio: 1.1, note: "体重を超えるあたり" },
+  { level: "上級者", ratio: 1.5, note: "男性の中級者と同じ比率" },
+];
+
+const womenDeadliftRows: Row[] = [
+  { level: "初心者", ratio: 1.0, note: "女性が最初に体重を超えやすい種目" },
+  { level: "中級者", ratio: 1.3, note: "お尻と背中が使えている証拠" },
+  { level: "上級者", ratio: 1.8, note: "男性の中級者に近い水準" },
+];
+
+// Epley: 1RM = weight x (1 + reps / 30). Same formula as /rm-calculator,
+// including its special case: a 1-rep max is the weight itself.
+const REP_COUNTS = [1, 2, 3, 4, 5, 6, 8, 10, 12, 15];
+const repFactor = (reps: number) => (reps === 1 ? 1 : 1 + reps / 30);
+
+// Keep one decimal minimum so levels read as x1.0 / x1.25, not x1 / x1.25.
+const formatRatio = (ratio: number) => ratio.toFixed(2).replace(/0$/, "");
+
+function LiftTable({ rows, weights }: { rows: Row[]; weights: number[] }) {
   return (
     <div className="overflow-x-auto -mx-2 px-2 mt-3">
       <table className="w-full text-xs border-collapse">
@@ -61,15 +92,14 @@ function LiftTable({ rows }: { rows: Row[] }) {
             <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
               体重比
             </th>
-            <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
-              60kg
-            </th>
-            <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
-              70kg
-            </th>
-            <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
-              80kg
-            </th>
+            {weights.map((w) => (
+              <th
+                key={w}
+                className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap"
+              >
+                {w}kg
+              </th>
+            ))}
           </tr>
         </thead>
         <tbody>
@@ -79,22 +109,34 @@ function LiftTable({ rows }: { rows: Row[] }) {
                 {row.level}
               </td>
               <td className="border border-gray-200 px-2 py-2 text-gray-500 whitespace-nowrap">
-                ×{row.ratio}
+                ×{formatRatio(row.ratio)}
               </td>
-              <td className="border border-gray-200 px-2 py-2 text-gray-700 whitespace-nowrap">
-                {row.w60}
-              </td>
-              <td className="border border-gray-200 px-2 py-2 text-gray-700 whitespace-nowrap">
-                {row.w70}
-              </td>
-              <td className="border border-gray-200 px-2 py-2 text-gray-700 whitespace-nowrap">
-                {row.w80}
-              </td>
+              {weights.map((w) => (
+                <td
+                  key={w}
+                  className="border border-gray-200 px-2 py-2 text-gray-700 whitespace-nowrap"
+                >
+                  {Math.round(w * row.ratio)}kg
+                </td>
+              ))}
             </tr>
           ))}
         </tbody>
       </table>
     </div>
+  );
+}
+
+function LevelLegend({ rows }: { rows: Row[] }) {
+  return (
+    <ul className="mt-3 space-y-1 text-xs text-gray-500">
+      {rows.map((row) => (
+        <li key={row.level}>
+          <span className="font-bold text-gray-700">{row.level}（体重×{formatRatio(row.ratio)}）</span>
+          ：{row.note}
+        </li>
+      ))}
+    </ul>
   );
 }
 
@@ -114,7 +156,7 @@ export default function StrengthStandardsPage() {
                 「ベンチプレス60kgって、上のほうなのか下のほうなのか」。ジムでバーベルを触りはじめると、必ずこの疑問にぶつかります。周りの人の重量は目に入るのに、自分がどのあたりにいるのかだけがわからない。
               </p>
               <p className="mt-2">
-                重量の評価は「体重の何倍か」で見るのが世界共通のやり方です。体重60kgの人の80kgと、体重90kgの人の80kgは、まったく意味が違うからです。この記事では、BIG3（ベンチプレス・スクワット・デッドリフト）の目安を体重別・レベル別の一覧表にまとめました。自分の現在地を確認してから読み進めてください。
+                重量の評価は「体重の何倍か」で見るのが世界共通のやり方です。体重60kgの人の80kgと、体重90kgの人の80kgは、まったく意味が違うからです。この記事では、BIG3（ビッグ3＝ベンチプレス・スクワット・デッドリフト）の目安を体重別・レベル別の一覧表（早見表）にまとめました。自分の現在地を確認してから読み進めてください。
               </p>
             </section>
 
@@ -131,12 +173,78 @@ export default function StrengthStandardsPage() {
 
             <section>
               <h2 className="font-bold text-orange-500 text-base mb-3">
+                1RM換算表：今の重量×回数から最大重量を出す
+              </h2>
+              <p>
+                表と自分を比べる前に、まず1RMを求めます。使うのは<span className="font-bold">Epley式</span>で、計算は「今の重量 ×（1 + 回数 ÷ 30）」だけです。下の倍率を掛けるだけでも同じ数字が出ます。
+              </p>
+              <div className="overflow-x-auto -mx-2 px-2 mt-3">
+                <table className="w-full text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        挙がる回数
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        倍率
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        60kgなら
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        80kgなら
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        100kgなら
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {REP_COUNTS.map((reps) => {
+                      const factor = repFactor(reps);
+                      return (
+                        <tr key={reps}>
+                          <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800 whitespace-nowrap">
+                            {reps}回
+                          </td>
+                          <td className="border border-gray-200 px-2 py-2 text-gray-500 whitespace-nowrap">
+                            ×{factor.toFixed(2)}
+                          </td>
+                          {[60, 80, 100].map((w) => (
+                            <td
+                              key={w}
+                              className="border border-gray-200 px-2 py-2 text-gray-700 whitespace-nowrap"
+                            >
+                              {Math.round(w * factor)}kg
+                            </td>
+                          ))}
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-3 text-xs text-gray-500">
+                例：ベンチプレス80kgが8回挙がるなら 80 × 1.27 ＝ <span className="font-bold">約101kg</span>が1RM。体重70kgの人なら体重比1.4倍で、「上級者」（×1.25）を超えて「エリート」（×1.5）が見えてくる位置です。
+              </p>
+              <p className="mt-2 text-xs text-gray-500">
+                ※ 回数が増えるほど誤差は大きくなります。<span className="font-bold">6回以下</span>で計算するのが最も正確で、15回を超える重量から逆算した数字はあまり当てになりません。任意の重量・回数は
+                <Link href="/rm-calculator" className="text-orange-600 font-bold underline">
+                  RM計算機
+                </Link>
+                で計算できます。
+              </p>
+            </section>
+
+            <section>
+              <h2 className="font-bold text-orange-500 text-base mb-3">
                 ベンチプレスの重量目安（男性）
               </h2>
               <p>
                 上半身の代表種目。BIG3の中では最も伸びが遅く、体重の1.0倍（＝自分の体重と同じ重さ）が最初の大きな壁になります。
               </p>
-              <LiftTable rows={benchRows} />
+              <LiftTable rows={benchRows} weights={MEN_WEIGHTS} />
+              <LevelLegend rows={benchRows} />
               <p className="mt-3 text-xs text-gray-500">
                 ※ 体重60kgの人が60kgを挙げれば「中級者」。多くの人がこの手前で長く足踏みします。
               </p>
@@ -149,7 +257,8 @@ export default function StrengthStandardsPage() {
               <p>
                 下半身とお尻・体幹をまとめて使う種目。扱える重量はベンチプレスよりずっと大きく、目安も1段階上になります。
               </p>
-              <LiftTable rows={squatRows} />
+              <LiftTable rows={squatRows} weights={MEN_WEIGHTS} />
+              <LevelLegend rows={squatRows} />
               <p className="mt-3 text-xs text-gray-500">
                 ※ 深さ（しゃがみの深さ）で数字は大きく変わります。太ももが床と平行になるまでしゃがんだ重量で比べてください。
               </p>
@@ -162,9 +271,27 @@ export default function StrengthStandardsPage() {
               <p>
                 全身で最も重い重量を扱える種目。伸びが速いので、始めたばかりの人でも数字が伸びる実感を得やすいのが特徴です。
               </p>
-              <LiftTable rows={deadliftRows} />
+              <LiftTable rows={deadliftRows} weights={MEN_WEIGHTS} />
+              <LevelLegend rows={deadliftRows} />
               <p className="mt-3 text-xs text-gray-500">
                 ※ 数字が伸びやすいぶん、フォームが崩れたまま重量だけ増えて腰を痛める事故が最も多い種目でもあります。
+              </p>
+            </section>
+
+            <section>
+              <h2 className="font-bold text-orange-500 text-base mb-3">
+                BIG3合計（トータル）の目安
+              </h2>
+              <p>
+                3種目の1RMを足した数字を「BIG3合計」「BIG3トータル」と呼びます。種目ごとの得意・不得意がならされるので、全体の力量を1つの数字で見たいときに便利です。
+              </p>
+              <LiftTable rows={totalRows} weights={MEN_WEIGHTS} />
+              <LevelLegend rows={totalRows} />
+              <p className="mt-3 text-xs text-gray-500">
+                ※ 各種目の目安をそのまま足した値です。<span className="font-bold">合計が体重の4.5倍で中級者</span>、と覚えておくと現在地を把握しやすくなります。
+              </p>
+              <p className="mt-2 text-xs text-gray-500">
+                ただし合計は<span className="font-bold">内訳を隠します</span>。筆者のように1種目だけ突出していても合計は伸びるので、弱点を探すときは必ず種目ごとの表に戻ってください。
               </p>
             </section>
 
@@ -175,45 +302,22 @@ export default function StrengthStandardsPage() {
               <p>
                 女性は男性に比べて上半身の筋量が少なく、下半身との差が大きい傾向があります。そのためベンチプレスの比率は低め、下半身種目は男性に近い比率になります。
               </p>
-              <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
-                  <thead>
-                    <tr className="bg-orange-50">
-                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
-                        レベル
-                      </th>
-                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
-                        ベンチ
-                      </th>
-                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
-                        スクワット
-                      </th>
-                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
-                        デッドリフト
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {womenRows.map((row) => (
-                      <tr key={row.level}>
-                        <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800 whitespace-nowrap">
-                          {row.level}
-                        </td>
-                        <td className="border border-gray-200 px-2 py-2 text-gray-700 whitespace-nowrap">
-                          {row.bench}
-                        </td>
-                        <td className="border border-gray-200 px-2 py-2 text-gray-700 whitespace-nowrap">
-                          {row.squat}
-                        </td>
-                        <td className="border border-gray-200 px-2 py-2 text-gray-700 whitespace-nowrap">
-                          {row.deadlift}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <p className="mt-3 text-xs text-gray-500">
+              <h3 className="font-bold text-gray-800 mt-5 mb-2">ベンチプレス（女性）</h3>
+              <LiftTable rows={womenBenchRows} weights={WOMEN_WEIGHTS} />
+              <LevelLegend rows={womenBenchRows} />
+
+              <h3 className="font-bold text-gray-800 mt-5 mb-2">スクワット（女性）</h3>
+              <LiftTable rows={womenSquatRows} weights={WOMEN_WEIGHTS} />
+              <LevelLegend rows={womenSquatRows} />
+
+              <h3 className="font-bold text-gray-800 mt-5 mb-2">デッドリフト（女性）</h3>
+              <LiftTable rows={womenDeadliftRows} weights={WOMEN_WEIGHTS} />
+              <LevelLegend rows={womenDeadliftRows} />
+
+              <p className="mt-4 text-xs text-gray-500">
+                ※ ベンチプレスのバーベルは、シャフトだけで20kgあります。体重50kgの女性にとっては<span className="font-bold">シャフト単体が体重×0.4＝すでに初心者の目安</span>なので、最初はスミスマシンやダンベルから始めて問題ありません。数字が出ないのは筋力不足ではなく、器具の下限がそこにあるためです。
+              </p>
+              <p className="mt-2 text-xs text-gray-500">
                 ※ 重い重量を扱っても体は太くなりません。理由は
                 <Link href="/column/women-muscle-slim" className="text-orange-600 font-bold underline">
                   女性が筋トレしても太くならない理由
@@ -296,6 +400,9 @@ export default function StrengthStandardsPage() {
               </div>
               <p className="mt-3 text-xs text-gray-500">
                 ※ 自己ベストは体重80kg台の頃の数字。体重比はその前提での概算です。
+              </p>
+              <p className="mt-3">
+                この3つを足すとBIG3合計は<span className="font-bold">400kg</span>。体重80kg台なので体重比は4.5〜5.0倍で、合計表では「中級者（×4.5）」をぎりぎり超えたあたりに入ります。<span className="font-bold">合計だけ見れば平均以上に見える</span>わけですが、次に書くとおり内訳はかなり歪んでいます。合計という数字の限界がそのまま出ている例なので、自分の数字と見比べてみてください。
               </p>
 
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
@@ -392,9 +499,20 @@ export default function StrengthStandardsPage() {
               <h2 className="font-bold text-orange-500 text-base mb-3">
                 まとめ
               </h2>
-              <p>
-                ベンチプレスは体重×1.0、スクワットは×1.5、デッドリフトは×2.0。これが中級者の目安であり、多くの人が最初に目指す到達点です。ただし表の役割は、優劣をつけることではなく<span className="font-bold">現在地を知って次の一歩を決めること</span>にあります。
-              </p>
+              <ul className="space-y-2">
+                <li>
+                  ▸ 中級者の目安は<span className="font-bold">ベンチ×1.0／スクワット×1.5／デッドリフト×2.0</span>、BIG3合計なら<span className="font-bold">体重×4.5</span>。多くの人が最初に目指す到達点です。
+                </li>
+                <li>
+                  ▸ 比べる前に<span className="font-bold">1RMに換算する</span>。今の重量 ×（1 + 回数 ÷ 30）で出ます。6回以下で計算すると誤差が小さくなります。
+                </li>
+                <li>
+                  ▸ <span className="font-bold">合計は内訳を隠します</span>。筆者は合計400kg（体重比4.5〜5.0倍）で中級者を超えていますが、スクワット単体では中級者に届いていません。
+                </li>
+                <li>
+                  ▸ 表の役割は優劣をつけることではなく、<span className="font-bold">現在地を知って次の一歩を決めること</span>。全項目を埋めなくても目的は達成できます。
+                </li>
+              </ul>
               <p className="mt-2">
                 まずは今の重量から1RMを換算し、自分がどの行にいるかを確認してみてください。次の行までの距離が具体的な数字で見えた瞬間、トレーニングは「なんとなく」から「計画」に変わります。
               </p>
