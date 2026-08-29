@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import RmCalculatorGuide from "@/components/guides/RmCalculatorGuide";
+import RmConversionTables from "@/components/RmConversionTables";
 
 type CalcResult = {
   oneRM: number;
@@ -181,6 +182,8 @@ export default function RMCalculatorPage() {
             </Link>
           </>
         )}
+
+        <RmConversionTables />
 
         <div className="bg-white rounded-2xl shadow-lg p-6">
           <h2 className="font-bold text-orange-500 mb-4">換算表の使い方（強度の目安）</h2>

@@ -1,9 +1,9 @@
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
-  title: "RM計算機 | ベンチプレス・スクワット・デッドリフトの1RM換算ツール",
+  title: "RM換算表と1RM計算機 | ベンチプレス・スクワット・デッドリフト対応",
   description:
-    "RM計算機・1RM計算ツール。重量と回数を入力するだけでビッグ3の1RMと全RM換算表を自動計算。Epley式採用で高精度。筋トレの強度設定に役立つ無料ツールです。",
+    "1RMに対する割合の早見表と、1RM40〜140kg別の重量換算表を掲載。重量と回数を入れれば計算機が自動で1RMを換算します。Epley式とBrzycki式の差、種目ごとの当たりやすさまで解説。",
   path: "/rm-calculator",
   type: "website",
 });
