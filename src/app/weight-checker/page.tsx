@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import WeightCheckerGuide from "@/components/guides/WeightCheckerGuide";
+import WeightCheckerTables from "@/components/WeightCheckerTables";
 import {
   LEVEL_EXPERIENCE,
   LEVEL_STEP_PERIOD,
@@ -311,6 +312,8 @@ export default function WeightCheckerPage() {
             </p>
           </div>
         </div>
+
+        <WeightCheckerTables />
 
         <WeightCheckerGuide />
 
