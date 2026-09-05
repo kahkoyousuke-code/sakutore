@@ -4,93 +4,106 @@ import { useState } from "react";
 import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import WeightCheckerGuide from "@/components/guides/WeightCheckerGuide";
+import {
+  LEVEL_EXPERIENCE,
+  LEVEL_STEP_PERIOD,
+  LIFTS,
+  formatRatio,
+  levelsFor,
+  rowsFor,
+  targetWeight,
+  type Gender,
+  type Level,
+} from "@/lib/strengthStandards";
 
-type Gender = "male" | "female";
-type LevelId = "beginner" | "novice" | "intermediate" | "advanced";
-
-const GENDERS = [
-  { id: "male" as Gender, label: "男性", icon: "♂" },
-  { id: "female" as Gender, label: "女性", icon: "♀" },
+const GENDERS: { id: Gender; label: string; icon: string }[] = [
+  { id: "male", label: "男性", icon: "♂" },
+  { id: "female", label: "女性", icon: "♀" },
 ];
-
-const LEVELS = [
-  { id: "beginner" as LevelId, label: "初心者", desc: "6ヶ月未満" },
-  { id: "novice" as LevelId, label: "初級", desc: "6ヶ月〜2年" },
-  { id: "intermediate" as LevelId, label: "中級", desc: "2〜5年" },
-  { id: "advanced" as LevelId, label: "上級", desc: "5年以上" },
-];
-
-const LEVEL_INDEX: Record<LevelId, number> = {
-  beginner: 0,
-  novice: 1,
-  intermediate: 2,
-  advanced: 3,
-};
-
-const MULTIPLIERS: Record<Gender, Record<string, number[]>> = {
-  male: {
-    bench: [0.5, 0.75, 1.0, 1.25],
-    squat: [0.75, 1.0, 1.25, 1.5],
-    deadlift: [1.0, 1.25, 1.5, 1.75],
-  },
-  female: {
-    bench: [0.3, 0.45, 0.6, 0.75],
-    squat: [0.45, 0.6, 0.75, 0.9],
-    deadlift: [0.6, 0.75, 0.9, 1.05],
-  },
-};
-
-const EXERCISES = [
-  { id: "bench", label: "ベンチプレス", icon: "🏋️" },
-  { id: "squat", label: "スクワット", icon: "🦵" },
-  { id: "deadlift", label: "デッドリフト", icon: "💪" },
-] as const;
 
 type ExerciseResult = {
   id: string;
   label: string;
   icon: string;
+  ratio: number;
+  note: string;
   current: number;
-  nextLabel: string | null;
+  nextLabel: Level | null;
   next: number | null;
   diff: number | null;
 };
 
 type CheckResult = {
   exercises: ExerciseResult[];
-  levelLabel: string;
+  levelLabel: Level;
+  stepPeriod: string | null;
+  total: number;
 };
 
-function calcWeights(bodyWeight: number, gender: Gender, level: LevelId): CheckResult {
-  const idx = LEVEL_INDEX[level];
-  const levelLabel = LEVELS[idx].label;
-  const exercises: ExerciseResult[] = EXERCISES.map((ex) => {
-    const mults = MULTIPLIERS[gender][ex.id];
-    const current = Math.round(bodyWeight * mults[idx] * 10) / 10;
-    if (idx < LEVELS.length - 1) {
-      const next = Math.round(bodyWeight * mults[idx + 1] * 10) / 10;
+function calcWeights(bodyWeight: number, gender: Gender, level: Level): CheckResult {
+  const levels = levelsFor(gender);
+  const idx = levels.indexOf(level);
+  const exercises: ExerciseResult[] = LIFTS.map((lift) => {
+    const rows = rowsFor(gender, lift.id);
+    const row = rows[idx];
+    const current = targetWeight(bodyWeight, row.ratio);
+    const nextRow = rows[idx + 1];
+    if (!nextRow) {
       return {
-        id: ex.id,
-        label: ex.label,
-        icon: ex.icon,
+        id: lift.id,
+        label: lift.label,
+        icon: lift.icon,
+        ratio: row.ratio,
+        note: row.note,
         current,
-        nextLabel: LEVELS[idx + 1].label,
-        next,
-        diff: Math.round((next - current) * 10) / 10,
+        nextLabel: null,
+        next: null,
+        diff: null,
       };
     }
-    return { id: ex.id, label: ex.label, icon: ex.icon, current, nextLabel: null, next: null, diff: null };
+    const next = targetWeight(bodyWeight, nextRow.ratio);
+    return {
+      id: lift.id,
+      label: lift.label,
+      icon: lift.icon,
+      ratio: row.ratio,
+      note: row.note,
+      current,
+      nextLabel: nextRow.level,
+      next,
+      diff: Math.round((next - current) * 10) / 10,
+    };
   });
-  return { exercises, levelLabel };
+  const total = Math.round(exercises.reduce((sum, ex) => sum + ex.current, 0) * 10) / 10;
+  // 女性は上級者が最上位なので、そこで「次のレベルまでの期間」を出さない。
+  const isTopLevel = idx === levels.length - 1;
+  return {
+    exercises,
+    levelLabel: level,
+    stepPeriod: isTopLevel ? null : LEVEL_STEP_PERIOD[level],
+    total,
+  };
 }
 
 export default function WeightCheckerPage() {
   const [gender, setGender] = useState<Gender>("male");
   const [height, setHeight] = useState("");
   const [bodyWeight, setBodyWeight] = useState("");
-  const [level, setLevel] = useState<LevelId>("beginner");
+  const [level, setLevel] = useState<Level>("初心者");
   const [result, setResult] = useState<CheckResult | null>(null);
   const [error, setError] = useState("");
+
+  const levels = levelsFor(gender);
+
+  // 女性の基準は初心者〜上級者の3段階しかないので、性別を切り替えたときに
+  // 未経験・エリートが選ばれたまま残らないようにする。
+  const handleGenderChange = (next: Gender) => {
+    setGender(next);
+    if (!levelsFor(next).includes(level)) {
+      setLevel("初心者");
+    }
+    setResult(null);
+  };
 
   const handleCheck = () => {
     const w = parseFloat(bodyWeight);
@@ -135,7 +148,7 @@ export default function WeightCheckerPage() {
               {GENDERS.map((g) => (
                 <button
                   key={g.id}
-                  onClick={() => setGender(g.id)}
+                  onClick={() => handleGenderChange(g.id)}
                   className={`py-3 px-2 rounded-xl text-sm font-bold transition-all duration-200 ${
                     gender === g.id
                       ? "bg-orange-500 text-white shadow-md"
@@ -180,19 +193,19 @@ export default function WeightCheckerPage() {
           <div>
             <p className="text-sm font-bold text-gray-700 mb-2">トレーニング経験</p>
             <div className="grid grid-cols-2 gap-2">
-              {LEVELS.map((lv) => (
+              {levels.map((lv) => (
                 <button
-                  key={lv.id}
-                  onClick={() => setLevel(lv.id)}
+                  key={lv}
+                  onClick={() => setLevel(lv)}
                   className={`py-3 px-2 rounded-xl text-sm font-bold transition-all duration-200 ${
-                    level === lv.id
+                    level === lv
                       ? "bg-orange-500 text-white shadow-md"
                       : "bg-gray-100 text-gray-600 hover:bg-orange-100"
                   }`}
                 >
-                  <div className="font-bold">{lv.label}</div>
-                  <div className={`text-xs mt-0.5 ${level === lv.id ? "text-orange-100" : "text-gray-400"}`}>
-                    {lv.desc}
+                  <div className="font-bold">{lv}</div>
+                  <div className={`text-xs mt-0.5 ${level === lv ? "text-orange-100" : "text-gray-400"}`}>
+                    {LEVEL_EXPERIENCE[lv]}
                   </div>
                 </button>
               ))}
@@ -213,7 +226,7 @@ export default function WeightCheckerPage() {
           <>
             <div className="bg-white rounded-2xl shadow-lg p-6">
               <h2 className="font-bold text-orange-500 mb-1">
-                {result.levelLabel}レベルの目標重量
+                {result.levelLabel}の目標重量
               </h2>
               <p className="text-xs text-gray-400 mb-4">
                 体重 {bodyWeight}kg・{gender === "male" ? "男性" : "女性"}基準
@@ -224,11 +237,15 @@ export default function WeightCheckerPage() {
                     <div className="flex items-center gap-2 mb-2">
                       <span className="text-xl">{ex.icon}</span>
                       <span className="font-bold text-gray-800">{ex.label}</span>
+                      <span className="text-xs text-gray-400 ml-auto">
+                        体重×{formatRatio(ex.ratio)}
+                      </span>
                     </div>
                     <div className="flex items-end gap-2">
                       <span className="text-3xl font-bold text-orange-500">{ex.current}</span>
                       <span className="text-base font-semibold text-gray-500 mb-0.5">kg</span>
                     </div>
+                    <p className="text-xs text-gray-500 mt-1">{ex.note}</p>
                     {ex.next !== null && ex.diff !== null && ex.nextLabel !== null && (
                       <p className="text-xs text-gray-500 mt-2">
                         <span className="font-bold text-orange-400">{ex.nextLabel}</span>
@@ -238,11 +255,33 @@ export default function WeightCheckerPage() {
                       </p>
                     )}
                     {ex.next === null && (
-                      <p className="text-xs text-orange-400 mt-2 font-bold">最高レベルに到達！</p>
+                      <p className="text-xs text-orange-400 mt-2 font-bold">
+                        この表で示せる一番上のレベルです
+                      </p>
                     )}
                   </div>
                 ))}
               </div>
+
+              <div className="mt-4 rounded-xl border border-gray-100 bg-gray-50 p-4">
+                <div className="flex items-baseline gap-2">
+                  <span className="font-bold text-gray-800 text-sm">BIG3合計</span>
+                  <span className="text-2xl font-bold text-orange-500 ml-auto">
+                    {result.total}
+                  </span>
+                  <span className="text-sm font-semibold text-gray-500">kg</span>
+                </div>
+                <p className="text-xs text-gray-500 mt-1">
+                  3種目の目標を単純に足した数字です。合計は内訳を隠すので、
+                  1種目だけ大きく遅れていないかは上の3つで確認してください。
+                </p>
+              </div>
+
+              {result.stepPeriod && (
+                <p className="text-xs text-gray-400 mt-3">
+                  ※ このレベルから次のレベルまでは、一般的に{result.stepPeriod}かかります。
+                </p>
+              )}
             </div>
 
             <Link
@@ -255,50 +294,17 @@ export default function WeightCheckerPage() {
         )}
 
         <div className="bg-white rounded-2xl shadow-lg p-6">
-          <h2 className="font-bold text-orange-500 mb-4">レベルアップの目安期間</h2>
-          <div className="space-y-3 text-sm">
-            {([
-              {
-                from: "初心者 → 初級",
-                period: "約6ヶ月〜1年",
-                color: "bg-green-50 border-green-100",
-                text: "text-green-700",
-                desc: "週2〜3回のトレーニングで基本フォームを習得し、重量が順調に伸びる時期。正しいフォームの定着が最優先。",
-              },
-              {
-                from: "初級 → 中級",
-                period: "約1〜2年",
-                color: "bg-yellow-50 border-yellow-100",
-                text: "text-yellow-700",
-                desc: "週3〜4回でプログレッシブオーバーロードを意識。重量の伸びが緩やかになるが、一貫したトレーニングで着実に向上。",
-              },
-              {
-                from: "中級 → 上級",
-                period: "約3〜5年以上",
-                color: "bg-orange-50 border-orange-100",
-                text: "text-orange-700",
-                desc: "週4〜5回以上の高頻度トレーニングと、食事・睡眠の徹底管理が必要。到達できるのはごく一部のトレーニーのみ。",
-              },
-            ] as const).map(({ from, period, color, text, desc }) => (
-              <div key={from} className={`rounded-xl p-4 border ${color}`}>
-                <div className="flex items-center gap-2 mb-1">
-                  <span className={`font-bold ${text}`}>{from}</span>
-                  <span className={`text-xs font-bold ${text} ml-auto`}>{period}</span>
-                </div>
-                <p className="text-gray-500 text-xs leading-relaxed">{desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="bg-white rounded-2xl shadow-lg p-6">
           <h2 className="font-bold text-orange-500 mb-4">体重比の考え方</h2>
           <div className="space-y-3 text-sm text-gray-700 leading-relaxed">
             <p>
-              「体重の○倍」は、体格の差をある程度吸味した公平な指標です。体重70kgの人がベンチプレス70kgを上げると「体重比1倍」で中級とみなされます。
+              「体重の○倍」は、体格の差をある程度吸収した公平な指標です。体重70kgの人がベンチプレス70kgを上げると「体重比1倍」で中級者とみなされます。
             </p>
             <p>
-              女性の目標は男性の約60%に設定されています。これは筋肉量や上半身の筋力差を反映した国際的なスタンダードで、決してハードルが低いわけではありません。
+              女性の目標は男性より低く設定されていますが、
+              <strong>一律に何%というわけではありません</strong>。
+              中級者どうしで比べると、ベンチプレスは男性の60%、デッドリフトは65%、スクワットは73%です。
+              上半身の押す力ほど差が大きく、下半身ほど差が小さいという実態を反映しています。
+              低いほうの数字だけを見てハードルが低いと考えると足をすくわれます。
             </p>
             <p className="text-xs text-gray-400">
               ※ あくまで一般的な目安です。体型・骨格・競技経験などにより個人差があります。

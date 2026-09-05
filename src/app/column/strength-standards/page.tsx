@@ -2,6 +2,19 @@ import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
+import {
+  MEN_WEIGHTS,
+  WOMEN_WEIGHTS,
+  benchRows,
+  deadliftRows,
+  formatRatio,
+  squatRows,
+  totalRows,
+  womenBenchRows,
+  womenDeadliftRows,
+  womenSquatRows,
+  type Row,
+} from "@/lib/strengthStandards";
 
 export const metadata = pageMetadata({
   title: "BIG3の重量目安一覧｜ベンチプレス・スクワット・デッドリフトの体重別早見表 - サクトレ",
@@ -10,75 +23,10 @@ export const metadata = pageMetadata({
   path: "/column/strength-standards",
 });
 
-type Row = {
-  level: string;
-  ratio: number;
-  note: string;
-};
-
-// Body weights used as table columns. Men cover the common 50-100kg range,
-// women a lighter band, so "BIG3 by body weight" queries land on a real number.
-const MEN_WEIGHTS = [50, 60, 70, 80, 90, 100];
-const WOMEN_WEIGHTS = [45, 50, 55, 60, 65];
-
-const benchRows: Row[] = [
-  { level: "未経験", ratio: 0.5, note: "はじめてバーベルを握る段階" },
-  { level: "初心者", ratio: 0.75, note: "数ヶ月続ければ届く" },
-  { level: "中級者", ratio: 1.0, note: "体重と同じ重さ。最初の大きな壁" },
-  { level: "上級者", ratio: 1.25, note: "ジムで一目置かれるライン" },
-  { level: "エリート", ratio: 1.5, note: "競技志向の領域" },
-];
-
-const squatRows: Row[] = [
-  { level: "未経験", ratio: 0.75, note: "フォーム習得が最優先" },
-  { level: "初心者", ratio: 1.25, note: "体重の1.25倍" },
-  { level: "中級者", ratio: 1.5, note: "下半身が「使える」ラインに" },
-  { level: "上級者", ratio: 2.0, note: "体重の2倍。到達者は少数" },
-  { level: "エリート", ratio: 2.5, note: "競技志向の領域" },
-];
-
-const deadliftRows: Row[] = [
-  { level: "未経験", ratio: 1.0, note: "背中を丸めないことが全て" },
-  { level: "初心者", ratio: 1.5, note: "BIG3で最も伸びが速い" },
-  { level: "中級者", ratio: 2.0, note: "体重の2倍" },
-  { level: "上級者", ratio: 2.5, note: "ベルトとグリップが必須に" },
-  { level: "エリート", ratio: 3.0, note: "競技志向の領域" },
-];
-
-// Sum of the three lifts at the same level. Quoted as "BIG3 total".
-const totalRows: Row[] = [
-  { level: "未経験", ratio: 2.25, note: "3種目とも始めたばかり" },
-  { level: "初心者", ratio: 3.5, note: "半年〜1年で届く人が多い" },
-  { level: "中級者", ratio: 4.5, note: "BIG3合計の最初の目標地点" },
-  { level: "上級者", ratio: 5.75, note: "3種目とも高い水準で揃っている" },
-  { level: "エリート", ratio: 7.0, note: "競技志向の領域" },
-];
-
-const womenBenchRows: Row[] = [
-  { level: "初心者", ratio: 0.4, note: "バーベル（20kg）だけでも十分な段階" },
-  { level: "中級者", ratio: 0.6, note: "上半身で最も伸びにくい種目" },
-  { level: "上級者", ratio: 0.8, note: "続けている女性でも到達者は多くない" },
-];
-
-const womenSquatRows: Row[] = [
-  { level: "初心者", ratio: 0.75, note: "自重で深くしゃがめてから重量へ" },
-  { level: "中級者", ratio: 1.1, note: "体重を超えるあたり" },
-  { level: "上級者", ratio: 1.5, note: "男性の中級者と同じ比率" },
-];
-
-const womenDeadliftRows: Row[] = [
-  { level: "初心者", ratio: 1.0, note: "女性が最初に体重を超えやすい種目" },
-  { level: "中級者", ratio: 1.3, note: "お尻と背中が使えている証拠" },
-  { level: "上級者", ratio: 1.8, note: "男性の中級者に近い水準" },
-];
-
 // Epley: 1RM = weight x (1 + reps / 30). Same formula as /rm-calculator,
 // including its special case: a 1-rep max is the weight itself.
 const REP_COUNTS = [1, 2, 3, 4, 5, 6, 8, 10, 12, 15];
 const repFactor = (reps: number) => (reps === 1 ? 1 : 1 + reps / 30);
-
-// Keep one decimal minimum so levels read as x1.0 / x1.25, not x1 / x1.25.
-const formatRatio = (ratio: number) => ratio.toFixed(2).replace(/0$/, "");
 
 function LiftTable({ rows, weights }: { rows: Row[]; weights: number[] }) {
   return (
