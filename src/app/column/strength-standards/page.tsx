@@ -196,6 +196,13 @@ export default function StrengthStandardsPage() {
               <p className="mt-3 text-xs text-gray-500">
                 ※ 体重60kgの人が60kgを挙げれば「中級者」。多くの人がこの手前で長く足踏みします。
               </p>
+              <p className="mt-3">
+                ベンチプレスだけをもっと詳しく知りたい人は、
+                <Link href="/column/bench-press-average" className="text-orange-600 font-bold underline">
+                  ベンチプレスの平均は何kg？体重別・トレ歴別の目安一覧
+                </Link>
+                に、女性の目安・トレ歴別の到達期間・回数から1RMを出す換算表をまとめてあります。
+              </p>
             </section>
 
             <section>
