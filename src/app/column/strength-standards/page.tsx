@@ -217,6 +217,13 @@ export default function StrengthStandardsPage() {
               <p className="mt-3 text-xs text-gray-500">
                 ※ 深さ（しゃがみの深さ）で数字は大きく変わります。太ももが床と平行になるまでしゃがんだ重量で比べてください。
               </p>
+              <p className="mt-3">
+                スクワットだけをもっと詳しく知りたい人は、
+                <Link href="/column/squat-average" className="text-orange-600 font-bold underline">
+                  スクワットの平均は何kg？体重別・トレ歴別の目安一覧
+                </Link>
+                に、深さ・マシン別に数字を揃える方法・女性の目安・トレ歴別の到達期間をまとめてあります。
+              </p>
             </section>
 
             <section>
