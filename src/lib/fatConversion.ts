@@ -26,3 +26,23 @@ export const kcalForFatKg = (kg: number) => Math.round(FAT_KCAL_PER_KG * kg);
  */
 export const formatKcal = (kcal: number) =>
   String(Math.round(kcal)).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+/**
+ * 体脂肪率を目標まで下げるのに落とす必要がある脂肪の重さ（kg）。
+ *
+ * 除脂肪量（筋肉・骨・水分）が変わらず、減ったぶんがすべて脂肪だという
+ * 前提の理論値。実際には多少の筋肉も落ちるので、下振れの目安として使う。
+ */
+export const fatLossToReachPercent = (
+  weightKg: number,
+  currentPercent: number,
+  targetPercent: number
+) => {
+  const leanMass = weightKg * (1 - currentPercent / 100);
+  const goalWeight = leanMass / (1 - targetPercent / 100);
+  return Math.round((weightKg - goalWeight) * 10) / 10;
+};
+
+/** 1日あたりの赤字が決まっているとき、その減量にかかる日数。 */
+export const daysToLoseFat = (fatKg: number, dailyDeficitKcal: number) =>
+  Math.round((fatKg * FAT_KCAL_PER_KG) / dailyDeficitKcal);
