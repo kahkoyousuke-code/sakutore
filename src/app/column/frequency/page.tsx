@@ -2,6 +2,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
+import { recoveryRows } from "@/lib/recoveryStandards";
 
 export const metadata = pageMetadata({
   title: "週に何回筋トレすればいい？｜回数より週セット数で決まる - サクトレ",
@@ -53,21 +54,19 @@ export default function FrequencyPage() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td className="border border-gray-200 px-2 py-2 text-gray-700">胸・背中・脚（大筋群）</td>
-                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800 whitespace-nowrap">48〜72時間</td>
-                      <td className="border border-gray-200 px-2 py-2 text-gray-600 whitespace-nowrap">中2〜3日</td>
-                    </tr>
-                    <tr>
-                      <td className="border border-gray-200 px-2 py-2 text-gray-700">肩・腕（小筋群）</td>
-                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800 whitespace-nowrap">約48時間</td>
-                      <td className="border border-gray-200 px-2 py-2 text-gray-600 whitespace-nowrap">中1〜2日</td>
-                    </tr>
-                    <tr>
-                      <td className="border border-gray-200 px-2 py-2 text-gray-700">腹筋・ふくらはぎ</td>
-                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800 whitespace-nowrap">約24時間</td>
-                      <td className="border border-gray-200 px-2 py-2 text-gray-600 whitespace-nowrap">毎日でも可</td>
-                    </tr>
+                    {recoveryRows.map((row) => (
+                      <tr key={row.part}>
+                        <td className="border border-gray-200 px-2 py-2 text-gray-700">
+                          {row.part}
+                        </td>
+                        <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800 whitespace-nowrap">
+                          {row.hours}
+                        </td>
+                        <td className="border border-gray-200 px-2 py-2 text-gray-600 whitespace-nowrap">
+                          {row.interval}
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
@@ -195,7 +194,11 @@ export default function FrequencyPage() {
                 <div className="flex items-start gap-2">
                   <span className="text-orange-500 font-bold">▸</span>
                   <p>
-                    <span className="font-bold">体の声を聞く</span>：筋肉痛が残っている部位は休ませましょう。痛みや違和感がある場合は、無理にトレーニングせず回復を優先してください。
+                    <span className="font-bold">体の声を聞く</span>：筋肉痛が残っている部位は休ませましょう。ただし休ませるのはその部位だけで、別の部位はやって構いません（
+                    <Link href="/column/muscle-soreness" className="text-orange-600 font-bold underline">
+                      筋肉痛でも筋トレしていい？
+                    </Link>
+                    ）。痛みや違和感がある場合は、無理にトレーニングせず回復を優先してください。
                   </p>
                 </div>
                 <div className="flex items-start gap-2">

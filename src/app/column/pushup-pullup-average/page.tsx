@@ -307,7 +307,11 @@ export default function PushupPullupAveragePage() {
                     なので、
                   </>
                 )}
-                <span className="font-bold">腕立てだけで届く範囲には限りがある</span>ということになります。器具を足すタイミングは、ここで決まります。
+                <span className="font-bold">腕立てだけで届く範囲には限りがある</span>ということになります。器具を足すタイミングは、ここで決まります。最初に買うダンベルの重さは
+                <Link href="/column/dumbbell-weight" className="text-orange-600 font-bold underline">
+                  ダンベルは何kgを買えばいい？
+                </Link>
+                に種目別で出しました。
               </p>
               <p className="mt-2">
                 重量で見た自分の位置は

@@ -166,7 +166,11 @@ export default function ChestHomePage() {
                 ダンベル編
               </h2>
               <p>
-                ダンベルがあると胸トレの幅が大きく広がります。可変式ダンベル（重さを調節できるタイプ）が一つあれば、ジムと同等の胸トレが自宅で可能になります。
+                ダンベルがあると胸トレの幅が大きく広がります。可変式ダンベル（重さを調節できるタイプ）が一つあれば、ジムと同等の胸トレが自宅で可能になります。何kgのものを選べばいいかは
+                <Link href="/column/dumbbell-weight" className="text-orange-600 font-bold underline">
+                  ダンベルは何kgを買えばいい？
+                </Link>
+                に、種目別の目安表として出しました（胸だけが目的なら、腕立てのほうが重いという話も書いています）。
               </p>
 
               <h3 className="font-bold text-gray-800 mt-4 mb-2">
