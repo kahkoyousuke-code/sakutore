@@ -228,6 +228,13 @@ export default function DumbbellWeightPage() {
                 <span className="font-bold">先に足りなくなるのはワンハンドロウとゴブレットスクワットの2種目だけ</span>だと分かったうえで選べます。プレート差し替え式なら、最初は軽いプレートだけ買って後から足す手もあります。
               </p>
               <p className="mt-2">
+                実際にどれを選ぶかまで決めたい人向けに、
+                <Link href="/gear" className="text-orange-600 font-bold underline">
+                  おすすめギアのページ
+                </Link>
+                に「片手何kgまで伸ばせるか」で選んだ候補を3つ載せました（運営者はジム派で自宅用に買った経験がないため、使用感ではなくこの記事の目安に照らした選び方です）。
+              </p>
+              <p className="mt-2">
                 ただし可変式には弱点があります。<span className="font-bold">落とすと壊れます。</span>限界まで追い込んで手から落とす使い方をする種目（重いプレス系）では、この点が本当にリスクです。床を守るマットも一緒に用意してください。
               </p>
             </section>
@@ -356,7 +363,7 @@ export default function DumbbellWeightPage() {
             <span className="text-2xl flex-shrink-0">🏋️</span>
             <div>
               <p className="font-bold text-orange-600 text-sm">運営者厳選のおすすめギア</p>
-              <p className="text-xs text-gray-500 mt-0.5">プロテイン・ベルト・グリップを見る →</p>
+              <p className="text-xs text-gray-500 mt-0.5">可変式ダンベルの候補を見る →</p>
             </div>
           </div>
         </Link>

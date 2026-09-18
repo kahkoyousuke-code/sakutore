@@ -2,9 +2,9 @@ import Link from "next/link";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
-  title: "おすすめトレーニングギア | 厳選のプロテイン・ベルト・グリップ",
+  title: "おすすめトレーニングギア | プロテイン・ベルト・グリップ・可変式ダンベル",
   description:
-    "筋トレ歴15年・フィジーク大会入賞の運営者が実際に使って選んだトレーニングギアを厳選紹介。プロテイン・リフティングベルト・パワーグリップ・リストラップを目的別・レベル別におすすめ。",
+    "筋トレ歴15年・フィジーク大会入賞の運営者が選んだトレーニングギアを厳選紹介。プロテイン・リフティングベルト・パワーグリップ・リストラップは実際に使っているもの、可変式ダンベルは体重比の目安から必要な重さで選んだ候補です。",
   path: "/gear",
   type: "website",
 });
@@ -82,13 +82,19 @@ function ProductCard({ product }: { product: Product }) {
 function Section({
   title,
   products,
+  note,
 }: {
   title: string;
   products: Product[];
+  /** 「使ったうえでの推薦ではない」など、セクション単位の断りを入れる。 */
+  note?: React.ReactNode;
 }) {
   return (
     <section className="space-y-3">
       <h2 className="font-bold text-orange-500 text-lg px-1">{title}</h2>
+      {note ? (
+        <p className="text-xs text-gray-500 leading-relaxed px-1">{note}</p>
+      ) : null}
       {products.map((product) => (
         <ProductCard key={product.asin} product={product} />
       ))}
@@ -216,6 +222,50 @@ const wristWraps: Product[] = [
   },
 ];
 
+/**
+ * 可変式ダンベル。ここだけは運営者が自宅用に購入した経験がないので、
+ * 「使った感想」ではなく /column/dumbbell-weight の体重比の目安に照らして
+ * 「何kgまで伸ばせるか」で選んでいる。コメントもその基準で書くこと。
+ */
+const dumbbells: Product[] = [
+  {
+    name: "フレックスベル 可変式ダンベル 20kg 2個セット（2kg刻み・10段階）",
+    asin: "B0843RNMWM",
+    tags: ["女性におすすめ", "刻みが細かい"],
+    comment:
+      "2kg刻みで10段階。女性は中級者でも片手16.5kg前後までしか使わないので、この1組で当分足ります。男性も初心者のうちはこの範囲に収まります。",
+    points: [
+      "2kg刻みでサイドレイズのような軽い種目にも合わせられる",
+      "ダイヤルを回すだけで重さが変わる",
+      "1組で軽い重さから重い重さまでカバーできる",
+    ],
+  },
+  {
+    name: "フレックスベル 可変式ダンベル 32kg 2個セット（2kg刻み・16段階）",
+    asin: "B08FCDD59X",
+    tags: ["男性におすすめ", "中級者まで買い替え不要"],
+    comment:
+      "体重70kgの男性が中級者になるとワンハンドロウで片手31.5kgが必要になります。そこまで伸ばせるのがこのクラス。最初から上限を確保しておきたい人向け。",
+    points: [
+      "片手32kgまで対応。中級者の目安（片手31.5kg）を上回る",
+      "2kg刻みのまま上まで伸ばせる",
+      "買い足しが要らないぶん、長く見れば割安",
+    ],
+  },
+  {
+    name: "BARWING 可変式ダンベル 24kg 2個セット",
+    asin: "B0DNLY6HZ5",
+    tags: ["コスパ重視"],
+    comment:
+      "価格を抑えたい人の候補。片手24kgあれば、目安表のうち先に足りなくなるのはワンハンドロウとゴブレットスクワットの2種目だけです。",
+    points: [
+      "同クラスの中では価格が抑えめ",
+      "1〜2.5kg刻みで細かく調整できる",
+      "足りなくなる種目が2つだけだと分かって買える",
+    ],
+  },
+];
+
 export default function GearPage() {
   return (
     <main className="min-h-screen flex flex-col items-center px-4 py-8">
@@ -232,10 +282,11 @@ export default function GearPage() {
           <div className="flex items-start gap-3">
             <span className="text-3xl flex-shrink-0">💪</span>
             <p className="text-sm text-gray-700 leading-relaxed">
-              筋トレ歴15年・フィジーク大会入賞の運営者が
-              実際に使って選んだギアだけを紹介します。
+              筋トレ歴15年・フィジーク大会入賞の運営者が選んだギアです。
               ベルト・グリップ・リストラップはALLOUTで統一。
               プロテインはエクスプロージョンとマイプロを愛用中。
+              可変式ダンベルだけは自宅用に買った経験がないので、
+              必要な重さの基準から選んだ候補として載せています。
             </p>
           </div>
         </div>
@@ -245,6 +296,19 @@ export default function GearPage() {
         <Section title="リフティングベルト｜レベル別おすすめ3選" products={belts} />
         <Section title="パワーグリップ｜愛用の1択" products={grips} />
         <Section title="リストラップ｜愛用の1択" products={wristWraps} />
+        <Section
+          title="可変式ダンベル｜自宅トレ用"
+          products={dumbbells}
+          note={
+            <>
+              ダンベルだけは、運営者がジム派のため自宅用に購入した経験がありません。使った感想ではなく、
+              <Link href="/column/dumbbell-weight" className="text-orange-600 font-bold underline">
+                種目別・体重別の重さの目安
+              </Link>
+              に照らして「何kgまで伸ばせるか」で選んだ候補です。
+            </>
+          }
+        />
 
         {/* アフィリエイト表記 */}
         <p className="text-center text-xs text-gray-400 leading-relaxed px-2">
