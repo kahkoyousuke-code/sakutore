@@ -194,7 +194,11 @@ export default function FrequencyPage() {
                 <div className="flex items-start gap-2">
                   <span className="text-orange-500 font-bold">▸</span>
                   <p>
-                    <span className="font-bold">体の声を聞く</span>：筋肉痛が残っている部位は休ませましょう。痛みや違和感がある場合は、無理にトレーニングせず回復を優先してください。
+                    <span className="font-bold">体の声を聞く</span>：筋肉痛が残っている部位は休ませましょう。ただし休ませるのはその部位だけで、別の部位はやって構いません（
+                    <Link href="/column/muscle-soreness" className="text-orange-600 font-bold underline">
+                      筋肉痛でも筋トレしていい？
+                    </Link>
+                    ）。痛みや違和感がある場合は、無理にトレーニングせず回復を優先してください。
                   </p>
                 </div>
                 <div className="flex items-start gap-2">

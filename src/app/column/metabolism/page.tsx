@@ -211,7 +211,11 @@ export default function MetabolismPage() {
                 <div className="flex items-start gap-2">
                   <span className="text-orange-500 font-bold">▸</span>
                   <p>
-                    <span className="font-bold">筋トレ → 有酸素運動の順</span>：筋トレでグリコーゲン（糖質エネルギー）を消費した後に有酸素運動を行うと、脂肪が優先的に使われやすくなります。
+                    <span className="font-bold">筋トレ → 有酸素運動の順</span>：筋トレでグリコーゲン（糖質エネルギー）を消費した後に有酸素運動を行うと、脂肪が優先的に使われやすくなります。1回の中での並べ方は
+                    <Link href="/column/training-order" className="text-orange-600 font-bold underline">
+                      筋トレの順番
+                    </Link>
+                    にまとめています。
                   </p>
                 </div>
                 <div className="flex items-start gap-2">
