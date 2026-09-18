@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import CalorieCalculatorGuide from "@/components/guides/CalorieCalculatorGuide";
+import { FAT_KCAL_PER_GRAM, fatGramsFromKcal } from "@/lib/fatConversion";
 
 const EXERCISES = [
   { id: "bench", label: "ベンチプレス", icon: "🏋️", mets: 6.0 },
@@ -28,7 +29,7 @@ function calcCalories(weightKg: number, exerciseId: ExerciseId, minutes: number)
   const ex = EXERCISES.find((e) => e.id === exerciseId)!;
   const hours = minutes / 60;
   const calories = Math.round(ex.mets * weightKg * hours * 10) / 10;
-  const fatGrams = Math.round((calories / 7) * 10) / 10;
+  const fatGrams = fatGramsFromKcal(calories);
   return { calories, fatGrams, exerciseLabel: ex.label };
 }
 
@@ -151,7 +152,7 @@ export default function CalorieCalculatorPage() {
                 <span className="font-bold text-orange-400 text-lg mx-1">{result.fatGrams}g</span>
                 分に相当します
               </p>
-              <p className="text-xs text-gray-400 mt-1">（1g脂肪 = 7kcal換算）</p>
+              <p className="text-xs text-gray-400 mt-1">（1g脂肪 = {FAT_KCAL_PER_GRAM}kcal換算）</p>
             </div>
 
             <a

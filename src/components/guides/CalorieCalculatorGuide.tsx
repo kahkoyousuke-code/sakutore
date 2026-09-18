@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FAT_KCAL_PER_KG, formatKcal, kcalForFatKg } from "@/lib/fatConversion";
 import {
   GuideCard,
   GuideFaq,
@@ -61,15 +62,15 @@ export default function CalorieCalculatorGuide() {
 
       <GuideCard title="脂肪を1kg減らすのに必要なカロリー">
         <p>
-          体脂肪1kgを減らすには、およそ<strong>7,200kcal</strong>の収支マイナスが必要とされています
+          体脂肪1kgを減らすには、およそ<strong>{formatKcal(FAT_KCAL_PER_KG)}kcal</strong>の収支マイナスが必要とされています
           （体脂肪は純粋な脂質だけでなく水分なども含むため、脂質1gあたり9kcalより低い換算になります）。
         </p>
         <p>
-          この数字を先ほどのベンチプレス30分（210kcal）で割ると、約34回分。
+          この数字を先ほどのベンチプレス30分（210kcal）で割ると、約{Math.round(FAT_KCAL_PER_KG / 210)}回分。
           運動だけで脂肪を落とそうとすると、これだけの積み上げが要るという意味です。
         </p>
         <p>
-          仮に1年で12kg落とすなら、7,200 × 12 ＝ 86,400kcal。365日で割って
+          仮に1年で12kg落とすなら、{formatKcal(FAT_KCAL_PER_KG)} × 12 ＝ {formatKcal(kcalForFatKg(12))}kcal。365日で割って
           <strong>1日あたり約237kcalの赤字</strong>で理論上は届く計算になります。
           運動で237kcal上乗せするより、食事を少し調整するほうが現実的なのが分かると思います。
         </p>

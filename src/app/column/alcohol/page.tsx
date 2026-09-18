@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FAT_KCAL_PER_KG, formatKcal } from "@/lib/fatConversion";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
@@ -147,7 +148,7 @@ export default function AlcoholPage() {
               <div className="bg-gray-50 rounded-xl p-4 mt-3">
                 <p className="font-bold text-gray-800 mb-2">毎晩ビール2本を1ヶ月続けると</p>
                 <p className="text-gray-600">
-                  140kcal × 2本 × 30日 ＝ <strong className="text-gray-800">8,400kcal</strong>。体脂肪1kgが約7,200kcalなので、<strong className="text-gray-800">ひと月あたり脂肪1.1kg分</strong>に相当します。1年なら13kg分です。もちろん実際には食事全体のバランスで決まりますが、飲む分をどこかで削らなければこの計算が効いてきます。
+                  140kcal × 2本 × 30日 ＝ <strong className="text-gray-800">8,400kcal</strong>。体脂肪1kgが約{formatKcal(FAT_KCAL_PER_KG)}kcalなので、<strong className="text-gray-800">ひと月あたり脂肪{Math.round((140 * 2 * 30) / FAT_KCAL_PER_KG * 10) / 10}kg分</strong>に相当します。1年なら約{Math.round((140 * 2 * 365) / FAT_KCAL_PER_KG)}kg分です。もちろん実際には食事全体のバランスで決まりますが、飲む分をどこかで削らなければこの計算が効いてきます。
                 </p>
                 <p className="text-gray-600 mt-2">
                   私は毎晩飲みますが、90kgから78kgまで落とせました。矛盾しているようで、していません。<strong className="text-gray-800">飲む前提で1日の総カロリーを組んでいた</strong>だけです。お酒をやめるか続けるかではなく、飲む分の枠をどこから持ってくるかという話になります。自分の1日の消費カロリーは

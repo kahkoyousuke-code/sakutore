@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FAT_KCAL_PER_KG, formatKcal } from "@/lib/fatConversion";
 import ShareButtons from "@/components/ShareButtons";
 import RizapCta from "@/components/RizapCta";
 import { pageMetadata } from "@/lib/metadata";
@@ -232,7 +233,7 @@ export default function EffectTimelinePage() {
                 見た目だけを急ぐなら、増やすより減らすほうが速い
               </h2>
               <p>
-                筋肉は1ヶ月に0.5kgしか増えません。一方、脂肪は<span className="font-bold">1kgが約7,200kcal</span>なので、1日300kcalの赤字をつくれば1ヶ月で1.2kg落ちます。同じ1ヶ月なら、減らすほうが2倍以上動きます。「1ヶ月で見た目が変わった」の多くは、こちら側です。
+                筋肉は1ヶ月に0.5kgしか増えません。一方、脂肪は<span className="font-bold">1kgが約{formatKcal(FAT_KCAL_PER_KG)}kcal</span>なので、1日300kcalの赤字をつくれば1ヶ月で{Math.round((300 * 30) / FAT_KCAL_PER_KG * 10) / 10}kg落ちます。同じ1ヶ月なら、減らすほうが2倍以上動きます。「1ヶ月で見た目が変わった」の多くは、こちら側です。
               </p>
               <p className="mt-2">
                 私自身も、体重90kg超から78kgまで12kg落とすのに約1年かかりました。1ヶ月あたり1kgのペースです。急がなかったというより、<span className="font-bold">これ以上速くすると筋肉から落ちていく</span>からです。食事制限だけで落とした体が戻りやすい理由は
