@@ -292,7 +292,11 @@ export default function PushupPullupAveragePage() {
                 <div className="flex items-start gap-2">
                   <span className="text-orange-500 font-bold">▸</span>
                   <p>
-                    <span className="font-bold">懸垂</span>：斜め懸垂 → ジャンプして下ろすだけ（ネガティブ）→ 通常の懸垂 → 加重。<span className="font-bold">1回もできない段階を飛ばさない</span>のがコツです。
+                    <span className="font-bold">懸垂</span>：斜め懸垂 → ジャンプして下ろすだけ（ネガティブ）→ 通常の懸垂 → 加重。<span className="font-bold">1回もできない段階を飛ばさない</span>のがコツです。各段階の目標と次に進む条件は
+                    <Link href="/column/pullup-progression" className="text-orange-600 font-bold underline">
+                      懸垂が1回もできない人の練習法
+                    </Link>
+                    にまとめました。
                   </p>
                 </div>
               </div>
