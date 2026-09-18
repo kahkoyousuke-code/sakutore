@@ -152,6 +152,13 @@ export default function ChestHomePage() {
                 </Link>
                 で自分の位置を確認できます）。
               </p>
+              <p className="mt-2">
+                「腕立ては何回できれば普通なのか」を知りたい人は
+                <Link href="/column/pushup-pullup-average" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  腕立て伏せ・懸垂の回数目安一覧
+                </Link>
+                へ。回数のレベル別の目安と、回数を増やしても負荷が増えない理由を書いています。
+              </p>
             </section>
 
             <section>

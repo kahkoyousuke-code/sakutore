@@ -305,6 +305,13 @@ export default function MetabolismPage() {
                 </Link>
                 で自分の消費カロリーを把握し、サクトレで目標に合ったメニューを作成してみてください。
               </p>
+              <p className="mt-2">
+                「腹筋が見えるところまで落としたい」という目標があるなら、必要な減量を計算した
+                <Link href="/column/abs-body-fat" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  腹筋が割れる体脂肪率は何%？
+                </Link>
+                もどうぞ。ここで出した脂肪1kg＝{formatKcal(FAT_KCAL_PER_KG)}kcalをそのまま使っています。
+              </p>
             </section>
           </div>
         </div>

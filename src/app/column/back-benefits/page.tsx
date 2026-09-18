@@ -258,6 +258,17 @@ export default function BackBenefitsPage() {
                 </Link>
                 で確認できます。
               </p>
+              <p className="mt-2">
+                デッドリフトの体重別・レベル別の目安は
+                <Link href="/column/deadlift-average" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  デッドリフトの平均は何kg？
+                </Link>
+                に、懸垂が何回できれば普通なのかは
+                <Link href="/column/pushup-pullup-average" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  腕立て伏せ・懸垂の回数目安
+                </Link>
+                にまとめました。懸垂は体重の100%を引く種目なので、できないのが普通です。
+              </p>
             </section>
 
             <section>

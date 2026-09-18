@@ -249,6 +249,10 @@ export default function BeginnerGuidePage() {
                 <Link href="/column/protein" className="text-orange-600 font-bold underline">
                   タンパク質の摂り方
                 </Link>
+                、そして「いつになったら変わるのか」が気になったら
+                <Link href="/column/effect-timeline" className="text-orange-600 font-bold underline">
+                  筋トレの効果はいつから出る？
+                </Link>
                 です。サクトレでは5つの質問に答えるだけで、今日やるメニューが出ます。
               </p>
             </section>

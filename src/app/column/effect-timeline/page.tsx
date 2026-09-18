@@ -246,6 +246,13 @@ export default function EffectTimelinePage() {
                 </Link>
                 にまとめています。
               </p>
+              <p className="mt-2">
+                「腹筋が見えるまで」に限れば、必要な減量は計算で出せます。
+                <Link href="/column/abs-body-fat" className="text-orange-600 font-bold underline">
+                  腹筋が割れる体脂肪率は何%？
+                </Link>
+                に、目標体脂肪率ごとの脂肪の量と、そこまでの日数を表にしました。
+              </p>
             </section>
 
             <section className="bg-orange-50 border border-orange-100 rounded-xl p-4">

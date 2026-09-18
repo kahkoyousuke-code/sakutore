@@ -246,6 +246,13 @@ export default function MotivationPage() {
               <p>
                 筋トレを続けていると、必ずと言っていいほど「停滞期」が訪れます。体重が変わらない、重量が伸びない、見た目が変わらない——そんな時期が2〜3ヶ月続くこともあります。停滞期はサボっているからではなく、体が適応している証拠です。
               </p>
+              <p className="mt-2">
+                ただし、始めて数ヶ月のうちは停滞ではなく<span className="font-bold">順番どおり</span>であることも多いです。見た目が動き出すのは3ヶ月目からで、それまでに伸びるのは扱える重量のほうです。時期ごとの変化は
+                <Link href="/column/effect-timeline" className="text-orange-600 font-bold underline">
+                  筋トレの効果はいつから出る？
+                </Link>
+                に表でまとめました。
+              </p>
 
               <h3 className="font-bold text-gray-800 mt-4 mb-2">
                 停滞期に試すべきこと
