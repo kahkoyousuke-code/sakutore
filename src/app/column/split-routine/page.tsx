@@ -2,6 +2,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
+import { recoveryRows } from "@/lib/recoveryStandards";
 
 export const metadata = pageMetadata({
   title: "筋トレ分割法の早見表｜週2・3・4回それぞれの組み方 - サクトレ",
@@ -36,12 +37,6 @@ const splitRows = [
     split: "4〜5分割",
     example: "胸／背中／肩・腕／脚／弱点部位",
   },
-];
-
-const recoveryRows = [
-  { part: "大きな筋肉（胸・背中・脚）", hours: "48〜72時間", note: "中2〜3日あける" },
-  { part: "小さな筋肉（肩・腕）", hours: "約48時間", note: "中1〜2日あける" },
-  { part: "腹筋・ふくらはぎ", hours: "約24時間", note: "毎日でも回復が追いつきやすい" },
 ];
 
 export default function SplitRoutinePage() {
@@ -137,7 +132,7 @@ export default function SplitRoutinePage() {
                           {row.hours}
                         </td>
                         <td className="border border-gray-200 px-2 py-2 text-gray-600 whitespace-nowrap">
-                          {row.note}
+                          {row.interval}
                         </td>
                       </tr>
                     ))}

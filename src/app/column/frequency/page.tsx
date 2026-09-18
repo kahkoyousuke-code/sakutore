@@ -2,6 +2,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
+import { recoveryRows } from "@/lib/recoveryStandards";
 
 export const metadata = pageMetadata({
   title: "週に何回筋トレすればいい？｜回数より週セット数で決まる - サクトレ",
@@ -53,21 +54,19 @@ export default function FrequencyPage() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td className="border border-gray-200 px-2 py-2 text-gray-700">胸・背中・脚（大筋群）</td>
-                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800 whitespace-nowrap">48〜72時間</td>
-                      <td className="border border-gray-200 px-2 py-2 text-gray-600 whitespace-nowrap">中2〜3日</td>
-                    </tr>
-                    <tr>
-                      <td className="border border-gray-200 px-2 py-2 text-gray-700">肩・腕（小筋群）</td>
-                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800 whitespace-nowrap">約48時間</td>
-                      <td className="border border-gray-200 px-2 py-2 text-gray-600 whitespace-nowrap">中1〜2日</td>
-                    </tr>
-                    <tr>
-                      <td className="border border-gray-200 px-2 py-2 text-gray-700">腹筋・ふくらはぎ</td>
-                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800 whitespace-nowrap">約24時間</td>
-                      <td className="border border-gray-200 px-2 py-2 text-gray-600 whitespace-nowrap">毎日でも可</td>
-                    </tr>
+                    {recoveryRows.map((row) => (
+                      <tr key={row.part}>
+                        <td className="border border-gray-200 px-2 py-2 text-gray-700">
+                          {row.part}
+                        </td>
+                        <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800 whitespace-nowrap">
+                          {row.hours}
+                        </td>
+                        <td className="border border-gray-200 px-2 py-2 text-gray-600 whitespace-nowrap">
+                          {row.interval}
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
