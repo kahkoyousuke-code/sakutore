@@ -59,6 +59,7 @@ function buildPrompt(answers: string[], recovery?: RecoveryInfo[]): string {
 設計ルール:
 - 本日1回分のみ。鍛える部位は1〜2部位に絞る(例:胸+三頭、背中+二頭、脚、肩+腕など)
 - ${count}種目(コンパウンド中心+アイソレーション)
+- 種目の並び順は大きい種目(コンパウンド)から小さい種目(アイソレーション)へ。腹筋は最後に置く
 - レップ数:${repRange}
 - 種目選択:${experienceNote}
 - ${answers[4]}の器具のみ使用${recoveryRule}
