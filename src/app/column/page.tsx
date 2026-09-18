@@ -20,6 +20,12 @@ const categories = [
           "目標設定、正しいフォーム、大きな筋肉から鍛えるコツなど、初心者が押さえるべきポイントを解説します。",
       },
       {
+        href: "/column/effect-timeline",
+        title: "筋トレの効果はいつから出る？1ヶ月・3ヶ月・6ヶ月の変化の目安",
+        description:
+          "1ヶ月で増える筋肉0.5kgを腕の太さに換算するとわずか3mm。変化が出る順番を時系列の早見表で整理し、効果の測り方まで解説します。",
+      },
+      {
         href: "/column/gym-beginner",
         title: "ジム初心者が最初にやるべきマシン5選",
         description:
