@@ -238,6 +238,13 @@ export default function StrengthStandardsPage() {
               <p className="mt-3 text-xs text-gray-500">
                 ※ 数字が伸びやすいぶん、フォームが崩れたまま重量だけ増えて腰を痛める事故が最も多い種目でもあります。
               </p>
+              <p className="mt-3">
+                デッドリフトだけをもっと詳しく知りたい人は、
+                <Link href="/column/deadlift-average" className="text-orange-600 font-bold underline">
+                  デッドリフトの平均は何kg？体重別・トレ歴別の目安一覧
+                </Link>
+                に、スモウ・トラップバー別に数字を揃える方法・女性の目安・トレ歴別の到達期間をまとめてあります。
+              </p>
             </section>
 
             <section>
