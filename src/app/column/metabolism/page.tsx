@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FAT_KCAL_PER_KG, formatKcal, kcalForFatKg } from "@/lib/fatConversion";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
@@ -256,11 +257,13 @@ export default function MetabolismPage() {
                     </tr>
                     <tr className="bg-gray-50">
                       <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">仮に全部が脂肪なら</td>
-                      <td className="border border-gray-200 px-2 py-2">7,200kcal × 12 ＝ 86,400kcal</td>
+                      <td className="border border-gray-200 px-2 py-2">
+                        {formatKcal(FAT_KCAL_PER_KG)}kcal × 12 ＝ {formatKcal(kcalForFatKg(12))}kcal
+                      </td>
                     </tr>
                     <tr>
                       <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">1日あたりの赤字</td>
-                      <td className="border border-gray-200 px-2 py-2">86,400 ÷ 365 ≒ <strong>約237kcal</strong></td>
+                      <td className="border border-gray-200 px-2 py-2">{formatKcal(kcalForFatKg(12))} ÷ 365 ≒ <strong>約{Math.round(kcalForFatKg(12) / 365)}kcal</strong></td>
                     </tr>
                     <tr className="bg-gray-50">
                       <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">筋肉5kg増でまかなえる分</td>
@@ -301,6 +304,13 @@ export default function MetabolismPage() {
                   カロリー計算機
                 </Link>
                 で自分の消費カロリーを把握し、サクトレで目標に合ったメニューを作成してみてください。
+              </p>
+              <p className="mt-2">
+                「腹筋が見えるところまで落としたい」という目標があるなら、必要な減量を計算した
+                <Link href="/column/abs-body-fat" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  腹筋が割れる体脂肪率は何%？
+                </Link>
+                もどうぞ。ここで出した脂肪1kg＝{formatKcal(FAT_KCAL_PER_KG)}kcalをそのまま使っています。
               </p>
             </section>
           </div>

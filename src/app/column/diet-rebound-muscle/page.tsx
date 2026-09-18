@@ -263,6 +263,13 @@ export default function DietReboundMusclePage() {
               <p className="mt-2">
                 筋トレを組み合わせることで筋肉量を保ち、代謝を維持・向上させることができます。「痩せた体を一生維持したい」という方には、筋トレとの組み合わせが唯一の本質的な解決策です。サクトレで、あなたに合ったメニューを見つけてください。
               </p>
+              <p className="mt-2">
+                どこまで落とせば見た目が変わるのかを数字で知りたい方は
+                <Link href="/column/abs-body-fat" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  腹筋が割れる体脂肪率は何%？
+                </Link>
+                で、目標体脂肪率までに落とす脂肪の量を計算しています。
+              </p>
             </section>
           </div>
         </div>

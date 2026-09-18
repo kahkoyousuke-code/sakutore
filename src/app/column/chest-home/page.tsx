@@ -1,6 +1,11 @@
 import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
+import {
+  formatLoadPercent,
+  formatLoadWeight,
+  pushupLoadRows,
+} from "@/lib/bodyweightStandards";
 import AuthorBox from "@/components/AuthorBox";
 
 export const metadata = pageMetadata({
@@ -9,6 +14,10 @@ export const metadata = pageMetadata({
     "腕立て伏せ5種の負荷を体重比で数値化した表つき（標準は体重の約64%＝70kgなら約45kg）。回数を増やしても負荷が変わらない理由と、自宅トレで停滞したときの正しい進め方を解説します。",
   path: "/column/chest-home",
 });
+
+// 負荷の数字は src/lib/bodyweightStandards.ts が単一ソース。
+// 同じ表を /column/pushup-pullup-average でも出すので、ここには直書きしない。
+const EXAMPLE_WEIGHT = 70;
 
 export default function ChestHomePage() {
   return (
@@ -105,31 +114,27 @@ export default function ChestHomePage() {
                         体重に対する負荷
                       </th>
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
-                        体重70kgなら
+                        体重{EXAMPLE_WEIGHT}kgなら
                       </th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">膝つき腕立て</td>
-                      <td className="border border-gray-200 px-2 py-2">約49%</td>
-                      <td className="border border-gray-200 px-2 py-2">約34kg</td>
-                    </tr>
-                    <tr className="bg-gray-50">
-                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">インクライン<br />（手を台に）</td>
-                      <td className="border border-gray-200 px-2 py-2">約55%</td>
-                      <td className="border border-gray-200 px-2 py-2">約39kg</td>
-                    </tr>
-                    <tr>
-                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">標準の腕立て</td>
-                      <td className="border border-gray-200 px-2 py-2">約64%</td>
-                      <td className="border border-gray-200 px-2 py-2">約45kg</td>
-                    </tr>
-                    <tr className="bg-gray-50">
-                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">デクライン<br />（足を台に）</td>
-                      <td className="border border-gray-200 px-2 py-2">約70〜75%</td>
-                      <td className="border border-gray-200 px-2 py-2">約49〜53kg</td>
-                    </tr>
+                    {pushupLoadRows.map((row, idx) => (
+                      <tr key={row.name} className={idx % 2 === 1 ? "bg-gray-50" : undefined}>
+                        <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">
+                          {row.name}
+                          {row.detail && (
+                            <>
+                              <br />（{row.detail}）
+                            </>
+                          )}
+                        </td>
+                        <td className="border border-gray-200 px-2 py-2">{formatLoadPercent(row)}</td>
+                        <td className="border border-gray-200 px-2 py-2">
+                          {formatLoadWeight(row, EXAMPLE_WEIGHT)}
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
@@ -146,6 +151,13 @@ export default function ChestHomePage() {
                   BIG3の重量目安表
                 </Link>
                 で自分の位置を確認できます）。
+              </p>
+              <p className="mt-2">
+                「腕立ては何回できれば普通なのか」を知りたい人は
+                <Link href="/column/pushup-pullup-average" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  腕立て伏せ・懸垂の回数目安一覧
+                </Link>
+                へ。回数のレベル別の目安と、回数を増やしても負荷が増えない理由を書いています。
               </p>
             </section>
 
