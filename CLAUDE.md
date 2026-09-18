@@ -35,12 +35,16 @@ Next.js 14 App Router / TypeScript / React 18 / Tailwind CSS 3.4 / Anthropic SDK
 
 | モジュール | 何の単一ソースか | 使っている場所 |
 |---|---|---|
-| `src/lib/strengthStandards.ts` | BIG3の体重比・レベル定義・目標重量計算 | `/weight-checker`, `/column/strength-standards`, `/column/bench-press-average`, `/column/squat-average` |
+| `src/lib/strengthStandards.ts` | BIG3の体重比・レベル定義・目標重量計算 | `/weight-checker`, `/column/strength-standards`, `/column/bench-press-average`, `/column/squat-average`, `/column/deadlift-average` |
 | `src/lib/author.ts` | 運営者名・実績・SNS（E-E-A-T） | `AuthorBox`, `/about`, `/gear`, JSON-LD |
 | `src/lib/metadata.ts` | title/description/canonical/OGP | 全ページ（`pageMetadata()` 経由） |
 | `src/lib/exercises.ts` | 種目の手順・フォーム注意点・コツ | 結果画面の種目カード |
+| `src/lib/bodyweightStandards.ts` | 自重種目の負荷（体重比）・回数目安 | `/column/chest-home`, `/column/pushup-pullup-average` |
+| `src/lib/fatConversion.ts` | 体脂肪1kg＝7,200kcalの換算 | `/calorie-calculator`, `/column/metabolism`, `/column/alcohol`, `/column/effect-timeline` |
 
 過去に記事とツールでスクワットの目安が105kg／87.5kgと食い違う事故があり、`strengthStandards.ts` に一元化して解消した。**数字を足すときは必ずここに足す。**
+
+同じ事故が体脂肪の換算でも起きていた（計算機が1g＝7kcal、記事と解説カードが1kg＝7,200kcal）。`fatConversion.ts` に一元化済み。**記事に数字を書くときは、まず既存モジュールにあるか探すこと。**
 
 1RM換算は Epley式（`1RM = weight × (1 + reps / 30)`、1repは例外でそのまま）。`/rm-calculator` と各記事で同じ式を使う。
 
@@ -49,7 +53,7 @@ Next.js 14 App Router / TypeScript / React 18 / Tailwind CSS 3.4 / Anthropic SDK
 `src/app/column/<slug>/page.tsx` を作り、以下を**全部**やる。
 
 1. `pageMetadata({ title, description, path })` で metadata をエクスポート（直書きしない）
-2. `AuthorBox` を記事末尾に置く（25本中25本が設置済み。E-E-A-Tの一貫性のため例外を作らない）
+2. `AuthorBox` を記事末尾に置く（28本中28本が設置済み。E-E-A-Tの一貫性のため例外を作らない）
 3. `ShareButtons` を置く
 4. **`src/app/column/page.tsx` のリストに `href` / `title` / `description` を追記**（忘れると内部リンクが張られず、Googleに発見されない）
 5. `src/app/sitemap.ts` は `src/app/column` を読んで自動生成するので**追記不要**。ただし `LAST_MODIFIED` は更新する
