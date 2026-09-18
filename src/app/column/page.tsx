@@ -125,6 +125,12 @@ const categories = [
     name: "😴 頻度・休息・コンディション",
     articles: [
       {
+        href: "/column/muscle-soreness",
+        title: "筋肉痛でも筋トレしていい？判断の基準と部位別の回復時間",
+        description:
+          "答えは「痛む部位はやらない、別の部位はやっていい」。痛み方別の判断表と、ピークが24〜48時間後に来る経過表、部位別の回復時間の目安を一覧にしました。",
+      },
+      {
         href: "/column/frequency",
         title: "週に何回筋トレすればいい？最適な頻度を解説",
         description:
