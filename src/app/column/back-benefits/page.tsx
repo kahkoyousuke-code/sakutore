@@ -223,7 +223,11 @@ export default function BackBenefitsPage() {
                 <div className="flex items-start gap-2">
                   <span className="text-orange-500 font-bold">▸</span>
                   <p>
-                    <span className="font-bold">懸垂（チンニング）</span>：広背筋を鍛える最強の種目。できない方はアシストを使ったり、斜め懸垂（インバーテッドロウ）から始めましょう。
+                    <span className="font-bold">懸垂（チンニング）</span>：広背筋を鍛える最強の種目。できない方はアシストを使ったり、斜め懸垂（インバーテッドロウ）から始めましょう（
+                    <Link href="/column/pullup-progression" className="text-orange-600 font-bold underline">
+                      1回もできない人の練習法
+                    </Link>
+                    ）。
                   </p>
                 </div>
                 <div className="flex items-start gap-2">

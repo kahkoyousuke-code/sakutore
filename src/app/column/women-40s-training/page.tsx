@@ -183,6 +183,13 @@ export default function Women40sTrainingPage() {
                   </tbody>
                 </table>
               </div>
+              <p className="mt-3">
+                この中のヒップスラストとルーマニアンデッドリフトは、どちらも<span className="font-bold">股関節を伸ばす動き</span>の種目です。お尻を狙うときの種目の選び方は
+                <Link href="/column/hip-training" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  お尻を鍛える筋トレ
+                </Link>
+                にまとめました。
+              </p>
               <p className="text-xs text-gray-500 mt-2">
                 ※種目名はサクトレのメニュー生成で使っている名称に合わせています。
                 <Link href="/questions" className="text-orange-500 font-bold hover:text-orange-600 underline">

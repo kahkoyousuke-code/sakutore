@@ -447,7 +447,11 @@ export default function SquatAveragePage() {
                 <div className="flex items-start gap-2">
                   <span className="text-orange-500 font-bold">1</span>
                   <p>
-                    <span className="font-bold">深さを固定する。</span>毎回違う深さで挙げていると、伸びたのか浅くなったのか自分でも判断できません。基準（パラレル）を決めて、重量はそこから足します。
+                    <span className="font-bold">深さを固定する。</span>毎回違う深さで挙げていると、伸びたのか浅くなったのか自分でも判断できません。基準（パラレル）を決めて、重量はそこから足します。なお浅いスクワットは股関節がほとんど動かないので、お尻にも効きません（
+                    <Link href="/column/hip-training" className="text-orange-600 font-bold underline">
+                      お尻を鍛える筋トレ
+                    </Link>
+                    ）。
                   </p>
                 </div>
                 <div className="flex items-start gap-2">

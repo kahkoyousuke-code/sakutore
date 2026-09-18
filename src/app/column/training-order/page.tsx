@@ -210,6 +210,17 @@ export default function TrainingOrderPage() {
                 ))}
               </div>
               <p className="mt-3">
+                腕の中でどちらを優先するか（結論は三頭筋）は
+                <Link href="/column/arm-training" className="text-orange-600 font-bold underline">
+                  腕を太くする筋トレ
+                </Link>
+                に、お尻を狙うときの並べ方は
+                <Link href="/column/hip-training" className="text-orange-600 font-bold underline">
+                  お尻を鍛える筋トレ
+                </Link>
+                に書きました。
+              </p>
+              <p className="mt-2">
                 どれも<span className="font-bold">バーベルやマシンで複数の関節を使う種目が先、1つの筋肉だけを狙う種目が後</span>になっています。種目名が変わっても、この並びさえ守れば順番で失敗することはありません。
               </p>
               <p className="mt-2">

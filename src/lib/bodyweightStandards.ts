@@ -96,6 +96,20 @@ export const formatLoadWeight = (row: LoadRow, bodyWeight: number) =>
     ? `約${loadWeight(bodyWeight, row.ratio)}〜${loadWeight(bodyWeight, row.ratioMax)}kg`
     : `約${loadWeight(bodyWeight, row.ratio)}kg`;
 
+/**
+ * 懸垂1回に届くかどうかを、ラットプルダウンの重量で判定するときの体重比。
+ *
+ * 出典のある基準ではなくサクトレの目安。ラットプルダウンは背中を引く動きが
+ * 懸垂と近いので、「体重の8割を8〜10回」引ければ、体重の100%を1回引く力が
+ * ついている可能性が高い、という見立てで置いている。記事では必ず目安と
+ * 断って使うこと。
+ */
+export const LAT_PULLDOWN_TO_PULLUP_RATIO = 0.8;
+
+/** 懸垂1回の目標になるラットプルダウンの重量（kg）。表示は1kg単位。 */
+export const latPulldownTarget = (bodyWeight: number) =>
+  Math.round(bodyWeight * LAT_PULLDOWN_TO_PULLUP_RATIO);
+
 export type RepRow = {
   level: Level;
   /** フォームを崩さず連続でできる回数。 */
