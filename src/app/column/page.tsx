@@ -178,6 +178,12 @@ const categories = [
     name: "📊 重量・強度の目安",
     articles: [
       {
+        href: "/column/big3-total",
+        title: "BIG3合計◯kgはどのレベル？体重別の早見表（250〜700kg）",
+        description:
+          "同じ合計400kgでも、体重60kgなら上級者・体重100kgなら初心者です。合計250〜700kgが体重別に何レベルかの逆引き表と、次のレベルまであと何kgかを載せました。",
+      },
+      {
         href: "/column/strength-standards",
         title: "BIG3の重量目安一覧｜体重の何倍が普通？",
         description:

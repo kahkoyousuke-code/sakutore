@@ -275,6 +275,11 @@ export default function WeightCheckerPage() {
                 <p className="text-xs text-gray-500 mt-1">
                   3種目の目標を単純に足した数字です。合計は内訳を隠すので、
                   1種目だけ大きく遅れていないかは上の3つで確認してください。
+                  合計の数字から逆にレベルを引きたいときは
+                  <Link href="/column/big3-total" className="text-orange-600 font-bold underline">
+                    BIG3合計◯kgはどのレベル？
+                  </Link>
+                  をどうぞ。
                 </p>
               </div>
 

@@ -69,7 +69,7 @@ Next.js 14 App Router / TypeScript / React 18 / Tailwind CSS 3.4 / Anthropic SDK
 `src/app/column/<slug>/page.tsx` を作り、以下を**全部**やる。
 
 1. `pageMetadata({ title, description, path })` で metadata をエクスポート（直書きしない）
-2. `AuthorBox` を記事末尾に置く（35本中35本が設置済み。E-E-A-Tの一貫性のため例外を作らない）
+2. `AuthorBox` を記事末尾に置く（36本中36本が設置済み。E-E-A-Tの一貫性のため例外を作らない）
 3. `ShareButtons` を置く
 4. **`src/app/column/page.tsx` のリストに `href` / `title` / `description` を追記**（忘れると内部リンクが張られず、Googleに発見されない）
 5. `src/app/sitemap.ts` は `src/app/column` を読んで自動生成するので**追記不要**。ただし `LAST_MODIFIED` は更新する

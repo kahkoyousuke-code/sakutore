@@ -262,6 +262,13 @@ export default function StrengthStandardsPage() {
               <p className="mt-2 text-xs text-gray-500">
                 ただし合計は<span className="font-bold">内訳を隠します</span>。筆者のように1種目だけ突出していても合計は伸びるので、弱点を探すときは必ず種目ごとの表に戻ってください。
               </p>
+              <p className="mt-3">
+                「合計◯kgは何レベルなのか」を逆から引きたい場合は
+                <Link href="/column/big3-total" className="text-orange-600 font-bold underline">
+                  BIG3合計◯kgはどのレベル？
+                </Link>
+                に、合計250〜700kg×体重別の早見表を用意しました。
+              </p>
             </section>
 
             <section>
