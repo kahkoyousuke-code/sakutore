@@ -124,6 +124,21 @@ export const LEVEL_STEP_PERIOD: Record<Level, string | null> = {
   エリート: null,
 };
 
+/**
+ * 逆引き：体重比から、その人が今どのレベルにいるかを返す。
+ *
+ * 表（レベル→必要重量）とは逆向きの引き方。重量を打ち込んで検索する人
+ * （「big3 250kg」「スクワット 140kg」など）に answers を返すために使う。
+ * 最も下のレベルにも届かない場合は null（＝未経験の手前）。
+ */
+export const levelForRatio = (rows: Row[], ratio: number): Level | null => {
+  let current: Level | null = null;
+  for (const row of rows) {
+    if (ratio >= row.ratio) current = row.level;
+  }
+  return current;
+};
+
 /** Target weight for one lift, rounded to 0.1kg as the tool has always done. */
 export const targetWeight = (bodyWeight: number, ratio: number) =>
   Math.round(bodyWeight * ratio * 10) / 10;
