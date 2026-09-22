@@ -215,7 +215,14 @@ export default function WeightCheckerTables() {
           >
             体重別・レベル別の早見表
           </Link>
-          で確認できます。
+          で確認できます。すでに合計の数字が出ている人は、
+          <Link
+            href="/column/big3-total"
+            className="text-orange-500 font-bold hover:underline"
+          >
+            BIG3合計◯kgはどのレベル？
+          </Link>
+          で合計値から逆にレベルを引けます。
         </p>
         <GuideNote>
           <p className="font-bold text-orange-600 mb-1">
