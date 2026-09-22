@@ -273,6 +273,10 @@ export default function Women40sTrainingPage() {
                 <Link href="/column/rest" className="text-orange-500 font-bold hover:text-orange-600 underline">
                   筋肉を育てる休息の重要性
                 </Link>
+                に、いつ・週何回やるかは
+                <Link href="/column/women-training-timing" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  女性が筋トレで痩せやすい時間帯と頻度
+                </Link>
                 にまとめています。サクトレでは5つの質問に答えるだけで、今日やるメニューを提案します。
               </p>
             </section>

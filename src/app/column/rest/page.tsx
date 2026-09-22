@@ -164,7 +164,11 @@ export default function RestPage() {
                   <Link href="/column/frequency" className="text-orange-500 font-bold hover:text-orange-600 underline">
                     筋トレの頻度
                   </Link>
-                  にまとめています。
+                  にまとめています。「毎日やってもいいのか」をそのまま知りたい人は
+                  <Link href="/column/everyday-training" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                    筋トレは毎日やってもいい？
+                  </Link>
+                  に、成立する条件とやめたほうがいい人を判定つきで書いています。
                 </p>
               </div>
 

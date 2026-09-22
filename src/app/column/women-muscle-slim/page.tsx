@@ -213,6 +213,10 @@ export default function WomenMuscleSlimPage() {
                 <Link href="/column/women-40s-training" className="text-orange-500 font-bold hover:text-orange-600 underline">
                   40代女性が筋トレで痩せにくい理由
                 </Link>
+                に、いつ・週何回やると続けやすいかは
+                <Link href="/column/women-training-timing" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  女性が筋トレで痩せやすい時間帯と頻度
+                </Link>
                 に書いています。サクトレでは5つの質問に答えるだけでメニューを提案します。
               </p>
             </section>

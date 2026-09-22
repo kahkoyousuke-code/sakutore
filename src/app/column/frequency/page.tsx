@@ -110,6 +110,13 @@ export default function FrequencyPage() {
               <p className="mt-2">
                 ただし、週6回以上トレーニングする場合は、オーバートレーニングにならないよう体の状態に注意が必要です。疲労が抜けない、パフォーマンスが落ちたと感じたら、迷わず休息日を設けましょう。
               </p>
+              <p className="mt-2">
+                週7回――つまり毎日やっていいのかは、部位を分けられるかどうかで答えが変わります。条件と、やめたほうがいい人の見分け方は
+                <Link href="/column/everyday-training" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  筋トレは毎日やってもいい？
+                </Link>
+                にまとめました。
+              </p>
             </section>
 
             <section>
