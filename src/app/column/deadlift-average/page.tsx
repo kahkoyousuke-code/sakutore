@@ -584,7 +584,11 @@ export default function DeadliftAveragePage() {
                 <Link href="/weight-checker" className="text-orange-600 font-bold underline">
                   筋トレレベル診断
                 </Link>
-                を用意しています。
+                を用意しています。3種目を足した「BIG3合計」で見たい人は
+                <Link href="/column/big3-total" className="text-orange-600 font-bold underline">
+                  BIG3合計◯kgはどのレベル？
+                </Link>
+                へどうぞ。合計に占める割合はデッドリフトが最も大きいので、合計を伸ばしたいならこの種目が主役になります。
               </p>
             </section>
 

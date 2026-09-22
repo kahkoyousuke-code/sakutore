@@ -522,7 +522,11 @@ export default function SquatAveragePage() {
                 <Link href="/weight-checker" className="text-orange-600 font-bold underline">
                   筋トレレベル診断
                 </Link>
-                を用意しています。スクワットだけでなく3種目の現在地を一度に確認できます。
+                を用意しています。スクワットだけでなく3種目の現在地を一度に確認できます。3種目を足した「BIG3合計」で見たい人は
+                <Link href="/column/big3-total" className="text-orange-600 font-bold underline">
+                  BIG3合計◯kgはどのレベル？
+                </Link>
+                に、合計250〜700kgが体重別に何レベルかの早見表があります。
               </p>
             </section>
 
