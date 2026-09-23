@@ -8,7 +8,10 @@ import {
   benchRows,
   deadliftRows,
   formatRatio,
+  levelsFor,
+  rowsFor,
   squatRows,
+  targetWeight,
   totalRows,
   womenBenchRows,
   womenDeadliftRows,
@@ -85,6 +88,91 @@ function LevelLegend({ rows }: { rows: Row[] }) {
         </li>
       ))}
     </ul>
+  );
+}
+
+// The per-lift tables above answer "what does level X need". People searching
+// "体重80キロ ビッグ3" start from their body weight instead, so this view
+// transposes the same rows: one table per body weight, all three lifts side by
+// side. targetWeight (0.1kg) keeps each row's lifts summing exactly to its total.
+const MEN_LEVELS = levelsFor("male");
+const ratioAt = (lift: "bench" | "squat" | "deadlift", index: number) =>
+  rowsFor("male", lift)[index].ratio;
+
+function CrossHead() {
+  return (
+    <thead>
+      <tr className="bg-orange-50">
+        {["レベル", "ベンチ", "スクワット", "デッド", "合計"].map((label) => (
+          <th
+            key={label}
+            className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap"
+          >
+            {label}
+          </th>
+        ))}
+      </tr>
+    </thead>
+  );
+}
+
+function RatioByLevelTable() {
+  return (
+    <div className="overflow-x-auto -mx-2 px-2 mt-3">
+      <table className="w-full text-xs border-collapse">
+        <CrossHead />
+        <tbody>
+          {MEN_LEVELS.map((level, i) => (
+            <tr key={level}>
+              <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800 whitespace-nowrap">
+                {level}
+              </td>
+              {(["bench", "squat", "deadlift"] as const).map((lift) => (
+                <td
+                  key={lift}
+                  className="border border-gray-200 px-2 py-2 text-gray-700 whitespace-nowrap"
+                >
+                  ×{formatRatio(ratioAt(lift, i))}
+                </td>
+              ))}
+              <td className="border border-gray-200 px-2 py-2 text-gray-700 font-bold whitespace-nowrap">
+                ×{formatRatio(totalRows[i].ratio)}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function BodyWeightTable({ weight }: { weight: number }) {
+  return (
+    <div className="overflow-x-auto -mx-2 px-2">
+      <table className="w-full text-xs border-collapse">
+        <CrossHead />
+        <tbody>
+          {MEN_LEVELS.map((level, i) => (
+            <tr key={level}>
+              <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800 whitespace-nowrap">
+                {level}
+              </td>
+              {(["bench", "squat", "deadlift"] as const).map((lift) => (
+                <td
+                  key={lift}
+                  className="border border-gray-200 px-2 py-2 text-gray-700 whitespace-nowrap"
+                >
+                  {targetWeight(weight, ratioAt(lift, i))}kg
+                </td>
+              ))}
+              <td className="border border-gray-200 px-2 py-2 text-gray-700 font-bold whitespace-nowrap">
+                {targetWeight(weight, totalRows[i].ratio)}kg
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
@@ -268,6 +356,46 @@ export default function StrengthStandardsPage() {
                   BIG3合計◯kgはどのレベル？
                 </Link>
                 に、合計250〜700kg×体重別の早見表を用意しました。
+              </p>
+            </section>
+
+            <section>
+              <h2 className="font-bold text-orange-500 text-base mb-3">
+                体重別に見るBIG3の目安（50〜100kg）
+              </h2>
+              <p>
+                ここまでの表は種目ごとに分かれているので、「体重80kgならBIG3はそれぞれ何kgか」を知るには3つの表を突き合わせる必要がありました。ここでは同じ数字を<span className="font-bold">体重ごとに並べ直し</span>、3種目と合計を1つの表で見られるようにしています。
+              </p>
+              <p className="mt-2">
+                まず「体重の何倍か」だけを1枚にまとめるとこうなります。どの体重でもこの比率を掛けるだけです。
+              </p>
+              <RatioByLevelTable />
+              <p className="mt-3 text-xs text-gray-500">
+                ※ 比率で見ると<span className="font-bold">ベンチ：スクワット：デッドリフト ≒ 1：1.5：2</span>。中級者ならベンチ×1.0・スクワット×1.5・デッドリフト×2.0で、ちょうどこの比になります。自分の3種目がこの比から大きく外れているなら、低いほうの種目が伸びしろです。
+              </p>
+
+              {MEN_WEIGHTS.map((w) => (
+                <div key={w}>
+                  <h3 className="font-bold text-gray-800 mt-5 mb-2">
+                    体重{w}kgのBIG3目安
+                  </h3>
+                  <BodyWeightTable weight={w} />
+                </div>
+              ))}
+              <p className="mt-3 text-xs text-gray-500">
+                ※ 3種目を足した値が合計と一致するよう、0.5kg単位のまま載せています（上の種目別の表は1kg単位に丸めています）。実際のプレートは2.5kg刻みなので、近い重量で読み替えてください。
+              </p>
+              <p className="mt-2 text-xs text-gray-500">
+                ※ 男性の目安です。女性はこの下の
+                <span className="font-bold">女性の重量目安</span>
+                を参照してください。
+              </p>
+              <p className="mt-3">
+                体重が表の間（たとえば75kg）の人は、
+                <Link href="/weight-checker" className="text-orange-600 font-bold underline">
+                  適正重量チェッカー
+                </Link>
+                に体重と今の重量を入れると、同じ基準で自分のレベルと次のレベルまであと何kgかが出ます。
               </p>
             </section>
 
