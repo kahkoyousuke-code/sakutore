@@ -14,9 +14,9 @@ import {
 } from "@/lib/strengthStandards";
 
 export const metadata = pageMetadata({
-  title: "スクワットの平均は何kg？体重別・トレ歴別・男女別の目安一覧 - サクトレ",
+  title: "スクワットの平均は何kg？体重比・トレ歴別の目安早見表【男女別】 - サクトレ",
   description:
-    "スクワットの平均重量を体重50〜100kg別・レベル別の一覧表で解説。深さ（フル・パラレル・ハーフ）で数字が変わる問題、男女差、回数から1RMを出す換算表つき。筋トレ歴15年・フィジーク大会入賞の筆者が、ベンチと同じ120kgで止まっている実数字も公開します。",
+    "スクワットの平均重量を体重比（体重の何倍か）で、体重50〜100kg別・レベル別の早見表にまとめて解説。深さ（フル・パラレル・ハーフ）で数字が変わる問題、男女差、回数から1RMを出す換算表つき。筋トレ歴15年・フィジーク大会入賞の筆者が、ベンチと同じ120kgで止まっている実数字も公開します。",
   path: "/column/squat-average",
 });
 
@@ -158,7 +158,7 @@ export default function SquatAveragePage() {
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
           <h1 className="text-xl font-bold text-gray-800 mb-6">
-            スクワットの平均は何kg？体重別・トレ歴別の目安一覧
+            スクワットの平均は何kg？体重比・トレ歴別の目安早見表
           </h1>
 
           <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
@@ -569,7 +569,7 @@ export default function SquatAveragePage() {
 
         <ShareButtons
           url="https://sakutore.jp/column/squat-average"
-          title="スクワットの平均は何kg？体重別・トレ歴別の目安一覧"
+          title="スクワットの平均は何kg？体重比・トレ歴別の目安早見表"
         />
         <Link
           href="/gear"
