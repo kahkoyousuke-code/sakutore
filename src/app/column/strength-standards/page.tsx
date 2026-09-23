@@ -17,7 +17,7 @@ import {
 } from "@/lib/strengthStandards";
 
 export const metadata = pageMetadata({
-  title: "BIG3の重量目安一覧｜ベンチプレス・スクワット・デッドリフトの体重別早見表 - サクトレ",
+  title: "BIG3の体重別早見表｜ビッグ3の重量目安をレベル別に一覧 - サクトレ",
   description:
     "ビッグ3（ベンチプレス・スクワット・デッドリフト）の重量目安を体重50〜100kg別・レベル別の早見表で解説。BIG3合計の目安と1RM換算表つき。筋トレ歴15年・フィジーク大会入賞の筆者が、自身の実重量（60kg→120/120/160kg）と目安表とのズレまで公開します。",
   path: "/column/strength-standards",
