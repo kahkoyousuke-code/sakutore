@@ -32,6 +32,8 @@
 npm run dev     # 開発サーバー (localhost:3000)
 npm run build   # 本番ビルド。変更後は必ず通す
 npm run lint    # ESLint
+npm run seo:fetch   # Search Console から検索パフォーマンスを取得（.gsc/latest.json）
+npm run seo:report  # 取得結果から「次にどこを直すか」の一覧を Markdown で出す
 ```
 
 テストは無い。**変更の検証は `npm run build` が通ることと、dev serverでの目視**で行う。
@@ -77,6 +79,25 @@ Next.js 14 App Router / TypeScript / React 18 / Tailwind CSS 3.4 / Anthropic SDK
 
 記事の書き味は既存に合わせる: 検索クエリをそのまま拾うtitle、「全国平均◯kg」のような根拠のない数字は否定して基準を示す、筆者の実数字を混ぜる、表で現在地が分かるようにする。
 
+## Search Console を見て対策を立てる
+
+`docs/seo-workflow.md` が手順の正本。`.claude/agents/seo-analyst.md`（SEO担当エージェント）も
+そこを読みに来るだけにしてある。
+
+- `npm run seo:fetch` で取得し、`npm run seo:report` で「あと一歩のクエリ」
+  「順位のわりにクリックされていないページ」などを一覧にする
+- 認証情報が無くても、GSC の画面からエクスポートした CSV を `.gsc/csv/` に置けば
+  `seo:report` だけで動く
+- **`.gsc/` は git 管理外**。認証情報も取得データもコミットしない
+- `scripts/` の3ファイル（`gsc-fetch.mjs` / `seo-report.mjs` / `seo-config.mjs`）は
+  サイトに依存せず、姉妹サービス（サクメシ・サクサプ）と同一。サクトレ固有の設定は
+  **`seo.config.mjs`** の1枚だけ。記事を足したらそこの `keywords` にも足す
+- 記事一覧は `src/app/column/` のディレクトリから読む（sitemap.ts と同じ方針）。
+  title / description は各記事の `pageMetadata()` から取る（検索結果に出るのはこれ）
+- 未着手の候補は `docs/column-backlog.md` の未チェック項目を読む
+- レポートの「打ち手」には、上の「このサイトのゴール」の実測（効くのは順位とCTR、
+  新記事は競合の混雑度で決める）を反映してある
+
 ## 収益導線（値はハードコードされている）
 
 - Amazonアソシエイトタグ: `kahko5458-22`
@@ -93,6 +114,11 @@ Next.js 14 App Router / TypeScript / React 18 / Tailwind CSS 3.4 / Anthropic SDK
 - `NEXT_PUBLIC_SAKUMESHI_URL`
 
 Vercel側にも同じものを設定してある。
+
+SEOレポート用（どちらも任意・`npm run seo:fetch` だけが使う。本番のビルドには不要）:
+
+- `GSC_SERVICE_ACCOUNT_JSON` … Search Console API 用サービスアカウントの鍵 JSON（または その base64）
+- `GSC_SITE_URL` … 対象プロパティ。未設定なら `seo.config.mjs` の `https://sakutore.jp/`
 
 ## noindex の方針
 
