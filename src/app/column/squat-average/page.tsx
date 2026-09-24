@@ -500,7 +500,11 @@ export default function SquatAveragePage() {
                 スクワット100kgはすごいですか？
               </h3>
               <p>
-                体重によります。体重70kgなら×1.43で中級者（105kg）の手前まで来ていますが、体重100kgなら×1.0で初心者の目安（125kg）に届いていません。<span className="font-bold">そして深さも揃えてから比べてください。</span>ハーフで100kgとパラレルで100kgは別の数字です。
+                体重によります。体重70kgなら×1.43で中級者（105kg）の手前まで来ていますが、体重100kgなら×1.0で初心者の目安（125kg）に届いていません。重量を打ち込んで位置だけ知りたい場合は
+                <Link href="/column/squat-weight-level" className="text-orange-600 font-bold underline">
+                  スクワット◯kgはすごい？体重別のレベル早見表
+                </Link>
+                に60〜200kgの逆引き表があります。<span className="font-bold">そして深さも揃えてから比べてください。</span>ハーフで100kgとパラレルで100kgは別の数字です。
               </p>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
                 自重スクワットの平均回数はどれくらいですか？
