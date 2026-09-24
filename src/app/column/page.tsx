@@ -202,6 +202,12 @@ const categories = [
           "深さやマシンの違いで数字は30kg以上変わります。比べる基準を揃えたうえで、体重別・男女別の目安と1RM換算表で現在地を確認できます。",
       },
       {
+        href: "/column/squat-weight-level",
+        title: "スクワット◯kgはすごい？体重別のレベル早見表（60〜200kg）",
+        description:
+          "140kgがすごいかは体重で変わります。体重60kgなら上級者、100kgなら初心者。60〜200kgが体重別に何レベルかを逆引きできる早見表です。",
+      },
+      {
         href: "/column/deadlift-average",
         title: "デッドリフトの平均は何kg？体重別・トレ歴別の目安一覧",
         description:
