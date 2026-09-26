@@ -2,6 +2,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
+import GearPick from "@/components/GearPick";
 import {
   LEVEL_EXPERIENCE,
   LEVEL_STEP_PERIOD,
@@ -539,6 +540,11 @@ export default function DeadliftAveragePage() {
                   </p>
                 </div>
               </div>
+              <GearPick
+                placement="deadlift-average-grip-belt"
+                lead="筆者が使っているのはALLOUTのパワーグリップとベルトです。先に握力で止まる人はグリップから揃えてください。"
+                productIds={["alloutPowerGrip", "alloutNylonBelt"]}
+              />
               <p className="mt-3">
                 背中を鍛える意味そのものについては
                 <Link href="/column/back-benefits" className="text-orange-600 font-bold underline">

@@ -2,6 +2,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
+import GearPick from "@/components/GearPick";
 import {
   DUMBBELL_LEVELS,
   dumbbellExercises,
@@ -228,15 +229,16 @@ export default function DumbbellWeightPage() {
                 <span className="font-bold">先に足りなくなるのはワンハンドロウとゴブレットスクワットの2種目だけ</span>だと分かったうえで選べます。プレート差し替え式なら、最初は軽いプレートだけ買って後から足す手もあります。
               </p>
               <p className="mt-2">
-                実際にどれを選ぶかまで決めたい人向けに、
-                <Link href="/gear" className="text-orange-600 font-bold underline">
-                  おすすめギアのページ
-                </Link>
-                に「片手何kgまで伸ばせるか」で選んだ候補を3つ載せました（運営者はジム派で自宅用に買った経験がないため、使用感ではなくこの記事の目安に照らした選び方です）。
+                実際にどれを選ぶかまで決めたい人向けに、「片手何kgまで伸ばせるか」で選んだ候補をこの節の最後に3つ載せました（運営者はジム派で自宅用に買った経験がないため、使用感ではなくこの記事の目安に照らした選び方です）。
               </p>
               <p className="mt-2">
                 ただし可変式には弱点があります。<span className="font-bold">落とすと壊れます。</span>限界まで追い込んで手から落とす使い方をする種目（重いプレス系）では、この点が本当にリスクです。床を守るマットも一緒に用意してください。
               </p>
+              <GearPick
+                placement="dumbbell-weight-adjustable"
+                lead="上の表を基準に「片手何kgまで伸ばせるか」で選んだ候補です。男性で中級者まで使うなら32kgクラスが目安です。"
+                productIds={["flexbell32", "flexbell20", "barwing"]}
+              />
             </section>
 
             <section>

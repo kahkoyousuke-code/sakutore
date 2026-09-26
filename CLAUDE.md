@@ -57,6 +57,7 @@ Next.js 14 App Router / TypeScript / React 18 / Tailwind CSS 3.4 / Anthropic SDK
 | `src/lib/fatConversion.ts` | 体脂肪1kg＝7,200kcalの換算 | `/calorie-calculator`, `/column/metabolism`, `/column/alcohol`, `/column/effect-timeline` |
 | `src/lib/recoveryStandards.ts` | 部位別の回復時間・筋肉痛（遅発性筋痛）の経過 | `/column/frequency`, `/column/split-routine`, `/column/muscle-soreness` |
 | `src/lib/dumbbellStandards.ts` | ダンベル種目で扱う重さ（体重比・10回できる重さ） | `/column/dumbbell-weight` |
+| `src/lib/gear.ts` | Amazonで紹介する商品（ASIN・コメント・アソシエイトタグ） | `/gear`, 記事内の `GearPick`（strength-standards / squat-average / deadlift-average / dumbbell-weight） |
 
 過去に記事とツールでスクワットの目安が105kg／87.5kgと食い違う事故があり、`strengthStandards.ts` に一元化して解消した。**数字を足すときは必ずここに足す。**
 

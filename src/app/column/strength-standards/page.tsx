@@ -2,6 +2,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
+import GearPick from "@/components/GearPick";
 import {
   MEN_WEIGHTS,
   WOMEN_WEIGHTS,
@@ -597,6 +598,14 @@ export default function StrengthStandardsPage() {
                 </Link>
                 を参考にしてください。
               </p>
+              <p className="mt-2">
+                もうひとつ、中級者の目安（スクワットで体重の1.5倍、デッドリフトで2.0倍）に近づくと、脚や背中より先に<span className="font-bold">腰と握力</span>が限界になります。ここから先は、ベルトで腹圧を作れるか、パワーグリップで握りを補えるかで挙がる重量が変わります。
+              </p>
+              <GearPick
+                placement="strength-standards-belt-grip"
+                lead="筆者はベルトもパワーグリップもALLOUTで揃えています。どちらも最初の1つならこれで足ります。"
+                productIds={["alloutNylonBelt", "alloutPowerGrip"]}
+              />
             </section>
 
             <section>

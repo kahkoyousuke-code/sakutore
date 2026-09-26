@@ -2,6 +2,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
+import GearPick from "@/components/GearPick";
 import {
   LEVEL_EXPERIENCE,
   LEVEL_STEP_PERIOD,
@@ -479,6 +480,11 @@ export default function SquatAveragePage() {
                   </p>
                 </div>
               </div>
+              <GearPick
+                placement="squat-average-belt"
+                lead="筆者のベルトはALLOUTで揃えています。1本目はナイロン、高重量を扱うようになったら革に替えるのが順番です。"
+                productIds={["alloutNylonBelt", "alloutLeatherBelt"]}
+              />
               <p className="mt-3">
                 膝の違和感で重量を上げられない人、40代以降で回復が追いつかない人は
                 <Link href="/column/over40" className="text-orange-600 font-bold underline">
