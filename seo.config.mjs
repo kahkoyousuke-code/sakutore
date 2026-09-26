@@ -74,6 +74,7 @@ const config = {
   keywords: () => [
     { kw: "ベンチプレス", path: "/column/bench-press-average" },
     { kw: "スクワット", path: "/column/squat-average" },
+    { kw: "スクワット", path: "/column/squat-weight-level" },
     { kw: "デッドリフト", path: "/column/deadlift-average" },
     { kw: "BIG3", path: "/column/strength-standards" },
     { kw: "big3", path: "/column/strength-standards" },
