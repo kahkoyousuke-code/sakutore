@@ -2,6 +2,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
+import SisterArticleCard from "@/components/SisterArticleCard";
 import GearPick from "@/components/GearPick";
 import {
   LEVEL_EXPERIENCE,
@@ -438,6 +439,11 @@ export default function SquatAveragePage() {
                 </Link>
                 に書きました。
               </p>
+              <SisterArticleCard
+                placement="squat-average-creatine"
+                lead="サプリで数字が動いた経験は、筆者にはありません。それでも試してみるなら、研究の蓄積が厚いクレアチンから、量と続け方を決めてからにしてください。姉妹サイトで整理しています。"
+                articleIds={["creatineGuide"]}
+              />
             </section>
 
             <section>

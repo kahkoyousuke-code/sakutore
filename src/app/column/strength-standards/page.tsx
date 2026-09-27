@@ -2,6 +2,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
+import SisterArticleCard from "@/components/SisterArticleCard";
 import GearPick from "@/components/GearPick";
 import {
   MEN_WEIGHTS,
@@ -539,6 +540,11 @@ export default function StrengthStandardsPage() {
               <p className="mt-2">
                 理由は単純で、<span className="font-bold">補助者がいないと、人は限界の手前で止めてしまう</span>からです。潰れたら戻せないという恐怖があるうちは、本当の限界には触れられません。独学で停滞しているなら、種目やメニューを変える前に、まず「見てもらえる環境」を疑ってみてください。器具や知識より、人が効きます。
               </p>
+              <SisterArticleCard
+                placement="strength-standards-creatine"
+                lead="サプリで数字が動いた経験は、筆者にはありません。それでも試してみるなら、研究の蓄積が厚いクレアチンから、量と続け方を決めてからにしてください。姉妹サイトで整理しています。"
+                articleIds={["creatineGuide"]}
+              />
 
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
                 そして今は、BIG3をあまりやっていない

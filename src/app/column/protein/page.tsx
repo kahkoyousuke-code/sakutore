@@ -2,6 +2,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
+import SisterArticleCard from "@/components/SisterArticleCard";
 
 export const metadata = pageMetadata({
   title: "筋トレに必要なタンパク質の量と摂り方｜1日112gの献立例つき - サクトレ",
@@ -234,6 +235,11 @@ export default function ProteinPage() {
                 </Link>
                 で確認できます。トレーニングメニューはサクトレで作れます。
               </p>
+              <SisterArticleCard
+                placement="protein-bulk-buying"
+                lead="1日に何杯飲むかが決まれば、1袋が何日もつかも決まります。セールでまとめて買うときの上限は、姉妹サイトで計算しています。"
+                articleIds={["bulkBuyingGuide"]}
+              />
             </section>
           </div>
         </div>

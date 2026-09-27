@@ -35,7 +35,8 @@ function affiliateProgram(url: URL): string | null {
 }
 
 /**
- * アフィリエイトリンクのクリックを affiliate_click イベントとして送る。
+ * アフィリエイトリンクのクリックを affiliate_click イベントとして、
+ * 記事内の姉妹サイトカードのクリックを sister_click イベントとして送る。
  * リンクは Server Component にも散らばっているので、個別に onClick を付けず
  * document で拾う。placement は祖先の data-affiliate-placement（無ければページのパス）。
  */
@@ -54,6 +55,20 @@ function AffiliateClickTracker() {
       } catch {
         return;
       }
+      // 記事内の姉妹サイトカード（SisterArticleCard）からの送客は sister_click で別に数える。
+      // ヘッダー・フッターの姉妹リンクは placement を持たないので対象外
+      const sisterPlacement =
+        anchor.closest<HTMLElement>("[data-sister-placement]")?.dataset.sisterPlacement;
+      if (sisterPlacement) {
+        window.gtag("event", "sister_click", {
+          site: url.hostname,
+          placement: sisterPlacement,
+          link_url: anchor.href,
+          transport_type: "beacon",
+        });
+        return;
+      }
+
       const program = affiliateProgram(url);
       if (!program) return;
 

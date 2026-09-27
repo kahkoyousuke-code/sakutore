@@ -2,6 +2,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
+import SisterArticleCard from "@/components/SisterArticleCard";
 
 export const metadata = pageMetadata({
   title: "プロテインの選び方ガイド｜種類別比較表と必要量の早見表 - サクトレ",
@@ -353,6 +354,11 @@ export default function ProteinGuidePage() {
               <p className="mt-2">
                 まずは食事でタンパク質を確保し、足りない分をプロテインで補う。この順番が基本です。サクトレでトレーニングメニューを作成し、食事・栄養と合わせて理想の体を目指しましょう。
               </p>
+              <SisterArticleCard
+                placement="protein-guide-sakusapu"
+                lead="ホエイの製法の違いをもう一段深く知りたい方、買う量で迷っている方へ。姉妹サイトで続きを書いています。"
+                articleIds={["proteinSelection", "bulkBuyingGuide"]}
+              />
             </section>
           </div>
         </div>
