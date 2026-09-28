@@ -224,7 +224,11 @@ export default function Big3TotalPage() {
                 </table>
               </div>
               <p className="mt-3">
-                自分の内訳をこの比率と見比べると、<span className="font-bold">どの種目が足を引っ張っているか</span>が分かります。合計を伸ばしたいなら、得意種目をさらに伸ばすより、この表から一番離れている種目を上げるほうが速いです。
+                自分の内訳をこの比率と見比べると、<span className="font-bold">どの種目が足を引っ張っているか</span>が分かります（手順は
+                <Link href="/column/big3-balance" className="text-orange-600 font-bold underline">
+                  BIG3のバランス診断
+                </Link>
+                に分けて書きました）。合計を伸ばしたいなら、得意種目をさらに伸ばすより、この表から一番離れている種目を上げるほうが速いです。
               </p>
             </section>
 

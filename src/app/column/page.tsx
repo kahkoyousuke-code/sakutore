@@ -184,6 +184,12 @@ const categories = [
           "同じ合計400kgでも、体重60kgなら上級者・体重100kgなら初心者です。合計250〜700kgが体重別に何レベルかの逆引き表と、次のレベルまであと何kgかを載せました。",
       },
       {
+        href: "/column/big3-balance",
+        title: "BIG3のバランス診断｜ベンチ1に対しスクワット1.5・デッド2.0",
+        description:
+          "3種目を横に並べると弱点が分かります。ベンチ100kgならスクワット150kg・デッド200kgが釣り合う位置。比率から外れた種目の見つけ方と、合計を伸ばす順番つき。",
+      },
+      {
         href: "/column/strength-standards",
         title: "BIG3の重量目安一覧｜体重の何倍が普通？",
         description:
