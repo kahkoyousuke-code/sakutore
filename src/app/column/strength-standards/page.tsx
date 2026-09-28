@@ -373,7 +373,11 @@ export default function StrengthStandardsPage() {
               </p>
               <RatioByLevelTable />
               <p className="mt-3 text-xs text-gray-500">
-                ※ 比率で見ると<span className="font-bold">ベンチ：スクワット：デッドリフト ≒ 1：1.5：2</span>。中級者ならベンチ×1.0・スクワット×1.5・デッドリフト×2.0で、ちょうどこの比になります。自分の3種目がこの比から大きく外れているなら、低いほうの種目が伸びしろです。
+                ※ 比率で見ると<span className="font-bold">ベンチ：スクワット：デッドリフト ≒ 1：1.5：2</span>。中級者ならベンチ×1.0・スクワット×1.5・デッドリフト×2.0で、ちょうどこの比になります。自分の3種目がこの比から大きく外れているなら、低いほうの種目が伸びしろです（
+                <Link href="/column/big3-balance" className="text-orange-600 font-bold underline">
+                  BIG3のバランス診断
+                </Link>
+                で弱点の見つけ方と伸ばす順番を出しています）。
               </p>
 
               {MEN_WEIGHTS.map((w) => (
