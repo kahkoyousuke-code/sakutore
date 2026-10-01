@@ -19,6 +19,7 @@ import {
   womenBenchRows,
   type Gender,
   type Level,
+  type Row,
 } from "./strengthStandards";
 
 /** この表が対象にするレベル。未経験とエリートは扱わない（買う話に使えないため）。 */
@@ -83,12 +84,48 @@ export const dumbbellExercises: DumbbellExercise[] = [
  * 例）男性・初心者はベンチ1RMが体重×0.75 → 10回なら×0.5625 →
  * ダンベル合計で×0.506 → 片手は×0.25。
  */
+const perHandFromBench = (benchRatio: number) =>
+  (benchRatio * TEN_REP_FACTOR * DUMBBELL_VS_BARBELL) / 2;
+
 const pressRatio = (gender: Gender, level: DumbbellLevel): number => {
   const rows = gender === "male" ? benchRows : womenBenchRows;
   const row = rows.find((r) => r.level === level);
   if (!row) throw new Error(`no bench row for ${gender} / ${level}`);
-  return (row.ratio * TEN_REP_FACTOR * DUMBBELL_VS_BARBELL) / 2;
+  return perHandFromBench(row.ratio);
 };
+
+/**
+ * ダンベルプレス（片手・10回できる重さ）の体重比を、ベンチプレスの全レベルから出した表。
+ *
+ * 「買う重さ」の話では初心者・中級者しか使わないが、持っている重量から位置を引く
+ * 逆引き（/column/dumbbell-press-level）では未経験〜エリートまで必要になるので、
+ * ベンチプレスの目安をそのまま換算して並べる。ベンチ側を触ればここも動く。
+ */
+const pressRowsFrom = (rows: Row[]): Row[] =>
+  rows.map((row) => ({
+    level: row.level,
+    ratio: perHandFromBench(row.ratio),
+    note: row.note,
+  }));
+
+export const dumbbellPressRows: Row[] = pressRowsFrom(benchRows);
+export const womenDumbbellPressRows: Row[] = pressRowsFrom(womenBenchRows);
+
+/**
+ * 逆向きの換算：ダンベルプレス（片手・10回）からベンチプレス1RM相当を出す。
+ *
+ * 片手の重さ ＝ ベンチ1RM × 10回係数 × ダンベル換算 ÷ 2 の逆算。
+ * 「ダンベルプレス30kgはベンチ何kg？」に答えるために使う。表示は1kg単位。
+ */
+export const benchFromDumbbellPress = (perHandKg: number) =>
+  Math.round((perHandKg * 2) / (TEN_REP_FACTOR * DUMBBELL_VS_BARBELL));
+
+/**
+ * 順方向の換算：ベンチプレス1RM（kg）から、ダンベルプレス片手の重さ（10回）。
+ * benchFromDumbbellPress の逆。記事側で係数を直書きさせないために置く。
+ */
+export const dumbbellPressFromBench = (bench1RMkg: number) =>
+  Math.round(((bench1RMkg * TEN_REP_FACTOR * DUMBBELL_VS_BARBELL) / 2) * 2) / 2;
 
 /**
  * プレス以外の体重比。出典のある統計はないので、サクトレの基準として持つ。

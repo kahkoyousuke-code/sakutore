@@ -144,6 +144,13 @@ export default function DumbbellWeightPage() {
                 ※ 体重比の列は中級者の値です。自分の体重を掛ければそのまま目安になります（例：体重80kgならワンハンドロウは 80 × {dumbbellRatio("row", "male", "中級者").toFixed(2)} ＝ {formatDumbbell(dumbbellWeight(80, "row", "male", "中級者"))}）。
               </p>
               <p className="mt-3">
+                すでにダンベルを持っていて「今の重量が何レベルか」を知りたい場合は
+                <Link href="/column/dumbbell-press-level" className="text-orange-600 font-bold underline">
+                  ダンベルプレス◯kgはどのレベル？
+                </Link>
+                に逆引きの表があります。
+              </p>
+              <p className="mt-3">
                 ダンベルプレスの数字だけは、
                 <Link href="/column/strength-standards" className="text-orange-600 font-bold underline">
                   BIG3の重量目安
