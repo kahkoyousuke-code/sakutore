@@ -85,6 +85,7 @@ const config = {
     { kw: "懸垂", path: "/column/pullup-progression" },
     { kw: "腕立て", path: "/column/pushup-pullup-average" },
     { kw: "ダンベル", path: "/column/dumbbell-weight" },
+    { kw: "ダンベルプレス", path: "/column/dumbbell-press-level" },
     { kw: "タンパク質", path: "/column/protein" },
     { kw: "たんぱく質", path: "/column/protein" },
     { kw: "プロテイン", path: "/column/protein-guide" },

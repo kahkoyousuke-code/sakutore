@@ -249,6 +249,12 @@ const categories = [
           "必要な重さは種目で3倍以上違います。体重比から計算した男女別・種目別の目安表と、固定式か可変式かの選び方、「胸は腕立てのほうが重い」話まで。",
       },
       {
+        href: "/column/dumbbell-press-level",
+        title: "ダンベルプレス◯kgはどのレベル？体重別の早見表（10〜50kg）",
+        description:
+          "片手20kgの意味は体重で変わります。片手10〜50kg（10回基準）の逆引き表と、ベンチプレス何kg相当かの換算つき。片手30kgはベンチ89kg相当です。",
+      },
+      {
         href: "/column/arm-training",
         title: "腕を太くする筋トレ｜二頭より三頭を優先すべき理由",
         description:
