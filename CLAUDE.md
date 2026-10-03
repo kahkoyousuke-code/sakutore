@@ -77,6 +77,9 @@ Next.js 14 App Router / TypeScript / React 18 / Tailwind CSS 3.4 / Anthropic SDK
 4. **`src/app/column/page.tsx` のリストに `href` / `title` / `description` を追記**（忘れると内部リンクが張られず、Googleに発見されない）
 5. `src/app/sitemap.ts` は `src/app/column` を読んで自動生成するので**追記不要**。ただし `LAST_MODIFIED` は更新する
 6. 悩み系（ダイエット・40代・リバウンド等）の記事なら `RizapCta`（`lead` propで記事ごとの導線文）をまとめ直後に置く
+7. 本文を書き終えたら、コミット前に `.claude/agents/` の **`article-reviewer` → `proofreader`** の順でチェックし、指摘を反映する（週次の自動実行でも省略しない）
+   - `article-reviewer` の「必ず直す」は全部反映。「要確認」の数字は共通モジュール（`strengthStandards.ts` など）や一次出典で確かめられなければ削るか弱める
+   - 指摘を反映するときも、数字は共通モジュールから引く方針を崩さない。筆者プロフィールに新しい経歴を足さない
 
 記事の書き味は既存に合わせる: 検索クエリをそのまま拾うtitle、「全国平均◯kg」のような根拠のない数字は否定して基準を示す、筆者の実数字を混ぜる、表で現在地が分かるようにする。
 
