@@ -139,6 +139,15 @@ export const levelForRatio = (rows: Row[], ratio: number): Level | null => {
   return current;
 };
 
+/**
+ * 回数から1RM（1回だけ挙がる重量）を推定する。Epley式で、1回はそのまま。
+ * /rm-calculator と同じ式。「デッドリフト90kgを5回」のような回数込みの
+ * 検索に、記事側で係数を直書きせずに答えるために置く。10回を超えると
+ * 誤差が大きくなるので、記事では10回までに留めること。表示は0.5kg単位。
+ */
+export const estimate1RM = (weight: number, reps: number) =>
+  reps <= 1 ? weight : Math.round(weight * (1 + reps / 30) * 2) / 2;
+
 /** Target weight for one lift, rounded to 0.1kg as the tool has always done. */
 export const targetWeight = (bodyWeight: number, ratio: number) =>
   Math.round(bodyWeight * ratio * 10) / 10;

@@ -562,7 +562,11 @@ export default function DeadliftAveragePage() {
                 デッドリフト100kgはすごいですか？
               </h3>
               <p>
-                体重によります。体重50kgなら×2.0で中級者、体重70kgなら×1.43で初心者（×1.5）の一歩手前です。<span className="font-bold">同じ100kgでも評価は変わります。</span>ただしこれは1RMでの話なので、「100kgを5回」なら1RMは約117kgとして読んでください。
+                体重によります。体重50kgなら×2.0で中級者、体重70kgなら×1.43で初心者（×1.5）の一歩手前です。<span className="font-bold">同じ100kgでも評価は変わります。</span>ただしこれは1RMでの話なので、「100kgを5回」なら1RMは約117kgとして読んでください。重量や回数から自分のレベルを直接引きたい場合は
+                <Link href="/column/deadlift-weight-level" className="text-orange-600 font-bold underline">
+                  デッドリフト◯kgはすごい？
+                </Link>
+                の判定表が早いです。
               </p>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
                 スモウとコンベンショナル、どちらで測ればいいですか？

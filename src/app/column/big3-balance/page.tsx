@@ -320,8 +320,8 @@ export default function Big3BalancePage() {
                   スクワット◯kgはすごい？
                 </Link>
                 や
-                <Link href="/column/deadlift-average" className="text-orange-600 font-bold underline">
-                  デッドリフトの平均は何kg？
+                <Link href="/column/deadlift-weight-level" className="text-orange-600 font-bold underline">
+                  デッドリフト◯kgはすごい？
                 </Link>
                 にあります。
               </p>

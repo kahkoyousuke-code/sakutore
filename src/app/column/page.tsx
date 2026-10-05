@@ -220,6 +220,12 @@ const categories = [
           "中級者ラインは体重の2倍。スモウ・トラップバー・プレートの直径で数字が変わる問題を整理したうえで、体重別・男女別の目安と1RM換算表を載せています。",
       },
       {
+        href: "/column/deadlift-weight-level",
+        title: "デッドリフト◯kgはすごい？重量と回数で分かるレベル判定表",
+        description:
+          "100kgがすごいかは体重で決まります。60〜250kgのレベル判定表と、「90kgを5回」のような回数込みの記録から何レベルかを出す表つき。",
+      },
+      {
         href: "/column/pushup-pullup-average",
         title: "腕立て伏せ・懸垂は何回できれば普通？レベル別の回数目安一覧",
         description:
