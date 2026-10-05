@@ -4,6 +4,7 @@ import GearPick from "@/components/GearPick";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
 import {
+  LEVEL_STEP_PERIOD,
   MEN_WEIGHTS,
   deadliftRows,
   estimate1RM,
@@ -13,15 +14,20 @@ import {
   type Level,
 } from "@/lib/strengthStandards";
 
+// description は seo.config.mjs が文字列リテラルとして読むので、ここだけは
+// 判定結果を文章で書いている。deadliftRows を変えたら合わせて見直すこと。
 export const metadata = pageMetadata({
   title: "デッドリフト◯kgはすごい？重量と回数で分かるレベル判定表 - サクトレ",
   description:
-    "デッドリフト100kgがすごいかは体重で決まります。体重50kgなら中級者、60kgなら初心者、70kgではまだ初心者の手前です。60〜250kgのレベル判定表と、「90kgを5回」のような回数込みの記録から何レベルかを出す表つき。初心者・中級者の目標重量も体重ごとに載せています。",
+    "デッドリフト100kgがすごいかは体重で決まります。体重50kgなら中級者、70kgではまだ「未経験」の欄。60〜250kgのレベル判定表と、「90kgを5回なら1RM約105kg」のように回数込みの記録から判定できる表、初心者・中級者の目標重量を体重ごとに載せています。",
   path: "/column/deadlift-weight-level",
 });
 
 // 検索で打ち込まれている重量帯。判定表の行になる。
-const WEIGHTS = [60, 80, 100, 120, 140, 160, 180, 200, 250];
+const WEIGHTS = [60, 70, 80, 90, 100, 120, 140, 160, 180, 200, 250];
+
+// 冒頭で答える重量。
+const FOCUS = 100;
 
 // 回数込みの表。Epley式は10回を超えると誤差が大きくなるので10回で止める。
 const REP_WEIGHTS = [60, 70, 80, 90, 100, 120, 140];
@@ -30,8 +36,9 @@ const REPS = [1, 3, 5, 8, 10];
 // いちばん検索されている「90kgを5回」を例として固定する。
 const EXAMPLE = { weight: 90, reps: 5 };
 
-// 筆者の実数字（他記事と揃えてある）。
-const AUTHOR = { deadlift: 160, bodyWeight: 85 };
+// 筆者の実数字（他記事と揃えてある）。160kgは体重80kg台の頃の記録で、
+// 正確な体重は残っていないので、ここでは85kgとして計算し本文でもそう断る。
+const AUTHOR = { deadlift: 160, bodyWeight: 85, bodyWeightLow: 80 };
 
 const levelClass = (level: Level | null) => {
   if (level === null) return "text-gray-400";
@@ -47,6 +54,7 @@ export default function DeadliftWeightLevelPage() {
   const beginner = ratioOf("初心者");
   const middle = ratioOf("中級者");
   const authorRatio = AUTHOR.deadlift / AUTHOR.bodyWeight;
+  const authorToMiddle = targetWeight(AUTHOR.bodyWeight, middle) - AUTHOR.deadlift;
 
   return (
     <main className="min-h-screen flex flex-col items-center px-4 py-8">
@@ -60,15 +68,17 @@ export default function DeadliftWeightLevelPage() {
           <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
             <section>
               <p>
-                「デッドリフト100kg」がすごいかどうかは、<span className="font-bold">体重を聞かないと答えられません。</span>体重50kgの人なら中級者、体重70kgの人ならまだ初心者の手前です。同じ100kgでも、持ち上げている本人の大きさで意味が変わります。
+                「デッドリフト{FOCUS}kg」がすごいかどうかは、<span className="font-bold">体重を聞かないと答えられません。</span>体重50kgの人なら
+                <span className="font-bold">{levelForRatio(deadliftRows, FOCUS / 50) ?? "—"}</span>、体重70kgの人ならまだ
+                <span className="font-bold">「{levelForRatio(deadliftRows, FOCUS / 70) ?? "—"}」</span>の欄です。同じ{FOCUS}kgでも、持ち上げている本人の大きさで意味が変わります。
               </p>
               <p className="mt-2">
-                この記事では、<span className="font-bold">手元の数字から自分のレベルを引く</span>ことだけに絞ります。挙げた重量で引く表と、「90kgを5回」のような回数込みの記録で引く表の2つを用意しました。
+                この記事では、<span className="font-bold">手元の数字から自分のレベルを引く</span>ことだけに絞ります。挙げた重量で引く表と、「{EXAMPLE.weight}kgを{EXAMPLE.reps}回」のような回数込みの記録で引く表の2つを用意しました。
               </p>
               <p className="mt-2 text-xs text-gray-500">
-                ※ 条件をそろえます。<span className="font-bold">床から引くコンベンショナル（足幅は腰幅）・1回だけ挙がる重量（1RM）</span>での判定です。スモウやトラップバーは同じ人でも数字が上がるので、この表には持ち込まないでください（
+                ※ 条件をそろえます。<span className="font-bold">床から引くコンベンショナル（足幅は腰幅）・1回だけ挙がる重量（1RM）</span>での判定です。スモウやトラップバーは引く距離や重心の位置が変わり、数字がずれる（多くは上にずれる）ので、この表には持ち込まないでください（
                 <Link href="/column/deadlift-average" className="text-orange-600 font-bold underline">
-                  フォームで数字がどれだけ変わるか
+                  どのフォームの数字なら比べられるか
                 </Link>
                 ）。
               </p>
@@ -86,14 +96,14 @@ export default function DeadliftWeightLevelPage() {
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
-                        重量
+                        挙げた重量
                       </th>
                       {MEN_WEIGHTS.map((bw) => (
                         <th
                           key={bw}
                           className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap"
                         >
-                          体重{bw}
+                          体重{bw}kg
                         </th>
                       ))}
                     </tr>
@@ -121,7 +131,7 @@ export default function DeadliftWeightLevelPage() {
                 </table>
               </div>
               <p className="mt-3 text-xs text-gray-500">
-                ※ 「—」は未経験の目安（体重×{formatRatio(deadliftRows[0].ratio)}）にまだ届いていない位置です。始めたばかりなら当然そこからです。
+                ※ 「未経験」は経験がないという意味ではなく、5段階のいちばん下（体重×{formatRatio(deadliftRows[0].ratio)}〜{formatRatio(beginner)}）の欄です。「—」はその未経験の目安（体重×{formatRatio(deadliftRows[0].ratio)}）にまだ届いていない位置です。
               </p>
               <p className="mt-3">
                 判定は「体重の何倍を引けたか」で決めています。境目は<span className="font-bold">初心者が体重×{formatRatio(beginner)}、中級者が体重×{formatRatio(middle)}</span>です。デッドリフトは3種目でいちばん重い重量を扱えるので、ベンチプレスやスクワットより境目の数字が大きくなります。
@@ -133,7 +143,7 @@ export default function DeadliftWeightLevelPage() {
                 「{EXAMPLE.weight}kgを{EXAMPLE.reps}回」のような記録から引く
               </h2>
               <p>
-                1回だけの限界に挑戦している人は多くありません。ふだんの記録は「◯kgを◯回」のはずです。その記録を<span className="font-bold">1回だけ挙がる重量（1RM）に直してから</span>上の表に当てます。直した値がこちらです。
+                1回だけの限界に挑戦している人は多くありません。ふだんの記録は「◯kgを◯回」のはずです。その記録を、まず<span className="font-bold">1回だけ挙がる重量（1RM）に直します</span>。直した値がこちらです。
               </p>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
                 <table className="w-full text-xs border-collapse">
@@ -180,9 +190,12 @@ export default function DeadliftWeightLevelPage() {
                 <Link href="/rm-calculator" className="text-orange-600 font-bold underline">
                   1RM換算ツール
                 </Link>
-                と同じ式です。10回を超える記録は誤差が大きくなるので載せていません。
+                と同じ式・同じ丸め方です。10回を超える記録は誤差が大きくなるので載せていません。デッドリフトは回数が増えるほど握力とフォームが先に落ちるので、<span className="font-bold">5回以下の記録で出すほうが実態に近くなります</span>。
               </p>
               <p className="mt-3">
+                直した1RMは、すぐ下の「初心者・中級者の目標は何kgか」の表で<span className="font-bold">自分の体重の行と比べてください</span>。判定表の行と行の間の重量になっても、そのまま判定できます。
+              </p>
+              <p className="mt-2">
                 たとえば<span className="font-bold">
                   {EXAMPLE.weight}kgを{EXAMPLE.reps}回なら、1RMは約{exampleMax}kg
                 </span>
@@ -194,7 +207,7 @@ export default function DeadliftWeightLevelPage() {
                   return (
                     <li key={bw}>
                       ▸ 体重{bw}kg → 体重比×{(exampleMax / bw).toFixed(2)}で
-                      <span className="font-bold">{level ?? "未経験の手前"}</span>
+                      <span className="font-bold">{level ?? "未経験の目安に届く前"}</span>
                     </li>
                   );
                 })}
@@ -206,7 +219,7 @@ export default function DeadliftWeightLevelPage() {
                 初心者・中級者の目標は何kgか
               </h2>
               <p>
-                逆に「次はどこを目指せばいいか」を知りたい人向けに、境目の重量を体重ごとに並べます。
+                デッドリフトの初心者ラインは<span className="font-bold">体重×{formatRatio(beginner)}</span>、中級者は<span className="font-bold">体重×{formatRatio(middle)}</span>です。体重60kgなら{targetWeight(60, beginner)}kgと{targetWeight(60, middle)}kg、体重70kgなら{targetWeight(70, beginner)}kgと{targetWeight(70, middle)}kg。ほかの体重はこちらです。
               </p>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
                 <table className="w-full text-xs border-collapse">
@@ -241,7 +254,7 @@ export default function DeadliftWeightLevelPage() {
                 </table>
               </div>
               <p className="mt-3">
-                デッドリフトは<span className="font-bold">BIG3でいちばん伸びが速い</span>種目です。始めて半年ほどで初心者の欄（体重×{formatRatio(beginner)}）に届く人は珍しくありません。中級者（体重×{formatRatio(middle)}）は、ここからが本番という位置です。
+                始めて{LEVEL_STEP_PERIOD["未経験"]}で初心者の欄に届く人は珍しくありません。ただし初心者から中級者までは<span className="font-bold">{LEVEL_STEP_PERIOD["初心者"]}</span>が目安で、最初ほど速くは進みません。
               </p>
               <p className="mt-2">
                 始めたばかりの人は、表の数字を追う前に<span className="font-bold">背中が丸まらない重量</span>で動きを覚えてください。軽いプレートは直径が小さく、バーが低い位置から始まるぶん不利になるという落とし穴もあります（
@@ -254,33 +267,37 @@ export default function DeadliftWeightLevelPage() {
 
             <section>
               <h2 className="font-bold text-orange-500 text-base mb-3">
-                握力とベルトで止まっていないか
+                ストラップ・ベルトを使った記録で判定していい？
               </h2>
               <p>
-                重量が伸びてくると、<span className="font-bold">背中より先に手が離れる</span>段階が来ます。このとき判定表の数字は、背中の力ではなく握力の数字になっています。
+                <span className="font-bold">使って構いません。</span>ストラップ（パワーグリップ）は引く距離もフォームも変えず、先に限界が来る握力を外すだけです。スモウやトラップバーと違って、<span className="font-bold">背中と脚の力をそのまま測れます</span>。ただし毎回「使う／使わない」を固定して記録してください。混ぜると、伸びたのか道具が変わっただけなのか分からなくなります。
               </p>
               <p className="mt-2">
-                パワーグリップやストラップを使った記録は、ズルではありません。自分の中で「使う／使わない」を固定して記録していれば、伸びたかどうかは正しく比べられます。腰まわりを固めるベルトも同じ考え方です。
+                ベルトは、体重の{formatRatio(beginner)}倍（初心者の欄）を超えたあたりで検討すれば十分です。
               </p>
               <GearPick
                 placement="deadlift-weight-level-grip-belt"
-                lead="筆者が使っているのはALLOUTのパワーグリップとベルトです。握力で止まっているなら、グリップから揃えるのが先です。"
+                lead={`握力で先に止まるならグリップ、体重の${formatRatio(beginner)}倍を超えたらベルト、の順で揃えるのが目安です。`}
                 productIds={["alloutPowerGrip", "alloutNylonBelt"]}
               />
             </section>
 
             <section className="bg-orange-50 border border-orange-100 rounded-xl p-4">
               <p className="font-bold text-orange-600 mb-2">
-                筆者（筋トレ歴15年・フィジーク大会入賞）の{AUTHOR.deadlift}kg
+                筆者（筋トレ歴15年・フィジーク大会入賞）の{AUTHOR.deadlift}kgは何レベルか
               </p>
               <p className="text-xs leading-relaxed">
-                私のデッドリフトの自己ベストは<span className="font-bold">{AUTHOR.deadlift}kg</span>。体重
-                {AUTHOR.bodyWeight}kg前後の頃の数字なので体重比は約{authorRatio.toFixed(2)}で、判定表では
-                <span className="font-bold">{levelForRatio(deadliftRows, authorRatio) ?? "—"}</span>
-                の欄、中級者（×{formatRatio(middle)}）のあと少し手前です。
+                私のデッドリフトの自己ベストは<span className="font-bold">{AUTHOR.deadlift}kg</span>。体重80kg台の頃の記録なので、ここでは体重{AUTHOR.bodyWeight}kgとして計算します。体重比は約{authorRatio.toFixed(2)}で、判定は
+                <span className="font-bold">{levelForRatio(deadliftRows, authorRatio) ?? "—"}の欄のいちばん上</span>
+                。中級者（×{formatRatio(middle)}＝{targetWeight(AUTHOR.bodyWeight, middle)}kg）まで
+                <span className="font-bold">あと{authorToMiddle}kg</span>です。
                 <br />
                 <br />
-                フィジーク志向で下半身の最大重量は追ってこなかったので、正直に言えば狙って出した数字ではありません。それでもここまで来たのは、<span className="font-bold">背中を鍛えていればデッドリフトは勝手についてくる</span>種目だからだと思っています。ベンチプレスやスクワットと比べて、「何もしていないのに伸びた」と感じやすい種目です。
+                ちなみに同じ{AUTHOR.deadlift}kgでも、体重{AUTHOR.bodyWeightLow}kgで計算すると
+                <span className="font-bold">
+                  {levelForRatio(deadliftRows, AUTHOR.deadlift / AUTHOR.bodyWeightLow) ?? "—"}
+                </span>
+                の境目にちょうど乗ります。<span className="font-bold">体重が5kg違うだけで判定が1段変わる位置</span>にいる、ということです。自分の記録を判定するときも、記録したときの体重で割ってください。今の体重で割ると、減量や増量のぶんだけ判定がずれます。
               </p>
             </section>
 
@@ -302,19 +319,19 @@ export default function DeadliftWeightLevelPage() {
                 スモウやトラップバーの記録で判定していいですか？
               </h3>
               <p>
-                だめです。<span className="font-bold">同じ人でもフォームによって数字が上がる</span>ので、この表で判定すると位置を高く見積もってしまいます。床から引くコンベンショナルの数字で当ててください。
+                だめです。<span className="font-bold">引く距離や重心の位置が変わるので、同じ表に当てると位置を見誤ります。</span>トラップバーは多くの人で重く引けますし、スモウも体格によっては大きく上ぶれします。床から引くコンベンショナルの数字で当ててください。
               </p>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
                 ラックプル（膝の高さから引く）の重量は？
               </h3>
               <p>
-                別の種目として扱ってください。可動域が半分ほどになるぶん、床から引くより大幅に重い数字が出ます。
+                別の種目として扱ってください。床から膝までの、いちばんきつい範囲を飛ばすぶん、床から引くより大幅に重い数字が出ます。
               </p>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
                 翌日に腰が痛いのですが、続けていいですか？
               </h3>
               <p>
-                背中やお尻、もも裏の筋肉痛なら普通です。<span className="font-bold">腰の一点が刺すように痛む・しびれる</span>場合は筋肉痛ではないので、いったん止めてください。判断の目安は
+                <span className="font-bold">腰の一点が刺すように痛む・しびれる</span>場合は、いったん止めてください。<span className="font-bold">しびれが脚に広がる、数日たっても引かないときは整形外科で診てもらってください。</span>筋肉痛との見分け方は
                 <Link href="/column/muscle-soreness" className="text-orange-600 font-bold underline">
                   筋肉痛でも筋トレしていい？
                 </Link>
@@ -328,7 +345,7 @@ export default function DeadliftWeightLevelPage() {
               </h2>
               <ul className="space-y-2">
                 <li>
-                  ▸ デッドリフトの評価は<span className="font-bold">体重の何倍か</span>。同じ100kgでも体重で意味が変わる
+                  ▸ デッドリフトの評価は<span className="font-bold">体重の何倍か</span>。同じ{FOCUS}kgでも体重で意味が変わる
                 </li>
                 <li>
                   ▸ 境目は<span className="font-bold">初心者が体重×{formatRatio(beginner)}、中級者が×{formatRatio(middle)}</span>
@@ -337,10 +354,10 @@ export default function DeadliftWeightLevelPage() {
                   ▸ 「◯kgを◯回」の記録は<span className="font-bold">1RMに直してから</span>判定する（{EXAMPLE.weight}kg×{EXAMPLE.reps}回なら約{exampleMax}kg）
                 </li>
                 <li>
-                  ▸ <span className="font-bold">スモウ・トラップバー・ラックプルの数字は持ち込まない</span>
+                  ▸ <span className="font-bold">スモウ・トラップバー・ラックプルの数字は持ち込まない</span>。ストラップとベルトは使ってよい
                 </li>
                 <li>
-                  ▸ 伸びが止まったら、背中より先に<span className="font-bold">握力で止まっていないか</span>を疑う
+                  ▸ 判定には<span className="font-bold">記録したときの体重</span>を使う
                 </li>
               </ul>
               <p className="mt-2">
@@ -352,7 +369,11 @@ export default function DeadliftWeightLevelPage() {
                 <Link href="/column/big3-total" className="text-orange-600 font-bold underline">
                   BIG3合計◯kgはどのレベル？
                 </Link>
-                へ。
+                へ。体重を入れてBIG3の目標重量を一度に出すなら
+                <Link href="/weight-checker" className="text-orange-600 font-bold underline">
+                  適正重量チェッカー
+                </Link>
+                が早いです。
               </p>
             </section>
           </div>
