@@ -82,6 +82,7 @@ const config = {
     { kw: "ビッグ3", path: "/column/strength-standards" },
     { kw: "合計", path: "/column/big3-total" },
     { kw: "比率", path: "/column/big3-balance" },
+    { kw: "ベルト", path: "/column/lifting-belt" },
     { kw: "バランス", path: "/column/big3-balance" },
     { kw: "懸垂", path: "/column/pullup-progression" },
     { kw: "腕立て", path: "/column/pushup-pullup-average" },

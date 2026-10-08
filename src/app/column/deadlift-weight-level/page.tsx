@@ -4,6 +4,7 @@ import GearPick from "@/components/GearPick";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
 import {
+  BELT_START_RATIO,
   LEVEL_STEP_PERIOD,
   MEN_WEIGHTS,
   deadliftRows,
@@ -273,11 +274,15 @@ export default function DeadliftWeightLevelPage() {
                 <span className="font-bold">判定に使って構いません。</span>ストラップやパワーグリップは、引く距離もフォームも変えずに、先に限界が来る握力を補うだけです。スモウやトラップバーと違って、<span className="font-bold">背中と脚の力をそのまま測れます</span>。ただし「使う／使わない」はどちらかに固定して記録してください。混ぜると、伸びたのか道具が変わっただけなのか分からなくなります。
               </p>
               <p className="mt-2">
-                ベルトは、体重×{formatRatio(beginner)}を超えて初心者の欄に入ったあたりで検討すれば十分です。
+                ベルトは、体重×{formatRatio(BELT_START_RATIO)}を超えたあたりで検討すれば十分です（選び方と締め方は
+                <Link href="/column/lifting-belt" className="text-orange-600 font-bold underline">
+                  トレーニングベルトはいつから必要？
+                </Link>
+                ）。
               </p>
               <GearPick
                 placement="deadlift-weight-level-grip-belt"
-                lead={`握力で先に止まるならパワーグリップ、体重×${formatRatio(beginner)}を超えたらベルト、の順でそろえるのが目安です。`}
+                lead={`握力で先に止まるならパワーグリップ、体重×${formatRatio(BELT_START_RATIO)}を超えたらベルト、の順でそろえるのが目安です。`}
                 productIds={["alloutPowerGrip", "alloutNylonBelt"]}
               />
             </section>
