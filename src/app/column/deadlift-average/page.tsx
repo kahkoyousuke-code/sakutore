@@ -537,7 +537,7 @@ export default function DeadliftAveragePage() {
                 <div className="flex items-start gap-2">
                   <span className="text-orange-500 font-bold">5</span>
                   <p>
-                    <span className="font-bold">体重の{formatRatio(BELT_START_RATIO)}倍を超えたらベルトを検討する。</span>腹圧を保ちやすくなり、腰の負担が減ります（選び方と締め方は
+                    <span className="font-bold">体重の{formatRatio(BELT_START_RATIO)}倍を超えたらベルトを検討する。</span>腹圧を保ちやすくなります（選び方と締め方は
                     <Link href="/column/lifting-belt" className="text-orange-600 font-bold underline">
                       トレーニングベルトはいつから必要？
                     </Link>
