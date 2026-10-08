@@ -274,7 +274,11 @@ export default function DeadliftWeightLevelPage() {
                 <span className="font-bold">判定に使って構いません。</span>ストラップやパワーグリップは、引く距離もフォームも変えずに、先に限界が来る握力を補うだけです。スモウやトラップバーと違って、<span className="font-bold">背中と脚の力をそのまま測れます</span>。ただし「使う／使わない」はどちらかに固定して記録してください。混ぜると、伸びたのか道具が変わっただけなのか分からなくなります。
               </p>
               <p className="mt-2">
-                ベルトは、体重×{formatRatio(BELT_START_RATIO)}を超えたあたりで検討すれば十分です。
+                ベルトは、体重×{formatRatio(BELT_START_RATIO)}を超えたあたりで検討すれば十分です（選び方と締め方は
+                <Link href="/column/lifting-belt" className="text-orange-600 font-bold underline">
+                  トレーニングベルトはいつから必要？
+                </Link>
+                ）。
               </p>
               <GearPick
                 placement="deadlift-weight-level-grip-belt"
