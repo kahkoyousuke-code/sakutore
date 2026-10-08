@@ -140,6 +140,16 @@ export const levelForRatio = (rows: Row[], ratio: number): Level | null => {
 };
 
 /**
+ * トレーニングベルトを検討し始める目安（体重比）。スクワット・デッドリフト共通。
+ *
+ * squat-average / deadlift-average / deadlift-weight-level / lifting-belt に
+ * 同じ「体重の1.5倍」が別々に書かれていたので、ここを唯一の出典にする。
+ * レベルの境目（squatRows の中級者・deadliftRows の初心者）とは独立した値で、
+ * 偶然同じ1.5になっているだけなので、レベル側の比率を流用しないこと。
+ */
+export const BELT_START_RATIO = 1.5;
+
+/**
  * 回数から1RM（1回だけ挙がる重量）を推定する。Epley式で、1回はそのまま。
  * 「デッドリフト90kgを5回」のような回数込みの検索に、記事側で係数を
  * 直書きせずに答えるために置く。10回を超えると誤差が大きくなるので、

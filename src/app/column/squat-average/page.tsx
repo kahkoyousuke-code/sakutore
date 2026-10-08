@@ -5,6 +5,7 @@ import AuthorBox from "@/components/AuthorBox";
 import SisterArticleCard from "@/components/SisterArticleCard";
 import GearPick from "@/components/GearPick";
 import {
+  BELT_START_RATIO,
   LEVEL_EXPERIENCE,
   LEVEL_STEP_PERIOD,
   MEN_WEIGHTS,
@@ -482,7 +483,7 @@ export default function SquatAveragePage() {
                 <div className="flex items-start gap-2">
                   <span className="text-orange-500 font-bold">4</span>
                   <p>
-                    <span className="font-bold">ベルトで腹圧を作る。</span>体重の1.5倍あたりから、脚より先に腰と体幹が音を上げます。ここから先は装備が重量を決めます。
+                    <span className="font-bold">ベルトで腹圧を作る。</span>体重の{formatRatio(BELT_START_RATIO)}倍あたりから、脚より先に腰と体幹が音を上げます。ここから先は装備が重量を決めます。
                   </p>
                 </div>
               </div>

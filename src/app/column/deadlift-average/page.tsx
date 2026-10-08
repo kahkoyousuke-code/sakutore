@@ -4,6 +4,7 @@ import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
 import GearPick from "@/components/GearPick";
 import {
+  BELT_START_RATIO,
   LEVEL_EXPERIENCE,
   LEVEL_STEP_PERIOD,
   MEN_WEIGHTS,
@@ -536,7 +537,7 @@ export default function DeadliftAveragePage() {
                 <div className="flex items-start gap-2">
                   <span className="text-orange-500 font-bold">5</span>
                   <p>
-                    <span className="font-bold">体重の1.5倍を超えたらベルトを検討する。</span>腹圧を保ちやすくなり、腰の負担が減ります。
+                    <span className="font-bold">体重の{formatRatio(BELT_START_RATIO)}倍を超えたらベルトを検討する。</span>腹圧を保ちやすくなり、腰の負担が減ります。
                   </p>
                 </div>
               </div>
