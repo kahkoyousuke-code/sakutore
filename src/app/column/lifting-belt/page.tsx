@@ -7,13 +7,17 @@ import {
   BELT_START_RATIO,
   MEN_WEIGHTS,
   deadliftRows,
+  estimate1RM,
   formatRatio,
   levelForRatio,
   squatRows,
   targetWeight,
+  womenDeadliftRows,
   womenSquatRows,
 } from "@/lib/strengthStandards";
 
+// description は seo.config.mjs が文字列リテラルとして読むので、ここだけは
+// 数字を直書きしている。BELT_START_RATIO を変えたら合わせて見直すこと。
 export const metadata = pageMetadata({
   title: "トレーニングベルトはいつから必要？何kgから使うかを体重別に - サクトレ",
   description:
@@ -29,7 +33,7 @@ const AUTHOR = { squat: 120, deadlift: 160, bodyWeight: 85 };
 const BY_LIFT = [
   {
     lift: "スクワット",
-    limit: "腰と体幹が先に音を上げる",
+    limit: "腰・体幹がきつくなりやすい",
     gear: "ベルト",
   },
   {
@@ -54,6 +58,7 @@ export default function LiftingBeltPage() {
   const squatLevel = levelForRatio(squatRows, BELT_START_RATIO);
   const deadLevel = levelForRatio(deadliftRows, BELT_START_RATIO);
   const womenSquatLevel = levelForRatio(womenSquatRows, BELT_START_RATIO);
+  const womenDeadLevel = levelForRatio(womenDeadliftRows, BELT_START_RATIO);
 
   return (
     <main className="min-h-screen flex flex-col items-center px-4 py-8">
@@ -67,10 +72,10 @@ export default function LiftingBeltPage() {
           <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
             <section>
               <p>
-                結論から書きます。<span className="font-bold">スクワットとデッドリフトで、体重×{ratio}を超えたあたりから</span>検討すれば十分です。体重70kgの人なら{targetWeight(70, BELT_START_RATIO)}kg。それより軽い重量のうちは、ベルトはまだ要りません。
+                結論から書きます。トレーニングベルト（リフティングベルト・パワーベルト）は、<span className="font-bold">スクワットとデッドリフトで体重×{ratio}を超えたあたりから</span>検討すれば十分です。体重70kgの人なら{targetWeight(70, BELT_START_RATIO)}kg。それより軽い重量のうちは、急いで買う必要はありません。
               </p>
               <p className="mt-2">
-                「ジムで周りが巻いているから」「腰が心配だから」で最初から買う人は多いのですが、軽い重量のうちは<span className="font-bold">ベルトなしで腹圧を作る練習をしたほうが、あとで効きます</span>。この記事では、いつから要るのか、どの種目で要るのか、何を選んでどう締めるかを順に書きます。
+                「ジムで周りが巻いているから」「腰が心配だから」で最初から買う人は多いのですが、軽い重量のうちは<span className="font-bold">ベルトなしで腹圧を作る練習をしておく</span>のがおすすめです。この記事では、いつから要るのか、どの種目で要るのか、何を選んでどう締めるかを順に書きます。
               </p>
             </section>
 
@@ -109,7 +114,7 @@ export default function LiftingBeltPage() {
                 <Link href="/rm-calculator" className="text-orange-600 font-bold underline">
                   1RM換算ツール
                 </Link>
-                で換算してください。
+                で換算してください。たとえば90kgを5回なら、1RMは約{estimate1RM(90, 5)}kg。体重70kgならちょうど検討ラインです。
               </p>
               <p className="mt-3">
                 同じ体重×{ratio}でも、種目によって位置づけは違います。スクワットでは<span className="font-bold">{squatLevel}</span>、デッドリフトでは<span className="font-bold">{deadLevel}</span>の目安にあたります。デッドリフトのほうが早い段階でこの重量に届くので、<span className="font-bold">ベルトが必要になるのも、たいていデッドリフトが先</span>です。自分が今どの位置にいるかは
@@ -132,10 +137,10 @@ export default function LiftingBeltPage() {
                 ベルトは「腰を外から固めて守る」道具だと思われがちですが、実際の役割は少し違います。<span className="font-bold">お腹に空気を入れて内側から張る力（腹圧）を、押し返す壁</span>です。ベルトに向かってお腹を膨らませることで、体幹が固まりやすくなります。
               </p>
               <p className="mt-2">
-                つまり<span className="font-bold">巻いただけでは効きません。</span>息を吸ってお腹を張る動きができていないと、ベルトはただの飾りです。軽い重量のうちにベルトなしで練習してほしいのは、このためです。
+                つまり<span className="font-bold">巻くだけでは効果を引き出せません。</span>息を吸ってお腹をベルトに押しつける動きが身についていないと、せっかくの壁を使い切れません。軽い重量のうちにベルトなしで練習してほしいのは、このためです。
               </p>
               <p className="mt-2">
-                体重×{ratio}あたりから必要になるのは、そのあたりで<span className="font-bold">脚や背中より先に、体幹のほうが重量に耐えられなくなる</span>人が増えるからです。ここから先は、腹圧の作りやすさが挙がる重量を左右します。
+                なお体重×{ratio}は、<span className="font-bold">研究で決まった境目ではありません</span>。ベルトを考え始める時期としてよく挙がる、経験則の目安です。扱う重量が体重を大きく超えてくるこのあたりから、腹圧を保てるかどうかが挙がる重量を左右しやすくなります。
               </p>
             </section>
 
@@ -151,7 +156,7 @@ export default function LiftingBeltPage() {
                         種目
                       </th>
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700">
-                        先に止まるところ
+                        重くなると先に止まるところ
                       </th>
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700">
                         先にそろえる道具
@@ -176,11 +181,11 @@ export default function LiftingBeltPage() {
                 </table>
               </div>
               <p className="mt-3">
-                ポイントは<span className="font-bold">ベンチプレスにベルトはほぼ要らない</span>ことです。ベンチで先に問題になるのは腰ではなく手首で、そこを支えるのはリストラップです。ベンチの目安と、手首が反る問題は
+                ポイントは<span className="font-bold">ベンチプレスにベルトはほぼ要らない</span>ことです。ベンチで道具が助けになるのは腰ではなく手首で、重くなると手首が反りやすくなります。そこを支えるのがリストラップです。ベンチの重量の目安は
                 <Link href="/column/bench-press-average" className="text-orange-600 font-bold underline">
                   ベンチプレスの平均は何kg？
                 </Link>
-                で扱っています。
+                にまとめています。
               </p>
               <p className="mt-2">
                 デッドリフトは、腰より先に<span className="font-bold">握力</span>で止まる人が多い種目です。その場合はベルトより先にパワーグリップをそろえてください。ストラップやパワーグリップを使った記録で判定してよいかは
@@ -189,6 +194,11 @@ export default function LiftingBeltPage() {
                 </Link>
                 に書きました。
               </p>
+              <GearPick
+                placement="lifting-belt-grip-wrap"
+                lead="デッドリフトで握力が先に尽きるならパワーグリップ、ベンチで手首が反るならリストラップから。"
+                productIds={["alloutPowerGrip", "alloutWristWrap"]}
+              />
             </section>
 
             <section>
@@ -199,7 +209,7 @@ export default function LiftingBeltPage() {
                 1本目は<span className="font-bold">ナイロン（マジックテープ）</span>で十分です。軽くて着脱が速く、締める強さも細かく変えられます。セットのたびに付け外しするので、この手軽さは思った以上に大事です。
               </p>
               <p className="mt-2">
-                <span className="font-bold">革</span>は、ナイロンで締めてもお腹が押し負ける感覚が出てきたら考えれば間に合います。硬いぶん押し返す力が強い代わりに、慣れるまで締め具合の調整がしにくい道具です。最初から革を買うと、その硬さで腹圧の練習がかえって難しくなります。
+                <span className="font-bold">革</span>は、ナイロンで締めてもお腹が押し負ける感覚が出てきたら考えれば間に合います。硬いぶん押し返す力が強い代わりに、慣れるまで締め具合の調整がしにくい道具です。硬くて締め具合を細かく変えにくいので、腹圧の入れ方を覚える1本目としては扱いにくいことがあります。
               </p>
               <GearPick
                 placement="lifting-belt-nylon-leather"
@@ -220,10 +230,13 @@ export default function LiftingBeltPage() {
                   ▸ <span className="font-bold">強さ</span>：息を吸ってお腹を張ったときに、ベルトを内側から押し返せる程度。苦しくて息が吸えないのは締めすぎ
                 </li>
                 <li>
-                  ▸ <span className="font-bold">使う場面</span>：重いセットだけ。アップや軽いセットでは外して、ベルトなしで腹圧を作る練習を続ける
+                  ▸ <span className="font-bold">使う場面</span>：その日のメインの重いセット（ウォームアップではなく、限界に近い回数まで追い込むセット）だけ。アップや軽いセットでは外して、ベルトなしで腹圧を作る練習を続ける
                 </li>
                 <li>
                   ▸ <span className="font-bold">外すタイミング</span>：セットが終わったらすぐ緩める。締めっぱなしにする道具ではない
+                </li>
+                <li>
+                  ▸ <span className="font-bold">注意</span>：ベルトを締めて息をこらえると、巻かないときより血圧が上がりやすくなります。血圧が高い人、心臓や血管の持病がある人は、使う前に医師に相談してください
                 </li>
               </ul>
             </section>
@@ -233,7 +246,7 @@ export default function LiftingBeltPage() {
                 筆者（筋トレ歴15年・フィジーク大会入賞）の場合
               </p>
               <p className="text-xs leading-relaxed">
-                私のベルトはALLOUTです（パワーグリップとリストラップもALLOUTでそろえています）。自己ベストはスクワット{AUTHOR.squat}kg・デッドリフト{AUTHOR.deadlift}kgで、どちらも体重80kg台の頃の記録です。体重{AUTHOR.bodyWeight}kgで計算すると、検討ラインは{targetWeight(AUTHOR.bodyWeight, BELT_START_RATIO)}kg。
+                私のベルトはALLOUTです（パワーグリップとリストラップもALLOUTでそろえています）。自己ベストはスクワット{AUTHOR.squat}kg・デッドリフト{AUTHOR.deadlift}kgで、どちらも体重80kg台の頃の記録です。正確な体重は残っていないので、ここでは{AUTHOR.bodyWeight}kgとして計算すると、検討ラインは{targetWeight(AUTHOR.bodyWeight, BELT_START_RATIO)}kg。
                 <br />
                 <br />
                 <span className="font-bold">デッドリフトは検討ラインを大きく超えていて、スクワットはその手前</span>という計算になります。この記事で「ベルトが必要になるのはたいていデッドリフトが先」と書いたのは、まさにこの形です。自分の数字でも一度計算してみてください。両方の種目で同じタイミングで必要になるとは限りません。
@@ -248,13 +261,13 @@ export default function LiftingBeltPage() {
                 ベルトを使うと体幹が弱くなりませんか？
               </h3>
               <p>
-                重いセットだけで使い、アップや軽いセットではベルトなしで腹圧を作る練習を続けていれば、心配は小さいです。避けたいのは<span className="font-bold">全セットで巻きっぱなしにすること</span>です。
+                研究で確かめられた話ではありませんが、重いセットだけで使い、アップや軽いセットではベルトなしで腹圧を作る練習を続けていれば、心配は小さいと考えられます。避けたいのは<span className="font-bold">全セットで巻きっぱなしにすること</span>です。
               </p>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
-                ベルトを巻けば腰痛になりませんか？
+                ベルトを巻けば腰痛は防げますか？
               </h3>
               <p>
-                ベルトは腹圧を作りやすくする道具で、<span className="font-bold">腰痛を防ぐ保証にはなりません。</span>背中が丸まるフォームのままなら、ベルトがあっても腰に負担がかかります。腰に痛みやしびれが出ているときは、ベルトで押し切らずに休み、痛みが続くなら整形外科で診てもらってください。筋肉痛との見分け方は
+                ベルトは腹圧を作りやすくする道具で、<span className="font-bold">腰痛を防ぐ保証にはなりません。</span>背中が丸まるフォームのままなら、ベルトがあっても腰に負担がかかります。ベルトを巻くと重さに耐えられる気がして、フォームが崩れる重量まで上げてしまいやすい点にも気をつけてください。腰に痛みやしびれが出ているときは、ベルトで押し切らずに休んでください。しびれが脚に広がるときや、痛みが数日たっても治まらないときは、整形外科で診てもらってください。筋肉痛との見分け方は
                 <Link href="/column/muscle-soreness" className="text-orange-600 font-bold underline">
                   筋肉痛でも筋トレしていい？
                 </Link>
@@ -264,13 +277,13 @@ export default function LiftingBeltPage() {
                 女性も同じ目安でいいですか？
               </h3>
               <p>
-                この目安は男女で分けていません。ただ女性は、同じ体重×{ratio}でもスクワットでは<span className="font-bold">{womenSquatLevel}</span>の位置にあたります。そこまで待つ必要はないので、腰や体幹に不安を感じる重量になったら早めに使って構いません。
+                この目安は男女で分けていません。ただ女性は、同じ体重×{ratio}でもスクワットでは<span className="font-bold">{womenSquatLevel}</span>、デッドリフトでは<span className="font-bold">{womenDeadLevel}</span>の位置にあたり、届くまでにかなり時間がかかります。体重比に届くのを待つより、<span className="font-bold">自分にとって重いセットで、フォームは保てているのにお腹の張りが抜けて腰が先に疲れる</span>と感じたら検討を始めてください。これは男性も同じで、表の重量はあくまで目安です。
               </p>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
                 ベルトを使った記録と、使わない記録は比べていいですか？
               </h3>
               <p>
-                比べないでください。<span className="font-bold">「使う／使わない」はどちらかに固定して記録する</span>のが基本です。混ぜると、伸びたのか道具が変わっただけなのか分からなくなります。
+                ベルトありとなしの記録は比べないでください。<span className="font-bold">使い始めた日から、記録に「ベルトあり」と書き分けておく</span>のが基本です。ありはあり同士、なしはなし同士で比べれば、伸びたのか道具が変わっただけなのかを取り違えません。
               </p>
             </section>
 
@@ -283,7 +296,7 @@ export default function LiftingBeltPage() {
                   ▸ ベルトは<span className="font-bold">スクワット・デッドリフトで体重×{ratio}を超えたあたり</span>から検討する
                 </li>
                 <li>
-                  ▸ 役割は<span className="font-bold">腹圧を押し返す壁</span>。巻いただけでは効かない
+                  ▸ 役割は<span className="font-bold">腹圧を押し返す壁</span>。巻くだけでは効果を引き出せない
                 </li>
                 <li>
                   ▸ <span className="font-bold">ベンチはリストラップ、デッドリフトはパワーグリップ</span>が先になることが多い
@@ -314,6 +327,18 @@ export default function LiftingBeltPage() {
           url="https://sakutore.jp/column/lifting-belt"
           title="トレーニングベルトはいつから必要？何kgから使うかを体重別に"
         />
+        <Link
+          href="/gear"
+          className="block bg-orange-50 hover:bg-orange-100 rounded-2xl p-4 mb-6 border-2 border-orange-200 transition-colors"
+        >
+          <div className="flex items-center gap-3">
+            <span className="text-2xl flex-shrink-0">🏋️</span>
+            <div>
+              <p className="font-bold text-orange-600 text-sm">運営者厳選のおすすめギア</p>
+              <p className="text-xs text-gray-500 mt-0.5">ベルト・パワーグリップ・リストラップを見る →</p>
+            </div>
+          </div>
+        </Link>
 
         <AuthorBox />
 
