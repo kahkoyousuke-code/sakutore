@@ -190,7 +190,7 @@ export default function LiftingBeltPage() {
               <p className="mt-2">
                 デッドリフトは、腰より先に<span className="font-bold">握力</span>で止まる人が多い種目です。その場合は、ベルトの前にパワーグリップをそろえてください（握り方の選び方は
                 <Link href="/column/deadlift-grip" className="text-orange-600 font-bold underline">
-                  握力が先に限界になるときの対処
+                  握力が足りない・持たないときの対処
                 </Link>
                 ）。ストラップやパワーグリップを使った記録で判定してよいかは
                 <Link href="/column/deadlift-weight-level" className="text-orange-600 font-bold underline">

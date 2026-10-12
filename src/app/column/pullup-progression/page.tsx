@@ -304,7 +304,11 @@ export default function PullupProgressionPage() {
                 握力が先に限界になります。
               </h3>
               <p>
-                その場合はパワーグリップを使ってください。背中を追い込む前に手が離れるのは、よくある足止めです。ネガティブの段階から使って構いません。
+                その場合はパワーグリップを使ってください。背中を追い込む前に手が離れるのは、よくある足止めです。ネガティブの段階から使って構いません。握り方と道具の選び方は
+                <Link href="/column/deadlift-grip" className="text-orange-600 font-bold underline">
+                  握力が足りない・持たないときの対処
+                </Link>
+                にまとめています。
               </p>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
                 自宅にバーがない場合は？

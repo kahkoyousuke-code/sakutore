@@ -274,7 +274,7 @@ export default function DeadliftAveragePage() {
               <p className="mt-2">
                 競技の基準では補助具なしですが、自分の現在地を測るだけなら<span className="font-bold">どちらでも構いません</span>。大事なのは毎回同じ条件で測ることです。握力が理由で伸びが止まっているなら、それは背中を鍛え損ねているのと同じなので、道具を使ったほうが筋肉は育ちます。握力で止まっているかの見分け方と握り方の選び方は
                 <Link href="/column/deadlift-grip" className="text-orange-600 font-bold underline">
-                  デッドリフトで握力が先に限界になるときの対処
+                  デッドリフトで握力が足りない・持たないときの対処
                 </Link>
                 にまとめました。
               </p>

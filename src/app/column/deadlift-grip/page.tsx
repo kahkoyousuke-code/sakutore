@@ -5,13 +5,14 @@ import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
 
 export const metadata = pageMetadata({
-  title: "デッドリフトで握力が先に限界になるときの対処｜握り方4種類とパワーグリップの使い分け - サクトレ",
+  title: "デッドリフトで握力が足りない・持たないときの対処｜握り方3種類とパワーグリップ - サクトレ",
   description:
-    "背中より先に手が離れるなら、握力で止まっています。ストラップあり・なしで回数を比べる見分け方と、順手・オルタネイト・フックグリップ・パワーグリップの4つの握り方の向き不向き、大会に出る人が気をつけることをまとめました。",
+    "背中より先に手が離れるなら、握力で止まっています。安全な見分け方と、順手・オルタネイト・フックグリップの3つの握り方とパワーグリップの向き不向き、パワーリフティングの大会に出る人が気をつけることをまとめました。",
   path: "/column/deadlift-grip",
 });
 
 // 握り方の比較。数字の基準は置かず、仕組みと向き不向きで分ける。
+// 「試合」はパワーリフティングの大会の扱い（ストロングマンなどはストラップ可の大会が多い）。
 const GRIPS = [
   {
     name: "順手（ダブルオーバーハンド）",
@@ -21,36 +22,36 @@ const GRIPS = [
     contest: "使える",
   },
   {
-    name: "オルタネイト（片手だけ逆手）",
+    name: "オルタネイトグリップ（ミックスグリップ）",
     how: "片手を順手、片手を逆手にして握る",
     good: "バーが手の中で転がりにくく、重い重量を持ちやすい",
-    bad: "左右で体のねじれ方が変わる。逆手側の腕に負担がかかりやすいと言われる",
+    bad: "左右で手の向きが違うぶん、体がねじれやすい。逆手側の上腕二頭筋（力こぶの筋肉）を痛めた例が報告されている",
     contest: "使える",
   },
   {
     name: "フックグリップ",
-    how: "親指をバーに当て、その上から人差し指と中指で押さえ込む",
+    how: "親指を先にバーに巻き付け、その親指の上から人差し指と中指で押さえ込む",
     good: "順手のまま、左右をそろえて重い重量を持てる",
-    bad: "親指が痛い。慣れるまで時間がかかる",
+    bad: "親指が痛く、慣れるまで時間がかかる。手が小さいと指1本しか掛からないこともある",
     contest: "使える",
   },
   {
-    name: "パワーグリップ・ストラップ",
-    how: "手首に巻いた道具をバーに巻き付けて握りを補う",
+    name: "パワーグリップ・ストラップ（道具）",
+    how: "手首に着けた道具をバーに引っかけて握りを補う",
     good: "握力をほぼ気にせず、背中と脚の力を使い切れる",
-    bad: "素手の握力は鍛えられない",
-    contest: "使えない（パワーリフティングの大会）",
+    bad: "素手の握力は鍛えにくい",
+    contest: "使えない",
   },
 ];
 
 // 握力で止まっているかの見分け方。数字ではなく、同じ条件での比較で判断する。
 const CHECKS = [
   {
-    sign: "セットの最後に手が先に開く",
+    sign: "手が開いたとき、背中やもも裏にはまだ余裕がある",
     meaning: "握力で止まっている",
   },
   {
-    sign: "ストラップを使うと同じ重量で回数が増える",
+    sign: "ストラップ類を使うと、同じ重量で回数が増える",
     meaning: "握力で止まっている",
   },
   {
@@ -70,16 +71,19 @@ export default function DeadliftGripPage() {
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
           <h1 className="text-xl font-bold text-gray-800 mb-6">
-            デッドリフトで握力が先に限界になるときの対処｜握り方4種類とパワーグリップの使い分け
+            デッドリフトで握力が足りない・持たないときの対処｜握り方3種類とパワーグリップ
           </h1>
 
           <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
             <section>
               <p>
-                デッドリフトは、<span className="font-bold">背中や脚より先に握力が限界になりやすい</span>種目です。背中はまだ引けるのに、手が先に開いてバーが落ちる。この状態のまま続けると、鍛えたい背中に重さが届く前にセットが終わってしまいます。
+                デッドリフトは、<span className="font-bold">背中や脚より先に握力が限界になりやすい</span>種目です。BIG3でいちばん重い重量を扱う種目なのに、その重さを支えているのは指だけだからです。背中はまだ引けるのに、手が先に開いてバーが落ちる。この状態のまま続けると、鍛えたい背中に重さが届く前にセットが終わってしまいます。
               </p>
               <p className="mt-2">
-                対処の順番はシンプルです。<span className="font-bold">まず本当に握力で止まっているかを確かめる。止まっているなら、握り方を変えるか道具を使う。</span>この記事ではこの順に書きます。
+                対処の順番はシンプルです。<span className="font-bold">まず本当に握力で止まっているかを確かめる。止まっているなら、お金のかからない工夫から試し、それでも足りなければ握り方を変えるか道具を使う。</span>この記事ではこの順に書きます。
+              </p>
+              <p className="mt-2 text-xs text-gray-500">
+                ※ この記事で「ストラップ類」と書くときは、パワーグリップやリストストラップのように、手首に着けてバーに引っかけ、握りを補う道具のことを指します。
               </p>
             </section>
 
@@ -114,7 +118,10 @@ export default function DeadliftGripPage() {
                 </table>
               </div>
               <p className="mt-3">
-                いちばん確かなのは<span className="font-bold">2番目の比べ方</span>です。同じ重量で、素手のセットとストラップを使ったセットの回数を比べてください。ストラップを使ったときだけ回数が増えるなら、背中と脚にはまだ余力があって、手が先に音を上げています。
+                いちばん確かなのは<span className="font-bold">2番目の比べ方</span>です。同じ重量で、先に素手、十分に休んでからストラップ類で引いて、回数を比べます。後から引くほうが疲れているぶん不利なので、それでもストラップ類のほうが回数が増えるなら、背中と脚にはまだ余力があって、手が先に音を上げています。
+              </p>
+              <p className="mt-2">
+                <span className="font-bold">どちらのセットも、背中が丸まり始めたらそこで止めてください。</span>回数を比べるために粘る必要はありません。ストラップ類を持っていないなら、1番目と4番目（手が開いたとき、背中やもも裏にまだ余裕があるか）で判断できます。
               </p>
               <p className="mt-2">
                 逆に、手は持つのにバーが浮かない・背中が丸まる場合は、握力の問題ではありません。道具を足しても解決しないので、重量を落としてフォームを見直してください。背中が丸まる重量に手を出さないことは、
@@ -127,7 +134,27 @@ export default function DeadliftGripPage() {
 
             <section>
               <h2 className="font-bold text-orange-500 text-base mb-3">
-                握り方4種類の向き不向き
+                道具を買う前にできること
+              </h2>
+              <ul className="space-y-2">
+                <li>
+                  ▸ <span className="font-bold">親指まで巻き付けて握る</span>：親指をバーの反対側に回さず、ほかの指と並べて添えているだけだと、手が開きやすくなります
+                </li>
+                <li>
+                  ▸ <span className="font-bold">握る位置を手のひらの真ん中から指の付け根寄りに</span>：手のひらの真ん中で握ると、引いた瞬間にバーが指のほうへずれて、握りが浅くなります
+                </li>
+                <li>
+                  ▸ <span className="font-bold">手のひらを乾かす</span>：汗で滑るならチョーク（滑り止めの粉）が効きます。<span className="font-bold">使えるかどうかはジムによって違う</span>ので、先に確認してください
+                </li>
+              </ul>
+              <p className="mt-3">
+                チョークは、パワーリフティングの国際ルール（IPF）でも手に付けることが認められています。国内の大会に出るなら、出場する大会の規則で確認してください。
+              </p>
+            </section>
+
+            <section>
+              <h2 className="font-bold text-orange-500 text-base mb-3">
+                握り方3種類とパワーグリップの向き不向き
               </h2>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
                 <table className="w-full text-xs border-collapse">
@@ -143,7 +170,7 @@ export default function DeadliftGripPage() {
                         弱点
                       </th>
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
-                        大会
+                        試合※
                       </th>
                     </tr>
                   </thead>
@@ -168,20 +195,33 @@ export default function DeadliftGripPage() {
                   </tbody>
                 </table>
               </div>
+              <p className="mt-2 text-xs text-gray-500">
+                ※ パワーリフティングの試合での扱いです。ストロングマンのデッドリフトなど、ストラップを使える競技もあります。
+              </p>
               <p className="mt-3">
-                始めたばかりのうちは<span className="font-bold">順手</span>で十分です。左右がそろうので、フォームを覚えるのに向いています。手が開き始めたら、次の3つから選びます。
+                始めたばかりのうちは<span className="font-bold">順手</span>で十分です。左右がそろうので、フォームを覚えるのに向いています。手が開き始めたら、目的で選びます。
               </p>
               <ul className="mt-2 space-y-2">
                 <li>
                   ▸ <span className="font-bold">背中を鍛えるのが目的なら、パワーグリップ</span>。握力を気にせず背中に集中できるので、いちばん手っ取り早い
                 </li>
+              </ul>
+              <GearPick
+                placement="deadlift-grip-powergrip"
+                lead="背中を鍛えるのが目的なら、パワーグリップがいちばん手っ取り早い解決策です。"
+                productIds={["alloutPowerGrip"]}
+              />
+              <ul className="mt-2 space-y-2">
                 <li>
-                  ▸ <span className="font-bold">大会に出る予定があるなら、オルタネイトかフックグリップ</span>。大会ではストラップ類が使えないので、素手で重い重量を持つ練習が要る
-                </li>
-                <li>
-                  ▸ <span className="font-bold">オルタネイトを使うなら、逆手にする側を毎回入れ替える</span>。片側だけに偏らせないため
+                  ▸ <span className="font-bold">パワーリフティングの大会に出る予定があるなら、オルタネイトかフックグリップ</span>。試合ではストラップ類が使えないので、素手で重い重量を持つ練習が要る
                 </li>
               </ul>
+              <p className="mt-3">
+                オルタネイトとフックで迷ったら、<span className="font-bold">左右差や二頭筋への負担を避けたいならフック</span>です。ただし親指の痛みに慣れるまで時間がかかるので、試合が近いならオルタネイトにして、次の注意を徹底してください。
+              </p>
+              <p className="mt-2 text-xs text-gray-500">
+                ※ オルタネイトを使うなら、<span className="font-bold">逆手側の肘を伸ばしたまま引く</span>（腕で引き上げない）こと。逆手にする側はセットごとに入れ替え、片側に偏らせないでください。
+              </p>
             </section>
 
             <section>
@@ -189,23 +229,12 @@ export default function DeadliftGripPage() {
                 パワーグリップを使った記録はどう扱うか
               </h2>
               <p>
-                「道具を使った記録は自分の実力ではない」と感じる人もいますが、<span className="font-bold">自分の現在地を知るためなら、使った記録で構いません</span>。パワーグリップは引く距離もフォームも変えず、先に限界が来る握力を補うだけだからです。
-              </p>
-              <p className="mt-2">
-                大事なのは<span className="font-bold">「使う／使わない」を記録に書いて区別しておく</span>ことです。混ぜると、伸びたのか道具が変わっただけなのか分からなくなります。重量と回数から自分のレベルを調べる方法は
+                自分の現在地を知るためなら、使った記録で構いません。ただし<span className="font-bold">伸びを比べる記録は「使う」か「使わない」のどちらかに固定</span>してください。レベル判定との関係は
                 <Link href="/column/deadlift-weight-level" className="text-orange-600 font-bold underline">
                   デッドリフト◯kgはすごい？
                 </Link>
-                にまとめました。
+                に書いています。パワーリフティングの大会に出るなら、比べる記録は素手にそろえてください。
               </p>
-              <p className="mt-2">
-                ただし<span className="font-bold">パワーリフティングの大会に出るなら、記録は素手で測ってください</span>。大会ではストラップ類が使えないので、道具ありの記録は大会の記録とは比べられません。
-              </p>
-              <GearPick
-                placement="deadlift-grip-powergrip"
-                lead="背中を鍛えるのが目的なら、パワーグリップがいちばん手っ取り早い解決策です。"
-                productIds={["alloutPowerGrip"]}
-              />
             </section>
 
             <section>
@@ -213,7 +242,7 @@ export default function DeadliftGripPage() {
                 握力そのものを鍛えたいなら
               </h2>
               <p>
-                道具に頼りきると、素手の握力はそのままです。気になるなら、<span className="font-bold">背中の日に素手のセットを1〜2セットだけ残す</span>のが現実的です。重い本番のセットはパワーグリップで背中を追い込み、軽めのセットは素手で握る。これで背中と握力の両方に刺激が入ります。
+                道具に頼りきると、素手の握力は伸びにくくなります。気になるなら、<span className="font-bold">背中の日に素手のセットを1〜2セットだけ残す</span>のが現実的です。重い本番のセットはパワーグリップで背中を追い込み、軽めのセットは素手で握る。これで背中と握力の両方に刺激が入ります。素手の軽めのセットは、伸びを比べる記録とは別に書いておけば十分です。
               </p>
               <p className="mt-2">
                 バーにぶら下がる練習も、握力を鍛えるのに向いています。懸垂の練習の最初の段階がちょうどこれで、段階の進め方は
@@ -221,9 +250,6 @@ export default function DeadliftGripPage() {
                   懸垂が1回もできない人の練習法
                 </Link>
                 にあります。
-              </p>
-              <p className="mt-2">
-                汗で滑る場合は、手のひらの乾き具合も影響します。チョーク（滑り止めの粉）を使うと持ちやすくなりますが、<span className="font-bold">使えるかどうかはジムによって違う</span>ので、先に確認してください。
               </p>
             </section>
 
@@ -235,7 +261,7 @@ export default function DeadliftGripPage() {
                 私はALLOUTのパワーグリップを使っています。背中のトレーニングで、握力が先に限界になる問題をこれで片付けました。フィジークは大会でデッドリフトの重さを競う競技ではないので、<span className="font-bold">私にとって大事なのは素手で持てる重量より、背中に重さを届けること</span>でした。
                 <br />
                 <br />
-                同じ道具でも、パワーリフティングの大会に出る人には向きません。目的が「背中を育てる」なのか「素手で記録を出す」なのかで、正解の握り方は変わります。自分がどちらなのかを先に決めてください。
+                パワーリフティングの大会に出る人は、本番ではストラップ類が使えないので、素手で重い重量を持つ練習が欠かせません。目的が「背中を育てる」なのか「素手で記録を出す」なのかで、正解の握り方は変わります。自分がどちらなのかを先に決めてください。
               </p>
             </section>
 
@@ -247,13 +273,17 @@ export default function DeadliftGripPage() {
                 パワーグリップを使うのはずるいですか？
               </h3>
               <p>
-                ずるくありません。背中を鍛えるための道具です。気をつけるのは、大会の記録と比べないことと、道具ありの記録となしの記録を混ぜないことの2つだけです。
+                ずるくありません。背中を鍛えるための道具です。ストラップ類を使った数字の扱いは、
+                <Link href="/column/deadlift-average" className="text-orange-600 font-bold underline">
+                  デッドリフトの平均は何kg？
+                </Link>
+                でも書いています。
               </p>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
                 パワーグリップとリストストラップは何が違いますか？
               </h3>
               <p>
-                どちらも握りを補う道具ですが、<span className="font-bold">パワーグリップはバーに巻き付けるのが速く、リストストラップは巻くのに手間がかかるぶん、しっかり固定できる</span>傾向があります。セットのたびに着け外しするなら、手軽なパワーグリップのほうが続けやすいです。
+                どちらも握りを補う道具ですが、<span className="font-bold">パワーグリップはバーへの掛け外しが速く、リストストラップは巻くのに手間がかかるぶん、しっかり固定できる</span>傾向があります。1回の練習で何種目も使うなら、掛け外しが速いパワーグリップのほうが手軽です。
               </p>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
                 ラットプルダウンや懸垂でも使っていいですか？
@@ -269,7 +299,7 @@ export default function DeadliftGripPage() {
                 手のひらにマメができて痛いです。
               </h3>
               <p>
-                バーを指の付け根で握ると、皮が挟まれてマメになりやすくなります。<span className="font-bold">指の付け根より少し指先側で引っかけるように握る</span>と、皮が挟まれにくくなります。痛みが強いときや皮がめくれたときは、治るまで素手のセットは休んでください。
+                手のひらの真ん中でバーを握ると、引いた瞬間にバーが指のほうへずれて皮が寄り、マメができやすくなります。<span className="font-bold">最初から指の付け根あたり（手のひらとの境目のすぐ指先側）にバーを引っかけて握る</span>と、皮が寄りにくくなります。痛みが強いときや皮がめくれたときは、治るまで素手のセットは休んでください。
               </p>
             </section>
 
@@ -279,19 +309,19 @@ export default function DeadliftGripPage() {
               </h2>
               <ul className="space-y-2">
                 <li>
-                  ▸ 握力で止まっているかは、<span className="font-bold">ストラップあり・なしの回数</span>を比べると分かる
+                  ▸ 握力で止まっているかは、<span className="font-bold">ストラップ類あり・なしの回数</span>を比べると分かる。背中が丸まり始めたらそこで止める
                 </li>
                 <li>
                   ▸ 手は持つのに浮かない・背中が丸まるなら、<span className="font-bold">握力ではなくフォームと力の問題</span>
                 </li>
                 <li>
-                  ▸ 背中を鍛えるなら<span className="font-bold">パワーグリップ</span>、大会に出るなら<span className="font-bold">オルタネイトかフックグリップ</span>
+                  ▸ まずは<span className="font-bold">親指まで巻く・握る位置・チョーク</span>。お金のかからない工夫から
                 </li>
                 <li>
-                  ▸ 道具を使った記録は、<span className="font-bold">書いて区別しておけば</span>現在地を知るのに使える
+                  ▸ 背中を鍛えるなら<span className="font-bold">パワーグリップ</span>、パワーリフティングの大会に出るなら<span className="font-bold">オルタネイトかフックグリップ</span>
                 </li>
                 <li>
-                  ▸ 素手の握力も気になるなら、<span className="font-bold">軽めのセットだけ素手</span>にする
+                  ▸ 道具を使った記録でも現在地は分かる。ただし<span className="font-bold">比べる記録は、使う・使わないのどちらかに固定</span>する
                 </li>
               </ul>
               <p className="mt-2">
@@ -307,7 +337,7 @@ export default function DeadliftGripPage() {
 
         <ShareButtons
           url="https://sakutore.jp/column/deadlift-grip"
-          title="デッドリフトで握力が先に限界になるときの対処｜握り方4種類とパワーグリップの使い分け"
+          title="デッドリフトで握力が足りない・持たないときの対処｜握り方3種類とパワーグリップ"
         />
         <Link
           href="/gear"
