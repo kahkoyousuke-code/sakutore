@@ -271,7 +271,11 @@ export default function DeadliftWeightLevelPage() {
                 ストラップ・ベルトを使った記録で判定していい？
               </h2>
               <p>
-                <span className="font-bold">判定に使って構いません。</span>ストラップやパワーグリップは、引く距離もフォームも変えずに、先に限界が来る握力を補うだけです。スモウやトラップバーと違って、<span className="font-bold">背中と脚の力をそのまま測れます</span>。ただし「使う／使わない」はどちらかに固定して記録してください。混ぜると、伸びたのか道具が変わっただけなのか分からなくなります。
+                <span className="font-bold">判定に使って構いません。</span>ストラップやパワーグリップは、引く距離もフォームも変えずに、先に限界が来る握力を補うだけです。スモウやトラップバーと違って、<span className="font-bold">背中と脚の力をそのまま測れます</span>。ただし「使う／使わない」はどちらかに固定して記録してください。握力で止まっているかの見分け方は
+                <Link href="/column/deadlift-grip" className="text-orange-600 font-bold underline">
+                  デッドリフトで握力が足りない・持たないときの対処
+                </Link>
+                にあります。混ぜると、伸びたのか道具が変わっただけなのか分からなくなります。
               </p>
               <p className="mt-2">
                 ベルトは、体重×{formatRatio(BELT_START_RATIO)}を超えたあたりで検討すれば十分です（選び方と締め方は
