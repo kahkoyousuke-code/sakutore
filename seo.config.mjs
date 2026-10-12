@@ -83,6 +83,8 @@ const config = {
     { kw: "合計", path: "/column/big3-total" },
     { kw: "比率", path: "/column/big3-balance" },
     { kw: "ベルト", path: "/column/lifting-belt" },
+    { kw: "握力", path: "/column/deadlift-grip" },
+    { kw: "グリップ", path: "/column/deadlift-grip" },
     { kw: "バランス", path: "/column/big3-balance" },
     { kw: "懸垂", path: "/column/pullup-progression" },
     { kw: "腕立て", path: "/column/pushup-pullup-average" },
