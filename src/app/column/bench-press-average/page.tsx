@@ -374,6 +374,13 @@ export default function BenchPressAveragePage() {
                 </div>
               </div>
               <p className="mt-3">
+                4つをそろえても止まるなら、胸から離れないのか、最後に挙げ切れないのか、止まる場所に合わせて補助種目を足します。選び方は
+                <Link href="/column/big3-accessory" className="text-orange-600 font-bold underline">
+                  BIG3の補助種目の選び方
+                </Link>
+                にまとめました。
+              </p>
+              <p className="mt-2">
                 自宅派の人は
                 <Link href="/column/chest-home" className="text-orange-600 font-bold underline">
                   自宅でできる胸トレ

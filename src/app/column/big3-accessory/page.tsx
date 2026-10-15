@@ -5,14 +5,16 @@ import AuthorBox from "@/components/AuthorBox";
 import { LIFTS, type LiftId } from "@/lib/strengthStandards";
 
 export const metadata = pageMetadata({
-  title: "BIG3の補助種目の選び方｜ベンチ・スクワット・デッドリフトが止まる場所別 - サクトレ",
+  title: "BIG3の補助種目の選び方｜ベンチプレス・スクワット・デッドリフトが止まる場所別 - サクトレ",
   description:
-    "補助種目は「どこで止まるか」で選びます。ベンチが胸から離れない・挙げ切れない、スクワットがしゃがんだ位置から上がらない、デッドリフトが床から浮かないなど、止まる場所ごとに足す種目を表にしました。何種目・何セット足すか、BIG3だけでいい時期の見分け方つき。",
+    "補助種目は「どこで止まるか」で選びます。ベンチプレスが胸から離れない・最後に挙げ切れない、スクワットがしゃがんだ位置から上がらない、デッドリフトが床から浮かないなど、止まる場所ごとに足す種目を表にしました。何種目・何セット足すか、まだ補助種目が要らない時期の見分け方つき。",
   path: "/column/big3-accessory",
 });
 
 // 止まる場所ごとの補助種目。数字の基準は置かず、「どこで止まるか→どこが足りないか」で引く。
 // 種目名は結果画面の種目カード（src/lib/exercises.ts）にあるものを優先している。
+// 膝が内側に入る止まり方は /column/squat-average が「筋力不足ではなく可動域の問題」としているので、
+// 補助種目の表には入れず本文でそちらに合わせて扱う。
 const ACCESSORIES: {
   lift: LiftId;
   rows: { where: string; weak: string; picks: string }[];
@@ -21,12 +23,12 @@ const ACCESSORIES: {
     lift: "bench",
     rows: [
       {
-        where: "胸から離れない（いちばん下）",
+        where: "胸から離れない・胸から少し上がった所で止まる",
         weak: "胸と肩の前側",
         picks: "ダンベルプレス／インクラインダンベルプレス",
       },
       {
-        where: "途中から挙げ切れない（腕が伸びきる手前）",
+        where: "最後の数cmで止まる（腕が伸びきる手前）",
         weak: "上腕三頭筋（腕の裏）",
         picks: "ナローグリップベンチプレス／ディップス",
       },
@@ -47,13 +49,8 @@ const ACCESSORIES: {
       },
       {
         where: "立ち上がるとき、お尻が先に上がって前に倒れる",
-        weak: "太もも前（背中で持ち上げている）",
-        picks: "レッグプレス／ゴブレットスクワット",
-      },
-      {
-        where: "立ち上がるとき、膝が内側に入る",
-        weak: "膝を外に保つお尻の横",
-        picks: "ブルガリアンスクワット／ヒップアブダクション",
+        weak: "太もも前が多い（背中で持ち上げている）",
+        picks: "ゴブレットスクワット／レッグエクステンション",
       },
     ],
   },
@@ -71,7 +68,7 @@ const ACCESSORIES: {
         picks: "ルーマニアンデッドリフト／ベントオーバーロウ",
       },
       {
-        where: "最後に腰が伸びきらない",
+        where: "最後に立ちきれない（股関節が伸びきらない）",
         weak: "お尻",
         picks: "ヒップスラスト／バックエクステンション",
       },
@@ -96,7 +93,7 @@ export default function Big3AccessoryPage() {
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
           <h1 className="text-xl font-bold text-gray-800 mb-6">
-            BIG3の補助種目の選び方｜ベンチ・スクワット・デッドリフトが止まる場所別
+            BIG3の補助種目の選び方｜ベンチプレス・スクワット・デッドリフトが止まる場所別
           </h1>
 
           <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
@@ -114,10 +111,17 @@ export default function Big3AccessoryPage() {
                 まだ補助種目が要らない人
               </h2>
               <p>
-                BIG3を始めて間もないうちは、<span className="font-bold">BIG3そのものを続けるだけで重量が伸びます</span>。この時期に補助種目を増やすと、疲れてメイン種目の練習の質が落ち、かえって遠回りになります。
+                BIG3を始めて間もないうちは、<span className="font-bold">BIG3そのものを続けるだけで重量が伸びます</span>。この時期にBIG3のための補助種目を増やすと、疲れてメイン種目の練習の質が落ち、かえって遠回りになります。
               </p>
               <p className="mt-2">
-                補助種目を考えるのは、<span className="font-bold">フォームが安定していて、休養も取れているのに、数週間たっても重量が動かなくなってから</span>です。その前に、どの種目が遅れているかは
+                ここでいう補助種目は、<span className="font-bold">BIG3を伸ばすために足す種目</span>のことです。BIG3には上から引く動き（ラットプルダウンなど）が無いので、背中を引く種目は
+                <Link href="/column/beginner-guide" className="text-orange-600 font-bold underline">
+                  筋トレ初心者が最初にやるべき5つのこと
+                </Link>
+                のとおり、補助種目とは別に最初から入れてください。
+              </p>
+              <p className="mt-2">
+                BIG3のための補助種目を考えるのは、<span className="font-bold">フォームが安定し、休養も食事の量も足りていて、セーフティや補助者もそろっているのに、数週間たっても重量が動かなくなってから</span>です。その前に、どの種目が遅れているかは
                 <Link href="/column/big3-balance" className="text-orange-600 font-bold underline">
                   BIG3のバランス診断
                 </Link>
@@ -130,10 +134,13 @@ export default function Big3AccessoryPage() {
                 止まる場所の見つけ方
               </h2>
               <p>
-                いちばん確実なのは、<span className="font-bold">重いセットの最後の1回を横から動画で撮る</span>ことです。バーがいちばん遅くなる位置、または止まる位置が「止まる場所」です。自分の感覚だけで判断すると、だいたい外れます。
+                いちばん確実なのは、<span className="font-bold">重めのセットの最後の1回を動画で撮る</span>ことです。バーがいちばん遅くなる位置、または止まる位置が「止まる場所」です。高さは横から、膝が内側に入るか・バーが左右に傾くかは正面から撮ると分かります。感覚だけで判断すると外れることが多いです。
               </p>
               <p className="mt-2">
-                ただし、補助種目で解決しない止まり方もあります。<span className="font-bold">背中が丸まる、しゃがむ深さが毎回違う、バーの通り道が毎回違う</span>なら、筋力より先にフォームの問題です。重量を落として、フォームをそろえてから撮り直してください。
+                <span className="font-bold">ベンチプレスとスクワットは、セーフティバーを正しい高さに合わせるか、補助者についてもらってから撮ってください。</span>止まる場所を知るために限界まで粘る必要はありません。重めのセットの最後の1回で、バーが遅くなる位置は分かります。
+              </p>
+              <p className="mt-2">
+                ただし、補助種目で解決しない止まり方もあります。<span className="font-bold">背中が丸まる、しゃがむ深さが毎回違う、バーの通り道が毎回違う、スクワットで膝が内側に入る</span>なら、筋力より先にフォームか体の硬さの問題です。重量を落として、フォームをそろえてから撮り直してください。
               </p>
             </section>
 
@@ -144,7 +151,7 @@ export default function Big3AccessoryPage() {
               <div className="space-y-5">
                 {ACCESSORIES.map((group) => (
                   <div key={group.lift}>
-                    <h3 className="font-bold text-gray-800 mb-2">{liftLabel(group.lift)}</h3>
+                    <h3 className="font-bold text-gray-800 mb-2">{liftLabel(group.lift)}の補助種目</h3>
                     <div className="overflow-x-auto -mx-2 px-2">
                       <table className="w-full text-xs border-collapse">
                         <thead>
@@ -181,10 +188,24 @@ export default function Big3AccessoryPage() {
                 ))}
               </div>
               <p className="mt-3">
-                ベンチプレスは胸だけでなく、<span className="font-bold">上腕三頭筋と肩の前側も一緒に働く</span>種目です。挙げ切る手前で止まる人は、胸より腕の裏が先に限界になっていることが多く、胸の種目を足しても動きません。
+                ベンチプレスは胸だけでなく、<span className="font-bold">上腕三頭筋と肩の前側も一緒に働く</span>種目です。最後の数cmで止まる人は、胸より腕の裏が先に限界になっていることが多く、胸の種目を足しても動きにくいです。逆に、胸から少し上がった所で止まるなら、胸と肩の前側の種目が先です。
               </p>
               <p className="mt-2">
-                スクワットで「お尻が先に上がる」のは、太もも前で立ち上がれないぶんを、上半身を倒して背中で補っている状態です。膝が内側に入る場合も含め、<span className="font-bold">まず重量を落として、正しい形で立ち上がれる重さから</span>やり直してください。補助種目はその後です。
+                スクワットで「お尻が先に上がる」のは、太もも前で立ち上がれないぶんを、上半身を倒して背中で補っている状態であることが多いです。背中が丸まりながら倒れるなら、筋力ではなくフォームの問題なので、<span className="font-bold">まず重量を落として、正しい形で立ち上がれる重さから</span>やり直してください。補助種目はその後です。
+              </p>
+              <p className="mt-2">
+                膝が内側に入るのは、筋力より足首などの硬さ（可動域）が原因のことが多く、補助種目や重量では直りにくい止まり方です。しゃがんだときにかかとが浮くなら、まず
+                <Link href="/column/stretch" className="text-orange-600 font-bold underline">
+                  筋トレ前後のストレッチ
+                </Link>
+                で可動域を広げてください。腰や体幹が先にきつくなって止まるなら、補助種目よりベルトが先です（
+                <Link href="/column/lifting-belt" className="text-orange-600 font-bold underline">
+                  トレーニングベルトはいつから必要？
+                </Link>
+                ）。
+              </p>
+              <p className="mt-2">
+                デッドリフトが床から浮かないときは、脚の力を疑う前に、バーがすねに近いか、腰の高さが毎回同じかを確認してください。構えがずれていても床から浮きません。最後に立ちきれないときは、<span className="font-bold">上体を後ろに反らして終わらせず、お尻を前に押し込んで立ちきります</span>。
               </p>
               <p className="mt-2">
                 デッドリフトで背中が丸まって止まるなら、補助種目より先に重量を落としてください。背中が丸まる重量で引き続けるのは腰を痛める原因になります。手が先に開いて止まるなら、筋肉ではなく握力の問題で、対処は
@@ -192,6 +213,9 @@ export default function Big3AccessoryPage() {
                   デッドリフトで握力が足りないときの対処
                 </Link>
                 にまとめています。
+              </p>
+              <p className="mt-2">
+                止まる場所で関節に痛みが出るなら、補助種目では解決しません。その種目は中止し、痛みが続くなら整形外科を受診してください。
               </p>
             </section>
 
@@ -204,10 +228,10 @@ export default function Big3AccessoryPage() {
                   ▸ <span className="font-bold">1つのBIG3種目につき{DOSE.perLift}</span>。表の中から、自分の止まる場所の行だけを選ぶ
                 </li>
                 <li>
-                  ▸ <span className="font-bold">1種目{DOSE.sets}、{DOSE.reps}で限界が来る重さ</span>。補助種目は重さの記録より、狙った筋肉に効かせることを優先する
+                  ▸ <span className="font-bold">1種目{DOSE.sets}、{DOSE.reps}で限界が来る重さ</span>。補助種目は重さの記録より、狙った筋肉に効かせることを優先する。ルーマニアンデッドリフトとバックエクステンションは、背中が丸まる前に止める（あと1〜2回できる余裕を残してよい）
                 </li>
                 <li>
-                  ▸ <span className="font-bold">BIG3の後にやる</span>。補助種目で疲れてからメイン種目をやると、伸ばしたい種目の重量が落ちる
+                  ▸ <span className="font-bold">BIG3の後にやる</span>。凹んでいるBIG3種目をその日の先頭に置き、補助種目はその後。補助種目で疲れてからメイン種目をやると、伸ばしたい種目の重量が落ちる
                 </li>
                 <li>
                   ▸ <span className="font-bold">同じ補助種目を数週間続けてから判断する</span>。毎回入れ替えると、効いたかどうかが分からない
@@ -218,7 +242,7 @@ export default function Big3AccessoryPage() {
                 <Link href="/column/beginner-guide" className="text-orange-600 font-bold underline">
                   筋トレ初心者が最初にやるべき5つのこと
                 </Link>
-                の表と同じです。補助種目を足すと、その部位の1週間のセット数も増えます。増やしすぎると回復が追いつかないので、週あたりの量は
+                の目的別の表（筋肉を大きくする行）と、セット数の目安に合わせています。補助種目を足すと、その部位の1週間のセット数も増えます。増やしすぎると回復が追いつかないので、週あたりの量は
                 <Link href="/column/frequency" className="text-orange-600 font-bold underline">
                   週に何回筋トレすればいい？
                 </Link>
@@ -235,7 +259,7 @@ export default function Big3AccessoryPage() {
                 筆者（筋トレ歴15年・フィジーク大会入賞）の場合
               </p>
               <p className="text-xs leading-relaxed">
-                私の自己ベストはベンチプレス120kg・スクワット120kg・デッドリフト160kgです。フィジーク志向で上半身を優先してきたので、比率で見るとスクワットが明らかに軽いBIG3です。
+                私の自己ベストはベンチプレス120kg・スクワット120kg・デッドリフト160kgです。フィジーク志向で上半身を優先してきたので、比率で見ると、スクワット・デッドリフトの下半身2種目がどちらも軽いBIG3です。
                 <br />
                 <br />
                 ベンチの補助種目で言うと、
@@ -254,13 +278,13 @@ export default function Big3AccessoryPage() {
                 BIG3だけでは筋肉はつきませんか？
               </h3>
               <p>
-                つきます。始めたばかりの時期は、BIG3だけで全身に十分な刺激が入ります。補助種目が要るのは、重量が止まってからか、腕や肩など<span className="font-bold">BIG3で刺激が入りにくい部位を見た目のために育てたいとき</span>です。
+                つきます。始めたばかりの時期は、脚と胸はBIG3で十分な刺激が入ります。ただし背中を上から引く動きや、頭の上に押す動きはBIG3に無いので、ラットプルダウンやショルダープレスは最初から入れてください。そのうえで、BIG3のための補助種目が要るのは重量が止まってからです。腕や肩など<span className="font-bold">BIG3で刺激が入りにくい部位を見た目のために育てたいとき</span>も、種目を足す理由になります。
               </p>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
                 補助種目はマシンでもいいですか？
               </h3>
               <p>
-                構いません。表のレッグプレスやヒップアブダクションはマシンの種目です。<span className="font-bold">足りない筋肉に効いていれば、フリーウエイトかマシンかは問いません</span>。マシンは軌道が決まっているぶん、疲れていても狙った筋肉に効かせやすい利点もあります。
+                構いません。表のレッグプレスやレッグエクステンションはマシンの種目です。<span className="font-bold">足りない筋肉に効いていれば、フリーウエイトかマシンかは問いません</span>。マシンは軌道が決まっているぶん、疲れていても狙った筋肉に効かせやすい利点もあります。
               </p>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
                 止まる場所が毎回違います。
@@ -285,10 +309,10 @@ export default function Big3AccessoryPage() {
                   ▸ 補助種目は<span className="font-bold">止まる場所</span>で選ぶ。重いセットの最後の1回を横から撮ると分かる
                 </li>
                 <li>
-                  ▸ 始めたばかりで重量が伸びているうちは、<span className="font-bold">BIG3だけで十分</span>
+                  ▸ 始めたばかりで重量が伸びているうちは、<span className="font-bold">BIG3のための補助種目はまだ要らない</span>
                 </li>
                 <li>
-                  ▸ 背中が丸まる・深さや通り道が毎回違うなら、補助種目より先に<span className="font-bold">重量を落としてフォーム</span>
+                  ▸ 背中が丸まる・深さや通り道が毎回違う・膝が内側に入るなら、補助種目より先に<span className="font-bold">重量を落としてフォームと可動域</span>
                 </li>
                 <li>
                   ▸ 足すのは<span className="font-bold">1種目につき{DOSE.perLift}、{DOSE.sets}、{DOSE.reps}</span>。BIG3の後にやる
@@ -303,7 +327,7 @@ export default function Big3AccessoryPage() {
 
         <ShareButtons
           url="https://sakutore.jp/column/big3-accessory"
-          title="BIG3の補助種目の選び方｜ベンチ・スクワット・デッドリフトが止まる場所別"
+          title="BIG3の補助種目の選び方｜ベンチプレス・スクワット・デッドリフトが止まる場所別"
         />
 
         <AuthorBox />
