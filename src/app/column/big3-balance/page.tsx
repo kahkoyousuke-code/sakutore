@@ -323,7 +323,11 @@ export default function Big3BalancePage() {
                 <Link href="/column/deadlift-weight-level" className="text-orange-600 font-bold underline">
                   デッドリフト◯kgはすごい？
                 </Link>
-                にあります。
+                にあります。凹んでいる種目に何を足すかは、止まる場所で決まります。選び方は
+                <Link href="/column/big3-accessory" className="text-orange-600 font-bold underline">
+                  BIG3の補助種目の選び方
+                </Link>
+                にまとめました。
               </p>
             </section>
 
