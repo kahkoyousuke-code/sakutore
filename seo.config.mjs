@@ -84,6 +84,7 @@ const config = {
     { kw: "比率", path: "/column/big3-balance" },
     { kw: "ベルト", path: "/column/lifting-belt" },
     { kw: "握力", path: "/column/deadlift-grip" },
+    { kw: "補助種目", path: "/column/big3-accessory" },
     { kw: "フックグリップ", path: "/column/deadlift-grip" },
     { kw: "オルタネイト", path: "/column/deadlift-grip" },
     { kw: "パワーグリップ", path: "/column/deadlift-grip" },

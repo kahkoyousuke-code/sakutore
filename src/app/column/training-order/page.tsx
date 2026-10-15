@@ -221,7 +221,11 @@ export default function TrainingOrderPage() {
                 に書きました。
               </p>
               <p className="mt-2">
-                どれも<span className="font-bold">バーベルやマシンで複数の関節を使う種目が先、1つの筋肉だけを狙う種目が後</span>になっています。種目名が変わっても、この並びさえ守れば順番で失敗することはありません。
+                どれも<span className="font-bold">バーベルやマシンで複数の関節を使う種目が先、1つの筋肉だけを狙う種目が後</span>になっています。種目名が変わっても、この並びさえ守れば順番で失敗することはありません。BIG3が止まったときに、後ろに何を足すかは
+                <Link href="/column/big3-accessory" className="text-orange-600 font-bold underline">
+                  BIG3の補助種目の選び方
+                </Link>
+                にまとめています。
               </p>
               <p className="mt-2">
                 どの部位をどの曜日にやるか自体は
