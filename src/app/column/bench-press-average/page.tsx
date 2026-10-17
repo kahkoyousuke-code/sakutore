@@ -387,6 +387,13 @@ export default function BenchPressAveragePage() {
                 </Link>
                 も参考にしてください。
               </p>
+              <p className="mt-2">
+                バーベルではなくダンベルで鍛えている人は、片手の重さがベンチプレス何kg相当かを
+                <Link href="/column/dumbbell-press-level" className="text-orange-600 font-bold underline">
+                  ダンベルプレスのレベル早見表
+                </Link>
+                で換算できます。
+              </p>
             </section>
 
             <section>
