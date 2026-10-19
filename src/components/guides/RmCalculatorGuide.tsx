@@ -83,7 +83,7 @@ export default function RmCalculatorGuide() {
       <GuideCard title="筆者の場合">
         <p>
           筋トレを始めた頃は、BIG3すべて60kg前後からのスタートでした。
-          ベンチプレスは60kgを2〜3回がやっとで、Epley式に当てはめると推定1RMは約65kg。
+          ベンチプレスは60kgを2〜3回がやっとで、Epley式に当てはめると推定1RMは約64〜66kg。
           そこから15年かけて、体重80kg台の頃にベンチ120kg・スクワット120kg・デッドリフト160kgが自己ベストです。
         </p>
         <p>

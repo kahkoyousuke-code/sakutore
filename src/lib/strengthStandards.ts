@@ -161,6 +161,37 @@ export const BELT_START_RATIO = 1.5;
 export const estimate1RM = (weight: number, reps: number) =>
   reps <= 1 ? weight : Math.round(weight * (1 + reps / 30) * 10) / 10;
 
+/**
+ * 1RMから「N回できる重さ」を出す。estimate1RM の逆算（Epley式）で、
+ * /rm-calculator の換算表と同じ式・同じ0.1kg丸めにしてある。
+ */
+export const weightForReps = (oneRM: number, reps: number) =>
+  reps <= 1 ? oneRM : Math.round((oneRM / (1 + reps / 30)) * 10) / 10;
+
+/**
+ * セットの型（/column/sets-and-reps）。回数と休憩は /column/beginner-guide の目的別の表
+ * （筋力 1〜5回・休憩3〜5分／筋肉を大きくする 6〜12回・休憩1〜2分）に合わせてある。
+ * beginner-guide の表を変えたらここも直すこと。
+ */
+export const SET_SCHEMES = [
+  { label: "5×5", sets: 5, reps: 5, rest: "3〜5分", purpose: "重量を伸ばす（筋力寄り）" },
+  { label: "3×8", sets: 3, reps: 8, rest: "1〜2分", purpose: "筋力と筋肥大の中間" },
+  { label: "3×10", sets: 3, reps: 10, rest: "1〜2分", purpose: "体を大きくする（筋肥大寄り）" },
+] as const;
+
+/**
+ * 1セット目の最後に残す余裕の回数。全セット同じ重さでやり切るために、
+ * 「決めた回数＋この回数」で限界が来る重さを使う（後半のセットで余裕が減るのは想定内）。
+ */
+export const SET_RESERVE_REPS = 2;
+
+/** 全セット決めた回数ができたら、次に上げる重さ（kg）。バーの片側1.25kgずつ。 */
+export const WEIGHT_STEP_KG = 2.5;
+
+/** 型の回数で全セットやり切れる重さ。1RM × 1/(1 + (回数＋余裕)/30)。 */
+export const schemeWeight = (oneRM: number, reps: number) =>
+  weightForReps(oneRM, reps + SET_RESERVE_REPS);
+
 /** Target weight for one lift, rounded to 0.1kg as the tool has always done. */
 export const targetWeight = (bodyWeight: number, ratio: number) =>
   Math.round(bodyWeight * ratio * 10) / 10;

@@ -121,6 +121,11 @@ export default function RmConversionTables() {
         <p className="text-xs text-gray-500">
           表の重量はすべて<span className="font-bold">その回数が限界になる重さ</span>です。
           余力を残して組みたい場合は、1つ下の行（回数の多いほう）の重量を選ぶと扱いやすくなります。
+          5×5・3×10のように何セットもそろえる型の重さは
+          <Link href="/column/sets-and-reps" className="text-orange-600 font-bold underline">
+            5×5・3×10の重量の決め方
+          </Link>
+          にまとめています。
           自分の1RMがこの6つの間にある場合は、ページ上部の計算機に実際の重量と回数を入れてください。
         </p>
       </GuideCard>
