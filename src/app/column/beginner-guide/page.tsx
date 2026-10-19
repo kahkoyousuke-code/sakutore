@@ -186,7 +186,11 @@ export default function BeginnerGuidePage() {
                 初心者が最初から1行目（85%以上）を狙うのは危険です。<strong className="text-gray-800">高重量は少しのフォームの崩れがそのまま怪我になります</strong>。まずは10〜15回の帯でフォームを固めて、そこから2行目に移るのが安全です。
               </p>
               <p className="mt-2">
-                また、同じ重量でずっとトレーニングしていると筋肉が慣れてしまいます。2〜4週間ごとに少しずつ重量を増やす「漸進的過負荷」を意識すると、効率よく筋力がアップしていきます。</p>
+                また、同じ重量でずっとトレーニングしていると筋肉が慣れてしまいます。2〜4週間ごとに少しずつ重量を増やす「漸進的過負荷」を意識すると、効率よく筋力がアップしていきます。5×5・3×10のような型で、いつ重さを上げるかは
+                <Link href="/column/sets-and-reps" className="text-orange-600 font-bold underline">
+                  5×5と3×10はどっちがいい？
+                </Link>
+                にまとめています。</p>
 
               <div className="bg-gray-50 rounded-xl p-4 mt-3">
                 <p className="font-bold text-gray-800 mb-2">最初の重量は、驚くほど軽くていい</p>

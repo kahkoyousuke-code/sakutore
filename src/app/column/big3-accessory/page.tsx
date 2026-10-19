@@ -246,7 +246,11 @@ export default function Big3AccessoryPage() {
                 <Link href="/column/frequency" className="text-orange-600 font-bold underline">
                   週に何回筋トレすればいい？
                 </Link>
-                の表の範囲に収めてください。1回の中での並べ方は
+                の表の範囲に収めてください。メイン種目を5×5、補助種目を3×10のように組むときの重さの決め方は
+                <Link href="/column/sets-and-reps" className="text-orange-600 font-bold underline">
+                  5×5と3×10はどっちがいい？
+                </Link>
+                にあります。1回の中での並べ方は
                 <Link href="/column/training-order" className="text-orange-600 font-bold underline">
                   筋トレの順番
                 </Link>
