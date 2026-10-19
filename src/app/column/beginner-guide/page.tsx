@@ -188,7 +188,7 @@ export default function BeginnerGuidePage() {
               <p className="mt-2">
                 また、同じ重量でずっとトレーニングしていると筋肉が慣れてしまいます。2〜4週間ごとに少しずつ重量を増やす「漸進的過負荷」を意識すると、効率よく筋力がアップしていきます。5×5・3×10のような型で、いつ重さを上げるかは
                 <Link href="/column/sets-and-reps" className="text-orange-600 font-bold underline">
-                  5×5と3×10はどっちがいい？
+                  5×5・3×10の重量の決め方
                 </Link>
                 にまとめています。</p>
 

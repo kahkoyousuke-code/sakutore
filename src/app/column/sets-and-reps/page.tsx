@@ -13,7 +13,7 @@ import {
 // description の「＋2回」「2.5kg」は SET_RESERVE_REPS / WEIGHT_STEP_KG の値を直書きしている
 // （seo.config.mjs が文字列リテラルとして読むため）。モジュール側を変えたらここも直すこと。
 export const metadata = pageMetadata({
-  title: "5×5と3×10はどっちがいい？筋トレのセット数・回数と重量の決め方 - サクトレ",
+  title: "5×5・3×10の重量はどう決める？1RM別の早見表とセット数・回数の選び方 - サクトレ",
   description:
     "5×5は重量を伸ばしたい人、3×10は体を大きくしたい人向けです。重さは「決めた回数＋2回」で限界が来る重さ。1RM（1回だけ挙がる重さ）から5×5・3×8・3×10の重量が分かる早見表と、全セットできたら2.5kg上げる重量の上げ方をまとめました。",
   path: "/column/sets-and-reps",
@@ -27,11 +27,14 @@ const AUTHOR_START = { weight: 60, reps: 2 };
 // 筆者のベンチの自己ベスト（beginner-guide / big3-balance と同じ）。
 const AUTHOR_BEST_BENCH = 120;
 
+// プレートで作れる重さ（WEIGHT_STEP_KG 刻み）のうち、計算値以下でいちばん重いもの。
+const toPlate = (kg: number) => Math.floor(kg / WEIGHT_STEP_KG) * WEIGHT_STEP_KG;
+
 export default function SetsAndRepsPage() {
+  const [fiveByFive, threeByEight, threeByTen] = SET_SCHEMES;
   const authorOneRM = estimate1RM(AUTHOR_START.weight, AUTHOR_START.reps);
-  const fiveByFive = SET_SCHEMES[0];
-  const threeByTen = SET_SCHEMES[2];
-  const threeByEight = SET_SCHEMES[1];
+  const authorFive = schemeWeight(authorOneRM, fiveByFive.reps);
+  const authorSteps = Math.floor((AUTHOR_BEST_BENCH - authorOneRM) / WEIGHT_STEP_KG);
 
   return (
     <main className="min-h-screen flex flex-col items-center px-4 py-8">
@@ -39,16 +42,16 @@ export default function SetsAndRepsPage() {
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
           <h1 className="text-xl font-bold text-gray-800 mb-6">
-            5×5と3×10はどっちがいい？筋トレのセット数・回数と重量の決め方
+            5×5・3×10の重量はどう決める？1RM別の早見表とセット数・回数の選び方
           </h1>
 
           <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
             <section>
               <p>
-                「5×5」は5回を5セット、「3×10」は10回を3セットという意味です。どちらが正解ということはなく、<span className="font-bold">目的で選びます</span>。重量を伸ばしたいなら5×5、体を大きくしたいなら3×10です。
+                「5×5（5x5）」は5回を5セット、「3×10」は10回を3セットという意味です。どちらが正解ということはなく、<span className="font-bold">目的で選びます</span>。重量を伸ばしたいなら5×5、体を大きくしたいなら3×10です。
               </p>
               <p className="mt-2">
-                迷いやすいのは型より<span className="font-bold">重さの決め方</span>のほうです。この記事では、型の選び方、1RM（1回だけ挙がる重さ）から重さを出す早見表、重さを上げるタイミングの順に説明します。
+                とはいえ、5×5でも筋肉はつきますし、3×10でも重量は伸びます。違うのは<span className="font-bold">どちらに寄せるか</span>で、間をとった3×8もあります。迷いやすいのは型より重さの決め方のほうなので、この記事では、型の選び方、1RM（1回だけ挙がる重さ）から重さを出す早見表、重さを上げるタイミングの順に説明します。
               </p>
             </section>
 
@@ -69,6 +72,9 @@ export default function SetsAndRepsPage() {
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
                         重さ（1RM比）
                       </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        休憩
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -86,20 +92,23 @@ export default function SetsAndRepsPage() {
                         <td className="border border-gray-200 px-2 py-2 text-gray-700 whitespace-nowrap">
                           約{Math.round(schemeWeight(100, s.reps))}%
                         </td>
+                        <td className="border border-gray-200 px-2 py-2 text-gray-700 whitespace-nowrap">
+                          {s.rest}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
               <p className="mt-3">
-                回数の帯は
+                回数と休憩は
                 <Link href="/column/beginner-guide" className="text-orange-600 font-bold underline">
                   筋トレ初心者が最初にやるべき5つのこと
                 </Link>
                 の目的別の表と同じ考え方です。5回は「筋力を上げる」帯、8〜10回は「筋肉を大きくする」帯に入ります。
               </p>
               <p className="mt-2">
-                ただし、5×5の重さは表の「筋力を上げる」行（1RMの85%以上）より軽くなります。85%以上は<span className="font-bold">1セットで限界まで挙げるときの重さ</span>で、5セット続けるにはもう少し軽くしないと、後半のセットで回数が落ちるからです。
+                ただし、5×5の重さは表の「筋力を上げる」行（1RMの85%以上）より軽くなります。1RMの85%前後は、<span className="font-bold">5回がほぼ限界になる重さ</span>です。これで5回を5セットそろえるのは難しいので、5×5ではもう少し軽くします。
               </p>
             </section>
 
@@ -108,10 +117,10 @@ export default function SetsAndRepsPage() {
                 重さは「決めた回数＋{SET_RESERVE_REPS}回」で限界が来る重さ
               </h2>
               <p>
-                重さの決め方は1つだけです。<span className="font-bold">各セットの最後に、あと{SET_RESERVE_REPS}回できる余裕が残る重さ</span>を選びます。5×5なら「{fiveByFive.reps + SET_RESERVE_REPS}回で限界が来る重さ」、3×10なら「{threeByTen.reps + SET_RESERVE_REPS}回で限界が来る重さ」です。
+                重さの決め方は1つだけです。<span className="font-bold">1セット目の最後に、あと{SET_RESERVE_REPS}回できる余裕が残る重さ</span>を選びます。5×5なら「{fiveByFive.reps + SET_RESERVE_REPS}回で限界が来る重さ」、3×10なら「{threeByTen.reps + SET_RESERVE_REPS}回で限界が来る重さ」です。
               </p>
               <p className="mt-2">
-                1セット目から限界まで挙げると、2セット目以降で回数が落ちて、決めた回数をそろえられません。余裕を残すのは、<span className="font-bold">全セット同じ重さ・同じ回数でやり切るため</span>です。
+                疲れがたまる後半のセットで余裕が減り、最後のセットがぎりぎりになるのはちょうどいい状態です。1セット目から限界まで挙げると、2セット目以降で回数が落ちて、決めた回数をそろえられません。余裕を残すのは、<span className="font-bold">全セット同じ重さ・同じ回数でやり切るため</span>です。
               </p>
               <p className="mt-3">
                 1RMが分かっていれば、次の表で重さが出ます。
@@ -152,15 +161,20 @@ export default function SetsAndRepsPage() {
                   </tbody>
                 </table>
               </div>
-              <p className="mt-2 text-xs text-gray-500">
-                ※ 1RM ÷（1 +（回数＋{SET_RESERVE_REPS}）÷ 30）で計算しています。
-                <Link href="/rm-calculator" className="text-orange-600 font-bold underline">
-                  RM計算機
-                </Link>
-                の換算表と同じ式です。実際にはプレートで作れる、いちばん近い軽いほうの重さにしてください。
-              </p>
+              <ul className="mt-2 space-y-1 text-xs text-gray-500">
+                <li>
+                  ※ 1RM ÷（1 +（回数＋{SET_RESERVE_REPS}）÷ 30）で計算しています。
+                  <Link href="/rm-calculator" className="text-orange-600 font-bold underline">
+                    RM計算機
+                  </Link>
+                  の換算表でいえば、{fiveByFive.label}は{fiveByFive.reps + SET_RESERVE_REPS}RM、{threeByEight.label}は{threeByEight.reps + SET_RESERVE_REPS}RM、{threeByTen.label}は{threeByTen.reps + SET_RESERVE_REPS}RMの行の重さです。換算表の重さは「1セットで限界になる重さ」なので、何セットもそろえる型では、回数を{SET_RESERVE_REPS}つ足した行を使います。
+                </li>
+                <li>
+                  ※ 表は計算上の目安です。とくに{threeByTen.label}や、スクワット・デッドリフトは重めに出やすいので、1セット目で余裕が{SET_RESERVE_REPS}回残らなかったら重さを下げてください。実際にはプレートで作れる、いちばん近い軽いほうの重さにします。
+                </li>
+              </ul>
               <p className="mt-3">
-                1RMを測ったことがなくても大丈夫です。<span className="font-bold">「◯kgを◯回」挙げた記録があれば</span>、RM計算機で1RMに換算できます。記録も無いなら、軽めの重さで1セットやってみて、あと{SET_RESERVE_REPS}回できる余裕が残ったかで判断してください。
+                1RMをわざわざ測る必要はありません。<span className="font-bold">1回だけの最大挑戦は、いちばんケガをしやすい試技</span>です。「◯kgを◯回」挙げた記録があれば、RM計算機で1RMに換算できます。記録も無いなら、軽めの重さで1セットやってみて、あと{SET_RESERVE_REPS}回できる余裕が残ったかで判断してください。
               </p>
             </section>
 
@@ -169,18 +183,24 @@ export default function SetsAndRepsPage() {
                 重さを上げるタイミング
               </h2>
               <p>
-                <span className="font-bold">全セットで決めた回数ができたら、次のトレーニングで{WEIGHT_STEP_KG}kg上げます。</span>1セットでも回数が届かなかったら、次も同じ重さです。この「全セットそろったら上げる」というルールを守ると、上げるのが早すぎて潰れることも、遅すぎて止まることも減ります。
+                <span className="font-bold">全セットで決めた回数ができたら、次のトレーニングで{WEIGHT_STEP_KG}kg（バーの片側{WEIGHT_STEP_KG / 2}kgずつ）上げます。</span>1セットでも回数が届かなかったら、次も同じ重さです。この「全セットそろったら上げる」というルールを守ると、上げるのが早すぎて潰れることも、遅すぎて止まることも減ります。
+              </p>
+              <p className="mt-2">
+                回数に数えるのは、<span className="font-bold">深さやバーの通り道がいつもと同じフォームでできた回だけ</span>です。崩れて挙げた回は数えません。ベンチプレスとスクワットは、セーフティバーを正しい高さに合わせるか、補助者についてもらってから行ってください。回数が届かない日は、バーの下で挙がらなくなる日でもあります。
               </p>
               <ul className="mt-3 space-y-2">
                 <li>
                   ▸ <span className="font-bold">{fiveByFive.label}</span>：{fiveByFive.sets}セットとも{fiveByFive.reps}回できたら{WEIGHT_STEP_KG}kg上げる
                 </li>
                 <li>
-                  ▸ <span className="font-bold">{threeByTen.label}</span>：{WEIGHT_STEP_KG}kg上げると10回が続かないことが多いので、上げた重さでは{threeByEight.label}から始め、回数を1回ずつ増やして{threeByTen.label}に戻ったら、また{WEIGHT_STEP_KG}kg上げる
+                  ▸ <span className="font-bold">{threeByTen.label}</span>：{WEIGHT_STEP_KG}kg上げると10回が続かないことが多いので、上げた重さでは8回×3セットから始めます。全セットそろったら次は9回、その次は10回と1回ずつ増やし、10回×3セットがそろったら、また{WEIGHT_STEP_KG}kg上げる
                 </li>
               </ul>
               <p className="mt-3">
-                同じ重さで何回やっても届かないなら、型ではなく休養・食事・フォームを疑ってください。止まる場所に合わせて補助種目を足す方法は
+                始めたばかりのうちは、ほぼ毎回上げられます。続けるうちに全セットそろう日の間隔が空いていき、数週間に1回のペースになるのが普通です。初心者記事の「2〜4週間ごとに少しずつ重量を増やす」は、この段階の目安です。<span className="font-bold">上げるタイミングは日数ではなく「全セットそろったか」で決めてください。</span>
+              </p>
+              <p className="mt-2">
+                同じ重さで何回か続けて届かないなら、重さを少し下げてやり直します。それでも止まるなら、型ではなく休養・食事・フォームを疑ってください。止まる場所に合わせて補助種目を足す方法は
                 <Link href="/column/big3-accessory" className="text-orange-600 font-bold underline">
                   BIG3の補助種目の選び方
                 </Link>
@@ -193,14 +213,17 @@ export default function SetsAndRepsPage() {
                 1回のトレーニングでの組み合わせ方
               </h2>
               <p>
-                1つの型で全部の種目をやる必要はありません。よくある組み方は、<span className="font-bold">BIG3など最初の重い種目を{fiveByFive.label}、後半の補助種目を{threeByTen.label}</span>にする方法です。重い種目は疲れていないうちに重さを伸ばし、軽い種目で量を稼ぎます。
+                1つの型で全部の種目をやる必要はありません。よくある組み方は、<span className="font-bold">最初の重い種目を{fiveByFive.label}、2種目目以降（ラットプルダウンなど）や補助種目を{threeByTen.label}</span>にする方法です。重い種目は疲れていないうちに重さを伸ばし、軽い種目で量を稼ぎます。
               </p>
               <p className="mt-2">
-                {fiveByFive.label}は1種目で{fiveByFive.sets}セットあるので、週2回やれば週{fiveByFive.sets * 2}セットになります。1週間に何セットまでなら回復が追いつくかは
+                デッドリフトは腰への負担が大きいので、{fiveByFive.sets}セットではなく1〜3セットに減らしてもかまいません。
+              </p>
+              <p className="mt-2">
+                {fiveByFive.label}は1種目で{fiveByFive.sets}セットあるので、週2回やればその部位だけで週{fiveByFive.sets * 2}セットになります。その部位の1週間のセット数が、
                 <Link href="/column/frequency" className="text-orange-600 font-bold underline">
                   週に何回筋トレすればいい？
                 </Link>
-                の表で確かめてください。種目を並べる順番は
+                の表（目的別の1部位あたり週セット数）に収まるか確かめてください。種目を並べる順番は
                 <Link href="/column/training-order" className="text-orange-600 font-bold underline">
                   筋トレの順番
                 </Link>
@@ -213,10 +236,10 @@ export default function SetsAndRepsPage() {
                 筆者（筋トレ歴15年・フィジーク大会入賞）の場合
               </p>
               <p className="text-xs leading-relaxed">
-                私が始めた頃、ベンチプレスは{AUTHOR_START.weight}kgを{AUTHOR_START.reps}〜3回がやっとでした。{AUTHOR_START.weight}kgを{AUTHOR_START.reps}回として計算すると1RMは約{authorOneRM}kgで、{fiveByFive.label}なら{schemeWeight(authorOneRM, fiveByFive.reps)}kg、{threeByTen.label}なら{schemeWeight(authorOneRM, threeByTen.reps)}kgが目安になります。<span className="font-bold">最初のメインのセットは、見栄を張りたくなる重さよりずっと軽い</span>はずです。
+                私が始めた頃、ベンチプレスは{AUTHOR_START.weight}kgを{AUTHOR_START.reps}〜3回がやっとでした。{AUTHOR_START.weight}kgを{AUTHOR_START.reps}回として計算すると1RMは約{authorOneRM}kgで、{fiveByFive.label}なら{authorFive}kg（実際に組むなら{toPlate(authorFive)}kg）、{threeByTen.label}なら{schemeWeight(authorOneRM, threeByTen.reps)}kgが目安になります。<span className="font-bold">最初のメインのセットは、見栄を張りたくなる重さよりずっと軽い</span>はずです。
                 <br />
                 <br />
-                今の自己ベストはベンチプレス{AUTHOR_BEST_BENCH}kgです。始めた頃の{AUTHOR_START.weight}kgとの差{AUTHOR_BEST_BENCH - AUTHOR_START.weight}kgは、{WEIGHT_STEP_KG}kgずつなら{(AUTHOR_BEST_BENCH - AUTHOR_START.weight) / WEIGHT_STEP_KG}回分の上げ幅です。<span className="font-bold">1回で大きく上げようとしなくても、少しずつの積み重ねで届く距離</span>です。
+                今の自己ベストはベンチプレス{AUTHOR_BEST_BENCH}kgで、始めた頃の推定1RM約{authorOneRM}kgから15年かかっています。{WEIGHT_STEP_KG}kgで割れば{authorSteps}回ちょっとの上げ幅ですが、全セットそろう日の間隔はだんだん空いていくので、そのぶん時間がかかります。<span className="font-bold">上がらない期間があっても普通で、少しずつの積み重ねで届く距離</span>です。
               </p>
             </section>
 
@@ -244,7 +267,7 @@ export default function SetsAndRepsPage() {
                 {fiveByFive.label}は時間がかかりすぎます。
               </h3>
               <p>
-                5回の帯はセット間の休憩が長めに要るので、1種目に時間がかかります。時間が無い日は、<span className="font-bold">メインの1種目だけ{fiveByFive.label}にして、ほかの種目を減らす</span>ほうが、全種目のセット数を削るより重さの伸びを守れます。
+                5回の帯はセット間の休憩が{fiveByFive.rest}と長めなので、1種目に時間がかかります。時間が無い日は、<span className="font-bold">メインの1種目だけ{fiveByFive.label}にして、ほかの種目を減らす</span>ほうが、全種目のセット数を削るより重さの伸びを守れます。
               </p>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
                 {WEIGHT_STEP_KG}kgずつ上げられないときは？
@@ -260,16 +283,16 @@ export default function SetsAndRepsPage() {
               </h2>
               <ul className="space-y-2">
                 <li>
-                  ▸ 重量を伸ばしたいなら<span className="font-bold">{fiveByFive.label}</span>、体を大きくしたいなら<span className="font-bold">{threeByTen.label}</span>
+                  ▸ 重量を伸ばしたいなら<span className="font-bold">{fiveByFive.label}</span>、体を大きくしたいなら<span className="font-bold">{threeByTen.label}</span>。どちらでも筋肉はつき、違うのは寄せ方
                 </li>
                 <li>
                   ▸ 重さは<span className="font-bold">「決めた回数＋{SET_RESERVE_REPS}回」で限界が来る重さ</span>。全セット同じ重さでやり切る
                 </li>
                 <li>
-                  ▸ <span className="font-bold">全セットできたら次回{WEIGHT_STEP_KG}kg上げる</span>。1セットでも届かなければ同じ重さ
+                  ▸ <span className="font-bold">全セットできたら次回{WEIGHT_STEP_KG}kg上げる</span>。1セットでも届かなければ同じ重さ。崩れた回は数えない
                 </li>
                 <li>
-                  ▸ 重い種目を{fiveByFive.label}、補助種目を{threeByTen.label}にする組み合わせが定番
+                  ▸ ベンチプレスとスクワットは、セーフティバーか補助者をそろえてから
                 </li>
                 <li>
                   ▸ 初心者は{threeByTen.label}から。フォームがそろってから{fiveByFive.label}へ
@@ -281,7 +304,7 @@ export default function SetsAndRepsPage() {
 
         <ShareButtons
           url="https://sakutore.jp/column/sets-and-reps"
-          title="5×5と3×10はどっちがいい？筋トレのセット数・回数と重量の決め方"
+          title="5×5・3×10の重量はどう決める？1RM別の早見表とセット数・回数の選び方"
         />
 
         <AuthorBox />

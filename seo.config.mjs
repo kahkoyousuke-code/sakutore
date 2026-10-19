@@ -87,6 +87,8 @@ const config = {
     { kw: "補助種目", path: "/column/big3-accessory" },
     { kw: "5×5", path: "/column/sets-and-reps" },
     { kw: "3×10", path: "/column/sets-and-reps" },
+    { kw: "5x5", path: "/column/sets-and-reps" },
+    { kw: "3x10", path: "/column/sets-and-reps" },
     { kw: "セット数", path: "/column/sets-and-reps" },
     { kw: "フックグリップ", path: "/column/deadlift-grip" },
     { kw: "オルタネイト", path: "/column/deadlift-grip" },
