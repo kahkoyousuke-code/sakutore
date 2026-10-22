@@ -305,10 +305,14 @@ export default function Big3BalancePage() {
               </h2>
               <ul className="space-y-2">
                 <li>
-                  ▸ <span className="font-bold">ベンチが凹む</span>：潰れたときに人の補助が要るため、限界に触りにくい。停滞したら補助してもらえる環境を作るのが先
+                  ▸ <span className="font-bold">ベンチが凹む</span>：潰れたときに補助者か、ラックのセーフティバーが要るため、限界に触りにくい。停滞したら補助してもらえる環境を作るのが先
                 </li>
                 <li>
-                  ▸ <span className="font-bold">スクワットが凹む</span>：セーフティバーの高さを自分で合わせないと限界に挑めない。準備の手間を惜しむと頭打ちになる
+                  ▸ <span className="font-bold">スクワットが凹む</span>：セーフティバーの高さを自分で合わせないと限界に挑めない。準備の手間を惜しむと頭打ちになる（合わせ方は
+                  <Link href="/column/power-rack" className="text-orange-600 font-bold underline">
+                    パワーラックの使い方
+                  </Link>
+                  ）
                 </li>
                 <li>
                   ▸ <span className="font-bold">デッドリフトが凹む</span>：腰への不安とグリップで止まる。ベルトとパワーグリップで解決する部分が大きい

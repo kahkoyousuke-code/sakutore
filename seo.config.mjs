@@ -90,6 +90,8 @@ const config = {
     { kw: "5x5", path: "/column/sets-and-reps" },
     { kw: "3x10", path: "/column/sets-and-reps" },
     { kw: "セット数", path: "/column/sets-and-reps" },
+    { kw: "パワーラック", path: "/column/power-rack" },
+    { kw: "セーフティ", path: "/column/power-rack" },
     { kw: "フックグリップ", path: "/column/deadlift-grip" },
     { kw: "オルタネイト", path: "/column/deadlift-grip" },
     { kw: "パワーグリップ", path: "/column/deadlift-grip" },
