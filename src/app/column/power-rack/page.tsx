@@ -5,9 +5,9 @@ import AuthorBox from "@/components/AuthorBox";
 import { SET_SCHEMES } from "@/lib/strengthStandards";
 
 export const metadata = pageMetadata({
-  title: "パワーラックの使い方｜セーフティバーの高さの決め方とジムのマナー - サクトレ",
+  title: "パワーラックの使い方｜セーフティバーの高さの決め方とマナー - サクトレ",
   description:
-    "セーフティバーは「いちばん深い位置のバーより少し下」に合わせます。スクワットとベンチプレスそれぞれの高さの決め方、バーを掛けるフックの高さ、潰れたときの逃げ方、カラーの付け方、ジムで気をつけたいマナーまでまとめました。",
+    "スクワットのセーフティバーは「いちばん深い位置のバーより少し下」、ベンチプレスは「胸の張りをゆるめるとバーが乗る高さ」に合わせます。それぞれの確かめ方、バーを掛けるフックの高さ、潰れたときの逃げ方、カラーの付け方、ジムで気をつけたいマナーまでまとめました。",
   path: "/column/power-rack",
 });
 
@@ -19,14 +19,14 @@ const PARTS = [
     point: "バーを外すとき・戻すときに、背伸びも深い前かがみもしない高さ",
   },
   {
-    name: "セーフティバー",
+    name: "セーフティバー（セーフティピン・セーフティアーム）",
     role: "挙げられなくなったバーを受け止める",
     point: "いつもの動きでは当たらず、潰れたときに受け止められる高さ",
   },
   {
     name: "カラー（クリップ）",
     role: "プレートがバーの端へずれないように留める",
-    point: "スクワット・デッドリフトでは毎回付ける",
+    point: "バーベル種目では毎回付ける（セーフティバーに落としたときのずれも防げる）",
   },
 ];
 
@@ -35,7 +35,7 @@ const HEIGHTS = [
   {
     lift: "スクワット",
     hook: "胸の真ん中〜脇の下あたり。膝を少し曲げて担ぎ、膝を伸ばすとバーが外れる高さ",
-    safety: "いちばん深くしゃがんだときのバーより、穴1つ分ほど下",
+    safety: "いつもの深さでしゃがんでも当たらない、いちばん高い穴（バーの数cm下）",
   },
   {
     lift: "ベンチプレス（ラック内で行う場合）",
@@ -45,7 +45,7 @@ const HEIGHTS = [
 ];
 
 export default function PowerRackPage() {
-  const fiveByFive = SET_SCHEMES[0];
+  const [fiveByFive, , threeByTen] = SET_SCHEMES;
 
   return (
     <main className="min-h-screen flex flex-col items-center px-4 py-8">
@@ -53,7 +53,7 @@ export default function PowerRackPage() {
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
           <h1 className="text-xl font-bold text-gray-800 mb-6">
-            パワーラックの使い方｜セーフティバーの高さの決め方とジムのマナー
+            パワーラックの使い方｜セーフティバーの高さの決め方とマナー
           </h1>
 
           <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
@@ -103,7 +103,7 @@ export default function PowerRackPage() {
                 </table>
               </div>
               <p className="mt-3">
-                柱に等間隔の穴が開いていて、フックとセーフティバーはその穴に差し込んで高さを変えます。ジムによっては、セーフティバーの代わりにベルト（ストラップ）で受け止める型や、左右に張り出した腕で受け止める型もあります。どれも役割は同じです。
+                柱に等間隔の穴が開いていて、フックとセーフティバーはその穴に差し込んで高さを変えます。ジムによっては、セーフティバーの代わりにベルト（ストラップ）で受け止める型や、左右に張り出した腕（セーフティアーム／スポッターアーム）で受け止める型もあります。どれも役割は同じです。
               </p>
             </section>
 
@@ -131,14 +131,26 @@ export default function PowerRackPage() {
               </p>
               <ul className="mt-2 space-y-2">
                 <li>
+                  ▸ <span className="font-bold">立つ位置</span>：バーを外したら1〜2歩下がるだけにして、<span className="font-bold">左右の柱のあいだ（セーフティバーの真上にバーが来る位置）</span>でしゃがむ。ラックの外へ歩き出すと、セーフティバーはバーを受け止めません
+                </li>
+                <li>
                   ▸ <span className="font-bold">スクワット</span>：空のバーで、いつもの深さまでしゃがむ。バーがセーフティバーに当たるなら1つ下げ、すき間が大きすぎるなら1つ上げる。いつもの深さで当たらない、いちばん高い穴が正解
                 </li>
                 <li>
-                  ▸ <span className="font-bold">ベンチプレス</span>：空のバーを胸に付け、胸の張りをゆるめて息を吐く。そのときバーがセーフティバーに乗り、体の上から重さが外れる高さが正解
+                  ▸ <span className="font-bold">ベンチプレス</span>：空のバーを胸に付け、胸の張りをゆるめて息を吐く。そのときバーがセーフティバーに乗り、体の上から重さが外れる高さが正解。<span className="font-bold">ベンチを置く位置を決めてから</span>合わせ、ベンチを動かしたら合わせ直す。ちょうどいい穴が無いときは低い穴を選ばず、限界近くのセットは補助者がいるときだけにする
                 </li>
               </ul>
               <p className="mt-3">
-                合わせた穴の番号は、ほかの人が使った後でも同じ高さにすぐ戻せるように<span className="font-bold">メモしておく</span>と楽です。左右で穴がずれていないかも、毎回確かめてください。
+                合わせた穴の番号は、ほかの人が使った後でも同じ高さにすぐ戻せるように<span className="font-bold">メモしておく</span>と楽です。左右で穴がずれていないか、<span className="font-bold">セーフティバーとフックが奥まで差し込まれ、ロック（抜け止めのピン）が掛かっているか</span>も、毎回確かめてください。
+              </p>
+            </section>
+
+            <section>
+              <h2 className="font-bold text-orange-500 text-base mb-3">
+                バーの戻し方
+              </h2>
+              <p>
+                戻すときは、<span className="font-bold">前に歩いてバーを両方の柱に当ててから</span>、まっすぐ下ろしてフックに乗せます。フックを目で探しながら下ろすと、片側だけ外れることがあります。疲れているセットの最後ほど、ここを丁寧にしてください。
               </p>
             </section>
 
@@ -151,10 +163,10 @@ export default function PowerRackPage() {
               </p>
               <ul className="mt-2 space-y-2">
                 <li>
-                  ▸ <span className="font-bold">スクワット</span>：バーを担いだまま、いつもより少し深くしゃがんでセーフティバーに乗せる。バーが止まったら、肩をバーの下から抜いて前に出る
+                  ▸ <span className="font-bold">スクワット</span>：<span className="font-bold">胸を起こしたまま、バーを握ったまま</span>、まっすぐ腰を落としてセーフティバーに乗せる。上体が前に倒れたまま粘らない。バーが止まったら、さらに腰を落として肩をバーの下から抜き、前に出る
                 </li>
                 <li>
-                  ▸ <span className="font-bold">ベンチプレス</span>：バーを胸まで下ろし、胸の張りをゆるめてセーフティバーに乗せる。バーが止まったら、頭のほうへ体をずらして抜け出す
+                  ▸ <span className="font-bold">ベンチプレス</span>：バーを<span className="font-bold">首や顔の上ではなく胸の上まで</span>下ろし、胸の張りをゆるめてセーフティバーに乗せる。乗るまで手を離さない。バーが止まったら、頭のほうへ体をずらして抜け出す（足のほうへずれると、バーが首や顔の上を通るため）
                 </li>
               </ul>
               <p className="mt-3">
@@ -175,16 +187,16 @@ export default function PowerRackPage() {
               </h2>
               <ul className="space-y-2">
                 <li>
-                  ▸ <span className="font-bold">左右交互に付ける</span>：片側だけ先に重くすると、フックの上でバーが傾くことがある
+                  ▸ <span className="font-bold">左右交互に付ける</span>：片側に2枚続けて付けると、反対側が跳ね上がって<span className="font-bold">バーがフックから落ちる</span>ことがある。1枚ずつ左右交互に
                 </li>
                 <li>
                   ▸ <span className="font-bold">重いプレートを内側に</span>：大きいプレートを先に付け、小さいプレートを外側に
                 </li>
                 <li>
-                  ▸ <span className="font-bold">カラーを付ける</span>：スクワットやデッドリフトは、動いているうちにプレートが外側へずれる。左右の重さが変わると危ないので毎回留める
+                  ▸ <span className="font-bold">カラーを付ける</span>：動いているうちにプレートが外側へずれる。左右の重さが変わると危ないので、バーベル種目では毎回留める
                 </li>
                 <li>
-                  ▸ <span className="font-bold">外すときも左右交互に</span>：付けるときと同じ理由で、片側だけ先に外さない
+                  ▸ <span className="font-bold">外すときも左右交互に</span>：片側だけ全部外すと、残った側の重さでバーが落ちる
                 </li>
               </ul>
             </section>
@@ -201,7 +213,10 @@ export default function PowerRackPage() {
                   ▸ <span className="font-bold">ラックでしかできない種目に使う</span>：ラックの数は少ないことが多い。カールのようにラックがなくてもできる種目は、混んでいる時間は別の場所でやる
                 </li>
                 <li>
-                  ▸ <span className="font-bold">混んでいたら交代で使う</span>：{fiveByFive.label}の休憩は{fiveByFive.rest}と長いので、待っている人がいたら、休憩の間に交代でセットを入れてもらう
+                  ▸ <span className="font-bold">混んでいたら交代で使う</span>：{fiveByFive.label}の休憩は{fiveByFive.rest}と長いので、待っている人がいたら、休憩の間に使ってもらうよう声をかける（ジムに時間の上限があるならそれに従う）。交代したあとは、<span className="font-bold">自分のセットの前にフックとセーフティバーの高さを必ず確かめ直す</span>。メモしておいた穴の番号がここで役に立つ
+                </li>
+                <li>
+                  ▸ <span className="font-bold">タオルやボトルで場所取りしない</span>：使わない時間にラックを押さえておくのは、待っている人にいちばん嫌がられる
                 </li>
                 <li>
                   ▸ <span className="font-bold">ベンチは使ったら拭く</span>：寝る種目は汗が残りやすい
@@ -211,7 +226,7 @@ export default function PowerRackPage() {
                 </li>
               </ul>
               <p className="mt-3">
-                休憩の長さは、マシン中心のときと重いバーベル種目のときで違います。マシン中心の回り方は
+                マシンで10回前後をくり返すときの休憩は{threeByTen.rest}ほどですが、{fiveByFive.label}のような重いセットは{fiveByFive.rest}休むのが普通です。そのぶん、ラックを長く使うことになります。マシン中心の回り方は
                 <Link href="/column/gym-beginner" className="text-orange-600 font-bold underline">
                   ジム初心者が最初にやるべきマシン5選
                 </Link>
@@ -228,9 +243,9 @@ export default function PowerRackPage() {
                 <Link href="/column/squat-average" className="text-orange-600 font-bold underline">
                   スクワットの平均は何kg？
                 </Link>
-                にも書いたとおり、ベンチプレスは人に補助についてもらえば限界に触れられますが、スクワットは<span className="font-bold">潰れたときの逃げ場を自分で用意しないといけない</span>種目です。セーフティバーの高さを自分で合わせておかないと、限界には触れられません。私のスクワットが止まっている理由も、正直に言えばそこだと思っています。
+                にも書いたとおり、ベンチプレスは補助者がそばに立てば支えてもらえますが、スクワットは人が後ろから支えるのが難しく、<span className="font-bold">潰れたときの逃げ場を自分で用意しないといけない</span>種目です。セーフティバーの高さを自分で合わせておかないと、限界には触れられません。私のスクワットが止まっている理由も、正直に言えばそこだと思っています。
                 <br />
-                <br />逃げ場が無いと、人は限界の手前で止めてしまいます。高さを合わせる数十秒は、重量を伸ばすための準備の一部だと考えてください。
+                <br />毎回限界まで行く必要はありません。ただ、重さを上げた日に「潰れても大丈夫」と思えるかどうかで、最後の1回に踏み込めるかが変わります。高さを合わせる数十秒は、重量を伸ばすための準備の一部だと考えてください。
               </p>
             </section>
 
@@ -264,19 +279,19 @@ export default function PowerRackPage() {
               </h2>
               <ul className="space-y-2">
                 <li>
-                  ▸ セーフティバーは<span className="font-bold">いつもの動きでは当たらず、潰れたときに受け止める高さ</span>。空のバーで確かめて決める
+                  ▸ セーフティバーは<span className="font-bold">いつもの動きでは当たらず、潰れたときに受け止める高さ</span>。空のバーで確かめ、差し込みとロックも毎回見る
                 </li>
                 <li>
                   ▸ スクワットは<span className="font-bold">いちばん深い位置のバーより少し下</span>、ベンチプレスは<span className="font-bold">胸の張りをゆるめるとバーが乗る高さ</span>
                 </li>
                 <li>
-                  ▸ 潰れたら粘らずにセーフティバーに置く。空のバーで一度練習しておく
+                  ▸ スクワットは<span className="font-bold">柱のあいだで</span>しゃがむ。潰れたら胸を起こしたまま粘らずに置く。空のバーで一度練習しておく
                 </li>
                 <li>
-                  ▸ プレートは左右交互に付け外しし、スクワット・デッドリフトはカラーで留める
+                  ▸ プレートは1枚ずつ左右交互に付け外しし、カラーで留める
                 </li>
                 <li>
-                  ▸ 使い終わったら片付ける。混んでいたら交代で使う
+                  ▸ 使い終わったら片付ける。混んでいたら交代で使い、交代後は高さを確かめ直す
                 </li>
               </ul>
             </section>
@@ -285,7 +300,7 @@ export default function PowerRackPage() {
 
         <ShareButtons
           url="https://sakutore.jp/column/power-rack"
-          title="パワーラックの使い方｜セーフティバーの高さの決め方とジムのマナー"
+          title="パワーラックの使い方｜セーフティバーの高さの決め方とマナー"
         />
 
         <AuthorBox />
