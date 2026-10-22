@@ -266,7 +266,11 @@ export default function SquatWeightLevelPage() {
                 <Link href="/rm-calculator" className="text-orange-600 font-bold underline">
                   1RM換算ツール
                 </Link>
-                に回数と重量を入れてください。スクワットで限界に挑戦するのは、セーフティバーの設定ができている環境だけにしてください。
+                に回数と重量を入れてください。スクワットで限界に挑戦するのは、セーフティバーの設定ができている環境だけにしてください。高さの決め方は
+                <Link href="/column/power-rack" className="text-orange-600 font-bold underline">
+                  パワーラックの使い方
+                </Link>
+                にあります。
               </p>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
                 女性の場合はどう見ればいいですか？
