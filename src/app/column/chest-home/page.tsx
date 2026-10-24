@@ -25,11 +25,11 @@ export default function ChestHomePage() {
       <div className="max-w-md md:max-w-2xl w-full animate-slideUp">
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
-          <h1 className="text-xl font-bold text-gray-800 mb-6">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
             自宅でできる胸トレ完全ガイド
           </h1>
 
-          <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section>
               <p>
                 「胸板を厚くしたい」「バストアップしたい」「姿勢を良くしたい」——胸の筋肉（大胸筋）を鍛えることは、見た目の変化だけでなく、肩こりの改善や姿勢の改善にもつながります。ジムに行かなくても、自宅でしっかりと胸を鍛える方法があります。この記事では、器具なしとダンベルを使った胸トレメニューを幅広く紹介します。
@@ -37,7 +37,7 @@ export default function ChestHomePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 器具なし編：腕立て伏せバリエーション
               </h2>
               <p>
@@ -104,7 +104,7 @@ export default function ChestHomePage() {
               </p>
 
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -162,7 +162,7 @@ export default function ChestHomePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 ダンベル編
               </h2>
               <p>
@@ -202,7 +202,7 @@ export default function ChestHomePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 大胸筋に効かせるコツ
               </h2>
               <p>
@@ -262,7 +262,7 @@ export default function ChestHomePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 まとめ
               </h2>
               <ul className="space-y-1">

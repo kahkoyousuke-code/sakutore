@@ -103,11 +103,11 @@ export default function HipTrainingPage() {
       <div className="max-w-md md:max-w-2xl w-full animate-slideUp">
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
-          <h1 className="text-xl font-bold text-gray-800 mb-6">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
             お尻を鍛える筋トレ｜スクワットだけでヒップアップしない理由
           </h1>
 
-          <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section>
               <p>
                 「お尻を上げたいからスクワットをしている」。よく聞く話ですが、<span className="font-bold">スクワットをしても前ももばかり太くなった</span>という人も同じくらい多いはずです。
@@ -121,11 +121,11 @@ export default function HipTrainingPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 お尻に効く種目の一覧
               </h2>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700">
@@ -147,7 +147,7 @@ export default function HipTrainingPage() {
                       <tr key={row.name}>
                         <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800">
                           {row.name}
-                          <span className="block text-[10px] text-gray-400">{row.move}</span>
+                          <span className="block text-xs text-gray-400">{row.move}</span>
                         </td>
                         <td className="border border-gray-200 px-2 py-2 text-gray-700 whitespace-nowrap">
                           {row.target}
@@ -172,11 +172,11 @@ export default function HipTrainingPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 スクワットでお尻に効かないときの直し方
               </h2>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700">
@@ -217,7 +217,7 @@ export default function HipTrainingPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 丸みを作るのは「横」の筋肉
               </h2>
               <p>
@@ -232,14 +232,14 @@ export default function HipTrainingPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 どのくらいの重さでやるか（女性の目安）
               </h2>
               <p>
                 お尻の種目は<span className="font-bold">下半身なので、上半身より重い重量を扱えます</span>。体重{EXAMPLE_WEIGHT}kgの女性なら、バーベルスクワットの目安は次のとおりです。
               </p>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -283,7 +283,7 @@ export default function HipTrainingPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 頻度と、見た目が変わるまで
               </h2>
               <p>
@@ -318,7 +318,7 @@ export default function HipTrainingPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 よくある質問
               </h2>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
@@ -360,7 +360,7 @@ export default function HipTrainingPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 まとめ
               </h2>
               <ul className="space-y-2">

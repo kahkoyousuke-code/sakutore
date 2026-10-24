@@ -60,11 +60,11 @@ export default function EverydayTrainingPage() {
       <div className="max-w-md md:max-w-2xl w-full animate-slideUp">
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
-          <h1 className="text-xl font-bold text-gray-800 mb-6">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
             筋トレは毎日やってもいい？成立する条件とやめたほうがいい人
           </h1>
 
-          <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section>
               <p>
                 結論から書きます。<span className="font-bold">同じ部位を毎日やるのはダメ。部位を分ければ毎日でも成立します。</span>
@@ -78,14 +78,14 @@ export default function EverydayTrainingPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 なぜ同じ部位を毎日やってはいけないのか
               </h2>
               <p>
                 筋肉が強くなるのは、トレーニング中ではなく<span className="font-bold">そのあとの回復中</span>です。回復が終わる前に次のダメージを重ねると、積み上がるのは刺激ではなく疲労だけになります。
               </p>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700">
@@ -125,14 +125,14 @@ export default function EverydayTrainingPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 毎日やる場合の週の組み方
               </h2>
               <p>
                 毎日ジムに行きたいなら、<span className="font-bold">1日に鍛える部位を絞って回す</span>だけです。下は一例で、どの部位も週1〜2回に収まっています。
               </p>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -174,11 +174,11 @@ export default function EverydayTrainingPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 今日もやっていいか、5つのチェック
               </h2>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700">
@@ -194,7 +194,7 @@ export default function EverydayTrainingPage() {
                       <tr key={row.check}>
                         <td className="border border-gray-200 px-2 py-2 text-gray-700">
                           {row.check}
-                          <span className="block text-[10px] text-gray-400">{row.why}</span>
+                          <span className="block text-xs text-gray-400">{row.why}</span>
                         </td>
                         <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800">
                           {row.ng}
@@ -214,7 +214,7 @@ export default function EverydayTrainingPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 毎日やらないほうがいい人
               </h2>
               <ul className="space-y-2">
@@ -241,7 +241,7 @@ export default function EverydayTrainingPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 「毎日やらないと不安」への答え
               </h2>
               <p>
@@ -280,7 +280,7 @@ export default function EverydayTrainingPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 よくある質問
               </h2>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
@@ -322,7 +322,7 @@ export default function EverydayTrainingPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 まとめ
               </h2>
               <ul className="space-y-2">

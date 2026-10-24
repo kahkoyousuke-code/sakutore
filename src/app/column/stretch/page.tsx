@@ -16,11 +16,11 @@ export default function StretchPage() {
       <div className="max-w-md md:max-w-2xl w-full animate-slideUp">
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
-          <h1 className="text-xl font-bold text-gray-800 mb-6">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
             筋トレ前後のストレッチの効果とやり方
           </h1>
 
-          <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section>
               <p>
                 筋トレの効果を高め、怪我を予防するために欠かせないのがストレッチです。しかし、「筋トレ前と後でどんなストレッチをすればいいの？」「そもそもストレッチって本当に必要？」と疑問に思う方も多いのではないでしょうか。この記事では、筋トレ前後のストレッチの効果と具体的なやり方を解説します。
@@ -28,14 +28,14 @@ export default function StretchPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 2種類のストレッチを使い分ける
               </h2>
               <p>
                 ストレッチには大きく分けて「動的ストレッチ（ダイナミックストレッチ）」と「静的ストレッチ（スタティックストレッチ）」の2種類があります。それぞれ効果と適したタイミングが異なるため、正しく使い分けることが重要です。
               </p>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -88,7 +88,7 @@ export default function StretchPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 筋トレ前：動的ストレッチ
               </h2>
               <p>
@@ -157,7 +157,7 @@ export default function StretchPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 筋トレ後：静的ストレッチ
               </h2>
               <p>
@@ -234,7 +234,7 @@ export default function StretchPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 よくある3つの誤解
               </h2>
               <p>
@@ -242,7 +242,7 @@ export default function StretchPage() {
               </p>
 
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -287,7 +287,7 @@ export default function StretchPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 まとめ
               </h2>
               <ul className="space-y-1">

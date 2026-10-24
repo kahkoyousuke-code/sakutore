@@ -17,11 +17,11 @@ export default function AlcoholPage() {
       <div className="max-w-md md:max-w-2xl w-full animate-slideUp">
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
-          <h1 className="text-xl font-bold text-gray-800 mb-6">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
             筋トレとお酒の付き合い方
           </h1>
 
-          <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section>
               <p className="text-gray-500 italic border-l-2 border-orange-300 pl-3 mb-3">
                 正直に言うと、私はお酒が好きで毎晩飲んでいます。それでも15年筋トレを続けてこられた経験から、お酒との上手な付き合い方をお伝えします。
@@ -32,7 +32,7 @@ export default function AlcoholPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 アルコールが筋肉に与える影響
               </h2>
               <p>
@@ -72,7 +72,7 @@ export default function AlcoholPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 お酒のカロリーを数字で見る
               </h2>
               <p>
@@ -80,7 +80,7 @@ export default function AlcoholPage() {
               </p>
 
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -161,7 +161,7 @@ export default function AlcoholPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 飲んでもOKなタイミング
               </h2>
               <p>
@@ -200,7 +200,7 @@ export default function AlcoholPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 お酒好きでも成果を出すコツ
               </h2>
               <p>
@@ -251,7 +251,7 @@ export default function AlcoholPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 まとめ
               </h2>
               <ul className="space-y-1">

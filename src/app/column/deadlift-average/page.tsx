@@ -103,7 +103,7 @@ function DeadliftByWeightTable({
 }) {
   return (
     <div className="overflow-x-auto -mx-2 px-2 mt-3">
-      <table className="w-full text-xs border-collapse">
+      <table className="w-full text-xs md:text-sm border-collapse">
         <thead>
           <tr className="bg-orange-50">
             <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -175,11 +175,11 @@ export default function DeadliftAveragePage() {
       <div className="max-w-md md:max-w-2xl w-full animate-slideUp">
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
-          <h1 className="text-xl font-bold text-gray-800 mb-6">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
             デッドリフトの平均は何kg？体重別・トレ歴別の目安一覧
           </h1>
 
-          <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section>
               <p>
                 デッドリフトはBIG3の中で<span className="font-bold">一番大きな数字が出る種目</span>です。ジムで「100kg引けた」と聞くと、ベンチプレスの100kgと同じ感覚で受け取ってしまいますが、この2つはまったく別の水準の話です。
@@ -204,14 +204,14 @@ export default function DeadliftAveragePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 その数字、どのデッドリフトですか？
               </h2>
               <p>
                 「デッドリフト」という1語がいくつもの動作を指しています。引く距離が変われば数字も変わるので、比べる前に自分がどれをやっているか確認してください。
               </p>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -281,7 +281,7 @@ export default function DeadliftAveragePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 体重別・デッドリフトの目安一覧（男性）
               </h2>
               <p>
@@ -298,14 +298,14 @@ export default function DeadliftAveragePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 同じ「中級者」でも、種目で数字はこれだけ違う
               </h2>
               <p>
                 「100kg引けたらすごいのか」という問いに一発で答えるための表です。体重{EXAMPLE_WEIGHT}kgの人が各種目で<span className="font-bold">中級者</span>と呼ばれるラインを並べました。
               </p>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -357,14 +357,14 @@ export default function DeadliftAveragePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 トレーニング歴別に見た場合の目安
               </h2>
               <p>
                 「何年やったら何kg」を知りたい人向けに、体重{EXAMPLE_WEIGHT}kgを例にして期間の目安を並べます。
               </p>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -410,7 +410,7 @@ export default function DeadliftAveragePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 女性のデッドリフトの目安
               </h2>
               <p>
@@ -431,14 +431,14 @@ export default function DeadliftAveragePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 今の重量から1RMを出す換算表
               </h2>
               <p>
                 ここまでの表と比べるには、自分の1RMが必要です。縦が今扱っている重量、横が引ける回数です。
               </p>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -482,7 +482,7 @@ export default function DeadliftAveragePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 筆者の場合：BIG3で唯一、目安どおりだったのがデッドリフト
               </h2>
               <p>
@@ -504,7 +504,7 @@ export default function DeadliftAveragePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 デッドリフトを伸ばす前に、腰を壊さないための優先順位
               </h2>
               <p>
@@ -564,7 +564,7 @@ export default function DeadliftAveragePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 よくある質問
               </h2>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
@@ -612,7 +612,7 @@ export default function DeadliftAveragePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 まとめ
               </h2>
               <ul className="space-y-2">

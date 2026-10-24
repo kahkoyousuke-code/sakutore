@@ -38,7 +38,7 @@ function Feature({ icon, title, desc }: { icon: string; title: string; desc: str
 export default function GuidePage() {
   return (
     <main className="min-h-screen flex flex-col items-center px-4 py-8">
-      <div className="max-w-md w-full animate-slideUp space-y-4">
+      <div className="max-w-md md:max-w-2xl w-full animate-slideUp space-y-4">
 
         {/* ヘッダー */}
         <div className="text-center mb-2">

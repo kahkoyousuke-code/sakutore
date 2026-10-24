@@ -16,11 +16,11 @@ export default function WomenTrainingTimingPage() {
       <div className="max-w-md md:max-w-2xl w-full animate-slideUp">
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
-          <h1 className="text-xl font-bold text-gray-800 mb-6">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
             女性が筋トレで痩せやすい時間帯と頻度
           </h1>
 
-          <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section>
               <p className="text-gray-500 italic border-l-2 border-orange-300 pl-3 mb-3">
                 私は男性なので、女性ホルモンの周期に合わせた調整について体感で語ることはできません。ただ仕事をしながら40代でいまも週5回続けている立場から、時間帯と頻度をどう決めれば潰れにくいかは書けます。そこに絞って紹介します。
@@ -31,7 +31,7 @@ export default function WomenTrainingTimingPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 脂肪燃焼に効果的な時間帯
               </h2>
 
@@ -59,7 +59,7 @@ export default function WomenTrainingTimingPage() {
               </p>
 
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -115,7 +115,7 @@ export default function WomenTrainingTimingPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 最も大切なのは「続けられる時間帯」
               </h2>
               <p>
@@ -127,7 +127,7 @@ export default function WomenTrainingTimingPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 女性に最適なトレーニング頻度
               </h2>
 
@@ -163,7 +163,7 @@ export default function WomenTrainingTimingPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 忙しい女性でも続けやすいスケジュール術
               </h2>
 
@@ -196,7 +196,7 @@ export default function WomenTrainingTimingPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 まとめ
               </h2>
               <ul className="space-y-1">

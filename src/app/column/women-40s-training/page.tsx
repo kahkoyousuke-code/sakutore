@@ -17,11 +17,11 @@ export default function Women40sTrainingPage() {
       <div className="max-w-md md:max-w-2xl w-full animate-slideUp">
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
-          <h1 className="text-xl font-bold text-gray-800 mb-6">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
             40代女性が筋トレで痩せにくい理由と対策
           </h1>
 
-          <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section>
               <p className="text-gray-500 italic border-l-2 border-orange-300 pl-3 mb-3">
                 先に断っておくと、私は男性です。40代で週5回トレーニングを続けている当事者ではありますが、エストロゲンの変化を体感として語ることはできません。この記事で書けるのは、数字の部分と、年齢が上がったときにトレーニングをどう組み直すかの部分です。体調そのものの変化については医師や専門家に相談してください。
@@ -32,7 +32,7 @@ export default function Women40sTrainingPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 40代女性の体に起きていること
               </h2>
 
@@ -64,7 +64,7 @@ export default function Women40sTrainingPage() {
               </p>
 
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -113,7 +113,7 @@ export default function Women40sTrainingPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 40代女性に効果的なトレーニング法
               </h2>
 
@@ -132,7 +132,7 @@ export default function Women40sTrainingPage() {
               </p>
 
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -221,7 +221,7 @@ export default function Women40sTrainingPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 40代女性に最適な食事法
               </h2>
 
@@ -254,7 +254,7 @@ export default function Women40sTrainingPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 まとめ
               </h2>
               <ul className="space-y-1">

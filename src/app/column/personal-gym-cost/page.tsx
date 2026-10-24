@@ -50,11 +50,11 @@ export default function PersonalGymCostPage() {
       <div className="max-w-md md:max-w-2xl w-full animate-slideUp">
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
-          <h1 className="text-xl font-bold text-gray-800 mb-6">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
             パーソナルジムの費用相場｜普通のジムと比べて高いのか
           </h1>
 
-          <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section>
               <p className="text-gray-500 italic border-l-2 border-orange-300 pl-3 mb-3">
                 先に正直に書いておくと、筆者はパーソナルジムに通った経験がありません。15年間、月会費制の普通のジムで自力でやってきた側の人間です。だからこの記事に「通ってみた体験談」はありません。書けるのは費用の比較と、「指導にお金を払う価値はあるのか」を自力側から見た正直な答えです。
@@ -65,11 +65,11 @@ export default function PersonalGymCostPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 筋トレにかかる費用の比較表
               </h2>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -106,7 +106,7 @@ export default function PersonalGymCostPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 「自力なら安い」の隠れコスト
               </h2>
               <p>
@@ -121,7 +121,7 @@ export default function PersonalGymCostPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 パーソナルジムが向いている人・向いていない人
               </h2>
 
@@ -165,7 +165,7 @@ export default function PersonalGymCostPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 無料カウンセリングで確認すべき3つのこと
               </h2>
               <p>
@@ -194,7 +194,7 @@ export default function PersonalGymCostPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 まとめ：買っているのは「時間」と「強制力」
               </h2>
               <p>

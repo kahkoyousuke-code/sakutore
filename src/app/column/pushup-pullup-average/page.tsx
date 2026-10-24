@@ -64,7 +64,7 @@ const FORM_RULES = [
 function RepTable({ rows, unit }: { rows: RepRow[]; unit: string }) {
   return (
     <div className="overflow-x-auto -mx-2 px-2 mt-3">
-      <table className="w-full text-xs border-collapse">
+      <table className="w-full text-xs md:text-sm border-collapse">
         <thead>
           <tr className="bg-orange-50">
             <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -104,11 +104,11 @@ export default function PushupPullupAveragePage() {
       <div className="max-w-md md:max-w-2xl w-full animate-slideUp">
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
-          <h1 className="text-xl font-bold text-gray-800 mb-6">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
             腕立て伏せ・懸垂は何回できれば普通？レベル別の回数目安一覧
           </h1>
 
-          <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section>
               <p>
                 「腕立て伏せは何回できれば普通なのか」「懸垂10回はすごいのか」。器具を使わないトレーニングは重量という物差しがないぶん、自分の位置が分かりにくくなります。
@@ -141,7 +141,7 @@ export default function PushupPullupAveragePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 腕立て伏せの回数目安（男性）
               </h2>
               <p>
@@ -154,7 +154,7 @@ export default function PushupPullupAveragePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 腕立て伏せの回数目安（女性）
               </h2>
               <p>
@@ -174,7 +174,7 @@ export default function PushupPullupAveragePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 懸垂の回数目安（男女）
               </h2>
               <p>
@@ -192,14 +192,14 @@ export default function PushupPullupAveragePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 その1回で、実は何kgを挙げているのか
               </h2>
               <p>
                 自重種目の弱点は負荷が見えないことですが、<span className="font-bold">腕立て伏せは手にかかる荷重が計測されています</span>。体重{EXAMPLE_WEIGHT}kgの人で換算するとこうなります。
               </p>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -270,7 +270,7 @@ export default function PushupPullupAveragePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 回数を増やしても、負荷は1gも増えない
               </h2>
               <p>
@@ -331,7 +331,7 @@ export default function PushupPullupAveragePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 体重が変わると、懸垂の回数も変わる
               </h2>
               <p>
@@ -346,7 +346,7 @@ export default function PushupPullupAveragePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 高回数は「1RM換算」しないでください
               </h2>
               <p>
@@ -362,7 +362,7 @@ export default function PushupPullupAveragePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 よくある質問
               </h2>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
@@ -406,7 +406,7 @@ export default function PushupPullupAveragePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 まとめ
               </h2>
               <ul className="space-y-2">

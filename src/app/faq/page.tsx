@@ -90,7 +90,7 @@ const faqItems: FaqItem[] = [
 export default function FaqPage() {
   return (
     <main className="min-h-screen flex flex-col items-center px-4 py-8">
-      <div className="max-w-md w-full animate-slideUp">
+      <div className="max-w-md md:max-w-2xl w-full animate-slideUp">
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <h1 className="text-xl font-bold text-gray-800 mb-2">
             よくある質問（FAQ）

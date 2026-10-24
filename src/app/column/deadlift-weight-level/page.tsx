@@ -62,11 +62,11 @@ export default function DeadliftWeightLevelPage() {
       <div className="max-w-md md:max-w-2xl w-full animate-slideUp">
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
-          <h1 className="text-xl font-bold text-gray-800 mb-6">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
             デッドリフト◯kgはすごい？重量と回数で分かるレベル判定表
           </h1>
 
-          <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section>
               <p>
                 「デッドリフト{FOCUS}kg」がすごいかどうかは、<span className="font-bold">体重を聞かないと答えられません。</span>体重50kgの人なら
@@ -86,14 +86,14 @@ export default function DeadliftWeightLevelPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 挙げた重量で分かるレベル判定表
               </h2>
               <p>
                 <span className="font-bold">行が挙げた重量、列が体重</span>です。自分の交点を探してください。
               </p>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -140,14 +140,14 @@ export default function DeadliftWeightLevelPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 「{EXAMPLE.weight}kgを{EXAMPLE.reps}回」のような記録から判定する
               </h2>
               <p>
                 1回だけの限界に挑戦している人は多くありません。ふだんの記録は「◯kgを◯回」のはずです。その記録を、まず<span className="font-bold">1回だけ挙がる重量（1RM）に換算します</span>。換算表がこちらです。
               </p>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -216,14 +216,14 @@ export default function DeadliftWeightLevelPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 初心者・中級者の目標は何kgか
               </h2>
               <p>
                 デッドリフトの初心者ラインは<span className="font-bold">体重×{formatRatio(beginner)}</span>、中級者ラインは<span className="font-bold">体重×{formatRatio(middle)}</span>です。体重60kgなら{targetWeight(60, beginner)}kgと{targetWeight(60, middle)}kg、体重70kgなら{targetWeight(70, beginner)}kgと{targetWeight(70, middle)}kg。ほかの体重はこちらです。
               </p>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -267,7 +267,7 @@ export default function DeadliftWeightLevelPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 ストラップ・ベルトを使った記録で判定していい？
               </h2>
               <p>
@@ -311,7 +311,7 @@ export default function DeadliftWeightLevelPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 よくある質問
               </h2>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
@@ -349,7 +349,7 @@ export default function DeadliftWeightLevelPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 まとめ
               </h2>
               <ul className="space-y-2">

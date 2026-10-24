@@ -60,7 +60,7 @@ export default function DumbbellWeightPage() {
 
   const renderTable = (gender: "male" | "female", bodyWeight: number) => (
     <div className="overflow-x-auto -mx-2 px-2 mt-3">
-      <table className="w-full text-xs border-collapse">
+      <table className="w-full text-xs md:text-sm border-collapse">
         <thead>
           <tr className="bg-orange-50">
             <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700">
@@ -85,7 +85,7 @@ export default function DumbbellWeightPage() {
               <td className="border border-gray-200 px-2 py-2 text-gray-700">
                 {exercise.name}
                 {exercise.bothHands ? (
-                  <span className="block text-[10px] text-gray-400">1個を両手で</span>
+                  <span className="block text-xs text-gray-400">1個を両手で</span>
                 ) : null}
               </td>
               <td className="border border-gray-200 px-2 py-2 text-gray-600 whitespace-nowrap">
@@ -111,11 +111,11 @@ export default function DumbbellWeightPage() {
       <div className="max-w-md md:max-w-2xl w-full animate-slideUp">
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
-          <h1 className="text-xl font-bold text-gray-800 mb-6">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
             ダンベルは何kgを買えばいい？体重別・種目別の目安一覧
           </h1>
 
-          <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section>
               <p>
                 この質問に「◯kgです」と1つの数字で答えている記事は、たいてい間違っています。<span className="font-bold">必要な重さは種目によって3倍以上違う</span>からです。
@@ -133,7 +133,7 @@ export default function DumbbellWeightPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 種目別の目安（男性・体重{MALE_WEIGHT}kgの場合）
               </h2>
               <p>
@@ -160,7 +160,7 @@ export default function DumbbellWeightPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 種目別の目安（女性・体重{FEMALE_WEIGHT}kgの場合）
               </h2>
               {renderTable("female", FEMALE_WEIGHT)}
@@ -171,7 +171,7 @@ export default function DumbbellWeightPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 サイドレイズが軽いのは、間違いではない
               </h2>
               <p>
@@ -186,11 +186,11 @@ export default function DumbbellWeightPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 固定式か、可変式か
               </h2>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700">
@@ -249,7 +249,7 @@ export default function DumbbellWeightPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 買う前に：胸は、腕立てのほうが重い
               </h2>
               <p>
@@ -291,7 +291,7 @@ export default function DumbbellWeightPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 よくある質問
               </h2>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
@@ -331,7 +331,7 @@ export default function DumbbellWeightPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 まとめ
               </h2>
               <ul className="space-y-2">

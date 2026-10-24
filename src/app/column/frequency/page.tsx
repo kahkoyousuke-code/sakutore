@@ -17,11 +17,11 @@ export default function FrequencyPage() {
       <div className="max-w-md md:max-w-2xl w-full animate-slideUp">
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
-          <h1 className="text-xl font-bold text-gray-800 mb-6">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
             週に何回筋トレすればいい？最適な頻度を解説
           </h1>
 
-          <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section>
               <p>
                 筋トレを始めようとしたとき、「週に何回やればいいの？」という疑問は誰もが抱くものです。やりすぎても体に負担がかかりますし、少なすぎると効果が出にくい。この記事では、トレーニングの最適な頻度をレベル別に解説し、自分に合ったペースの見つけ方をお伝えします。
@@ -29,7 +29,7 @@ export default function FrequencyPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 筋トレの頻度を決める基本的な考え方
               </h2>
               <p>
@@ -39,7 +39,7 @@ export default function FrequencyPage() {
                 この回復が完了する前に同じ部位をトレーニングすると、筋肉が十分に修復されず、かえって筋力が落ちたり怪我のリスクが高まったりします。一方、回復後にトレーニングしないまま時間が経つと、せっかくの超回復の効果が薄れてしまいます。
               </p>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700">
@@ -73,7 +73,7 @@ export default function FrequencyPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 レベル別おすすめ頻度
               </h2>
 
@@ -120,7 +120,7 @@ export default function FrequencyPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 本当に大事なのは回数より「週あたりのセット数」
               </h2>
               <p>
@@ -128,7 +128,7 @@ export default function FrequencyPage() {
               </p>
 
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -182,7 +182,7 @@ export default function FrequencyPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 頻度を決めるときの注意点
               </h2>
               <div className="space-y-2">
@@ -218,7 +218,7 @@ export default function FrequencyPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 まとめ
               </h2>
               <ul className="space-y-1">

@@ -91,11 +91,11 @@ export default function EffectTimelinePage() {
       <div className="max-w-md md:max-w-2xl w-full animate-slideUp">
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
-          <h1 className="text-xl font-bold text-gray-800 mb-6">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
             筋トレの効果はいつから出る？1ヶ月・3ヶ月・6ヶ月の変化の目安
           </h1>
 
-          <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section>
               <p>
                 筋トレを始めて最初にぶつかる壁は、重さでもきつさでもなく「やっているのに変わらない」という時間です。SNSでは「1ヶ月でこれだけ変わりました」という写真が流れてきます。自分の鏡には、何も起きていない。
@@ -106,14 +106,14 @@ export default function EffectTimelinePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 効果が出る順番の早見表
               </h2>
               <p>
                 週2〜3回、正しく続けた場合の目安です。「体の中で起きていること」と「自分で確認できること」は、ずれます。
               </p>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -150,7 +150,7 @@ export default function EffectTimelinePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 なぜ1ヶ月では見た目が変わらないのか（計算してみる）
               </h2>
               <p>
@@ -163,7 +163,7 @@ export default function EffectTimelinePage() {
                 筋肉の密度は1cm³あたり約1.06g。部位を円柱とみなして、周囲が何cm増えるか出してみます。
               </p>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -203,7 +203,7 @@ export default function EffectTimelinePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 最初の1ヶ月で伸びているのは筋肉ではなく「神経」
               </h2>
               <p>
@@ -229,7 +229,7 @@ export default function EffectTimelinePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 見た目だけを急ぐなら、増やすより減らすほうが速い
               </h2>
               <p>
@@ -268,7 +268,7 @@ export default function EffectTimelinePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 効果が出るのが遅い人がやりがちなこと
               </h2>
               <p>
@@ -306,7 +306,7 @@ export default function EffectTimelinePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 変化を見逃さないための記録の取り方
               </h2>
               <p>
@@ -338,7 +338,7 @@ export default function EffectTimelinePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 まとめ
               </h2>
               <p>

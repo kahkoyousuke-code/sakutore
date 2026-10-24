@@ -17,11 +17,11 @@ export default function ProteinGuidePage() {
       <div className="max-w-md md:max-w-2xl w-full animate-slideUp">
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
-          <h1 className="text-xl font-bold text-gray-800 mb-6">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
             プロテインの選び方ガイド
           </h1>
 
-          <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section>
               <p>
                 「プロテインを飲みたいけれど種類が多すぎてどれを選べばいいかわからない」——そんな声をよく聞きます。ドラッグストアやネット通販には数えきれないほどのプロテイン商品が並んでいますが、自分の目的や生活習慣に合ったものを選ぶことが大切です。この記事では、プロテインの主な種類と特徴、効果的な飲み方、そして選び方のポイントをわかりやすく解説します。
@@ -29,7 +29,7 @@ export default function ProteinGuidePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 プロテインの種類と特徴
               </h2>
               <p>
@@ -37,7 +37,7 @@ export default function ProteinGuidePage() {
               </p>
 
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -147,7 +147,7 @@ export default function ProteinGuidePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 そもそも何杯必要か（体重別の早見表）
               </h2>
               <p>
@@ -155,7 +155,7 @@ export default function ProteinGuidePage() {
               </p>
 
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -231,7 +231,7 @@ export default function ProteinGuidePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 飲むタイミング
               </h2>
               <p>
@@ -279,7 +279,7 @@ export default function ProteinGuidePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 自分に合うプロテインの選び方
               </h2>
 
@@ -335,7 +335,7 @@ export default function ProteinGuidePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 まとめ
               </h2>
               <ul className="space-y-1">

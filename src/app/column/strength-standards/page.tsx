@@ -36,7 +36,7 @@ const repFactor = (reps: number) => (reps === 1 ? 1 : 1 + reps / 30);
 function LiftTable({ rows, weights }: { rows: Row[]; weights: number[] }) {
   return (
     <div className="overflow-x-auto -mx-2 px-2 mt-3">
-      <table className="w-full text-xs border-collapse">
+      <table className="w-full text-xs md:text-sm border-collapse">
         <thead>
           <tr className="bg-orange-50">
             <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -121,7 +121,7 @@ function CrossHead() {
 function RatioByLevelTable() {
   return (
     <div className="overflow-x-auto -mx-2 px-2 mt-3">
-      <table className="w-full text-xs border-collapse">
+      <table className="w-full text-xs md:text-sm border-collapse">
         <CrossHead />
         <tbody>
           {MEN_LEVELS.map((level, i) => (
@@ -151,7 +151,7 @@ function RatioByLevelTable() {
 function BodyWeightTable({ weight }: { weight: number }) {
   return (
     <div className="overflow-x-auto -mx-2 px-2">
-      <table className="w-full text-xs border-collapse">
+      <table className="w-full text-xs md:text-sm border-collapse">
         <CrossHead />
         <tbody>
           {MEN_LEVELS.map((level, i) => (
@@ -184,11 +184,11 @@ export default function StrengthStandardsPage() {
       <div className="max-w-md md:max-w-2xl w-full animate-slideUp">
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
-          <h1 className="text-xl font-bold text-gray-800 mb-6">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
             BIG3の重量目安一覧｜ベンチプレス・スクワット・デッドリフトは体重の何倍が普通？
           </h1>
 
-          <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section>
               <p>
                 「ベンチプレス60kgって、上のほうなのか下のほうなのか」。ジムでバーベルを触りはじめると、必ずこの疑問にぶつかります。周りの人の重量は目に入るのに、自分がどのあたりにいるのかだけがわからない。
@@ -210,14 +210,14 @@ export default function StrengthStandardsPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 1RM換算表：今の重量×回数から最大重量を出す
               </h2>
               <p>
                 表と自分を比べる前に、まず1RMを求めます。使うのは<span className="font-bold">Epley式</span>で、計算は「今の重量 ×（1 + 回数 ÷ 30）」だけです。下の倍率を掛けるだけでも同じ数字が出ます。
               </p>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -275,7 +275,7 @@ export default function StrengthStandardsPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 ベンチプレスの重量目安（男性）
               </h2>
               <p>
@@ -296,7 +296,7 @@ export default function StrengthStandardsPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 スクワットの重量目安（男性）
               </h2>
               <p>
@@ -317,7 +317,7 @@ export default function StrengthStandardsPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 デッドリフトの重量目安（男性）
               </h2>
               <p>
@@ -338,7 +338,7 @@ export default function StrengthStandardsPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 BIG3合計（トータル）の目安
               </h2>
               <p>
@@ -362,7 +362,7 @@ export default function StrengthStandardsPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 体重別に見るBIG3の目安（50〜100kg）
               </h2>
               <p>
@@ -406,7 +406,7 @@ export default function StrengthStandardsPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 女性の重量目安
               </h2>
               <p>
@@ -441,7 +441,7 @@ export default function StrengthStandardsPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 筆者の実データ：15年でこう動いた
               </h2>
               <p>
@@ -449,7 +449,7 @@ export default function StrengthStandardsPage() {
               </p>
 
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -563,7 +563,7 @@ export default function StrengthStandardsPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 この表を鵜呑みにしてはいけない3つの理由
               </h2>
               <div className="space-y-2">
@@ -592,7 +592,7 @@ export default function StrengthStandardsPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 1つ上のレベルに行くための考え方
               </h2>
               <p>
@@ -623,7 +623,7 @@ export default function StrengthStandardsPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 まとめ
               </h2>
               <ul className="space-y-2">

@@ -16,11 +16,11 @@ export default function MuscleVsCardioWomenPage() {
       <div className="max-w-md md:max-w-2xl w-full animate-slideUp">
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
-          <h1 className="text-xl font-bold text-gray-800 mb-6">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
             脂肪燃焼に筋トレが有酸素運動より効果的な理由
           </h1>
 
-          <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section>
               <p className="text-gray-500 italic border-l-2 border-orange-300 pl-3 mb-3">
                 私（男性・筋トレ歴15年）は20代の頃、体重90kg超の状態から走るだけのダイエットをして、まったく結果が出ませんでした。筋トレを軸に変えてから12kg落とせた理由を、数字で説明します。
@@ -31,7 +31,7 @@ export default function MuscleVsCardioWomenPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 有酸素運動だけでは痩せにくい理由
               </h2>
               <p>
@@ -61,7 +61,7 @@ export default function MuscleVsCardioWomenPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 筋トレが脂肪燃焼に優れている2つの理由
               </h2>
 
@@ -101,7 +101,7 @@ export default function MuscleVsCardioWomenPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 最も効果的なのは「筋トレ＋有酸素運動」の組み合わせ
               </h2>
               <p>
@@ -109,7 +109,7 @@ export default function MuscleVsCardioWomenPage() {
               </p>
 
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -178,7 +178,7 @@ export default function MuscleVsCardioWomenPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 女性が筋トレで結果を出すためのポイント
               </h2>
 
@@ -205,7 +205,7 @@ export default function MuscleVsCardioWomenPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 まとめ
               </h2>
               <ul className="space-y-1">

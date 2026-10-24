@@ -17,11 +17,11 @@ export default function ProteinPage() {
       <div className="max-w-md md:max-w-2xl w-full animate-slideUp">
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
-          <h1 className="text-xl font-bold text-gray-800 mb-6">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
             筋トレに必要なタンパク質の量と摂り方
           </h1>
 
-          <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section>
               <p>
                 筋トレの効果を最大限に引き出すためには、トレーニングだけでなく栄養管理も欠かせません。中でも筋肉の材料となるタンパク質は、筋トレをする人にとって最も重要な栄養素です。この記事では、必要なタンパク質の量や効果的な摂り方について詳しく解説します。
@@ -29,7 +29,7 @@ export default function ProteinPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 なぜタンパク質が重要なのか
               </h2>
               <p>
@@ -41,7 +41,7 @@ export default function ProteinPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 1日に必要なタンパク質の量
               </h2>
               <p>
@@ -69,14 +69,14 @@ export default function ProteinPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 タンパク質を多く含む食材
               </h2>
               <p>
                 日常の食事からしっかりタンパク質を摂るためには、高タンパクな食材を意識的に取り入れることが大切です。以下に代表的な食材とタンパク質量をまとめました。
               </p>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700">
@@ -121,7 +121,7 @@ export default function ProteinPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 1日112gを実際に組むとこうなる
               </h2>
               <p>
@@ -129,7 +129,7 @@ export default function ProteinPage() {
               </p>
 
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -186,7 +186,7 @@ export default function ProteinPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 効果的な摂取タイミング
               </h2>
               <p>
@@ -215,7 +215,7 @@ export default function ProteinPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 まとめ
               </h2>
               <ul className="space-y-1">

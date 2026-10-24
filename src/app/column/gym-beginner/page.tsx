@@ -16,11 +16,11 @@ export default function GymBeginnerPage() {
       <div className="max-w-md md:max-w-2xl w-full animate-slideUp">
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
-          <h1 className="text-xl font-bold text-gray-800 mb-6">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
             ジム初心者が最初にやるべきマシン5選
           </h1>
 
-          <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section>
               <p>
                 ジムに初めて入ったとき、ずらりと並んだマシンを前に「どれから使えばいいの？」と戸惑う方は多いものです。マシンは正しく使えば初心者でも安全かつ効果的に鍛えられますが、間違った使い方は怪我の原因になります。この記事では、ジム初心者が最初に取り組むべき5つのマシンと、効果的な使い方・NG行動を解説します。
@@ -28,7 +28,7 @@ export default function GymBeginnerPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 初心者におすすめのマシン5選
               </h2>
 
@@ -37,7 +37,7 @@ export default function GymBeginnerPage() {
               </p>
 
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -178,7 +178,7 @@ export default function GymBeginnerPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 ジム初心者が避けるべきNG行動
               </h2>
 
@@ -236,7 +236,7 @@ export default function GymBeginnerPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 15年通ってわかった、ジム選びで唯一効いたこと
               </h2>
               <p>
@@ -255,7 +255,7 @@ export default function GymBeginnerPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 まとめ
               </h2>
               <ul className="space-y-1">

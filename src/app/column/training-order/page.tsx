@@ -106,11 +106,11 @@ export default function TrainingOrderPage() {
       <div className="max-w-md md:max-w-2xl w-full animate-slideUp">
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
-          <h1 className="text-xl font-bold text-gray-800 mb-6">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
             筋トレの順番｜種目の順番と、有酸素はどっちが先か
           </h1>
 
-          <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section>
               <p>
                 順番のルールは3つしかありません。
@@ -129,11 +129,11 @@ export default function TrainingOrderPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 1回のトレーニングの流れ
               </h2>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700">
@@ -177,7 +177,7 @@ export default function TrainingOrderPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 なぜ大きい種目が先なのか
               </h2>
               <p>
@@ -195,7 +195,7 @@ export default function TrainingOrderPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 部位別・種目の並べ方の例
               </h2>
               <div className="space-y-3 mt-3">
@@ -241,7 +241,7 @@ export default function TrainingOrderPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 腹筋は最後にやる
               </h2>
               <p>
@@ -253,7 +253,7 @@ export default function TrainingOrderPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 有酸素運動は筋トレの前？後？
               </h2>
               <p>
@@ -263,7 +263,7 @@ export default function TrainingOrderPage() {
                 先に走ると、筋トレで使う分のエネルギーと集中力を先に消費してしまいます。20分走ったあとのスクワットは、確実に重量が落ちます。逆に筋トレを先にやると、糖質をある程度使った状態で有酸素に入るので、<span className="font-bold">脂肪が使われやすい</span>という利点まで付いてきます。
               </p>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700">
@@ -308,7 +308,7 @@ export default function TrainingOrderPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 最初の1種目は、いきなり本番の重量から入らない
               </h2>
               <p>
@@ -331,7 +331,7 @@ export default function TrainingOrderPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 原則を破っていい場合
               </h2>
               <p>
@@ -362,7 +362,7 @@ export default function TrainingOrderPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 よくある質問
               </h2>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
@@ -396,7 +396,7 @@ export default function TrainingOrderPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 まとめ
               </h2>
               <ul className="space-y-2">

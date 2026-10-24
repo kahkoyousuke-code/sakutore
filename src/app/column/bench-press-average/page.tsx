@@ -43,7 +43,7 @@ function BenchByWeightTable({
 }) {
   return (
     <div className="overflow-x-auto -mx-2 px-2 mt-3">
-      <table className="w-full text-xs border-collapse">
+      <table className="w-full text-xs md:text-sm border-collapse">
         <thead>
           <tr className="bg-orange-50">
             <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -100,11 +100,11 @@ export default function BenchPressAveragePage() {
       <div className="max-w-md md:max-w-2xl w-full animate-slideUp">
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
-          <h1 className="text-xl font-bold text-gray-800 mb-6">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
             ベンチプレスの平均は何kg？体重別・トレ歴別の目安一覧
           </h1>
 
-          <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section>
               <p>
                 「ベンチプレスの平均って何kgなんだろう」。この検索をする人が本当に知りたいのは平均値そのものではなく、<span className="font-bold">自分は上のほうなのか、下のほうなのか</span>だと思います。
@@ -129,7 +129,7 @@ export default function BenchPressAveragePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 体重別・ベンチプレスの目安一覧（男性）
               </h2>
               <p>
@@ -155,14 +155,14 @@ export default function BenchPressAveragePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 トレーニング歴別に見た場合の目安
               </h2>
               <p>
                 「何年やったら何kg」を知りたい人向けに、体重70kgを例にして期間の目安を並べます。
               </p>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -208,7 +208,7 @@ export default function BenchPressAveragePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 女性のベンチプレスの目安
               </h2>
               <p>
@@ -241,7 +241,7 @@ export default function BenchPressAveragePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 年齢別の平均は、あえて出しません
               </h2>
               <p>
@@ -260,14 +260,14 @@ export default function BenchPressAveragePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 今の重量から1RMを出す換算表
               </h2>
               <p>
                 ここまでの表と比べるには、自分の1RMが必要です。「◯kgを◯回」から換算した推定値を表にしました。縦が今扱っている重量、横が挙がる回数です。
               </p>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -311,7 +311,7 @@ export default function BenchPressAveragePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 筆者の場合：60kg×2回から120kgまで
               </h2>
               <p>
@@ -338,7 +338,7 @@ export default function BenchPressAveragePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 平均を超えたいときの優先順位
               </h2>
               <div className="space-y-2">
@@ -397,7 +397,7 @@ export default function BenchPressAveragePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 よくある質問
               </h2>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
@@ -431,7 +431,7 @@ export default function BenchPressAveragePage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 まとめ
               </h2>
               <ul className="space-y-2">

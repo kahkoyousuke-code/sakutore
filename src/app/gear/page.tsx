@@ -37,7 +37,7 @@ function Section({
 export default function GearPage() {
   return (
     <main className="min-h-screen flex flex-col items-center px-4 py-8">
-      <div className="max-w-md w-full animate-slideUp space-y-6">
+      <div className="max-w-md md:max-w-2xl w-full animate-slideUp space-y-6">
 
         {/* ヘッダー */}
         <div className="text-center">

@@ -18,11 +18,11 @@ export default function MetabolismPage() {
       <div className="max-w-md md:max-w-2xl w-full animate-slideUp">
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
-          <h1 className="text-xl font-bold text-gray-800 mb-6">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
             筋トレで痩せる仕組みを解説
           </h1>
 
-          <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section>
               <p>
                 「筋トレって筋肉をつけるものでしょ？痩せるならランニングじゃないの？」と思っていませんか？実は、筋トレはダイエットにも非常に効果的なアプローチです。しかも、有酸素運動とは異なる仕組みで体脂肪を減らすため、組み合わせることでより大きな効果が得られます。この記事では、筋トレで痩せるメカニズムをわかりやすく解説します。
@@ -30,7 +30,7 @@ export default function MetabolismPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 基礎代謝とは何か
               </h2>
               <p>
@@ -68,7 +68,7 @@ export default function MetabolismPage() {
               </p>
 
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -133,7 +133,7 @@ export default function MetabolismPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 筋肉量と消費カロリーの関係
               </h2>
               <p>
@@ -170,7 +170,7 @@ export default function MetabolismPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 有酸素運動との比較
               </h2>
               <p>
@@ -235,7 +235,7 @@ export default function MetabolismPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 筆者が12kg落としたときの内訳
               </h2>
               <p>
@@ -243,7 +243,7 @@ export default function MetabolismPage() {
               </p>
 
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -293,7 +293,7 @@ export default function MetabolismPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 まとめ
               </h2>
               <ul className="space-y-1">

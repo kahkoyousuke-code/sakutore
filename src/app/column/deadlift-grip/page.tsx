@@ -70,11 +70,11 @@ export default function DeadliftGripPage() {
       <div className="max-w-md md:max-w-2xl w-full animate-slideUp">
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
-          <h1 className="text-xl font-bold text-gray-800 mb-6">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
             デッドリフトで握力が足りない・持たないときの対処｜握り方3種類とパワーグリップ
           </h1>
 
-          <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section>
               <p>
                 デッドリフトは、<span className="font-bold">背中や脚より先に握力が限界になりやすい</span>種目です。BIG3でいちばん重いバーを扱うのに、その重さを支えているのは指だけだからです。背中はまだ引けるのに、手が先に開いてバーが落ちる。この状態のまま続けると、鍛えたい背中に重さが届く前にセットが終わってしまいます。
@@ -88,11 +88,11 @@ export default function DeadliftGripPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 握力で止まっているかの見分け方
               </h2>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700">
@@ -133,7 +133,7 @@ export default function DeadliftGripPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 道具を買う前にできること
               </h2>
               <ul className="space-y-2">
@@ -153,11 +153,11 @@ export default function DeadliftGripPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 握り方3種類とパワーグリップの向き不向き
               </h2>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700">
@@ -179,7 +179,7 @@ export default function DeadliftGripPage() {
                       <tr key={row.name}>
                         <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800">
                           {row.name}
-                          <span className="block text-[10px] font-normal text-gray-400">{row.how}</span>
+                          <span className="block text-xs font-normal text-gray-400">{row.how}</span>
                         </td>
                         <td className="border border-gray-200 px-2 py-2 text-gray-600">
                           {row.good}
@@ -225,7 +225,7 @@ export default function DeadliftGripPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 パワーグリップを使った記録はどう扱うか
               </h2>
               <p>
@@ -238,7 +238,7 @@ export default function DeadliftGripPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 握力そのものを鍛えたいなら
               </h2>
               <p>
@@ -266,7 +266,7 @@ export default function DeadliftGripPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 よくある質問
               </h2>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
@@ -304,7 +304,7 @@ export default function DeadliftGripPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 まとめ
               </h2>
               <ul className="space-y-2">

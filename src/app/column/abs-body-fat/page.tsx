@@ -52,11 +52,11 @@ export default function AbsBodyFatPage() {
       <div className="max-w-md md:max-w-2xl w-full animate-slideUp">
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
-          <h1 className="text-xl font-bold text-gray-800 mb-6">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
             腹筋が割れる体脂肪率は何%？男女別の見え方と必要な減量の計算
           </h1>
 
-          <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section>
               <p>
                 先に、いちばん大事なことを書きます。<span className="font-bold">腹筋は、腹筋運動では割れません。</span>
@@ -70,11 +70,11 @@ export default function AbsBodyFatPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 体脂肪率ごとの見え方（男性）
               </h2>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -111,14 +111,14 @@ export default function AbsBodyFatPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 体脂肪率ごとの見え方（女性）
               </h2>
               <p>
                 女性は同じ見え方になる体脂肪率が<span className="font-bold">男性より8〜10%高い</span>ところにあります。胸やお尻、皮下に脂肪が付く仕組みが違うためで、体質や努力の差ではありません。
               </p>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -158,7 +158,7 @@ export default function AbsBodyFatPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 そこまで何kg落とせばいいのか（計算）
               </h2>
               <p>
@@ -168,7 +168,7 @@ export default function AbsBodyFatPage() {
                 筋肉を落とさず脂肪だけを減らすと、この{EXAMPLE_WEIGHT - (EXAMPLE_WEIGHT * EXAMPLE_PERCENT) / 100}kgは変わりません。すると目標の体脂肪率ごとに、落とすべき脂肪の量が一意に決まります。
               </p>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -238,7 +238,7 @@ export default function AbsBodyFatPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 腹筋運動を1000回しても割れない理由
               </h2>
               <p>
@@ -261,7 +261,7 @@ export default function AbsBodyFatPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 では腹筋のトレーニングは不要なのか
               </h2>
               <p>
@@ -297,7 +297,7 @@ export default function AbsBodyFatPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 体組成計の数字は、絶対値を信じない
               </h2>
               <p>
@@ -312,7 +312,7 @@ export default function AbsBodyFatPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 よくある質問
               </h2>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
@@ -346,7 +346,7 @@ export default function AbsBodyFatPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 まとめ
               </h2>
               <ul className="space-y-2">

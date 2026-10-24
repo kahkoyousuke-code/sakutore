@@ -16,11 +16,11 @@ export default function BackBenefitsPage() {
       <div className="max-w-md md:max-w-2xl w-full animate-slideUp">
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
-          <h1 className="text-xl font-bold text-gray-800 mb-6">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
             背中を鍛えるべき3つの理由
           </h1>
 
-          <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section>
               <p>
                 筋トレを始めると、胸・腕・お腹など「見える部位」を優先しがちです。しかし、背中の筋肉（広背筋・脊柱起立筋・僧帽筋など）を鍛えることは、見た目の改善だけでなく、姿勢の改善や腰痛予防など日常生活の質を上げる効果も大きいのです。この記事では、背中を鍛えるべき3つの理由と、具体的なトレーニング方法を解説します。
@@ -28,7 +28,7 @@ export default function BackBenefitsPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 まず「背中」を分解する
               </h2>
               <p>
@@ -36,7 +36,7 @@ export default function BackBenefitsPage() {
               </p>
 
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
-                <table className="w-full text-xs border-collapse">
+                <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
                     <tr className="bg-orange-50">
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
@@ -97,7 +97,7 @@ export default function BackBenefitsPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 理由1：姿勢が劇的に改善される
               </h2>
               <p>
@@ -140,7 +140,7 @@ export default function BackBenefitsPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 理由2：腰痛を予防・改善できる
               </h2>
               <p>
@@ -199,7 +199,7 @@ export default function BackBenefitsPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 理由3：見た目が大きく変わる
               </h2>
               <p>
@@ -246,7 +246,7 @@ export default function BackBenefitsPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 私のBIG3で、いちばん強いのは背中でした
               </h2>
               <p>
@@ -276,7 +276,7 @@ export default function BackBenefitsPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 まとめ
               </h2>
               <ul className="space-y-1">

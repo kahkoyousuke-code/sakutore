@@ -92,11 +92,11 @@ export default function Big3AccessoryPage() {
       <div className="max-w-md md:max-w-2xl w-full animate-slideUp">
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
-          <h1 className="text-xl font-bold text-gray-800 mb-6">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
             BIG3の補助種目の選び方｜ベンチプレス・スクワット・デッドリフトが止まる場所別
           </h1>
 
-          <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section>
               <p>
                 BIG3の補助種目に「これをやれば全員伸びる」という正解はありません。<span className="font-bold">選び方の基準は、その種目でバーがどこで止まるか</span>です。止まる場所が分かれば、足りない筋肉が分かり、足す種目が決まります。
@@ -107,7 +107,7 @@ export default function Big3AccessoryPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 まだ補助種目が要らない人
               </h2>
               <p>
@@ -130,7 +130,7 @@ export default function Big3AccessoryPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 止まる場所の見つけ方
               </h2>
               <p>
@@ -145,7 +145,7 @@ export default function Big3AccessoryPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 止まる場所別の補助種目
               </h2>
               <div className="space-y-5">
@@ -153,7 +153,7 @@ export default function Big3AccessoryPage() {
                   <div key={group.lift}>
                     <h3 className="font-bold text-gray-800 mb-2">{liftLabel(group.lift)}の補助種目</h3>
                     <div className="overflow-x-auto -mx-2 px-2">
-                      <table className="w-full text-xs border-collapse">
+                      <table className="w-full text-xs md:text-sm border-collapse">
                         <thead>
                           <tr className="bg-orange-50">
                             <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700">
@@ -220,7 +220,7 @@ export default function Big3AccessoryPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 何種目・何セット足すか
               </h2>
               <ul className="space-y-2">
@@ -275,7 +275,7 @@ export default function Big3AccessoryPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 よくある質問
               </h2>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
@@ -305,7 +305,7 @@ export default function Big3AccessoryPage() {
             </section>
 
             <section>
-              <h2 className="font-bold text-orange-500 text-base mb-3">
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 まとめ
               </h2>
               <ul className="space-y-2">
