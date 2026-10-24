@@ -2,6 +2,8 @@ import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
+import DiagramFigure from "@/components/diagrams/DiagramFigure";
+import SessionFlowDiagram from "@/components/diagrams/SessionFlowDiagram";
 
 export const metadata = pageMetadata({
   title: "筋トレの順番｜種目の順番と、有酸素はどっちが先か - サクトレ",
@@ -132,6 +134,13 @@ export default function TrainingOrderPage() {
               <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 1回のトレーニングの流れ
               </h2>
+              <DiagramFigure
+                title="いちばん重いメイン種目を先に。腹筋・有酸素・静的ストレッチは後"
+                label={`1回のトレーニングの流れ。${SESSION_FLOW.map((r) => `${r.step}. ${r.name}（${r.time}）`).join("、")}の順。`}
+                caption="60分とれた日の配分。点線の有酸素はやるなら筋トレの後。30分しかない日は4と6を削ります。"
+              >
+                <SessionFlowDiagram steps={SESSION_FLOW} highlightStep="3" />
+              </DiagramFigure>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
                 <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>

@@ -2,6 +2,8 @@ import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
+import DiagramFigure from "@/components/diagrams/DiagramFigure";
+import PullupStepsStaircase from "@/components/diagrams/PullupStepsStaircase";
 import {
   LAT_PULLDOWN_TO_PULLUP_RATIO,
   formatReps,
@@ -95,6 +97,13 @@ export default function PullupProgressionPage() {
               <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 懸垂1回までの5段階
               </h2>
+              <DiagramFigure
+                title="懸垂は5段階で1回に届く"
+                label={`懸垂1回までの5段階の階段図。${STEPS.map((s) => `${s.step}.${s.name}（次に進む条件：${s.goal}）`).join("、")}。3のネガティブが一番効く。`}
+                caption="右の数字が次の段階に進む条件。やり方は下の表を見てください。"
+              >
+                <PullupStepsStaircase steps={STEPS} highlightStep="3" highlightLabel="一番効く" />
+              </DiagramFigure>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
                 <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>

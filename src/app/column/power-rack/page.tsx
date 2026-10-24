@@ -2,6 +2,8 @@ import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
+import DiagramFigure from "@/components/diagrams/DiagramFigure";
+import PowerRackHeights from "@/components/diagrams/PowerRackHeights";
 import { SET_SCHEMES } from "@/lib/strengthStandards";
 
 export const metadata = pageMetadata({
@@ -126,6 +128,13 @@ export default function PowerRackPage() {
                   </div>
                 ))}
               </div>
+              <DiagramFigure
+                title="セーフティバーは「いちばん低い位置のバー」の少し下"
+                label="パワーラックを横から見た図。スクワットはフックを胸の真ん中から脇の下の高さに、セーフティバーをいちばん深くしゃがんだときのバーより数cm下に置く。ベンチプレスはフックを肘をほぼ伸ばしたまま外せる高さに、セーフティバーを胸に付けたバーより少し下に置く。"
+                caption="横から見た模式図です。実際の高さは体格としゃがむ深さで変わるので、空のバーで確かめてください。"
+              >
+                <PowerRackHeights />
+              </DiagramFigure>
               <p className="mt-3">
                 高さは体格としゃがむ深さで変わるので、<span className="font-bold">数字ではなく、空のバー（プレートを付けていないバー）で確かめて</span>決めます。
               </p>

@@ -2,7 +2,9 @@ import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
-import { recoveryRows } from "@/lib/recoveryStandards";
+import { recoveryRows, recoveryFor } from "@/lib/recoveryStandards";
+import DiagramFigure from "@/components/diagrams/DiagramFigure";
+import SplitWeekCalendar, { type SplitDay } from "@/components/diagrams/SplitWeekCalendar";
 
 export const metadata = pageMetadata({
   title: "筋トレ分割法の早見表｜週2・3・4回それぞれの組み方 - サクトレ",
@@ -11,7 +13,9 @@ export const metadata = pageMetadata({
   path: "/column/split-routine",
 });
 
-const splitRows = [
+// Rows with `days` render their example from the schedule, so the table and
+// the weekly calendar diagram share one source.
+const splitRows: { freq: string; split: string; example?: string; days?: SplitDay[] }[] = [
   {
     freq: "週1回",
     split: "全身法",
@@ -20,17 +24,29 @@ const splitRows = [
   {
     freq: "週2回",
     split: "全身法 ×2",
-    example: "月：全身A ／ 木：全身B",
+    days: [
+      { day: "月", label: "全身A", group: "全身" },
+      { day: "木", label: "全身B", group: "全身" },
+    ],
   },
   {
     freq: "週3回",
     split: "全身法 or 3分割",
-    example: "月：押す ／ 水：引く ／ 金：脚",
+    days: [
+      { day: "月", label: "押す", group: "押す" },
+      { day: "水", label: "引く", group: "引く" },
+      { day: "金", label: "脚", group: "脚" },
+    ],
   },
   {
     freq: "週4回",
     split: "上下2分割 ×2",
-    example: "月：上 ／ 火：下 ／ 木：上 ／ 金：下",
+    days: [
+      { day: "月", label: "上", group: "上" },
+      { day: "火", label: "下", group: "下" },
+      { day: "木", label: "上", group: "上" },
+      { day: "金", label: "下", group: "下" },
+    ],
   },
   {
     freq: "週5〜6回",
@@ -38,6 +54,16 @@ const splitRows = [
     example: "胸／背中／肩・腕／脚／弱点部位",
   },
 ];
+
+const exampleText = (row: (typeof splitRows)[number]) =>
+  row.days ? row.days.map((d) => `${d.day}：${d.label}`).join(" ／ ") : row.example;
+
+// Weekly calendar diagram: only rows whose example is a concrete weekday schedule.
+const calendarRows = splitRows.flatMap((row) =>
+  row.days
+    ? [{ freq: row.freq, split: row.freq === "週3回" ? "3分割（PPL）" : row.split, days: row.days }]
+    : [],
+);
 
 export default function SplitRoutinePage() {
   return (
@@ -88,7 +114,7 @@ export default function SplitRoutinePage() {
                           {row.split}
                         </td>
                         <td className="border border-gray-200 px-2 py-2 text-gray-600">
-                          {row.example}
+                          {exampleText(row)}
                         </td>
                       </tr>
                     ))}
@@ -148,6 +174,13 @@ export default function SplitRoutinePage() {
               <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 各分割法の中身
               </h2>
+              <DiagramFigure
+                title="早見表の組み方を1週間に並べると、同じ部位は必ず休みをはさむ"
+                label={`週2回は月と木に全身、週3回は月に押す・水に引く・金に脚、週4回は月と木に上半身・火と金に下半身。どの組み方も同じ部位の間は中2日以上あき、大きい筋肉の回復目安である${recoveryFor("large").interval}を満たしている。`}
+                caption="早見表の「組み方の例」をそのまま曜日に並べたもの。休みの日はずらしても構いません。"
+              >
+                <SplitWeekCalendar schedules={calendarRows} />
+              </DiagramFigure>
 
               <h3 className="font-bold text-gray-800 mt-4 mb-2">
                 全身法（週1〜3回）

@@ -2,6 +2,8 @@ import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
+import DiagramFigure from "@/components/diagrams/DiagramFigure";
+import Big3RatioBars from "@/components/diagrams/Big3RatioBars";
 import {
   benchRows,
   squatRows,
@@ -97,6 +99,18 @@ export default function Big3BalancePage() {
               <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 目安の比率（ベンチを1としたとき）
               </h2>
+              <DiagramFigure
+                title={`スクワットはベンチの${squatVsBench.toFixed(1)}倍、デッドは${deadVsBench.toFixed(1)}倍`}
+                label={`ベンチを1としたときの比率の棒グラフ。男性はスクワット${squatVsBench.toFixed(1)}、デッドリフト${deadVsBench.toFixed(1)}。女性はスクワット${womenSquatVsBench.toFixed(1)}、デッドリフト${womenDeadVsBench.toFixed(1)}。`}
+                caption={`${BASE_LEVEL}の体重比から計算。女性の比率は下の「女性は比率が違う」で説明しています。`}
+              >
+                <Big3RatioBars
+                  groups={[
+                    { label: "男性", squat: squatVsBench, deadlift: deadVsBench, main: true },
+                    { label: "女性", squat: womenSquatVsBench, deadlift: womenDeadVsBench },
+                  ]}
+                />
+              </DiagramFigure>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
                 <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>

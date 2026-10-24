@@ -2,6 +2,9 @@ import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
+import DiagramFigure from "@/components/diagrams/DiagramFigure";
+import SupercompensationDiagram from "@/components/diagrams/SupercompensationDiagram";
+import { recoveryFor } from "@/lib/recoveryStandards";
 
 export const metadata = pageMetadata({
   title: "筋肉を育てる休息の重要性｜休めているか判断する5つの数字 - サクトレ",
@@ -37,6 +40,13 @@ export default function RestPage() {
               <p className="mt-2">
                 超回復には通常48〜72時間（2〜3日）かかります。この回復期間中に適切な栄養と睡眠を取ることで、筋肉は効率よく成長します。逆に、回復が完了する前に同じ部位を再びトレーニングすると、筋肉が十分に修復されないまま再度損傷を受けてしまいます。
               </p>
+              <DiagramFigure
+                title="休んだあとに、元より少し強くなる"
+                label={`超回復の流れ。トレーニングで筋繊維に微細な損傷が生じて一度レベルが下がり、修復されて元のレベルを超える。超回復までは${recoveryFor("large").hours}が目安。修復の途中で再び鍛えると修復が追いつかない。`}
+                caption={`時間は${recoveryFor("large").part}の目安。曲線の形はイメージです。`}
+              >
+                <SupercompensationDiagram />
+              </DiagramFigure>
             </section>
 
             <section>

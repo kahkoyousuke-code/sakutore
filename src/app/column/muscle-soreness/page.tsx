@@ -2,6 +2,8 @@ import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
+import DiagramFigure from "@/components/diagrams/DiagramFigure";
+import SorenessCurveDiagram from "@/components/diagrams/SorenessCurveDiagram";
 import {
   SORENESS_LONG_HOURS,
   recoveryRows,
@@ -138,6 +140,17 @@ export default function MuscleSorenessPage() {
               <p>
                 筋トレのあとに出る痛みは、正式には<span className="font-bold">遅発性筋痛</span>と呼ばれます。名前のとおり、運動した直後ではなく<span className="font-bold">時間が経ってから出る</span>のが特徴です。「翌日より翌々日のほうが痛い」のはこのためで、異常ではありません。
               </p>
+              <DiagramFigure
+                title={`筋肉痛のピークは${
+                  sorenessPhases.find((p) => p.state.includes("ピーク"))?.timing ?? ""
+                }後、${SORENESS_LONG_HOURS}時間でほぼ消える`}
+                label={`筋肉痛の強さの時間経過。${sorenessPhases
+                  .map((p) => `${p.timing}は${p.state}`)
+                  .join("、")}。${SORENESS_LONG_HOURS}時間を過ぎても残るならボリュームが多すぎる。`}
+                caption="時間は目安。曲線の高さはイメージで、痛みの強さを測った値ではありません。"
+              >
+                <SorenessCurveDiagram />
+              </DiagramFigure>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
                 <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>

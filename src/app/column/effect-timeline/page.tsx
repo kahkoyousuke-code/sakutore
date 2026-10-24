@@ -4,6 +4,8 @@ import ShareButtons from "@/components/ShareButtons";
 import RizapCta from "@/components/RizapCta";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
+import DiagramFigure from "@/components/diagrams/DiagramFigure";
+import EffectTimelineDiagram from "@/components/diagrams/EffectTimelineDiagram";
 
 export const metadata = pageMetadata({
   title: "筋トレの効果はいつから出る？1ヶ月・3ヶ月・6ヶ月の変化の目安 - サクトレ",
@@ -112,6 +114,21 @@ export default function EffectTimelinePage() {
               <p>
                 週2〜3回、正しく続けた場合の目安です。「体の中で起きていること」と「自分で確認できること」は、ずれます。
               </p>
+              <DiagramFigure
+                title="体の中が先に変わり、見た目は3ヶ月目から動く"
+                label="筋トレの効果が出る順番。1ヶ月で神経が適応し扱える重量が上がる、2〜3ヶ月で筋肉が増え始め触ると硬くなる、3ヶ月目から自分が鏡で気づき、4〜6ヶ月から1年で他人が気づく。①②の段階では見た目は変わらない。"
+                caption="週2〜3回続けた場合の目安。詳しくは下の表を参照。"
+              >
+                <EffectTimelineDiagram
+                  periods={[
+                    timelineRows[1].period,
+                    timelineRows[2].period,
+                    "3ヶ月〜",
+                    `${timelineRows[3].period}
+〜${timelineRows[4].period}`,
+                  ]}
+                />
+              </DiagramFigure>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
                 <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>

@@ -3,6 +3,8 @@ import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
 import RizapCta from "@/components/RizapCta";
+import DiagramFigure from "@/components/diagrams/DiagramFigure";
+import ReboundLoopDiagram from "@/components/diagrams/ReboundLoopDiagram";
 
 export const metadata = pageMetadata({
   title: "食事制限だけでリバウンドする理由｜10kg減の中身を比較 - サクトレ",
@@ -68,6 +70,13 @@ export default function DietReboundMusclePage() {
               <p className="mt-2">
                 「意志の力でなんとかしなければ」と思っても、ホルモンによる食欲のコントロールは非常に困難です。これはダイエット経験者の意志が弱いのではなく、体の生理的な反応なのです。
               </p>
+              <DiagramFigure
+                title="食事制限だけだと、戻るたびに脂肪の割合が増えていく"
+                label="食事制限だけで減量すると、脂肪と一緒に筋肉も落ち、体は省エネになり食欲が増す。元の食事に戻すと戻ってくるのは脂肪で、同じ体重でも体脂肪率は前より高くなり、また食事制限をくり返す。筋トレを組み合わせると筋肉が残り、落とした体重が戻りにくい。"
+                caption="上の3つの仕組みを1本の流れにしたもの。筋トレで変わるのは②の段階です。"
+              >
+                <ReboundLoopDiagram />
+              </DiagramFigure>
             </section>
 
             <section>
