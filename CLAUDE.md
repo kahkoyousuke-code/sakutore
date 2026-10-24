@@ -77,6 +77,10 @@ Next.js 14 App Router / TypeScript / React 18 / Tailwind CSS 3.4 / Anthropic SDK
 4. **`src/app/column/page.tsx` のリストに `href` / `title` / `description` を追記**（忘れると内部リンクが張られず、Googleに発見されない）
 5. `src/app/sitemap.ts` は `src/app/column` を読んで自動生成するので**追記不要**。ただし `LAST_MODIFIED` は更新する
 6. 悩み系（ダイエット・40代・リバウンド等）の記事なら `RizapCta`（`lead` propで記事ごとの導線文）をまとめ直後に置く
+6.5. **図解を入れる**：仕組み・順番・時間の変化・比率・器具の位置関係など、文章と表だけでは伝わりにくい箇所があれば図にする（`diagram-master` エージェントを使ってよい）。目安は1記事1〜2枚、無理に入れない
+   - 図本体は `src/components/diagrams/<PascalName>.tsx`（インラインSVG・`viewBox` ＋ `w-full h-auto`・スマホ幅340pxで文字11px以上）、記事では `DiagramFigure`（title / label / caption）で囲む
+   - 図の数字も単一ソースのルールに従う。共通モジュールや記事内の配列から props で渡し、図の中に新しい数字を直書きしない
+   - 既存の例：effect-timeline / muscle-soreness / rest / split-routine / training-order / diet-rebound-muscle / pullup-progression / power-rack / big3-balance
 7. 本文を書き終えたら、コミット前に `.claude/agents/` の **`article-reviewer` → `proofreader`** の順でチェックし、指摘を反映する（週次の自動実行でも省略しない）
    - `article-reviewer` の「必ず直す」は全部反映。「要確認」の数字は共通モジュール（`strengthStandards.ts` など）や一次出典で確かめられなければ削るか弱める
    - 指摘を反映するときも、数字は共通モジュールから引く方針を崩さない。筆者プロフィールに新しい経歴を足さない
