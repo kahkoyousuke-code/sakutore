@@ -191,7 +191,7 @@ const categories = [
       },
       {
         href: "/column/strength-standards",
-        title: "BIG3の重量目安一覧｜体重の何倍が普通？",
+        title: "BIG3の平均・重量目安一覧｜体重の何倍が普通？",
         description:
           "ベンチプレス・スクワット・デッドリフトの目安を体重別・レベル別の一覧表で解説。筆者自身の実重量（60kg→120/120/160kg）と、目安表とのズレも公開します。",
       },

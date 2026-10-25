@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
+import { AUTHOR } from "@/lib/author";
 import AuthorBox from "@/components/AuthorBox";
 import SisterArticleCard from "@/components/SisterArticleCard";
 import GearPick from "@/components/GearPick";
@@ -10,6 +11,7 @@ import {
   benchRows,
   deadliftRows,
   formatRatio,
+  LEVEL_EXPERIENCE,
   levelsFor,
   rowsFor,
   squatRows,
@@ -21,10 +23,31 @@ import {
   type Row,
 } from "@/lib/strengthStandards";
 
+// The "average" answer: there is no reliable national average, so the article
+// points to the 中級者 line instead. Every number here comes from
+// strengthStandards.ts so the description, the summary table and the tool agree.
+const AVG_LEVEL = "中級者";
+const AVG_EXAMPLE_WEIGHT = 70;
+const AVG_EXAMPLE_WEIGHT_WOMEN = 55;
+const ratioOf = (rows: Row[]) => rows.find((r) => r.level === AVG_LEVEL)!.ratio;
+const avgMen = {
+  bench: ratioOf(benchRows),
+  squat: ratioOf(squatRows),
+  deadlift: ratioOf(deadliftRows),
+  total: ratioOf(totalRows),
+};
+const avgWomen = {
+  bench: ratioOf(womenBenchRows),
+  squat: ratioOf(womenSquatRows),
+  deadlift: ratioOf(womenDeadliftRows),
+};
+const ex = (ratio: number) => targetWeight(AVG_EXAMPLE_WEIGHT, ratio);
+// Rounded to whole kg like LiftTable, so these match the women's tables below.
+const exWomen = (ratio: number) => Math.round(AVG_EXAMPLE_WEIGHT_WOMEN * ratio);
+
 export const metadata = pageMetadata({
-  title: "BIG3の体重別早見表｜ビッグ3の重量目安をレベル別に一覧 - サクトレ",
-  description:
-    "ビッグ3（ベンチプレス・スクワット・デッドリフト）の重量目安を体重50〜100kg別・レベル別の早見表で解説。BIG3合計の目安と1RM換算表つき。筋トレ歴15年・フィジーク大会入賞の筆者が、自身の実重量（60kg→120/120/160kg）と目安表とのズレまで公開します。",
+  title: "BIG3の体重別レベル早見表｜平均・合計の目安を男女別に - サクトレ",
+  description: `BIG3の平均は何kg？公的な統計はないため、体重比の目安で答えます。体重${AVG_EXAMPLE_WEIGHT}kgの男性なら、${AVG_LEVEL}の目安は合計${ex(avgMen.total)}kg（ベンチ${ex(avgMen.bench)}・スクワット${ex(avgMen.squat)}・デッド${ex(avgMen.deadlift)}kg）。${MEN_WEIGHTS[0]}〜${MEN_WEIGHTS[MEN_WEIGHTS.length - 1]}kgの体重別・男女別の早見表と、${AUTHOR.credentials[0]}の筆者の実重量つき。`,
   path: "/column/strength-standards",
 });
 
@@ -185,7 +208,7 @@ export default function StrengthStandardsPage() {
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
           <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
-            BIG3の重量目安一覧｜ベンチプレス・スクワット・デッドリフトは体重の何倍が普通？
+            BIG3の平均・重量目安一覧｜ベンチプレス・スクワット・デッドリフトは体重の何倍が普通？
           </h1>
 
           <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
@@ -195,6 +218,79 @@ export default function StrengthStandardsPage() {
               </p>
               <p className="mt-2">
                 重量の評価は「体重の何倍か」で見るのが世界共通のやり方です。体重60kgの人の80kgと、体重90kgの人の80kgは、まったく意味が違うからです。この記事では、BIG3（ビッグ3＝ベンチプレス・スクワット・デッドリフト）の目安を体重別・レベル別の一覧表（早見表）にまとめました。自分の現在地を確認してから読み進めてください。
+              </p>
+            </section>
+
+            <section>
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
+                BIG3の平均は何kg？【結論】{AVG_LEVEL}ラインで比べる
+              </h2>
+              <p>
+                <span className="font-bold">BIG3に「日本人の平均◯kg」と言える公的な統計はありません。</span>
+                ネットで見かける数字の多くは、出典が書かれていないか、アプリやサイトの利用者が自分で登録した記録の集計です。後者は鍛えている人ほど登録するので、一般の人の平均より高めに出やすいと考えられます。
+              </p>
+              <p className="mt-2">
+                平均の代わりに物差しにしやすいのが、この記事の<span className="font-bold">「{AVG_LEVEL}」ライン</span>です。これは平均値ではなく、<span className="font-bold">トレ歴{LEVEL_EXPERIENCE[AVG_LEVEL]}の人が届く目安</span>です。BIG3合計なら体重の{formatRatio(avgMen.total)}倍で、体重{AVG_EXAMPLE_WEIGHT}kgの男性なら合計<span className="font-bold">{ex(avgMen.total)}kg</span>になります。超えていれば「数年続けた人の水準」、届いていなければ伸びしろが残っている、と読んでください。
+              </p>
+              <div className="overflow-x-auto -mx-2 px-2 mt-3">
+                <table className="w-full text-xs md:text-sm border-collapse">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      {["例", "ベンチ", "スクワット", "デッド", "合計"].map((label) => (
+                        <th
+                          key={label}
+                          className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap"
+                        >
+                          {label}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800 whitespace-nowrap">
+                        男性（体重{AVG_EXAMPLE_WEIGHT}kg）
+                      </td>
+                      {[avgMen.bench, avgMen.squat, avgMen.deadlift, avgMen.total].map((r, i) => (
+                        <td
+                          key={i}
+                          className={`border border-gray-200 px-2 py-2 text-gray-700 whitespace-nowrap${i === 3 ? " font-bold" : ""}`}
+                        >
+                          {ex(r)}kg
+                          <span className="text-gray-400">（×{formatRatio(r)}）</span>
+                        </td>
+                      ))}
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800 whitespace-nowrap">
+                        女性（体重{AVG_EXAMPLE_WEIGHT_WOMEN}kg）
+                      </td>
+                      {[avgWomen.bench, avgWomen.squat, avgWomen.deadlift].map((r, i) => (
+                        <td
+                          key={i}
+                          className="border border-gray-200 px-2 py-2 text-gray-700 whitespace-nowrap"
+                        >
+                          {exWomen(r)}kg
+                          <span className="text-gray-400">（×{formatRatio(r)}）</span>
+                        </td>
+                      ))}
+                      <td className="border border-gray-200 px-2 py-2 text-gray-400 whitespace-nowrap">
+                        −
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-3 text-xs text-gray-500">
+                ※ どちらも{AVG_LEVEL}ラインの1RM（1回だけ挙げられる最大重量）です。女性は合計の目安を置かず、種目ごとの目安だけを載せています。自分の体重での数字は、男性は下の「体重別に見るBIG3の目安」、女性は「女性の重量目安」の各表か、
+                <Link href="/weight-checker" className="text-orange-600 font-bold underline">
+                  適正重量チェッカー
+                </Link>
+                で確認できます。合計の数字から自分のレベルを逆に調べたい場合は
+                <Link href="/column/big3-total" className="text-orange-600 font-bold underline">
+                  BIG3合計◯kgはどのレベル？
+                </Link>
+                へ。
               </p>
             </section>
 
@@ -516,7 +612,7 @@ export default function StrengthStandardsPage() {
                 ※ 自己ベストは体重80kg台の頃の数字。体重比はその前提での概算です。
               </p>
               <p className="mt-3">
-                この3つを足すとBIG3合計は<span className="font-bold">400kg</span>。体重80kg台なので体重比は4.5〜5.0倍で、合計表では「中級者（×4.5）」をぎりぎり超えたあたりに入ります。<span className="font-bold">合計だけ見れば平均以上に見える</span>わけですが、次に書くとおり内訳はかなり歪んでいます。合計という数字の限界がそのまま出ている例なので、自分の数字と見比べてみてください。
+                この3つを足すとBIG3合計は<span className="font-bold">400kg</span>。体重80kg台なので体重比は4.5〜5.0倍で、合計表では「中級者（×4.5）」をぎりぎり超えたあたりに入ります。<span className="font-bold">合計だけ見れば中級者以上に見える</span>わけですが、次に書くとおり内訳はかなり歪んでいます。合計という数字の限界がそのまま出ている例なので、自分の数字と見比べてみてください。
               </p>
 
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
@@ -661,7 +757,7 @@ export default function StrengthStandardsPage() {
 
         <ShareButtons
           url="https://sakutore.jp/column/strength-standards"
-          title="BIG3の重量目安一覧｜ベンチプレス・スクワット・デッドリフトは体重の何倍が普通？"
+          title="BIG3の平均・重量目安一覧｜ベンチプレス・スクワット・デッドリフトは体重の何倍が普通？"
         />
         <Link
           href="/gear"
