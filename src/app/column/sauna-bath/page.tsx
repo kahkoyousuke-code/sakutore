@@ -17,7 +17,7 @@ export const metadata = pageMetadata({
 const DAY_FLOW = [
   { step: "1", name: "ウォームアップ", time: "軽く" },
   { step: "2", name: "筋トレ", time: "メイン" },
-  { step: "3", name: "水分をとる", time: "すぐ" },
+  { step: "3", name: "水分・息を整える", time: "すぐ" },
   { step: "4", name: "お風呂・サウナ", time: "任意" },
 ];
 
@@ -39,13 +39,13 @@ const TIMING_ROWS = [
     what: "サウナ",
     before: "×",
     after: "○",
-    note: "前は汗で水分が抜け、重い重量に集中しにくい。後は水分をとってから",
+    note: "前は、長く入るほど汗で水分が抜けて体もだるくなり、重い重量に向きにくい。後は水分をとってから",
   },
   {
     what: "水風呂・アイスバス",
     before: "－",
     after: "△",
-    note: "筋肉を大きくしたい時期に、筋トレ直後に毎回入るのは避けたい",
+    note: "前に入る理由は特にない。筋肉を大きくしたい時期は、筋トレ直後に毎回入るのは避けたい",
   },
 ];
 
@@ -65,7 +65,7 @@ export default function SaunaBathPage() {
                 結論から書くと、<span className="font-bold">サウナもお風呂も、入るなら筋トレの後</span>です。筋トレの前にサウナに入ると、汗で水分が抜けて体も疲れ、重い重量を扱うのに向きません。
               </p>
               <p className="mt-2">
-                気をつけたいのは、温めることより<span className="font-bold">冷やすこと</span>のほうです。筋肉を大きくしたい時期に、筋トレ直後の水風呂やアイスバスを習慣にすると、筋肉の増え方が小さくなったという研究があります。一方で、サウナやお風呂で温めることが筋肉の成長を妨げる、あるいは大きく助けるという、はっきりした結果はまだありません。
+                <span className="font-bold">筋肉の増え方</span>の面で気をつけたいのは、温めることより<span className="font-bold">冷やすこと</span>のほうです。筋肉を大きくしたい時期に、筋トレ直後の水風呂やアイスバスを習慣にすると、筋肉の増え方が小さくなったという研究があります。一方で、サウナやお風呂で温めることが筋肉の成長を妨げる、あるいは大きく助けるという、はっきりした結果はまだありません。
               </p>
             </section>
 
@@ -85,7 +85,7 @@ export default function SaunaBathPage() {
                 <Link href="/column/training-order" className="text-orange-600 font-bold underline">
                   筋トレの順番
                 </Link>
-                にまとめています。この記事は、その後に何をするかの話です。
+                にまとめています。この記事は、有酸素や静的ストレッチまで終えた<span className="font-bold">その後</span>に何をするかの話です。
               </p>
             </section>
 
@@ -146,7 +146,7 @@ export default function SaunaBathPage() {
               </h2>
               <ul className="space-y-2">
                 <li>
-                  ▸ <span className="font-bold">汗で水分が抜ける</span>：水分が足りないまま重い重量を扱うと、集中が続きにくく、ふらつきやすい
+                  ▸ <span className="font-bold">汗で水分が抜ける</span>：長く入るほど水分が抜ける。水分が足りないまま重い重量を扱うと、集中が続きにくく、ふらつきやすくなる
                 </li>
                 <li>
                   ▸ <span className="font-bold">体が疲れる</span>：熱さに耐えるだけで体力を使う。その日のメインのセットに使いたい力が先に減る
@@ -162,7 +162,7 @@ export default function SaunaBathPage() {
                 水風呂・アイスバスは筋肉を大きくしたい時期は控えめに
               </h2>
               <p>
-                筋トレ直後に冷たい水にしっかりつかる方法（アイスバス）は、スポーツ選手の疲労回復でよく使われます。ただ、<span className="font-bold">筋トレの後に毎回続けたグループは、続けなかったグループより筋肉の増え方が小さかった</span>という研究があり、複数の研究をまとめた分析でも同じ方向の結果が出ています。
+                筋トレ直後に冷たい水にしっかりつかる方法（アイスバス）は、スポーツ選手の疲労回復でよく使われます。ただ、<span className="font-bold">筋トレの後に毎回10分ほど冷水につかったグループは、軽く自転車をこいで回復したグループより、筋肉と筋力の伸びが小さかった</span>という研究があります（12週間・週2回の筋トレ）。複数の研究をまとめた分析でも同じ方向の結果が出ていますが、<span className="font-bold">差は小さめ</span>で、調べられたのは主に若い男性です。
               </p>
               <p className="mt-2">
                 研究で調べられているのは、冷たい水にしばらくつかる方法を、筋トレのたびに何週間も続けた場合です。サウナの合間に短く水風呂に入る場合にそのまま当てはまるかは、はっきりしていません。気になるなら、<span className="font-bold">筋トレの日は水風呂を短めにするか、筋トレをしない日に楽しむ</span>のが無難です。
@@ -178,10 +178,19 @@ export default function SaunaBathPage() {
               </h2>
               <ul className="space-y-2">
                 <li>
-                  ▸ <span className="font-bold">先に水分をとる</span>：筋トレで汗をかいた後なので、サウナの前後に水分をとる
+                  ▸ <span className="font-bold">先に水分をとる</span>：筋トレで汗をかいた後なので、サウナの前後に水分をとる。たくさん汗をかいた日は、水だけでなく塩分も
+                </li>
+                <li>
+                  ▸ <span className="font-bold">息と心拍が落ち着いてから入る</span>：追い込んだ直後は立ちくらみが起きやすい。汗が引いて呼吸が戻ってから入り、出るとき・立ち上がるときはゆっくり動く
                 </li>
                 <li>
                   ▸ <span className="font-bold">いつもより短めに</span>：筋トレの後は疲れているので、のぼせる前に出る。我慢比べをしない
+                </li>
+                <li>
+                  ▸ <span className="font-bold">水風呂にいきなり飛び込まない</span>：サウナから出たら、かけ水やシャワーで汗を流して体を慣らしてから入る。急に冷やすと血圧が大きく変わる
+                </li>
+                <li>
+                  ▸ <span className="font-bold">体調が悪い日・寝不足の日は入らない</span>：体調に合わせて、無理をしない
                 </li>
                 <li>
                   ▸ <span className="font-bold">お酒を飲んだ後は入らない</span>：飲酒後のサウナは、事故につながりやすい危険な入り方として注意が呼びかけられている
@@ -220,7 +229,7 @@ export default function SaunaBathPage() {
                 にも書いたとおり、回復が間に合うかどうかを決めているのは、部位の分け方と睡眠です。
                 <br />
                 <br />
-                サウナやお風呂は、その土台の上に乗せる「気持ちよく続けるための習慣」くらいに考えるのがちょうどいいと思います。<span className="font-bold">サウナで筋肉が増えるわけでも、減るわけでもない</span>。気をつけるのは、前に入らないことと、冷やしすぎないことの2つだけです。
+                サウナやお風呂は、その土台の上に乗せる「気持ちよく続けるための習慣」くらいに考えるのがちょうどいいと思います。<span className="font-bold">サウナで筋肉がはっきり増える・減るという結果は、今のところ出ていません</span>。筋肉のために気をつけるのは、前に入らないことと、筋トレ直後に冷やしすぎないことの2つ。あとは水分とお酒など、安全面の注意を守れば十分です。
               </p>
             </section>
 
@@ -232,7 +241,17 @@ export default function SaunaBathPage() {
                 筋肉痛のときにサウナやお風呂に入ってもいいですか？
               </h3>
               <p>
-                構いません。温めると動かしやすくなり、痛みを感じにくくなることはあります。ただし、筋肉痛が早く治るわけではありません。痛みが強いときや、腫れて熱を持っているときは無理に温めないでください。
+                構いません。温めると動かしやすくなり、痛みを感じにくくなることはあります。ただし、筋肉痛が早く治るわけではありません。痛みが強い、腫れて熱を持っているときは、筋肉痛ではなく怪我のこともあるので、温めずに休んでください。
+              </p>
+              <h3 className="font-bold text-gray-800 mt-5 mb-2">
+                筋トレの後、お風呂は何分空ければいいですか？
+              </h3>
+              <p>
+                決まった分数の根拠はありません。<span className="font-bold">息が整って汗が引いたら</span>入って大丈夫です。プロテインを飲むなら、お風呂の前に水分と一緒に飲んでおくと、風呂上がりに慌てずに済みます。飲むタイミングの目安は
+                <Link href="/column/protein" className="text-orange-600 font-bold underline">
+                  必要なタンパク質の量
+                </Link>
+                にあります。
               </p>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
                 筋トレ直後にシャワーを浴びてもいいですか？
@@ -254,6 +273,17 @@ export default function SaunaBathPage() {
 
             <section>
               <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
+                参考にした資料
+              </h2>
+              <ul className="space-y-1 text-xs text-gray-500">
+                <li>・Roberts LA ほか（2015）Journal of Physiology：筋トレ後の冷水浴と、12週間のトレーニングでの筋肉・筋力の変化</li>
+                <li>・Piñero A ほか（2024）European Journal of Sport Science：筋トレ後の冷水浴と筋肥大の研究をまとめた分析</li>
+                <li>・消費者庁（2024年6月）サウナ浴での事故に注意</li>
+              </ul>
+            </section>
+
+            <section>
+              <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 まとめ
               </h2>
               <ul className="space-y-2">
@@ -267,7 +297,7 @@ export default function SaunaBathPage() {
                   ▸ 筋肉を大きくしたい時期は、<span className="font-bold">筋トレ直後の水風呂・アイスバスを習慣にしない</span>
                 </li>
                 <li>
-                  ▸ お酒の後は入らない。ふらついたらすぐ出る。持病がある人は先に医師に相談
+                  ▸ 息が整ってから入る。水風呂にいきなり飛び込まない。お酒の後と体調が悪い日は入らない。持病がある人は先に医師に相談
                 </li>
                 <li>
                   ▸ 夜に筋トレする人は、お風呂を寝る1〜2時間前までに済ませる

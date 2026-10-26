@@ -95,6 +95,7 @@ const config = {
     { kw: "サウナ", path: "/column/sauna-bath" },
     { kw: "水風呂", path: "/column/sauna-bath" },
     { kw: "アイスバス", path: "/column/sauna-bath" },
+    { kw: "お風呂", path: "/column/sauna-bath" },
     { kw: "フックグリップ", path: "/column/deadlift-grip" },
     { kw: "オルタネイト", path: "/column/deadlift-grip" },
     { kw: "パワーグリップ", path: "/column/deadlift-grip" },
