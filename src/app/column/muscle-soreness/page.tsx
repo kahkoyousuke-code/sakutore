@@ -313,7 +313,11 @@ export default function MuscleSorenessPage() {
                 <Link href="/column/protein" className="text-orange-600 font-bold underline">
                   必要なタンパク質の量
                 </Link>
-                に書いています。
+                に書いています。入浴やサウナに入るタイミングは
+                <Link href="/column/sauna-bath" className="text-orange-600 font-bold underline">
+                  筋トレ後のサウナ・お風呂はいい？
+                </Link>
+                にまとめました。
               </p>
               <p className="mt-2">
                 なお、運動後の静的ストレッチで筋肉痛を予防できるという説は、調べると裏づけが弱い部類に入ります。だからといって無駄ではなく、<span className="font-bold">狙いが「予防」ではなく「柔軟性と可動域」なだけ</span>です（

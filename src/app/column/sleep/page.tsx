@@ -188,7 +188,11 @@ export default function SleepPage() {
                 <Link href="/column/alcohol" className="text-orange-500 font-bold hover:text-orange-600 underline">
                   筋トレとお酒の付き合い方
                 </Link>
-                に詳しく書いています。
+                に詳しく書いています。筋トレの後にサウナやお風呂に入るときの注意は
+                <Link href="/column/sauna-bath" className="text-orange-600 font-bold underline">
+                  筋トレ後のサウナ・お風呂はいい？
+                </Link>
+                にあります。
               </p>
             </section>
 
