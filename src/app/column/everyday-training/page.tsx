@@ -248,7 +248,7 @@ export default function EverydayTrainingPage() {
                 休むと戻ってしまう気がする——これはよく分かります。ただ、<span className="font-bold">数日休んだくらいで筋肉は落ちません。</span>むしろ回復しきってから再開したほうが、扱える重量は上がります。
               </p>
               <p className="mt-2">
-                どうしても毎日何かしたい場合は、<span className="font-bold">休養日に「筋トレ以外」を置く</span>のがおすすめです。歩く、ストレッチ、風呂で温める。血流が増えて回復が進むので、何もしないより良い選択になります（
+                どうしても毎日何かしたい場合は、<span className="font-bold">休養日に「筋トレ以外」を置く</span>のがおすすめです。歩く、ストレッチ、風呂で温める。体がほぐれて動かしやすくなるので、何もしないより良い選択になります（
                 <Link href="/column/stretch" className="text-orange-600 font-bold underline">
                   ストレッチの効果とやり方
                 </Link>
