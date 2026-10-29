@@ -181,7 +181,11 @@ export default function DumbbellWeightPage() {
                 サイドレイズは肩の横の筋肉だけを、てこの長い姿勢で動かす種目です。<span className="font-bold">ベンチプレスを120kg挙げる人でも、サイドレイズは片手10kg前後</span>で組みます。重くすると体を振って持ち上げることになり、狙った筋肉から負荷が逃げます。
               </p>
               <p className="mt-2">
-                つまり<span className="font-bold">「軽いダンベルは初心者用」ではありません</span>。軽い重さでしか成立しない種目があるだけです。ここを誤解して2kgのダンベルを捨ててしまう人がいますが、サイドレイズやリアレイズでは何年やってもその近辺を使います。
+                つまり<span className="font-bold">「軽いダンベルは初心者用」ではありません</span>。軽い重さでしか成立しない種目があるだけです。ここを誤解して2kgのダンベルを捨ててしまう人がいますが、サイドレイズやリアレイズでは何年やってもその近辺を使います。肩の種目の組み方は
+                <Link href="/column/shoulder-training" className="text-orange-600 font-bold underline">
+                  肩を大きくする筋トレ
+                </Link>
+                にまとめました。
               </p>
             </section>
 
