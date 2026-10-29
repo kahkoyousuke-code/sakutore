@@ -254,7 +254,11 @@ export default function ArmTrainingPage() {
                 私はフィジーク志向で上半身を優先してきました。ベンチプレスの自己ベストは120kgです。ここで腕について正直に書くと、<span className="font-bold">腕が育った時期は「腕トレを増やした時期」ではありません</span>でした。ベンチプレスとディップスの重量が伸びた時期です。
                 <br />
                 <br />
-                三頭筋は<span className="font-bold">胸を押す動きに必ず参加する</span>ので、胸が強くなると勝手に太くなります。逆に、腕の日だけを熱心にやっていた時期は、疲れてベンチの重量が落ち、結果として腕も止まりました。<span className="font-bold">腕は、腕だけを見ていると伸びにくい部位</span>だと思っています。
+                三頭筋は<span className="font-bold">胸を押す動きに必ず参加する</span>ので、胸が強くなると勝手に太くなります。逆に、腕の日だけを熱心にやっていた時期は、疲れてベンチの重量が落ち、結果として腕も止まりました。<span className="font-bold">腕は、腕だけを見ていると伸びにくい部位</span>だと思っています。押す種目で一緒に使われるのは肩の前も同じで、肩の考え方は
+                <Link href="/column/shoulder-training" className="text-orange-600 font-bold underline">
+                  肩を大きくする筋トレ
+                </Link>
+                に書きました。
               </p>
             </section>
 

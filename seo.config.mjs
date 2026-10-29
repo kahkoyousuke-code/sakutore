@@ -143,6 +143,10 @@ const config = {
     { kw: "いつから", path: "/column/effect-timeline" },
     { kw: "リバウンド", path: "/column/diet-rebound-muscle" },
     { kw: "時間帯", path: "/column/women-training-timing" },
+    { kw: "肩トレ", path: "/column/shoulder-training" },
+    { kw: "肩幅", path: "/column/shoulder-training" },
+    { kw: "サイドレイズ", path: "/column/shoulder-training" },
+    { kw: "ショルダープレス", path: "/column/shoulder-training" },
   ],
 
   /** 記事に加えて、sitemap に載せている固定ページも URL 検査にかける。 */
