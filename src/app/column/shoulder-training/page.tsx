@@ -24,7 +24,7 @@ import { recoveryFor } from "@/lib/recoveryStandards";
 export const metadata = pageMetadata({
   title: "ショルダープレス・サイドレイズは何kg？体重別の重さの目安と、肩を大きくする肩トレメニュー - サクトレ",
   description:
-    "肩の前側はベンチプレスやショルダープレスでもう使われています。肩幅を広く見せるのは横、厚みを出すのは後ろ。サイドレイズとリアレイズを優先する組み方と、ショルダープレス・サイドレイズの重さを体重別・男女別にまとめました。",
+    "肩の前側はベンチプレスやショルダープレスですでに使われています。肩幅を広く見せるのは横、厚みを出すのは後ろ。サイドレイズとリアレイズ（またはフェイスプル）を優先する組み方と、ショルダープレス・サイドレイズの重さを体重別・男女別にまとめました。",
   path: "/column/shoulder-training",
 });
 
@@ -37,13 +37,13 @@ const PARTS = [
   },
   {
     name: "横",
-    role: "肩の幅をつくる",
+    role: "肩幅をつくる",
     exercises: ["サイドレイズ", "ショルダープレス"],
     main: true,
   },
   {
     name: "後ろ",
-    role: "横から見た厚み",
+    role: "厚みをつくる",
     exercises: ["リアレイズ", "フェイスプル"],
   },
 ];
@@ -84,10 +84,10 @@ export default function ShoulderTrainingPage() {
                 肩の筋肉（三角筋）は、<span className="font-bold">前・横・後ろの3つの部分</span>に分かれています。肩を大きく見せたいなら、優先するのは前ではなく<span className="font-bold">横と後ろ</span>です。
               </p>
               <p className="mt-2">
-                前の部分は、ベンチプレスやショルダープレスのような押す種目で毎回使われています。胸の日をきちんとやっている人なら、前はもうかなり使われています。前だけを狙う種目（フロントレイズ）を足す必要は、まずありません。足りなくなりやすいのは、押す種目では届きにくい横と、目に入らないぶん忘れられやすい後ろです。
+                前の部分は、ベンチプレスやショルダープレスのような押す種目で毎回使われています。胸の日をきちんとやっている人なら、前はすでに十分使われていることが多いです。前だけを狙う種目（フロントレイズ）を足す必要は、ほとんどの場合ありません。足りなくなりやすいのは、押す種目だけでは刺激が入りにくい横と、鏡に映らないぶん忘れられやすい後ろです。
               </p>
               <p className="mt-2">
-                重さの目安を先に書くと、体重{SAMPLE_WEIGHT}kgの男性なら、ダンベルショルダープレスは片手{sample("shoulder")}、サイドレイズは片手{sample("lateral")}です（下に体重別・男女別の表があります）。
+                重さの目安を先にお伝えすると、体重{SAMPLE_WEIGHT}kgの男性なら、ダンベルショルダープレスは片手{sample("shoulder")}、サイドレイズは片手{sample("lateral")}です（初心者〜中級者の目安。下に体重別・男女別の表があります）。
               </p>
             </section>
 
@@ -98,12 +98,12 @@ export default function ShoulderTrainingPage() {
               <DiagramFigure
                 title="肩幅を広く見せるのは「横」"
                 label={`肩の筋肉の3つの部分。${PARTS.map((p) => `${p.name}は${p.role}、主な種目は${p.exercises.join("と")}`).join("。")}。優先するのは横。`}
-                caption="ショルダープレスは前と横の両方に効きます。後ろは背中の日のロウでも使われますが、肩の種目として狙うならリアレイズやフェイスプルを足します。"
+                caption="ショルダープレスは前と横の両方に効きます。後ろは背中の日のロウ（引く種目）でも使われますが、肩の種目として狙うならリアレイズやフェイスプルを足しましょう。"
               >
                 <DeltoidPartsDiagram parts={PARTS} />
               </DiagramFigure>
               <p className="mt-3">
-                横は、正面から見た肩の張り出しをつくり、<span className="font-bold">肩幅を広く見せる</span>部分です（骨格の幅そのものは筋トレでは変わりません）。後ろはいちばん忘れられやすく、前ばかり育つと、横から見た肩の丸みが前に偏って見えやすくなります。
+                横は、正面から見た肩の張り出しをつくり、<span className="font-bold">肩幅を広く見せる</span>部分です（骨格の幅そのものは筋トレでは変わりません）。後ろは3つのうちいちばん忘れられやすい部分です。前ばかりが育つと、横から見た肩の丸みが前に偏って見えやすくなります。
               </p>
             </section>
 
@@ -113,7 +113,7 @@ export default function ShoulderTrainingPage() {
               </h2>
               <ul className="space-y-2">
                 <li>
-                  ▸ <span className="font-bold">1種目目：ショルダープレス</span>。前と横の両方に効く、肩でいちばん重さを扱える種目。{threeByEight.label}（{threeByEight.reps}回×{threeByEight.sets}セット）くらいで重さを伸ばす
+                  ▸ <span className="font-bold">1種目目：ショルダープレス</span>。前と横の両方に効き、肩の種目でいちばん重さを扱える種目。{threeByEight.label}（{threeByEight.reps}回×{threeByEight.sets}セット）くらいで重さを伸ばす
                 </li>
                 <li>
                   ▸ <span className="font-bold">2種目目：サイドレイズ</span>。肩幅をつくる横の種目。{threeByTen.label}（{threeByTen.reps}回×{threeByTen.sets}セット）で、重さより効かせることを優先する
@@ -127,11 +127,11 @@ export default function ShoulderTrainingPage() {
                 <Link href="/column/sets-and-reps" className="text-orange-600 font-bold underline">
                   5×5・3×10の重量の決め方
                 </Link>
-                と同じです。サイドレイズのように軽い種目は{WEIGHT_STEP_KG}kgずつだと上げ幅が大きすぎるので、同じ記事のよくある質問のとおり、回数を1回ずつ増やしてから上げてください。肩の横を特に伸ばしたいなら、
+                と同じです。サイドレイズのように軽い種目は、{WEIGHT_STEP_KG}kgずつ上げると上げ幅が大きすぎることがあります。同じ記事の「よくある質問」のとおり、重さを変えずに回数を1回ずつ増やしてから重さを上げてください。肩の横を特に鍛えたいなら、
                 <Link href="/column/training-order" className="text-orange-600 font-bold underline">
                   筋トレの順番
                 </Link>
-                の「原則を破っていい場合」のとおり、サイドレイズを先にやっても構いません。
+                の「原則を破っていい場合」にあるとおり、サイドレイズを先にやっても構いません。
               </p>
             </section>
 
@@ -202,14 +202,14 @@ export default function ShoulderTrainingPage() {
                 </div>
               ))}
               <p className="mt-2 text-xs text-gray-500">
-                ※ ショルダープレスは座って行う前提です。マシンは機種によって表示の重さが違うので、この表は当てはまりません。ジムにない重さは、軽いほうを選んでください。数字は
+                ※ ショルダープレスは座って行う前提です。マシンは機種によって表示の重さが違うので、この表は当てはまりません。表の重さのダンベルがジムにないときは、近い重さのうち軽いほうを選んでください。数字は
                 <Link href="/column/dumbbell-weight" className="text-orange-600 font-bold underline">
                   ダンベルは何kgを買えばいい？
                 </Link>
                 の表と同じ基準から出しています。
               </p>
               <p className="mt-3">
-                サイドレイズがショルダープレスよりずっと軽いのは正常です。<span className="font-bold">重くすると体を振って持ち上げることになり、肩の横から負荷が逃げます</span>。
+                サイドレイズがショルダープレスよりずっと軽いのは正常です。<span className="font-bold">重くしすぎると体を振って持ち上げがちになり、肩の横から負荷が逃げてしまいます</span>。
               </p>
               <p className="mt-2">
                 表の重さは<span className="font-bold">10回で限界が来る重さ</span>です。ショルダープレスを{threeByEight.label}で組むなら、表の重さがそのまま使えます（{threeByEight.reps}回＋{SET_RESERVE_REPS}回の余裕）。サイドレイズを{threeByTen.label}で組むなら、表より一段軽くして、1セット目の10回目で「あと{SET_RESERVE_REPS}回できる」余裕が残る重さにしてください。
@@ -227,7 +227,7 @@ export default function ShoulderTrainingPage() {
                   ))}
                 </ul>
                 <p className="mt-3">
-                  首の付け根（僧帽筋）が先に疲れるなら、肩がすくんでいます。上の1つめのとおり、肩を下げてから挙げてください。手の甲は真上か、親指側がほんの少し上を向く向きで。小指を大きく上にひねると、肩の前が詰まって痛めやすくなります。
+                  首の付け根（僧帽筋）が先に疲れるなら、肩がすくんでいます。上の1つめのコツのとおり、肩を下げてから上げてください。手の甲は真上に向けるか、親指側がほんの少し上になる向きにしてください。小指側を大きく上にひねると、肩の前が詰まって痛めやすくなります。
                 </p>
               </section>
             )}
@@ -244,7 +244,7 @@ export default function ShoulderTrainingPage() {
                 にも書いた「弱点を先頭に置く」例外を、ずっと使ってきました。
                 <br />
                 <br />
-                肩でそれをやるなら、先頭に置く候補はサイドレイズです。前の部分は胸の日にもう使っているので、フロントレイズのように前だけを狙う種目は足さなくて構いません。<span className="font-bold">肩の日は「横と後ろの日」</span>と考えると、種目を選ぶときに迷いません。
+                肩でこの例外を使うなら、先頭に置く候補はサイドレイズです。前の部分は胸の日にすでに使っているので、フロントレイズのように前だけを狙う種目は足さなくて構いません。<span className="font-bold">肩の日は「横と後ろの日」</span>と考えると、種目を選ぶときに迷いにくくなります。
               </p>
             </section>
 
@@ -256,7 +256,7 @@ export default function ShoulderTrainingPage() {
                 肩トレは週に何回やればいいですか？
               </h3>
               <p>
-                週1〜2回が目安です。肩は{small.part}に入り、回復の目安は{small.hours}、次に同じ部位をやるまで{small.interval}です。ただし{small.note}。胸の日の翌日に肩の日を入れると、前の部分が回復しきっていないことがあります。組み方は
+                週1〜2回が目安です。肩は{small.part}に入り、回復の目安は{small.hours}、次に同じ部位をやるまでの間隔は{small.interval}です。ただし、{small.note}してください。胸の日の翌日に肩の日を入れると、前の部分が回復しきっていないことがあります。組み方は
                 <Link href="/column/split-routine" className="text-orange-600 font-bold underline">
                   分割法の早見表
                 </Link>
@@ -270,13 +270,13 @@ export default function ShoulderTrainingPage() {
                 ショルダープレスはバーベルとダンベル、どちらがいいですか？
               </h3>
               <p>
-                どちらでも構いません。バーベルは重さを伸ばしやすく、ダンベルは左右を別々に動かすぶん、手の位置を肩に合わせやすい利点があります。肩に違和感が出やすい人は、ダンベルのほうが動かし方を調整しやすいです。
+                どちらでも構いません。バーベルには重さを伸ばしやすい利点が、ダンベルには左右を別々に動かせるぶん手の位置を肩に合わせやすい利点があります。肩に違和感が出やすい人は、ダンベルのほうが動かし方を調整しやすいです。
               </p>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
                 肩トレで肩が痛くなります。
               </h3>
               <p>
-                動かすと鋭く痛む、セット中に痛みが強くなるときは、その日は肩の種目を中止してください。違和感程度なら、重さを下げる・下ろす深さを浅くする・サイドレイズを肩の高さより上げない、で様子を見ます。痛みが数日続く、夜に痛んで目が覚める、腕が上がらない、しびれるといった場合は、整形外科を受診してください。
+                動かすと鋭く痛むときや、セット中に痛みが強くなるときは、その日は肩の種目を中止してください。違和感程度なら、重さを下げる、下ろす深さを浅くする、サイドレイズは肩の高さより上げない、といった調整をして様子を見てください。痛みが数日続く、夜に痛んで目が覚める、腕が上がらない、しびれるといった場合は、整形外科を受診してください。
               </p>
             </section>
 
@@ -286,7 +286,7 @@ export default function ShoulderTrainingPage() {
               </h2>
               <ul className="space-y-2">
                 <li>
-                  ▸ 肩は<span className="font-bold">前・横・後ろ</span>の3つ。前は押す種目でもう使われている
+                  ▸ 肩は<span className="font-bold">前・横・後ろ</span>の3つ。前は押す種目ですでに使われている
                 </li>
                 <li>
                   ▸ 肩幅を広く見せるのは<span className="font-bold">横</span>、横から見た厚みは<span className="font-bold">後ろ</span>
