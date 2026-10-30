@@ -27,9 +27,20 @@ export type LiftId = "bench" | "squat" | "deadlift";
 export const MEN_WEIGHTS = [50, 60, 70, 80, 90, 100];
 export const WOMEN_WEIGHTS = [45, 50, 55, 60, 65];
 
+/** How long the step up to the next level typically takes. */
+export const LEVEL_STEP_PERIOD: Record<Level, string | null> = {
+  未経験: "約6ヶ月〜1年",
+  初心者: "約1〜2年",
+  中級者: "約3〜5年",
+  上級者: "数年〜（到達者はごく一部）",
+  エリート: null,
+};
+
+// Notes that mention time must read from LEVEL_STEP_PERIOD, so a page that
+// shows both the note and the period table never gives two answers.
 export const benchRows: Row[] = [
   { level: "未経験", ratio: 0.5, note: "はじめてバーベルを握る段階" },
-  { level: "初心者", ratio: 0.75, note: "数ヶ月続ければ届く" },
+  { level: "初心者", ratio: 0.75, note: `${LEVEL_STEP_PERIOD.未経験}続ければ届く` },
   { level: "中級者", ratio: 1.0, note: "体重と同じ重さ。最初の大きな壁" },
   { level: "上級者", ratio: 1.25, note: "ジムで一目置かれるライン" },
   { level: "エリート", ratio: 1.5, note: "競技志向の領域" },
@@ -54,7 +65,7 @@ export const deadliftRows: Row[] = [
 // Sum of the three lifts at the same level. Quoted as "BIG3 total".
 export const totalRows: Row[] = [
   { level: "未経験", ratio: 2.25, note: "3種目とも始めたばかり" },
-  { level: "初心者", ratio: 3.5, note: "半年〜1年で届く人が多い" },
+  { level: "初心者", ratio: 3.5, note: `${LEVEL_STEP_PERIOD.未経験}で届く人が多い` },
   { level: "中級者", ratio: 4.5, note: "BIG3合計の最初の目標地点" },
   { level: "上級者", ratio: 5.75, note: "3種目とも高い水準で揃っている" },
   { level: "エリート", ratio: 7.0, note: "競技志向の領域" },
@@ -113,15 +124,6 @@ export const LEVEL_EXPERIENCE: Record<Level, string> = {
   中級者: "2〜5年",
   上級者: "5年以上",
   エリート: "競技志向",
-};
-
-/** How long the step up to the next level typically takes. */
-export const LEVEL_STEP_PERIOD: Record<Level, string | null> = {
-  未経験: "約6ヶ月〜1年",
-  初心者: "約1〜2年",
-  中級者: "約3〜5年",
-  上級者: "数年〜（到達者はごく一部）",
-  エリート: null,
 };
 
 /**

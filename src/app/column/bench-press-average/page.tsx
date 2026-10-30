@@ -200,7 +200,7 @@ export default function BenchPressAveragePage() {
                 </table>
               </div>
               <p className="mt-3">
-                ここで気づいてほしいのは、<span className="font-bold">1レベル上がるのに必要な重量は毎回同じ（体重×0.25＝70kgの人なら+17.5kg）なのに、かかる期間だけが伸びていく</span>ことです。未経験から初心者までは半年〜1年、初心者から中級者は1〜2年、中級者から上級者は3〜5年。
+                ここで気づいてほしいのは、<span className="font-bold">1レベル上がるのに必要な重量は毎回同じ（体重×0.25＝70kgの人なら+17.5kg）なのに、かかる期間だけが伸びていく</span>ことです。未経験から初心者までは{LEVEL_STEP_PERIOD["未経験"]}、初心者から中級者は{LEVEL_STEP_PERIOD["初心者"]}、中級者から上級者は{LEVEL_STEP_PERIOD["中級者"]}。
               </p>
               <p className="mt-2">
                 <span className="font-bold">同じ距離を進むのに時間がかかるようになるだけで、あなたのペースが落ちたわけではありません。</span>停滞していると感じたときに、まず思い出してほしい事実です。

@@ -402,7 +402,7 @@ export default function DeadliftAveragePage() {
                 </table>
               </div>
               <p className="mt-3">
-                1レベル上がるのに必要な重量は、体重{EXAMPLE_WEIGHT}kgなら毎回<span className="font-bold">+35kg</span>（体重×0.5）で一定です。それなのに、かかる期間だけが半年〜1年 → 1〜2年 → 3〜5年と伸びていきます。<span className="font-bold">同じ距離を進むのに時間がかかるようになるだけで、あなたのペースが落ちたわけではありません。</span>
+                1レベル上がるのに必要な重量は、体重{EXAMPLE_WEIGHT}kgなら毎回<span className="font-bold">+35kg</span>（体重×0.5）で一定です。それなのに、かかる期間だけが{LEVEL_STEP_PERIOD["未経験"]} → {LEVEL_STEP_PERIOD["初心者"]} → {LEVEL_STEP_PERIOD["中級者"]}と伸びていきます。<span className="font-bold">同じ距離を進むのに時間がかかるようになるだけで、あなたのペースが落ちたわけではありません。</span>
               </p>
               <p className="mt-2">
                 ただしデッドリフトは、最初の1段目（未経験→初心者）だけが例外的に速いです。ここを数ヶ月で通過できたからといって、次も同じペースで行けるとは思わないほうが、あとで心が折れません。
