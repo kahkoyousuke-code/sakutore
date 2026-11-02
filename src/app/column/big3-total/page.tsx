@@ -294,7 +294,7 @@ export default function Big3TotalPage() {
                 女性の合計の目安はありますか？
               </h3>
               <p>
-                この表は男性の体重比です。女性は種目ごとに男性との差が違う（ベンチで最も差が出て、デッドリフトでは差が小さい）ので、<span className="font-bold">合計でまとめると実態からずれます。</span>女性は種目別の表を見てください（
+                この表は男性の体重比です。女性は種目ごとに男性との差が違う（ベンチで最も差が出て、スクワットでは差が小さい）ので、<span className="font-bold">合計でまとめると実態からずれます。</span>女性は種目別の表を見てください（
                 <Link href="/weight-checker" className="text-orange-600 font-bold underline">
                   重量チェッカー
                 </Link>

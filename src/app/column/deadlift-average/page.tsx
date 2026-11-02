@@ -414,7 +414,7 @@ export default function DeadliftAveragePage() {
                 女性のデッドリフトの目安
               </h2>
               <p>
-                女性の場合は別の表で見ます。デッドリフトは、<span className="font-bold">女性が最初に「自分の体重を超える重量」を扱えるようになる種目</span>です。初心者の目安が体重×1.0なので、体重50kgなら50kg。バー（20kg）に左右15kgずつ足せば届きます。
+                女性の場合は別の表で見ます。デッドリフトは、<span className="font-bold">女性が最初に「自分の体重と同じ重さ」に届きやすい種目</span>です。初心者の目安が体重×1.0なので、体重50kgなら50kg。バー（20kg）に左右15kgずつ足せば届きます。
               </p>
               <DeadliftByWeightTable rows={womenDeadliftRows} weights={WOMEN_WEIGHTS} />
               <LevelLegend rows={womenDeadliftRows} />
@@ -624,7 +624,7 @@ export default function DeadliftAveragePage() {
                   ▸ 出典のある「全国平均」は存在しない。比べるなら<span className="font-bold">体重比</span>で見る。
                 </li>
                 <li>
-                  ▸ 男性は<span className="font-bold">体重×2.0が中級者</span>。女性はその約65%（中級者×1.3）で、BIG3で最も男女差が小さい。
+                  ▸ 男性は<span className="font-bold">体重×2.0が中級者</span>。女性はその約65%（中級者×1.3）で、ベンチ（約60%）とスクワット（約73%）の中間。
                 </li>
                 <li>
                   ▸ 比べる前に<span className="font-bold">条件を揃える</span>。スモウ・トラップバー・ラックプル、そしてプレートの直径でも数字は変わる。

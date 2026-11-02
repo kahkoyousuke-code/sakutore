@@ -361,7 +361,7 @@ export default function Big3BalancePage() {
                 。男性より<span className="font-bold">下半身側の比率が高い</span>のが特徴です。
               </p>
               <p className="mt-2">
-                上半身の筋量の差が大きく、下半身はそれほど差がないためです。<span className="font-bold">女性がベンチだけ伸びないのは普通のこと</span>で、弱点ではありません。女性の体重別の目安は
+                上半身の筋量は男女差が大きく、下半身は上半身ほど差が開かない傾向があるためです。<span className="font-bold">女性のベンチだけ比率が低く出るのは普通のこと</span>で、弱点ではありません。女性の体重別の目安は
                 <Link href="/weight-checker" className="text-orange-600 font-bold underline">
                   適正重量チェッカー
                 </Link>
