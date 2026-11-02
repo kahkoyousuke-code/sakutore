@@ -520,7 +520,14 @@ export default function StrengthStandardsPage() {
               <LiftTable rows={womenDeadliftRows} weights={WOMEN_WEIGHTS} />
               <LevelLegend rows={womenDeadliftRows} />
 
-              <p className="mt-4 text-xs text-gray-500">
+              <p className="mt-4">
+                3種目を体重ごとに1枚の表で見たい人は
+                <Link href="/column/women-big3" className="text-orange-600 font-bold underline">
+                  女性のBIG3平均は何kg？体重別の早見表
+                </Link>
+                にまとめています。
+              </p>
+              <p className="mt-2 text-xs text-gray-500">
                 ※ ベンチプレスのバーベルは、シャフトだけで20kgあります。体重50kgの女性にとっては<span className="font-bold">シャフト単体が体重×0.4＝すでに初心者の目安</span>なので、最初はスミスマシンやダンベルから始めて問題ありません。数字が出ないのは筋力不足ではなく、器具の下限がそこにあるためです。ダンベルで始めた人は、片手の重さが何レベルかを
                 <Link href="/column/dumbbell-press-level" className="text-orange-600 font-bold underline">
                   ダンベルプレスのレベル早見表
