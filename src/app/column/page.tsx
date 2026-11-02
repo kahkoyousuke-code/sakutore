@@ -336,6 +336,20 @@ const categories = [
   },
 ];
 
+// "Start here" picks: one entry point per reader type. Titles come from `categories`.
+const startHere = [
+  { href: "/column/beginner-guide", label: "これから筋トレを始める人" },
+  { href: "/column/strength-standards", label: "今の重量がどのレベルか知りたい人" },
+  { href: "/column/women-muscle-slim", label: "女性・ダイエット目的の人" },
+];
+
+const allArticles = categories.flatMap((category) => category.articles);
+const startHereArticles = startHere.map((pick) => {
+  const article = allArticles.find((a) => a.href === pick.href);
+  if (!article) throw new Error(`startHere: ${pick.href} is not in categories`);
+  return { ...pick, title: article.title };
+});
+
 export default function ColumnPage() {
   return (
     <main className="min-h-screen flex flex-col items-center px-4 py-8">
@@ -347,6 +361,34 @@ export default function ColumnPage() {
           <p className="text-sm text-gray-500 mb-6">
             筋トレに役立つ知識をわかりやすく解説します。
           </p>
+
+          <section className="bg-orange-50 border border-orange-200 rounded-xl p-4 mb-6">
+            <h2 className="text-sm font-bold text-orange-600 mb-3">
+              📌 まずはこの3本
+            </h2>
+            <ol className="space-y-2">
+              {startHereArticles.map((article, i) => (
+                <li key={article.href}>
+                  <Link
+                    href={article.href}
+                    className="flex gap-3 bg-white rounded-lg p-3 hover:bg-orange-100 transition-colors"
+                  >
+                    <span className="flex-none w-6 h-6 rounded-full bg-orange-500 text-white text-xs font-bold flex items-center justify-center">
+                      {i + 1}
+                    </span>
+                    <span>
+                      <span className="block text-xs text-orange-600 mb-0.5">
+                        {article.label}
+                      </span>
+                      <span className="block font-bold text-gray-800 text-sm">
+                        {article.title}
+                      </span>
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ol>
+          </section>
 
           <div className="space-y-6">
             {categories.map((category) => (
