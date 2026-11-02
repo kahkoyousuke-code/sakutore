@@ -426,7 +426,11 @@ export default function DeadliftAveragePage() {
                 <Link href="/column/women-muscle-slim" className="text-orange-600 font-bold underline">
                   女性が筋トレしても太くならない理由
                 </Link>
-                に書きました。
+                に書きました。ベンチプレス・スクワットと並べた体重別の表は
+                <Link href="/column/women-big3" className="text-orange-600 font-bold underline">
+                  女性のBIG3平均は何kg？
+                </Link>
+                にあります。
               </p>
             </section>
 

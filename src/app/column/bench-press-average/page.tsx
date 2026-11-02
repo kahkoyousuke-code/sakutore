@@ -232,7 +232,11 @@ export default function BenchPressAveragePage() {
                 もうひとつ、女性が知っておくべき現実があります。<span className="font-bold">シャフト単体が20kg</span>あるので、体重50kgの女性にとってはバーだけで既に体重×0.4＝「初心者」の水準です。つまり<span className="font-bold">バーを10回挙げられる時点で、スタート地点はクリアしている</span>。ここを知らずに「バーしか挙がらない」と落ち込む人がとても多いので、最初に書いておきます。
               </p>
               <p className="mt-2">
-                女性の筋トレ全般については
+                スクワット・デッドリフトと並べた体重別の表は
+                <Link href="/column/women-big3" className="text-orange-600 font-bold underline">
+                  女性のBIG3平均は何kg？
+                </Link>
+                にあります。女性の筋トレ全般については
                 <Link href="/column/women-muscle-slim" className="text-orange-600 font-bold underline">
                   女性が筋トレしても太くならない理由
                 </Link>
