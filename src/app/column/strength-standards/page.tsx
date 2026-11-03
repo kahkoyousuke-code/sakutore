@@ -5,6 +5,8 @@ import { AUTHOR } from "@/lib/author";
 import AuthorBox from "@/components/AuthorBox";
 import SisterArticleCard from "@/components/SisterArticleCard";
 import GearPick from "@/components/GearPick";
+import DiagramFigure from "@/components/diagrams/DiagramFigure";
+import LevelLadderChart from "@/components/diagrams/LevelLadderChart";
 import {
   MEN_WEIGHTS,
   WOMEN_WEIGHTS,
@@ -292,6 +294,24 @@ export default function StrengthStandardsPage() {
                 </Link>
                 へ。
               </p>
+              <DiagramFigure
+                title="レベルが1つ上がるごとに、必要な体重比はこう伸びる（男性）"
+                label={`男性のBIG3の体重比をレベル別に並べた折れ線グラフ。${AVG_LEVEL}はベンチ×${formatRatio(avgMen.bench)}、スクワット×${formatRatio(avgMen.squat)}、デッドリフト×${formatRatio(avgMen.deadlift)}。1段ごとに伸びる体重比の幅は大きく変わらないが、届くまでのトレ歴は上のレベルほど長くなる。`}
+                caption={`※ レベル名の下は、そのレベルに届くトレ歴の目安です。${AVG_LEVEL}（色付きの列）が、平均の代わりに使う物差しです。`}
+              >
+                <LevelLadderChart
+                  levels={levelsFor("male").map((level) => ({
+                    level,
+                    experience: LEVEL_EXPERIENCE[level],
+                  }))}
+                  series={[
+                    { name: "ベンチ", ratios: benchRows.map((r) => r.ratio), labels: benchRows.map((r) => `×${formatRatio(r.ratio)}`), color: "#6b7280", dashed: true },
+                    { name: "スクワット", ratios: squatRows.map((r) => r.ratio), labels: squatRows.map((r) => `×${formatRatio(r.ratio)}`), color: "#fb923c" },
+                    { name: "デッド", ratios: deadliftRows.map((r) => r.ratio), labels: deadliftRows.map((r) => `×${formatRatio(r.ratio)}`), color: "#c2410c" },
+                  ]}
+                  focusLevel={AVG_LEVEL}
+                />
+              </DiagramFigure>
             </section>
 
             <section className="bg-orange-50 border border-orange-100 rounded-xl p-4">

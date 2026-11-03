@@ -2,6 +2,8 @@ import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
+import DiagramFigure from "@/components/diagrams/DiagramFigure";
+import ProgressionStairs from "@/components/diagrams/ProgressionStairs";
 import {
   SET_SCHEMES,
   SET_RESERVE_REPS,
@@ -22,6 +24,8 @@ export const metadata = pageMetadata({
 // 早見表の1RM（kg）。BIG3でよく出る帯を20kg刻みで並べる。
 const ONE_RM_ROWS = [40, 60, 80, 100, 120, 140];
 
+// 3×10で重さを上げた直後に戻す回数。本文と図の両方がこれを読む。
+const RESTART_REPS = 8;
 // 筆者が始めた頃のベンチ（/column/beginner-guide「60kgを2〜3回がやっと」の少ないほう）。
 const AUTHOR_START = { weight: 60, reps: 2 };
 // 筆者のベンチの自己ベスト（beginner-guide / big3-balance と同じ）。
@@ -197,9 +201,21 @@ export default function SetsAndRepsPage() {
                   ▸ <span className="font-bold">{fiveByFive.label}</span>：{fiveByFive.sets}セットとも{fiveByFive.reps}回できたら{WEIGHT_STEP_KG}kg上げます
                 </li>
                 <li>
-                  ▸ <span className="font-bold">{threeByTen.label}</span>：{WEIGHT_STEP_KG}kg上げると10回が続かないことが多いので、上げた重さでは8回×3セットから始めます。全セットそろったら次は9回、その次は10回と1回ずつ増やし、10回×3セットがそろったら、また{WEIGHT_STEP_KG}kg上げます
+                  ▸ <span className="font-bold">{threeByTen.label}</span>：{WEIGHT_STEP_KG}kg上げると10回が続かないことが多いので、上げた重さでは{RESTART_REPS}回×{threeByTen.sets}セットから始めます。全セットそろったら次は{RESTART_REPS + 1}回、その次は{RESTART_REPS + 2}回と1回ずつ増やし、{threeByTen.reps}回×{threeByTen.sets}セットがそろったら、また{WEIGHT_STEP_KG}kg上げます
                 </li>
               </ul>
+              <DiagramFigure
+                title={`${threeByTen.label}の上げ方：回数を1回ずつ増やしてから、重さを上げる`}
+                label={`${threeByTen.label}で重さを上げる流れの階段図。上げた重さでは${RESTART_REPS}回×${threeByTen.sets}セットから始め、全セットそろうたびに1回ずつ増やし、${threeByTen.reps}回×${threeByTen.sets}セットがそろったら${WEIGHT_STEP_KG}kg上げて${RESTART_REPS}回に戻る。1セットでも届かなければ同じ段にとどまる。`}
+                caption={`※ 重さを上げた直後（${RESTART_REPS}回×${threeByTen.sets}セット）からの流れです。1段が、全セットそろった1回分のトレーニングにあたります。`}
+              >
+                <ProgressionStairs
+                  startReps={RESTART_REPS}
+                  goalReps={threeByTen.reps}
+                  sets={threeByTen.sets}
+                  stepKg={WEIGHT_STEP_KG}
+                />
+              </DiagramFigure>
               <p className="mt-3">
                 始めたばかりのうちは、ほぼ毎回上げられることが多いです。続けるうちに全セットそろう日の間隔が空いていき、数週間に1回のペースになるのが普通です。初心者記事の「2〜4週間ごとに少しずつ重量を増やす」は、この段階の目安です。<span className="font-bold">上げるタイミングは日数ではなく「全セットそろったか」で決めてください。</span>
               </p>

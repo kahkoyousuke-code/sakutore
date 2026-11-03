@@ -3,6 +3,8 @@ import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
 import GearPick from "@/components/GearPick";
+import DiagramFigure from "@/components/diagrams/DiagramFigure";
+import LiftLevelScale from "@/components/diagrams/LiftLevelScale";
 import {
   BELT_START_RATIO,
   LEVEL_EXPERIENCE,
@@ -12,6 +14,7 @@ import {
   benchRows,
   deadliftRows,
   formatRatio,
+  levelForRatio,
   squatRows,
   womenDeadliftRows,
   type Row,
@@ -85,6 +88,8 @@ const MIDDLE_LINE = [
   { name: "スクワット", rows: squatRows },
   { name: "デッドリフト", rows: deadliftRows },
 ];
+// The weight in the "is 100kg good?" question the section answers.
+const COMPARE_KG = 100;
 const middleRatio = (rows: Row[]) =>
   rows.find((row) => row.level === "中級者")?.ratio ?? 0;
 
@@ -339,6 +344,23 @@ export default function DeadliftAveragePage() {
               <p className="mt-3">
                 体重{EXAMPLE_WEIGHT}kgの人の100kgは、<span className="font-bold">ベンチプレスなら上級者（87.5kg）を超え、デッドリフトなら初心者（105kg）にも届きません</span>。同じ100kgでここまで評価が変わります。種目をまたいで「◯kgはすごい／すごくない」と語れない理由が、この表に全部出ています。
               </p>
+              <DiagramFigure
+                title={`体重${EXAMPLE_WEIGHT}kgの人の「${COMPARE_KG}kg」は、種目ごとにこの位置`}
+                label={`体重${EXAMPLE_WEIGHT}kgの人のベンチプレス・スクワット・デッドリフトのレベル帯を横棒で並べ、${COMPARE_KG}kgの位置に縦線を引いた図。同じ${COMPARE_KG}kgが、${MIDDLE_LINE.map((lift) => `${lift.name}では${levelForRatio(lift.rows, COMPARE_KG / EXAMPLE_WEIGHT) ?? "未経験の手前"}`).join("、")}の帯に入る。`}
+                caption={`※ 帯の左端が各レベルの入口（体重${EXAMPLE_WEIGHT}kg×体重比）。縦線が${COMPARE_KG}kg、灰色は未経験ラインの手前です。`}
+              >
+                <LiftLevelScale
+                  lifts={MIDDLE_LINE.map((lift) => ({
+                    name: lift.name,
+                    landing: levelForRatio(lift.rows, COMPARE_KG / EXAMPLE_WEIGHT) ?? "未経験の手前",
+                    levels: lift.rows.map((row) => ({
+                      level: row.level,
+                      kg: EXAMPLE_WEIGHT * row.ratio,
+                    })),
+                  }))}
+                  markerKg={COMPARE_KG}
+                />
+              </DiagramFigure>
               <p className="mt-2">
                 3種目まとめた早見表と合計（トータル）の目安は
                 <Link href="/column/strength-standards" className="text-orange-600 font-bold underline">

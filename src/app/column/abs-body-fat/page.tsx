@@ -3,6 +3,8 @@ import ShareButtons from "@/components/ShareButtons";
 import RizapCta from "@/components/RizapCta";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
+import DiagramFigure from "@/components/diagrams/DiagramFigure";
+import BodyCompositionBars from "@/components/diagrams/BodyCompositionBars";
 import {
   FAT_KCAL_PER_KG,
   daysToLoseFat,
@@ -167,6 +169,20 @@ export default function AbsBodyFatPage() {
               <p className="mt-2">
                 筋肉を落とさず脂肪だけを減らすと、この{EXAMPLE_WEIGHT - (EXAMPLE_WEIGHT * EXAMPLE_PERCENT) / 100}kgは変わりません。すると目標の体脂肪率ごとに、落とすべき脂肪の量が一意に決まります。
               </p>
+              <DiagramFigure
+                title={`体重${EXAMPLE_WEIGHT}kg・体脂肪率${EXAMPLE_PERCENT}%の人が、体脂肪率を下げると`}
+                label={`体重${EXAMPLE_WEIGHT}kg・体脂肪率${EXAMPLE_PERCENT}%の人の体を、脂肪以外と脂肪に分けた横棒グラフ。脂肪以外は変わらず、体脂肪率が下がるほど脂肪の部分だけが短くなる。12%では脂肪を${fatLossToReachPercent(EXAMPLE_WEIGHT, EXAMPLE_PERCENT, 12)}kg落とす。`}
+                caption="※ 筋肉を落とさず、脂肪だけが減った場合の理論値です。"
+              >
+                <BodyCompositionBars
+                  weightKg={EXAMPLE_WEIGHT}
+                  currentPercent={EXAMPLE_PERCENT}
+                  rows={[EXAMPLE_PERCENT, ...TARGETS].map((percent) => ({
+                    percent,
+                    lossKg: fatLossToReachPercent(EXAMPLE_WEIGHT, EXAMPLE_PERCENT, percent),
+                  }))}
+                />
+              </DiagramFigure>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
                 <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>

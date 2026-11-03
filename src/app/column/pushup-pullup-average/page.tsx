@@ -2,6 +2,8 @@ import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
+import DiagramFigure from "@/components/diagrams/DiagramFigure";
+import PushupPostures from "@/components/diagrams/PushupPostures";
 import {
   formatLoadPercent,
   formatLoadWeight,
@@ -14,6 +16,7 @@ import {
   pushupRepRows,
   womenPullupRepRows,
   womenPushupRepRows,
+  type PushupId,
   type RepRow,
 } from "@/lib/bodyweightStandards";
 import { benchRows, formatRatio } from "@/lib/strengthStandards";
@@ -279,6 +282,20 @@ export default function PushupPullupAveragePage() {
               <p className="mt-2">
                 筋肉が増えるのは負荷が上がったときです。回数が増えたのは、その重さに慣れた（＝持久力がついた）ということで、別の能力が伸びています。どちらも価値はありますが、<span className="font-bold">目的が筋肥大なら、回数ではなく負荷を上げる</span>ほうへ進んでください。
               </p>
+              <DiagramFigure
+                title="腕立ては、体の傾きと支点の位置で負荷が変わる"
+                label={`腕立て伏せ4種類を横から描いた図。軽い順に、${pushupLoadRows.map((row) => `${row.name}${formatLoadPercent(row)}`).join("、")}。膝をつくと支点が近づいて軽くなり、手より足が高いほど手にかかる体重の割合が増える。`}
+                caption={`※ %は手にかかる荷重が体重の何%か、kgは体重${EXAMPLE_WEIGHT}kgの人の場合です。`}
+              >
+                <PushupPostures
+                  postures={pushupLoadRows.map((row) => ({
+                    id: row.id as PushupId,
+                    name: row.name,
+                    load: formatLoadPercent(row),
+                    loadKg: formatLoadWeight(row, EXAMPLE_WEIGHT),
+                  }))}
+                />
+              </DiagramFigure>
               <p className="mt-2">
                 進め方の順番はこうなります。
               </p>

@@ -3,6 +3,8 @@ import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
 import SisterArticleCard from "@/components/SisterArticleCard";
+import DiagramFigure from "@/components/diagrams/DiagramFigure";
+import ProteinDayBar from "@/components/diagrams/ProteinDayBar";
 
 export const metadata = pageMetadata({
   title: "筋トレに必要なタンパク質の量と摂り方｜1日112gの献立例つき - サクトレ",
@@ -10,6 +12,18 @@ export const metadata = pageMetadata({
     "体重別の必要量と高タンパク食材の一覧表に加え、1日112gを実際に組んだ献立例を掲載。目標量が「意識しないと絶対に届かない量」であることが具体的にわかります。",
   path: "/column/protein",
 });
+
+// One day of meals for a 70kg person. The table and the diagram both read this.
+const MEALS = [
+  { timing: "朝", menu: "卵2個＋納豆1パック＋ギリシャヨーグルト100g", grams: 29 },
+  { timing: "昼", menu: "鶏むね肉150g", grams: 35 },
+  { timing: "間食", menu: "プロテイン1杯", grams: 20 },
+  { timing: "夜", menu: "鮭1切れ＋木綿豆腐半丁", grams: 26 },
+];
+const MEALS_TOTAL = MEALS.reduce((sum, meal) => sum + meal.grams, 0);
+// 70kg x 1.6g/kg, the lower end of the range quoted in this article.
+const EXAMPLE_WEIGHT = 70;
+const DAILY_TARGET_GRAMS = Math.round(EXAMPLE_WEIGHT * 1.6);
 
 export default function ProteinPage() {
   return (
@@ -144,34 +158,28 @@ export default function ProteinPage() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">朝</td>
-                      <td className="border border-gray-200 px-2 py-2">卵2個＋納豆1パック＋ギリシャヨーグルト100g</td>
-                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800">約29g</td>
-                    </tr>
-                    <tr className="bg-gray-50">
-                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">昼</td>
-                      <td className="border border-gray-200 px-2 py-2">鶏むね肉150g</td>
-                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800">約35g</td>
-                    </tr>
-                    <tr>
-                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">間食</td>
-                      <td className="border border-gray-200 px-2 py-2">プロテイン1杯</td>
-                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800">約20g</td>
-                    </tr>
-                    <tr className="bg-gray-50">
-                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">夜</td>
-                      <td className="border border-gray-200 px-2 py-2">鮭1切れ＋木綿豆腐半丁</td>
-                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800">約26g</td>
-                    </tr>
+                    {MEALS.map((meal, idx) => (
+                      <tr key={meal.timing} className={idx % 2 === 1 ? "bg-gray-50" : undefined}>
+                        <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">{meal.timing}</td>
+                        <td className="border border-gray-200 px-2 py-2">{meal.menu}</td>
+                        <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800">約{meal.grams}g</td>
+                      </tr>
+                    ))}
                     <tr className="bg-orange-50">
                       <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700">合計</td>
                       <td className="border border-gray-200 px-2 py-2">＋ごはん・パンからも少し加算される</td>
-                      <td className="border border-gray-200 px-2 py-2 font-bold text-orange-600">約110g</td>
+                      <td className="border border-gray-200 px-2 py-2 font-bold text-orange-600">約{MEALS_TOTAL}g</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
+              <DiagramFigure
+                title={`献立例を目標${DAILY_TARGET_GRAMS}gと比べると`}
+                label={`1日の献立例のタンパク質を食事ごとに積み上げた横棒グラフ。4食とも食べると約${MEALS_TOTAL}gで目標${DAILY_TARGET_GRAMS}gにほぼ届くが、朝を抜くと約${MEALS_TOTAL - MEALS[0].grams}gで、目標まで${DAILY_TARGET_GRAMS - (MEALS_TOTAL - MEALS[0].grams)}g足りない。`}
+                caption="※ ごはん・パンから加算されるぶんは含めていません。"
+              >
+                <ProteinDayBar meals={MEALS} targetGrams={DAILY_TARGET_GRAMS} skippedTiming={MEALS[0].timing} />
+              </DiagramFigure>
 
               <p className="mt-3">
                 この献立を見て「毎日これは無理だ」と思ったなら、それが正常な感想です。<strong className="text-gray-800">タンパク質の目標量は、意識しないと絶対に届かない量</strong>だということが、組んでみるとわかります。特に朝食を抜いている人は、それだけで約29g——1日の目標の4分の1を落としていることになります。

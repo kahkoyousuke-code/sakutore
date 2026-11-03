@@ -2,6 +2,8 @@ import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
+import DiagramFigure from "@/components/diagrams/DiagramFigure";
+import BedtimeCountdown from "@/components/diagrams/BedtimeCountdown";
 
 export const metadata = pageMetadata({
   title: "筋トレと睡眠の関係｜就寝までの逆算スケジュール表つき - サクトレ",
@@ -9,6 +11,19 @@ export const metadata = pageMetadata({
     "成長ホルモンの7〜8割は睡眠中に分泌されます。トレーニング量別の必要睡眠時間と、カフェイン・食事・入浴・スマホをいつやめるかを逆算した表を掲載。睡眠が確保できないなら頻度を上げない理由も解説します。",
   path: "/column/sleep",
 });
+
+// Countdown to bedtime. The table and the diagram both read this.
+// fromHours / toHours: hours before bed; a range means "somewhere in here".
+// The timings match the body text below (alcohol 3-4h, screens 1-2h).
+// short: label used in the diagram, where a colored bar means "not doing it".
+const BEDTIME_STEPS = [
+  { when: "6時間前", item: "カフェイン", short: "カフェイン", reason: "半減期が約5〜7時間あり、夜まで残る", fromHours: 6, toHours: 6 },
+  { when: "3〜4時間前", item: "お酒（寝酒も含む）", short: "お酒", reason: "寝つきは良くなるが、深い睡眠が減る", fromHours: 4, toHours: 3 },
+  { when: "3時間前", item: "食事", short: "食事", reason: "消化中は深い睡眠に入りにくい", fromHours: 3, toHours: 3 },
+  { when: "2〜3時間前", item: "激しい運動", short: "激しい運動", reason: "交感神経が優位のままになる", fromHours: 3, toHours: 2 },
+  { when: "1〜2時間前", item: "入浴を済ませる", short: "入浴", reason: "体温が下がるときに眠気が来る", fromHours: 2, toHours: 1 },
+  { when: "1〜2時間前", item: "スマホ・PC", short: "スマホ・PC", reason: "光と情報の刺激で寝つきが悪くなる", fromHours: 2, toHours: 1 },
+];
 
 export default function SleepPage() {
   return (
@@ -149,42 +164,28 @@ export default function SleepPage() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">6時間前</td>
-                      <td className="border border-gray-200 px-2 py-2">カフェイン</td>
-                      <td className="border border-gray-200 px-2 py-2">半減期が約5〜6時間あり夜まで残る</td>
-                    </tr>
-                    <tr className="bg-gray-50">
-                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">3時間前</td>
-                      <td className="border border-gray-200 px-2 py-2">食事</td>
-                      <td className="border border-gray-200 px-2 py-2">消化中は深い睡眠に入りにくい</td>
-                    </tr>
-                    <tr>
-                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">2〜3時間前</td>
-                      <td className="border border-gray-200 px-2 py-2">激しい運動</td>
-                      <td className="border border-gray-200 px-2 py-2">交感神経が優位のままになる</td>
-                    </tr>
-                    <tr className="bg-gray-50">
-                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">1〜2時間前</td>
-                      <td className="border border-gray-200 px-2 py-2">入浴を済ませる</td>
-                      <td className="border border-gray-200 px-2 py-2">体温が下がるときに眠気が来る</td>
-                    </tr>
-                    <tr>
-                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">1時間前</td>
-                      <td className="border border-gray-200 px-2 py-2">スマホ・PC</td>
-                      <td className="border border-gray-200 px-2 py-2">光と情報の刺激で寝つきが悪くなる</td>
-                    </tr>
-                    <tr className="bg-gray-50">
-                      <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">寝る直前</td>
-                      <td className="border border-gray-200 px-2 py-2">寝酒</td>
-                      <td className="border border-gray-200 px-2 py-2">寝つきは良くなるが深い睡眠が減る</td>
-                    </tr>
+                    {BEDTIME_STEPS.map((step, idx) => (
+                      <tr key={step.item} className={idx % 2 === 1 ? "bg-gray-50" : undefined}>
+                        <td className="border border-gray-200 px-2 py-2 font-bold text-gray-700 whitespace-nowrap">{step.when}</td>
+                        <td className="border border-gray-200 px-2 py-2">{step.item}</td>
+                        <td className="border border-gray-200 px-2 py-2">{step.reason}</td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
+              <DiagramFigure
+                title="就寝までの「やめる時間」を並べると"
+                label={`就寝までの時間を横軸にしたタイムライン。${BEDTIME_STEPS.map((step) => `${step.short}は${step.when}まで`).join("、")}を目安に切り上げる。いちばん早くやめるのはカフェイン。`}
+                caption="※ 色がついている時間帯は、それをしない時間です。薄い色は「このあたりから」という幅を表しています。"
+              >
+                <BedtimeCountdown
+                  items={BEDTIME_STEPS.map((step) => ({ ...step, item: step.short }))}
+                />
+              </DiagramFigure>
 
               <p className="mt-3">
-                全部やる必要はありません。<strong className="text-gray-800">効果が大きいのは上の2つ（カフェインと食事）</strong>です。夕方のコーヒーをやめるだけで寝つきが変わる人はかなり多いので、まずそこからで十分です。最後の寝酒については
+                全部やる必要はありません。<strong className="text-gray-800">効果が大きいのはカフェインと食事</strong>です。夕方のコーヒーをやめるだけで寝つきが変わる人はかなり多いので、まずそこからで十分です。お酒については
                 <Link href="/column/alcohol" className="text-orange-500 font-bold hover:text-orange-600 underline">
                   筋トレとお酒の付き合い方
                 </Link>

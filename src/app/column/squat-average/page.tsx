@@ -4,6 +4,8 @@ import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
 import SisterArticleCard from "@/components/SisterArticleCard";
 import GearPick from "@/components/GearPick";
+import DiagramFigure from "@/components/diagrams/DiagramFigure";
+import SquatDepthFigures from "@/components/diagrams/SquatDepthFigures";
 import {
   BELT_START_RATIO,
   LEVEL_EXPERIENCE,
@@ -76,6 +78,9 @@ const VARIANTS = [
     note: "まったく別の数字。持ち込まない",
   },
 ];
+
+// Depth variants drawn in the diagram, shallowest first. Machines are table-only.
+const DEPTH_ORDER = ["クォーター", "ハーフ", "パラレル", "フルスクワット"];
 
 /**
  * Body weight as rows, level as columns.
@@ -198,6 +203,22 @@ export default function SquatAveragePage() {
               <p>
                 ジムで「スクワット140kg」と言う人と「100kgで止まっている」人がいたとき、その差が実力差ではなく<span className="font-bold">深さの差</span>だったというのは本当によくある話です。先にここを揃えます。
               </p>
+              <DiagramFigure
+                title="深さ4段階を横から見ると"
+                label="スクワットの深さ4段階を横から描いた図。浅い順にクォーター、ハーフ、パラレル、フル。点線は膝の高さで、パラレルは股関節が膝と同じ高さまで下りた状態。この記事の表の基準はパラレル。"
+                caption="※ 点線は膝の高さ、オレンジの点は股関節。股関節が点線まで下りたところがパラレル（太ももが床と平行）です。「比較」は、この記事の表とそのまま比べられるか（◎＝比べられる、△＝上ぶれする、×＝比べられない）です。"
+              >
+                <SquatDepthFigures
+                  depths={DEPTH_ORDER.map((name) => {
+                    const v = VARIANTS.find((row) => row.name === name)!;
+                    return {
+                      name: v.name.replace("スクワット", ""),
+                      compare: v.compare,
+                      standard: v.name === "パラレル",
+                    };
+                  })}
+                />
+              </DiagramFigure>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
                 <table className="w-full text-xs md:text-sm border-collapse">
                   <thead>
