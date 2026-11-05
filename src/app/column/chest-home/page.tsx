@@ -170,7 +170,11 @@ export default function ChestHomePage() {
                 <Link href="/column/dumbbell-weight" className="text-orange-600 font-bold underline">
                   ダンベルは何kgを買えばいい？
                 </Link>
-                に、種目別の目安表として出しました（胸だけが目的なら、腕立てのほうが重いという話も書いています）。
+                に、種目別の目安表として出しました（胸だけが目的なら、腕立てのほうが重いという話も書いています）。背中を自宅で鍛える方法は
+                <Link href="/column/home-back" className="text-orange-600 font-bold underline">
+                  自宅で背中を鍛える筋トレ
+                </Link>
+                にまとめました。
               </p>
 
               <h3 className="font-bold text-gray-800 mt-4 mb-2">

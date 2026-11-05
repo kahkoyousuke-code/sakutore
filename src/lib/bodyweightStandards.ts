@@ -156,3 +156,41 @@ export const womenPullupRepRows: RepRow[] = [
 
 /** 0回を「—」ではなく「0回」と出す。できないことも位置のひとつなので隠さない。 */
 export const formatReps = (reps: number) => `${reps}回`;
+
+/**
+ * 懸垂1回までの5段階と、次に進む条件。
+ * /column/pullup-progression の表と図、/column/home-back の斜め懸垂の回数がここを読む。
+ * もとは pullup-progression に直書きされていたものを移した。
+ */
+export const pullupSteps = [
+  {
+    step: "1",
+    name: "ぶら下がり",
+    goal: "30秒",
+    detail: "まず握力と肩が体重に耐えられるかを作る。肩をすくめない",
+  },
+  {
+    step: "2",
+    name: "斜め懸垂",
+    goal: "10回×3セット",
+    detail: "公園の低い鉄棒などで。体を倒すほど重くなる",
+  },
+  {
+    step: "3",
+    name: "ネガティブ",
+    goal: "5秒×5回",
+    detail: "ジャンプで上まで行き、下ろすのに5秒かける。ここが一番効く",
+  },
+  {
+    step: "4",
+    name: "バンド補助",
+    goal: "5回×3セット",
+    detail: "太いゴムバンドを足にかけて軽くする。薄いバンドへ替えて負荷を戻す",
+  },
+  {
+    step: "5",
+    name: "懸垂",
+    goal: "1回",
+    detail: "反動なしで、あごがバーを越えれば1回",
+  },
+];

@@ -233,7 +233,11 @@ export default function BackBenefitsPage() {
                 <div className="flex items-start gap-2">
                   <span className="text-orange-500 font-bold">▸</span>
                   <p>
-                    <span className="font-bold">ワンハンドロウ</span>：片手でダンベルを持ち、ベンチに手をついて引き上げます。広背筋に強い刺激を与えられます。
+                    <span className="font-bold">ワンハンドロウ</span>：片手でダンベルを持ち、ベンチに手をついて引き上げます。広背筋に強い刺激を与えられます。自宅でできる背中の種目と重さの目安は
+                    <Link href="/column/home-back" className="text-orange-600 font-bold underline">
+                      自宅で背中を鍛える筋トレ
+                    </Link>
+                    にまとめました。
                   </p>
                 </div>
                 <div className="flex items-start gap-2">

@@ -9,6 +9,7 @@ import {
   formatReps,
   latPulldownTarget,
   pullupLoadRow,
+  pullupSteps as STEPS,
   pullupRepRows,
   womenPullupRepRows,
 } from "@/lib/bodyweightStandards";
@@ -25,38 +26,6 @@ export const metadata = pageMetadata({
 const BODY_WEIGHTS = [50, 60, 70, 80, 90];
 
 // 懸垂に届くまでの段階。負荷を下げた種目から順に上げていく。
-const STEPS = [
-  {
-    step: "1",
-    name: "ぶら下がり",
-    goal: "30秒",
-    detail: "まず握力と肩が体重に耐えられるかを作る。肩をすくめない",
-  },
-  {
-    step: "2",
-    name: "斜め懸垂",
-    goal: "10回×3セット",
-    detail: "低い鉄棒やテーブルの下で。体を倒すほど重くなる",
-  },
-  {
-    step: "3",
-    name: "ネガティブ",
-    goal: "5秒×5回",
-    detail: "ジャンプで上まで行き、下ろすのに5秒かける。ここが一番効く",
-  },
-  {
-    step: "4",
-    name: "バンド補助",
-    goal: "5回×3セット",
-    detail: "太いゴムバンドを足にかけて軽くする。薄いバンドへ替えて負荷を戻す",
-  },
-  {
-    step: "5",
-    name: "懸垂",
-    goal: "1回",
-    detail: "反動なしで、あごがバーを越えれば1回",
-  },
-];
 
 // 各段階にかかる期間の目安（週2回、背中の日を作れた場合）。
 const PERIOD_ROWS = [
@@ -307,7 +276,11 @@ export default function PullupProgressionPage() {
                 斜め懸垂はどこでやればいいですか？
               </h3>
               <p>
-                公園の低い鉄棒か、ジムのスミスマシンのバーを腰の高さに設定して行います。自宅なら丈夫なテーブルの下に潜って端を握る方法もあります。<span className="font-bold">体を倒すほど重くなる</span>ので、角度で負荷を調整してください。
+                公園の低い鉄棒か、ジムのスミスマシンのバーを腰の高さに設定して行います。家具での代用は倒れる危険があるので勧めません（
+                <Link href="/column/home-back" className="text-orange-600 font-bold underline">
+                  自宅で背中を鍛える筋トレ
+                </Link>
+                ）。<span className="font-bold">体を倒すほど重くなる</span>ので、角度で負荷を調整してください。
               </p>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
                 握力が先に限界になります。
@@ -327,7 +300,11 @@ export default function PullupProgressionPage() {
                 <Link href="/column/dumbbell-weight" className="text-orange-600 font-bold underline">
                   ダンベルは何kgを買えばいい？
                 </Link>
-                ）。
+                ）。自宅でできる背中の種目の組み方は
+                <Link href="/column/home-back" className="text-orange-600 font-bold underline">
+                  自宅で背中を鍛える筋トレ
+                </Link>
+                にあります。
               </p>
             </section>
 
