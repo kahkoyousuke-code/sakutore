@@ -9,6 +9,7 @@ import {
   formatReps,
   latPulldownTarget,
   pullupLoadRow,
+  pullupSteps as STEPS,
   pullupRepRows,
   womenPullupRepRows,
 } from "@/lib/bodyweightStandards";
@@ -25,38 +26,6 @@ export const metadata = pageMetadata({
 const BODY_WEIGHTS = [50, 60, 70, 80, 90];
 
 // 懸垂に届くまでの段階。負荷を下げた種目から順に上げていく。
-const STEPS = [
-  {
-    step: "1",
-    name: "ぶら下がり",
-    goal: "30秒",
-    detail: "まず握力と肩が体重に耐えられるかを作る。肩をすくめない",
-  },
-  {
-    step: "2",
-    name: "斜め懸垂",
-    goal: "10回×3セット",
-    detail: "低い鉄棒やテーブルの下で。体を倒すほど重くなる",
-  },
-  {
-    step: "3",
-    name: "ネガティブ",
-    goal: "5秒×5回",
-    detail: "ジャンプで上まで行き、下ろすのに5秒かける。ここが一番効く",
-  },
-  {
-    step: "4",
-    name: "バンド補助",
-    goal: "5回×3セット",
-    detail: "太いゴムバンドを足にかけて軽くする。薄いバンドへ替えて負荷を戻す",
-  },
-  {
-    step: "5",
-    name: "懸垂",
-    goal: "1回",
-    detail: "反動なしで、あごがバーを越えれば1回",
-  },
-];
 
 // 各段階にかかる期間の目安（週2回、背中の日を作れた場合）。
 const PERIOD_ROWS = [
