@@ -276,7 +276,11 @@ export default function PullupProgressionPage() {
                 斜め懸垂はどこでやればいいですか？
               </h3>
               <p>
-                公園の低い鉄棒か、ジムのスミスマシンのバーを腰の高さに設定して行います。自宅なら丈夫なテーブルの下に潜って端を握る方法もあります。<span className="font-bold">体を倒すほど重くなる</span>ので、角度で負荷を調整してください。
+                公園の低い鉄棒か、ジムのスミスマシンのバーを腰の高さに設定して行います。家具での代用は倒れる危険があるので勧めません（
+                <Link href="/column/home-back" className="text-orange-600 font-bold underline">
+                  自宅で背中を鍛える筋トレ
+                </Link>
+                ）。<span className="font-bold">体を倒すほど重くなる</span>ので、角度で負荷を調整してください。
               </p>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
                 握力が先に限界になります。

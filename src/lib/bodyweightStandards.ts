@@ -173,7 +173,7 @@ export const pullupSteps = [
     step: "2",
     name: "斜め懸垂",
     goal: "10回×3セット",
-    detail: "低い鉄棒やテーブルの下で。体を倒すほど重くなる",
+    detail: "公園の低い鉄棒などで。体を倒すほど重くなる",
   },
   {
     step: "3",
