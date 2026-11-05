@@ -296,7 +296,11 @@ export default function PullupProgressionPage() {
                 <Link href="/column/dumbbell-weight" className="text-orange-600 font-bold underline">
                   ダンベルは何kgを買えばいい？
                 </Link>
-                ）。
+                ）。自宅でできる背中の種目の組み方は
+                <Link href="/column/home-back" className="text-orange-600 font-bold underline">
+                  自宅で背中を鍛える筋トレ
+                </Link>
+                にあります。
               </p>
             </section>
 
