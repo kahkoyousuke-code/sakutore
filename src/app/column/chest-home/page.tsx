@@ -7,6 +7,7 @@ import {
   pushupLoadRows,
 } from "@/lib/bodyweightStandards";
 import AuthorBox from "@/components/AuthorBox";
+import GearPick from "@/components/GearPick";
 
 export const metadata = pageMetadata({
   title: "自宅でできる胸トレ完全ガイド｜腕立ては何kg挙げているのか - サクトレ",
@@ -176,6 +177,11 @@ export default function ChestHomePage() {
                 </Link>
                 にまとめました。
               </p>
+              <GearPick
+                placement="chest-home-adjustable"
+                lead="可変式ダンベルの候補です。何kgのタイプを選ぶかは、上の記事の目安表で決めてください。"
+                productIds={["flexbell20", "flexbell32", "barwing"]}
+              />
 
               <h3 className="font-bold text-gray-800 mt-4 mb-2">
                 1. ダンベルフライ

@@ -3,6 +3,7 @@ import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
 import SisterArticleCard from "@/components/SisterArticleCard";
+import GearPick from "@/components/GearPick";
 
 export const metadata = pageMetadata({
   title: "プロテインの選び方ガイド｜種類別比較表と必要量の早見表 - サクトレ",
@@ -332,6 +333,11 @@ export default function ProteinGuidePage() {
                   </li>
                 </ul>
               </div>
+              <GearPick
+                placement="protein-guide-whey-soy"
+                lead="筆者が10年以上飲んでいるのは、コスパのいいWPCのエクスプロージョンです。乳製品を避けたい人や減量中の人は、ソイも候補に入れてください。"
+                productIds={["explosionWhey", "savasSoy"]}
+              />
             </section>
 
             <section>

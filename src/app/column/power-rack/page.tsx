@@ -2,6 +2,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
+import GearPick from "@/components/GearPick";
 import DiagramFigure from "@/components/diagrams/DiagramFigure";
 import PowerRackHeights from "@/components/diagrams/PowerRackHeights";
 import { SET_SCHEMES } from "@/lib/strengthStandards";
@@ -257,6 +258,12 @@ export default function PowerRackPage() {
                 <br />毎回限界まで行く必要はありません。ただ、重さを上げた日に「潰れても大丈夫」と思えるかどうかで、最後の1回に踏み込めるかが変わります。高さを合わせる数十秒は、重量を伸ばすための準備の一部だと考えてください。
               </p>
             </section>
+
+            <GearPick
+              placement="power-rack-belt-wrap"
+              lead="ラックで重いスクワットやベンチプレスをする日に、筆者がジムへ持っていくのがベルトとリストラップです。どちらもALLOUTを使っています。"
+              productIds={["alloutNylonBelt", "alloutWristWrap"]}
+            />
 
             <section>
               <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
