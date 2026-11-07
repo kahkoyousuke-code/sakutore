@@ -16,6 +16,7 @@ export function pageMetadata({
   path,
   type = "article",
   noindex = false,
+  image = OG_IMAGE,
 }: {
   title: string;
   description: string;
@@ -27,6 +28,8 @@ export function pageMetadata({
    * follow は残す。
    */
   noindex?: boolean;
+  /** OGP image URL. Defaults to the site-wide card. */
+  image?: string;
 }): Metadata {
   const url = `${SITE_URL}${path}`;
   return {
@@ -41,7 +44,7 @@ export function pageMetadata({
       description,
       url,
       siteName: SITE_NAME,
-      images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: title }],
+      images: [{ url: image, width: 1200, height: 630, alt: title }],
       locale: "ja_JP",
       type,
     },
@@ -49,7 +52,7 @@ export function pageMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [OG_IMAGE],
+      images: [image],
     },
   };
 }

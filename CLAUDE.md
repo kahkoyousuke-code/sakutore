@@ -133,6 +133,10 @@ SEOレポート用（どちらも任意・`npm run seo:fetch` だけが使う。
 外部リンク集（`/videos/*`）とUIのみで読み物の実体がないページ（`/chat`, `/result`）は `pageMetadata({ noindex: true })`。
 **サイトマップにも載せない**（`sitemap.ts` の静的リストに入れない）。申告と実態を一致させること。
 
+`/big3-result`（BIG3レベル診断の結果をXでシェアするための受け皿。結果ごとにURLが無限にできる）も同じ扱い。
+判定は `src/lib/big3Diagnosis.ts` の `diagnoseBig3()` 1つで、`/weight-checker` の診断欄・`/big3-result`・カード画像 `/api/og/big3` が全部これを呼ぶ。
+シェアは GA4 の `big3_share` イベント（method: x / copy）で数える。
+
 ## コミット
 
 - 1コミット1目的。無関係な変更を混ぜない

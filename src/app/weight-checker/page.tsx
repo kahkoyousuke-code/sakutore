@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Big3LevelCheck from "@/components/Big3LevelCheck";
 import ShareButtons from "@/components/ShareButtons";
 import WeightCheckerGuide from "@/components/guides/WeightCheckerGuide";
 import WeightCheckerTables from "@/components/WeightCheckerTables";
@@ -298,6 +299,8 @@ export default function WeightCheckerPage() {
             </Link>
           </>
         )}
+
+        <Big3LevelCheck />
 
         <div className="bg-white rounded-2xl shadow-lg p-6">
           <h2 className="font-bold text-orange-500 mb-4">体重比の考え方</h2>
