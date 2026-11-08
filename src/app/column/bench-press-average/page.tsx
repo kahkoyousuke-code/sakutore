@@ -152,6 +152,11 @@ export default function BenchPressAveragePage() {
               <p className="mt-2">
                 逆に言えば、<span className="font-bold">体重の0.75倍（体重70kgなら約53kg）に届いていれば、もう「初心者」の枠</span>です。40kgや50kgで止まっていることを気にしている人は多いのですが、体重比で見ると思っているより悪くない位置にいることがよくあります。
               </p>
+              <SisterArticleCard
+                placement="bench-press-average-creatine-upper"
+                lead="筆者自身、サプリで数字が動いた経験はありません。伸ばす中心はトレーニングと食事です。それでも試してみるなら、研究の蓄積が厚いクレアチンから、量と続け方を決めてからにしてください。姉妹サイトで整理しています。"
+                articleIds={["creatineGuide"]}
+              />
             </section>
 
             <section>
@@ -327,11 +332,6 @@ export default function BenchPressAveragePage() {
               <p className="mt-2">
                 理由は単純で、<span className="font-bold">補助者がいないと、人は限界の手前で止めてしまう</span>からです。潰れたら戻せないという恐怖があるうちは、本当の限界には触れられません。独学で停滞しているなら、種目やメニューを変える前に「見てもらえる環境」を疑ってみてください。器具や知識より、人が効きます。
               </p>
-              <SisterArticleCard
-                placement="bench-press-average-creatine"
-                lead="サプリで数字が動いた経験は、筆者にはありません。それでも試してみるなら、研究の蓄積が厚いクレアチンから、量と続け方を決めてからにしてください。姉妹サイトで整理しています。"
-                articleIds={["creatineGuide"]}
-              />
               <p className="mt-2">
                 なお、BIG3全体で見ると筆者はスクワットも同じ120kg（体重比×1.4）で、<span className="font-bold">上半身に明らかに偏っています</span>。3種目のバランスまで含めた話は
                 <Link href="/column/strength-standards" className="text-orange-600 font-bold underline">

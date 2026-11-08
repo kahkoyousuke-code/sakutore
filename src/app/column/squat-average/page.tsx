@@ -286,6 +286,11 @@ export default function SquatAveragePage() {
               <p className="mt-2">
                 よく検索される「スクワット100kg」を当てはめてみます。体重70kgの人なら体重比×1.43で<span className="font-bold">初心者（×1.25）を超え、中級者まであと5kg</span>。体重100kgの人なら×1.0で、<span className="font-bold">まだ初心者の目安（125kg）に届いていません</span>。数字の大きさだけでは何も決まりません。
               </p>
+              <SisterArticleCard
+                placement="squat-average-creatine-upper"
+                lead="筆者自身、サプリで数字が動いた経験はありません。伸ばす中心はトレーニングと食事です。それでも試してみるなら、研究の蓄積が厚いクレアチンから、量と続け方を決めてからにしてください。姉妹サイトで整理しています。"
+                articleIds={["creatineGuide"]}
+              />
             </section>
 
             <section>
@@ -465,11 +470,6 @@ export default function SquatAveragePage() {
                 </Link>
                 に書きました。
               </p>
-              <SisterArticleCard
-                placement="squat-average-creatine"
-                lead="サプリで数字が動いた経験は、筆者にはありません。それでも試してみるなら、研究の蓄積が厚いクレアチンから、量と続け方を決めてからにしてください。姉妹サイトで整理しています。"
-                articleIds={["creatineGuide"]}
-              />
             </section>
 
             <section>

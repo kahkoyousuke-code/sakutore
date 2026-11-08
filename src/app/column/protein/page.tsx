@@ -132,6 +132,11 @@ export default function ProteinPage() {
                 </Link>
                 で詳しく解説しています。
               </p>
+              <SisterArticleCard
+                placement="protein-bulk-buying-upper"
+                lead="プロテインで補うと決めたら、次は買う量です。1日に何杯飲むかで1袋が何日もつかが決まります。セールでまとめて買うときの上限は、姉妹サイトで計算しています。"
+                articleIds={["bulkBuyingGuide"]}
+              />
             </section>
 
             <section>
@@ -243,11 +248,6 @@ export default function ProteinPage() {
                 </Link>
                 で確認できます。トレーニングメニューはサクトレで作れます。
               </p>
-              <SisterArticleCard
-                placement="protein-bulk-buying"
-                lead="1日に何杯飲むかが決まれば、1袋が何日もつかも決まります。セールでまとめて買うときの上限は、姉妹サイトで計算しています。"
-                articleIds={["bulkBuyingGuide"]}
-              />
             </section>
           </div>
         </div>

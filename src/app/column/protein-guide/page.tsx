@@ -145,6 +145,11 @@ export default function ProteinGuidePage() {
                   <li>・必須アミノ酸のバランスはホエイよりやや劣る</li>
                 </ul>
               </div>
+              <SisterArticleCard
+                placement="protein-guide-sakusapu-upper"
+                lead="ホエイはさらにWPC・WPI・WPHに分かれ、値段もかなり違います。製法の違いと、何袋までまとめて買ってよいかは、姉妹サイトで続きを書いています。"
+                articleIds={["proteinSelection", "bulkBuyingGuide"]}
+              />
             </section>
 
             <section>
@@ -360,11 +365,6 @@ export default function ProteinGuidePage() {
               <p className="mt-2">
                 まずは食事でタンパク質を確保し、足りない分をプロテインで補う。この順番が基本です。サクトレでトレーニングメニューを作成し、食事・栄養と合わせて理想の体を目指しましょう。
               </p>
-              <SisterArticleCard
-                placement="protein-guide-sakusapu"
-                lead="ホエイの製法の違いをもう一段深く知りたい方、買う量で迷っている方へ。姉妹サイトで続きを書いています。"
-                articleIds={["proteinSelection", "bulkBuyingGuide"]}
-              />
             </section>
           </div>
         </div>
