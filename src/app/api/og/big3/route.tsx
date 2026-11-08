@@ -9,20 +9,15 @@ import {
 
 export const runtime = "edge";
 
-// Fetch only the glyphs we draw. Google Fonts splits Noto Sans JP into many
-// unicode-range files, so taking the first url() would miss most kanji.
-async function loadFont(text: string): Promise<ArrayBuffer | null> {
-  try {
-    const css = await fetch(
-      `https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&text=${encodeURIComponent(text)}`,
-      { headers: { "User-Agent": "Mozilla/5.0" } }
-    ).then((r) => r.text());
-    const url = css.match(/src: url\((.+?)\)/)?.[1];
-    return url ? await fetch(url).then((r) => r.arrayBuffer()) : null;
-  } catch {
-    return null;
-  }
-}
+// The font ships with the route: a Noto Sans JP Bold subset holding only the
+// glyphs this card can draw (fixed labels, level names, ASCII). Fetching fonts
+// or emoji at request time made the first render slow enough that X gave up
+// and showed the card without an image.
+// If you add new Japanese text to the card, regenerate the subset with those
+// characters included, or they render as blank boxes.
+const fontData = fetch(new URL("./NotoSansJP-Bold-subset.ttf", import.meta.url)).then((r) =>
+  r.arrayBuffer()
+);
 
 export async function GET(req: NextRequest) {
   const input = parseBig3Params(req.nextUrl.searchParams);
@@ -32,7 +27,7 @@ export async function GET(req: NextRequest) {
   const head = result ? headlineLevel(result) : null;
   const subline = result
     ? `体重${result.input.bodyWeight}kg・${result.input.gender === "male" ? "男性" : "女性"}基準`
-    : "3種目の重量から今のレベルを判定";
+    : "重量からレベルを判定";
   const rows = result
     ? result.lifts.map((l) => ({
         label: l.label,
@@ -44,18 +39,7 @@ export async function GET(req: NextRequest) {
   const ratioLine = result ? `体重の${result.totalRatio}倍` : "";
   const womenNote = "レベルは種目別に判定";
 
-  const allText = [
-    "🌸サクトレ",
-    title,
-    head ?? "",
-    subline,
-    totalLine,
-    ratioLine,
-    womenNote,
-    "あなたも診断 sakutore.jp",
-    ...rows.flatMap((r) => [r.label, r.kg, r.level]),
-  ].join("");
-  const font = await loadFont(allText);
+  const font = await fontData;
 
   return new ImageResponse(
     (
@@ -67,12 +51,12 @@ export async function GET(req: NextRequest) {
           display: "flex",
           flexDirection: "column",
           padding: "48px 72px",
-          fontFamily: font ? "NotoSansJP" : "sans-serif",
+          fontFamily: "NotoSansJP",
           color: "#1f2937",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <div style={{ fontSize: 30, fontWeight: 700, color: "#f97316" }}>🌸サクトレ</div>
+          <div style={{ fontSize: 30, fontWeight: 700, color: "#f97316" }}>サクトレ</div>
           <div style={{ fontSize: 30, fontWeight: 700, color: "#9a3412" }}>{title}</div>
         </div>
 
@@ -140,7 +124,7 @@ export async function GET(req: NextRequest) {
     {
       width: 1200,
       height: 630,
-      ...(font ? { fonts: [{ name: "NotoSansJP", data: font, style: "normal" as const, weight: 700 as const }] } : {}),
+      fonts: [{ name: "NotoSansJP", data: font, style: "normal", weight: 700 }],
     }
   );
 }
