@@ -5,6 +5,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import RmCalculatorGuide from "@/components/guides/RmCalculatorGuide";
 import RmConversionTables from "@/components/RmConversionTables";
+import SisterArticleCard from "@/components/SisterArticleCard";
 
 type CalcResult = {
   oneRM: number;
@@ -180,6 +181,12 @@ export default function RMCalculatorPage() {
             >
               この重量でメニューを作る
             </Link>
+
+            <SisterArticleCard
+              placement="rm-calculator-result-creatine"
+              lead="1RMを伸ばす中心はトレーニングと食事で、筆者自身もサプリで数字が動いた経験はありません。それでも試してみるなら、研究の蓄積が厚いクレアチンから、量と続け方を決めてからにしてください。姉妹サイトで整理しています。"
+              articleIds={["creatineGuide"]}
+            />
           </>
         )}
 
