@@ -204,6 +204,9 @@ export const pullupSteps = [
  */
 export const ABS_STEP_GOAL = "12回×3セット";
 
+/** 次の段階に移ったとき、これに届かなければ前の段階を続ける（beginner-guide の6〜12回の下限）。 */
+export const ABS_STEP_FLOOR = "6回×3セット";
+
 export const absSteps = [
   {
     step: "1",
@@ -221,18 +224,18 @@ export const absSteps = [
     step: "3",
     name: "レッグレイズ",
     goal: ABS_STEP_GOAL,
-    detail: "寝たまま脚を伸ばして上げ下げする。腰が浮くなら脚を上げる幅を小さく",
+    detail: "寝たまま脚を伸ばして上げ下げする。腰が浮くなら、脚を床まで下ろさず高めの位置で止める",
   },
   {
     step: "4",
     name: "アブローラー",
     goal: ABS_STEP_GOAL,
-    detail: "膝をついて転がす。腰が反る手前で止め、無理に遠くまで伸ばさない",
+    detail: "膝をついて、ローラーを前に転がして戻す",
   },
   {
     step: "5",
     name: "ハンギングレッグレイズ",
     goal: ABS_STEP_GOAL,
-    detail: "バーにぶら下がって脚を上げる。懸垂バーか鉄棒が要る",
+    detail: "バーにぶら下がって脚を上げる。最初は膝を曲げたハンギングニーレイズから始め、慣れたら脚を伸ばす。懸垂バーか鉄棒が要る",
   },
 ];
