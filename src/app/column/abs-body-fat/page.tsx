@@ -284,7 +284,11 @@ export default function AbsBodyFatPage() {
                 必要です。ただし<span className="font-bold">役割が違います</span>。
               </p>
               <p className="mt-2">
-                脂肪が減って腹筋が見えてきたとき、<span className="font-bold">その腹筋に厚みがあるかどうかで見え方が変わります</span>。薄いまま体脂肪だけ落とすと、割れてはいるけれど平坦、という状態になります。腹筋運動は「脂肪を減らす作業」ではなく「見えたときの形を作る作業」です。
+                脂肪が減って腹筋が見えてきたとき、<span className="font-bold">その腹筋に厚みがあるかどうかで見え方が変わります</span>。薄いまま体脂肪だけ落とすと、割れてはいるけれど平坦、という状態になります。腹筋運動は「脂肪を減らす作業」ではなく「見えたときの形を作る作業」です。厚みを作る種目と回数は
+                <Link href="/column/abs-training" className="text-orange-600 font-bold underline">
+                  腹筋を割る筋トレの種目と回数
+                </Link>
+                にまとめました。
               </p>
               <p className="mt-2">
                 そして<span className="font-bold">筋トレ全体は、落とした体重を戻さないために効きます</span>。食事制限だけで落とすと筋肉も一緒に減り、戻りやすい体になります。仕組みは

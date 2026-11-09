@@ -194,3 +194,48 @@ export const pullupSteps = [
     detail: "反動なしで、あごがバーを越えれば1回",
   },
 ];
+
+/**
+ * 腹筋（腹直筋）を厚くするための5段階と、次に進む条件（/column/abs-training）。
+ *
+ * 出典のある統計ではなくサクトレの基準。次に進む回数は、/column/beginner-guide の
+ * 「筋肉を大きくする」帯（6〜12回）の上限にそろえてある。12回×3セットが楽になったら
+ * 1段上の種目に移り、また少ない回数から始める。種目名は src/lib/exercises.ts と同じ表記。
+ */
+export const ABS_STEP_GOAL = "12回×3セット";
+
+/** 次の段階に移ったとき、これに届かなければ前の段階を続ける（beginner-guide の6〜12回の下限）。 */
+export const ABS_STEP_FLOOR = "6回×3セット";
+
+export const absSteps = [
+  {
+    step: "1",
+    name: "クランチ",
+    goal: ABS_STEP_GOAL,
+    detail: "床に寝て、おへそをのぞき込むように背中を丸める。5段階でいちばん軽い",
+  },
+  {
+    step: "2",
+    name: "リバースクランチ",
+    goal: ABS_STEP_GOAL,
+    detail: "膝を胸のほうへ引き寄せて、お尻を床から少し浮かせる。下腹に効いている感じが出やすい",
+  },
+  {
+    step: "3",
+    name: "レッグレイズ",
+    goal: ABS_STEP_GOAL,
+    detail: "仰向けのまま脚を伸ばして上げ下げする。腰が浮くなら、脚を床まで下ろさず高めの位置で止める",
+  },
+  {
+    step: "4",
+    name: "アブローラー",
+    goal: ABS_STEP_GOAL,
+    detail: "膝をついて、ローラーを前に転がして戻す",
+  },
+  {
+    step: "5",
+    name: "ハンギングレッグレイズ",
+    goal: ABS_STEP_GOAL,
+    detail: "バーにぶら下がって脚を上げる。最初は膝を曲げたハンギングニーレイズから始め、慣れたら脚を伸ばす。懸垂バーか鉄棒が要る",
+  },
+];

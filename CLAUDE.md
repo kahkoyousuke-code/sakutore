@@ -53,7 +53,7 @@ Next.js 14 App Router / TypeScript / React 18 / Tailwind CSS 3.4 / Anthropic SDK
 | `src/lib/author.ts` | 運営者名・実績・SNS（E-E-A-T） | `AuthorBox`, `/about`, `/gear`, JSON-LD |
 | `src/lib/metadata.ts` | title/description/canonical/OGP | 全ページ（`pageMetadata()` 経由） |
 | `src/lib/exercises.ts` | 種目の手順・フォーム注意点・コツ | 結果画面の種目カード |
-| `src/lib/bodyweightStandards.ts` | 自重種目の負荷（体重比）・回数目安・懸垂の5段階 | `/column/chest-home`, `/column/pushup-pullup-average`, `/column/pullup-progression`, `/column/home-back` |
+| `src/lib/bodyweightStandards.ts` | 自重種目の負荷（体重比）・回数目安・懸垂と腹筋の5段階 | `/column/chest-home`, `/column/pushup-pullup-average`, `/column/pullup-progression`, `/column/home-back`, `/column/abs-training` |
 | `src/lib/fatConversion.ts` | 体脂肪1kg＝7,200kcalの換算 | `/calorie-calculator`, `/column/metabolism`, `/column/alcohol`, `/column/effect-timeline` |
 | `src/lib/recoveryStandards.ts` | 部位別の回復時間・筋肉痛（遅発性筋痛）の経過 | `/column/frequency`, `/column/split-routine`, `/column/muscle-soreness` |
 | `src/lib/dumbbellStandards.ts` | ダンベル種目で扱う重さ（体重比・10回できる重さ） | `/column/dumbbell-weight`, `/column/dumbbell-press-level`, `/column/shoulder-training`, `/column/home-back` |
@@ -72,7 +72,7 @@ Next.js 14 App Router / TypeScript / React 18 / Tailwind CSS 3.4 / Anthropic SDK
 `src/app/column/<slug>/page.tsx` を作り、以下を**全部**やる。
 
 1. `pageMetadata({ title, description, path })` で metadata をエクスポート（直書きしない）
-2. `AuthorBox` を記事末尾に置く（50本中50本が設置済み。E-E-A-Tの一貫性のため例外を作らない）
+2. `AuthorBox` を記事末尾に置く（51本中51本が設置済み。E-E-A-Tの一貫性のため例外を作らない）
 3. `ShareButtons` を置く
 4. **`src/app/column/page.tsx` のリストに `href` / `title` / `description` を追記**（忘れると内部リンクが張られず、Googleに発見されない）
 5. `src/app/sitemap.ts` は `src/app/column` を読んで自動生成するので**追記不要**。ただし `LAST_MODIFIED` は更新する
