@@ -257,7 +257,11 @@ export default function TrainingOrderPage() {
                 腹筋を最初にやる人がときどきいますが、これはおすすめしません。<span className="font-bold">スクワットもデッドリフトも、体幹が固まっていることを前提にした種目</span>だからです。
               </p>
               <p className="mt-2">
-                先に腹筋を疲れさせると、重いものを持ったときに背中が丸まりやすくなります。重量が落ちるだけならまだしも、<span className="font-bold">腰を痛める入口になります。</span>腹筋は回復が速い部位なので、最後に回しても十分に効かせられます。
+                先に腹筋を疲れさせると、重いものを持ったときに背中が丸まりやすくなります。重量が落ちるだけならまだしも、<span className="font-bold">腰を痛める入口になります。</span>腹筋は回復が速い部位なので、最後に回しても十分に効かせられます。腹筋の種目の選び方は
+                <Link href="/column/abs-training" className="text-orange-600 font-bold underline">
+                  腹筋を割る筋トレの種目と回数
+                </Link>
+                にあります。
               </p>
             </section>
 
