@@ -18,7 +18,7 @@ import {
 export const metadata = pageMetadata({
   title: "筋トレの停滞期の抜け方｜ベンチプレス・BIG3が伸びないときに確かめる6つの順番 - サクトレ",
   description:
-    "ベンチプレスやスクワットの重量が伸びなくなったら、まず本当に止まっているのかを回数の記録で確かめます。上のレベルほど伸びがゆっくりになるのは普通です。そのうえで、睡眠・食事・頻度、フォーム、限界まで追い込める環境とメニューの外側から確かめ、重さや種目に手を入れるのは最後にする順番をまとめました。",
+    "ベンチプレスやスクワットの重量が伸びなくなったら、まず本当に止まっているのかを回数の記録で確かめます。上のレベルほど伸びがゆっくりになるのは普通です。そのうえで、睡眠・食事・頻度、フォーム、限界まで追い込める環境と、メニューの外側から順に見直し、重さや種目に手を入れるのは最後にする手順をまとめました。",
   path: "/column/plateau",
 });
 
@@ -60,7 +60,7 @@ export default function PlateauPage() {
           <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section>
               <p>
-                ベンチプレスやスクワットの重量が、しばらく伸びなくなる。筋トレを続けていれば、誰にでも来る時期です。ここで<span className="font-bold">いきなりメニューや種目を変えるのは、いちばん最後</span>にしてください。
+                ベンチプレスやスクワットの重量が、しばらく伸びなくなる。筋トレを続けていれば、誰にでも来る時期です。ただし、<span className="font-bold">メニューや種目を変えるのは、いちばん最後</span>にしてください。
               </p>
               <p className="mt-2">
                 先に確かめることがあります。まず、本当に止まっているのか。止まっているなら、<span className="font-bold">メニューの外側から順に</span>原因をつぶします。睡眠・食事・頻度、フォーム、追い込める環境。重さや種目に手を入れるのはその後です。
@@ -74,7 +74,7 @@ export default function PlateauPage() {
               <DiagramFigure
                 title="上から順に。種目を変えるのは最後"
                 label={`停滞したときに確かめる順番。${CHECK_STEPS.map((s) => `${s.step}. ${s.name}`).join("、")}。`}
-                caption="右端は、何で確かめるか。4の環境は、筆者の停滞を動かした決め手でもあります。"
+                caption="右端は、何で確かめるかです。4の環境は、筆者が停滞を抜けた決め手でもあります。"
               >
                 <SessionFlowDiagram steps={CHECK_STEPS} highlightStep="4" />
               </DiagramFigure>
@@ -85,7 +85,7 @@ export default function PlateauPage() {
                 1. 本当に止まっているか
               </h2>
               <p>
-                始めたばかりの頃は、毎週のように重量が上がります。その感覚のまま続けると、伸びがゆっくりになっただけで「止まった」と感じます。ですが、<span className="font-bold">上のレベルほど伸びがゆっくりになるのは普通</span>です。サクトレの目安では、次のレベルまでにかかる期間はこう変わります。
+                始めたばかりの頃は、毎週のように重量が上がります。その感覚のまま続けると、伸びがゆっくりになっただけで「止まった」と感じがちです。ですが、<span className="font-bold">上のレベルほど伸びがゆっくりになるのは普通</span>です。サクトレの目安では、次のレベルまでにかかる期間はこう変わります。
               </p>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
                 <table className="w-full text-xs md:text-sm border-collapse">
@@ -120,14 +120,14 @@ export default function PlateauPage() {
                 </table>
               </div>
               <p className="mt-2 text-xs text-gray-500">
-                ※ 男性の目安です。女性の目安は
+                ※ 男性の目安です。女性の場合は
                 <Link href="/column/women-big3" className="text-orange-600 font-bold underline">
                   女性のBIG3平均は何kg？
                 </Link>
                 を見てください。
               </p>
               <p className="mt-3">
-                たとえば体重{SAMPLE_BW}kgの男性のベンチプレスなら、中級者から上級者までの差は{benchGap}kgです。これを{LEVEL_STEP_PERIOD["中級者"]}かけて進むので、1ヶ月ごとに見ると、ほとんど動いていないように見えて当たり前です。自分のレベルは
+                たとえば体重{SAMPLE_BW}kgの男性のベンチプレスなら、中級者から上級者までの差は{benchGap}kgです。これを{LEVEL_STEP_PERIOD["中級者"]}かけて進むので、1ヶ月単位では、ほとんど動いていないように見えても不思議ではありません。自分のレベルは
                 <Link href="/weight-checker" className="text-orange-600 font-bold underline">
                   適正重量チェッカー
                 </Link>
@@ -142,13 +142,13 @@ export default function PlateauPage() {
                   <Link href="/rm-calculator" className="text-orange-600 font-bold underline">
                     RM計算機
                   </Link>
-                  で換算した1RMは{estimate1RM(EXAMPLE.weight, EXAMPLE.reps)}kg→{estimate1RM(EXAMPLE.weight, EXAMPLE.reps + 1)}kgに上がっています
+                  で換算した1RM（1回だけ挙げられる重さ）は{estimate1RM(EXAMPLE.weight, EXAMPLE.reps)}kg→{estimate1RM(EXAMPLE.weight, EXAMPLE.reps + 1)}kgに上がっています
                 </li>
                 <li>
-                  ▸ <span className="font-bold">同じ重さで決めた回数に届かない日が数週間続き、回数も増えていない</span> → 止まっています。2へ進みます
+                  ▸ <span className="font-bold">同じ重さで、決めた回数に届かない日が数週間続き、回数も増えていない</span> → 止まっています。2へ進みます
                 </li>
                 <li>
-                  ▸ <span className="font-bold">同じ重さで、前より回数が落ちてきた</span> → 止まったのではなく、疲れがたまっているサインです（
+                  ▸ <span className="font-bold">同じ重さで、前より回数が落ちてきた</span> → 止まったのではなく、疲れがたまっているサインかもしれません（
                   <Link href="/column/rest" className="text-orange-600 font-bold underline">
                     筋肉を育てる休息の重要性
                   </Link>
@@ -156,7 +156,7 @@ export default function PlateauPage() {
                 </li>
               </ul>
               <p className="mt-2">
-                重さを上げるタイミングの決め方は
+                重さを上げるタイミングは
                 <Link href="/column/sets-and-reps" className="text-orange-600 font-bold underline">
                   5×5・3×10の重量の決め方
                 </Link>
@@ -169,7 +169,7 @@ export default function PlateauPage() {
                 2. 睡眠・食事・頻度
               </h2>
               <p>
-                お金がかからず、見落としやすいのがここです。睡眠が削れている時期や、体重が減っている時期は、重量も伸びにくくなります。<span className="font-bold">減量中は、重量が伸びにくいのが普通です。</span>伸ばすより、重さを保てていれば十分と考えてください。
+                お金がかからず、見落としやすいのがここです。睡眠が削れている時期や、体重が減っている時期は、重量も伸びにくくなります。<span className="font-bold">特に減量中は、伸びにくいのが普通です。</span>伸ばすより、重さを保てていれば十分と考えてください。
               </p>
               <ul className="mt-2 space-y-2">
                 <li>
@@ -179,7 +179,7 @@ export default function PlateauPage() {
                   </Link>
                 </li>
                 <li>
-                  ▸ タンパク質と食べる量が足りているか、体重が減っていないか →
+                  ▸ タンパク質と食事の量が足りているか、体重が減っていないか →
                   <Link href="/column/protein" className="text-orange-600 font-bold underline">
                     必要なタンパク質の量
                   </Link>
@@ -189,7 +189,7 @@ export default function PlateauPage() {
                   <Link href="/column/bench-press-average" className="text-orange-600 font-bold underline">
                     ベンチプレスの平均
                   </Link>
-                  の優先順位のとおり週2回に。逆に、伸びないからといって筋トレ全体の回数をどんどん増やすのは逆効果です（
+                  で挙げた優先順位のとおり、週2回に増やしてみてください。一方で、伸びないからといって筋トレする日をどんどん増やすのは逆効果になりやすいです（
                   <Link href="/column/frequency" className="text-orange-600 font-bold underline">
                     週に何回筋トレすればいい？
                   </Link>
@@ -203,10 +203,10 @@ export default function PlateauPage() {
                 3. フォームと止まる場所
               </h2>
               <p>
-                重いセットを横から動画で撮り、1回目と最後の回を比べてください。深さやバーの通り道が回ごとに違うなら、筋力より先にフォームの問題です。
+                <span className="font-bold">ベンチプレスとスクワットは、撮る前にセーフティバーを正しい高さに合わせるか、補助者についてもらってください。</span>
               </p>
               <p className="mt-2">
-                <span className="font-bold">ベンチプレスとスクワットは、撮る前にセーフティバーを正しい高さに合わせるか、補助者についてもらってください。</span>止まる場所を知るために限界まで粘る必要はありません。フォームが安定しているなら、バーがどこで遅くなるか・止まるかが次の手がかりになります（6で使います）。動作中に関節が痛むなら、その種目は中止し、痛みが続くなら整形外科を受診してください。
+                重いセットを横から動画で撮り、1回目と最後の回を比べてください。深さやバーの通り道が回ごとに違うなら、筋力より先に、フォームの問題を疑ってください。止まる場所を知るために限界まで粘る必要はありません。フォームが安定しているなら、バーがどこで遅くなるか・止まるかが次の手がかりになります（6で使います）。動作中に関節が痛むなら、その種目は中止し、痛みが続くなら整形外科を受診してください。
               </p>
             </section>
 
@@ -215,14 +215,14 @@ export default function PlateauPage() {
                 4. 限界まで追い込める環境
               </h2>
               <p>
-                見落とされやすいのがここです。<span className="font-bold">潰れたときの逃げ場がないと、人は無意識に限界の手前で止めてしまいます</span>。ベンチプレスは補助者か、ラックの中でセーフティバーを使う。スクワットはセーフティバーを正しい高さに合わせる。逃げ場があれば、最後のセットのぎりぎりの1回を、怖がらずに挙げにいけます。
+                ここも見落とされやすいところです。<span className="font-bold">挙げきれずに潰れたときの逃げ場がないと、人は無意識に限界の手前で止めてしまいがちです</span>。ベンチプレスは補助者についてもらうか、ラックの中でセーフティバーを使います。スクワットはセーフティバーを正しい高さに合わせます。逃げ場があれば、最後のセットのぎりぎりの1回を、怖がらずに挙げにいけます。
               </p>
               <p className="mt-2">
                 ここでいう「追い込む」は、毎セット潰れるまでやることではありません。1セット目は余裕を{SET_RESERVE_REPS}回残す重さで組む、という決め方は
                 <Link href="/column/sets-and-reps" className="text-orange-600 font-bold underline">
                   5×5・3×10の重量の決め方
                 </Link>
-                のままです。変えるのは、最後のセットで怖くて止めていた1回だけです。<span className="font-bold">セーフティバーも補助者もない台で、限界近くのセットはしないでください。</span>
+                で紹介したとおりで、変わりません。変えるのは、最後のセットで怖くて止めていた1回だけです。<span className="font-bold">セーフティバーも補助者もない台で、限界近くのセットはしないでください。</span>
               </p>
               <p className="mt-2">
                 セーフティバーの高さの決め方は
@@ -238,7 +238,7 @@ export default function PlateauPage() {
                 5. 重さを下げてやり直す
               </h2>
               <p>
-                1〜4を確かめても動かないなら、疲れがたまっていることがあります。<span className="font-bold">重さを少し下げて、決めた回数がそろうところからやり直します</span>。下げた重さから、また全セットそろったら上げていきます。同じ重さで潰れ続けるより、少し戻して積み直すほうが、フォームも崩れにくくなります。
+                1〜4を確かめても重量が動かないなら、疲れがたまっていることがあります。<span className="font-bold">重さを少し下げて、全セットで決めた回数ができる重さからやり直します</span>。その重さで全セットできたら、また少しずつ上げていきます。同じ重さで潰れ続けるより、少し戻して積み直すほうが、フォームも崩れにくくなります。
               </p>
               <p className="mt-2">
                 止まる前に予防として入れる軽い週が「デロード」、止まってからやり直すのがこの5です。デロードについては
@@ -258,14 +258,14 @@ export default function PlateauPage() {
                 <Link href="/column/big3-accessory" className="text-orange-600 font-bold underline">
                   BIG3の補助種目の選び方
                 </Link>
-                にまとめています。3種目のうちどれが遅れているかは
+                にまとめています。BIG3のうちどれが遅れているかは
                 <Link href="/column/big3-balance" className="text-orange-600 font-bold underline">
                   BIG3のバランス診断
                 </Link>
                 で確かめられます。
               </p>
               <p className="mt-2">
-                始めて間もなく、1の表で初心者以下なら、補助種目より1〜5で足ります。
+                筋トレを始めて間もなく、1の表でまだ初心者以下なら、補助種目を足さなくても1〜5で十分なことがほとんどです。
               </p>
             </section>
 
@@ -277,10 +277,10 @@ export default function PlateauPage() {
                 <Link href="/column/10years" className="text-orange-600 font-bold underline">
                   10年筋トレを続けてわかったこと
                 </Link>
-                にも書いたとおり、私のベンチプレスは長く止まっていた時期があります。停滞するたびに種目や分割を組み替えていましたが、それ単体で伸びたことはほとんどありませんでした。
+                にも書いたとおり、私にもベンチプレスが長く止まっていた時期があります。停滞するたびに種目や分割を組み替えていましたが、それだけで伸びたことはほとんどありませんでした。
                 <br />
                 <br />
-                動かした決め手は、ジムを変えて、補助についてもらえて、フォームも見てもらえるようになったことでした。この記事で種目を変えるのを最後にして、4の環境を強調しているのは、その経験からです。指導を受ける費用感は
+                停滞を抜けた決め手は、ジムを変えたことでした。補助についてもらえるようになり、フォームも見てもらえるようになりました。この記事で種目を変えるのを最後にして、4の環境を強調しているのは、その経験からです。指導を受ける費用感は
                 <Link href="/column/personal-gym-cost" className="text-orange-600 font-bold underline">
                   パーソナルジムの費用相場
                 </Link>
@@ -296,13 +296,13 @@ export default function PlateauPage() {
                 メニューを変えると、刺激が新しくなって伸びませんか？
               </h3>
               <p>
-                変えた直後は、新しい動きに慣れるぶん数字が動くことがあります。ただ、それは筋力が伸びたのではなく、動きに慣れただけのこともあります。<span className="font-bold">1〜5を確かめないまま種目を変えると、原因が分からないまま次の停滞が来ます</span>。飽きて続かないなら入れ替えてかまいません。ただ、重量を伸ばす目的なら最後です。
+                変えた直後は、数字が伸びることがあります。ただ、それは筋力が伸びたのではなく、新しい動きに慣れただけのこともあります。<span className="font-bold">1〜5を確かめないまま種目を変えると、原因がわからないまま次の停滞が来ます</span>。飽きて続かないなら入れ替えてかまいません。重量を伸ばすのが目的なら、種目を変えるのは最後にしてください。
               </p>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
                 サプリを足せば停滞を抜けられますか？
               </h3>
               <p>
-                睡眠と食事ができていない時期に足しても、体感できる差は出にくいです。足すとしても、2の土台が整ってからにしてください。
+                睡眠と食事が整っていない時期に足しても、体感できる差は出にくいです。足すとしても、2の土台が整ってからにしてください。
               </p>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
                 見た目は変わっているのに重量が伸びません。
@@ -318,16 +318,16 @@ export default function PlateauPage() {
               </h2>
               <ul className="space-y-2">
                 <li>
-                  ▸ まず<span className="font-bold">本当に止まっているか</span>を回数の記録で確かめる。上のレベルほど伸びがゆっくりなのは普通。回数が落ちてきたなら疲れ
+                  ▸ まず<span className="font-bold">本当に止まっているか</span>を回数の記録で確かめる。上のレベルほど伸びがゆっくりなのは普通。回数が落ちてきたなら疲れのサイン
                 </li>
                 <li>
                   ▸ 次に<span className="font-bold">睡眠・食事・頻度</span>。減量中は伸びにくいのが普通
                 </li>
                 <li>
-                  ▸ セーフティを用意してからフォームと止まる場所を動画で見る。<span className="font-bold">限界まで追い込める環境</span>を作る
+                  ▸ セーフティバーか補助者を用意してからフォームと止まる場所を動画で見る。<span className="font-bold">限界まで追い込める環境</span>を作る
                 </li>
                 <li>
-                  ▸ それでもだめなら、重さを少し下げてやり直す
+                  ▸ それでも伸びなければ、重さを少し下げてやり直す
                 </li>
                 <li>
                   ▸ 種目を変えるのは最後。止まる場所に合う補助種目を1〜2種目
