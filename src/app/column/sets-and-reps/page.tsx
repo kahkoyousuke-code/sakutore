@@ -224,7 +224,11 @@ export default function SetsAndRepsPage() {
                 <Link href="/column/big3-accessory" className="text-orange-600 font-bold underline">
                   BIG3の補助種目の選び方
                 </Link>
-                にあります。
+                にあります。止まったときに確かめる順番は
+                <Link href="/column/plateau" className="text-orange-600 font-bold underline">
+                  筋トレの停滞期の抜け方
+                </Link>
+                にまとめました。
               </p>
             </section>
 

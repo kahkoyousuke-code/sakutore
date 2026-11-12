@@ -251,7 +251,11 @@ export default function MotivationPage() {
                 <Link href="/column/effect-timeline" className="text-orange-600 font-bold underline">
                   筋トレの効果はいつから出る？
                 </Link>
-                に表でまとめました。
+                に表でまとめました。BIG3の重量が止まったときに確かめる順番は
+                <Link href="/column/plateau" className="text-orange-600 font-bold underline">
+                  筋トレの停滞期の抜け方
+                </Link>
+                にあります。
               </p>
 
               <h3 className="font-bold text-gray-800 mt-4 mb-2">
@@ -261,7 +265,11 @@ export default function MotivationPage() {
                 <div className="flex items-start gap-2">
                   <span className="text-orange-500 font-bold">▸</span>
                   <p>
-                    <span className="font-bold">メニューを変える</span>：同じトレーニングを続けると筋肉が慣れてしまいます。種目・重量・回数・セット数のどれかを変えて、筋肉に新鮮な刺激を与えましょう。
+                    <span className="font-bold">種目を変える前に、原因を確かめる</span>：重量が止まるたびに種目を入れ替えても、それだけで伸びることはあまりありません（筆者もそうでした）。睡眠・食事・頻度、フォーム、限界まで追い込める環境の順に確かめる方法は
+                    <Link href="/column/plateau" className="text-orange-600 font-bold underline">
+                      筋トレの停滞期の抜け方
+                    </Link>
+                    にまとめています。飽きて続かないときに種目を入れ替えるのは、気分転換として有効です。
                   </p>
                 </div>
                 <div className="flex items-start gap-2">
