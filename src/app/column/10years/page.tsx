@@ -230,7 +230,11 @@ export default function TenYearsPage() {
                 <Link href="/column/personal-gym-cost" className="text-orange-500 font-bold hover:text-orange-600 underline">
                   パーソナルジムの費用相場
                 </Link>
-                に書いています。
+                に書いています。この経験をもとに、停滞したときに確かめる順番を
+                <Link href="/column/plateau" className="text-orange-500 font-bold hover:text-orange-600 underline">
+                  筋トレの停滞期の抜け方
+                </Link>
+                にまとめました。
               </p>
             </section>
 

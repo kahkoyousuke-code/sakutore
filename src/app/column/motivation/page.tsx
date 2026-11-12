@@ -251,7 +251,11 @@ export default function MotivationPage() {
                 <Link href="/column/effect-timeline" className="text-orange-600 font-bold underline">
                   筋トレの効果はいつから出る？
                 </Link>
-                に表でまとめました。
+                に表でまとめました。BIG3の重量が止まったときに確かめる順番は
+                <Link href="/column/plateau" className="text-orange-600 font-bold underline">
+                  筋トレの停滞期の抜け方
+                </Link>
+                にあります。
               </p>
 
               <h3 className="font-bold text-gray-800 mt-4 mb-2">

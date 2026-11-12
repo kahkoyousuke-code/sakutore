@@ -123,6 +123,8 @@ const config = {
     { kw: "消費カロリー", path: "/column/metabolism" },
     { kw: "腹筋", path: "/column/abs-body-fat" },
     { kw: "腹筋 種目", path: "/column/abs-training" },
+    { kw: "停滞", path: "/column/plateau" },
+    { kw: "伸びない", path: "/column/plateau" },
     { kw: "腹筋 回数", path: "/column/abs-training" },
     { kw: "腹筋 メニュー", path: "/column/abs-training" },
     { kw: "アブローラー", path: "/column/abs-training" },
