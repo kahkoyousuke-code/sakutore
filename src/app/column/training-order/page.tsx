@@ -208,6 +208,10 @@ export default function TrainingOrderPage() {
                 <Link href="/column/hip-training" className="text-orange-600 font-bold underline">
                   お尻を鍛える筋トレ
                 </Link>
+                に、脚の日の組み方と重さの目安は
+                <Link href="/column/leg-training" className="text-orange-600 font-bold underline">
+                  脚トレのやり方
+                </Link>
                 に書きました。
               </p>
               <p className="mt-2">
