@@ -190,6 +190,12 @@ export const SET_RESERVE_REPS = 2;
 /** 全セット決めた回数ができたら、次に上げる重さ（kg）。バーの片側1.25kgずつ。 */
 export const WEIGHT_STEP_KG = 2.5;
 
+/**
+ * プレートで作れる重さ（WEIGHT_STEP_KG 刻み）のうち、計算値以下でいちばん重いもの。
+ * 計算上の重さ（例：85.1kg）を、実際にバーで組む重さ（85kg）に直すときに使う。
+ */
+export const toPlate = (kg: number) => Math.floor(kg / WEIGHT_STEP_KG) * WEIGHT_STEP_KG;
+
 /** 型の回数で全セットやり切れる重さ。1RM × 1/(1 + (回数＋余裕)/30)。 */
 export const schemeWeight = (oneRM: number, reps: number) =>
   weightForReps(oneRM, reps + SET_RESERVE_REPS);
