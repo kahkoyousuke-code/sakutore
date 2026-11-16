@@ -14,28 +14,31 @@ import {
   MEN_WEIGHTS,
   WOMEN_WEIGHTS,
   SET_SCHEMES,
+  SET_RESERVE_REPS,
   LEVEL_EXPERIENCE,
   squatRows,
   schemeWeight,
   targetWeight,
+  toPlate,
   type Gender,
 } from "@/lib/strengthStandards";
 import { findExerciseDetail } from "@/lib/exercises";
 import { recoveryFor } from "@/lib/recoveryStandards";
 
 export const metadata = pageMetadata({
-  title: "脚トレのやり方｜脚の日のメニューと順番、スクワットとゴブレットスクワットの重さの目安 - サクトレ",
+  title: "脚トレメニューと順番｜スクワットで組む重さと、ゴブレットスクワットは何kg？ - サクトレ",
   description:
-    "脚の日は、スクワットのような重い種目から始めて、太もも前・太もも裏とお尻・ふくらはぎの順に小さい種目へ進みます。ジムでの脚の日のメニューと順番、スクワットで組む重さの出し方、自宅でできるゴブレットスクワットの体重別の重さの目安をまとめました。",
+    "脚の日は、スクワットのような重い種目から始めて、レッグプレス、太もも裏の種目、マシンの種目、ふくらはぎの順に軽いものへ進みます。ジムでの脚トレメニューと順番、自分の記録からスクワットで組む重さを出す方法、自宅でできるゴブレットスクワットの体重別の重さの目安をまとめました。",
   path: "/column/leg-training",
 });
 
 // 脚の3つの部分。図は DeltoidPartsDiagram（部分ごとの列の図）を使い回す。
-// 種目名は図の箱に収まる長さのものだけにし、ルーマニアンデッドリフトは本文で扱う。
+// role は「どの関節を伸ばすか」でそろえる（/column/hip-training の「動きの種類で分ける」に合わせる）。
+// RDL＝ルーマニアンデッドリフト（exercises.ts の別名）。図の箱に収まる表記にしている。
 const PARTS = [
-  { name: "太もも前", role: "立ち上がる力", exercises: ["スクワット", "レッグプレス", "ランジ"] },
-  { name: "太もも裏・お尻", role: "股関節を伸ばす", exercises: ["レッグカール", "ヒップスラスト"], main: true },
-  { name: "ふくらはぎ", role: "つま先で押す", exercises: ["カーフレイズ"] },
+  { name: "太もも前", role: "膝を伸ばす", exercises: ["スクワット", "レッグプレス", "ランジ"] },
+  { name: "太もも裏・お尻", role: "股関節を伸ばす", exercises: ["RDL", "レッグカール", "ヒップスラスト"], main: true },
+  { name: "ふくらはぎ", role: "足首を伸ばす", exercises: ["カーフレイズ"] },
 ];
 
 const GENDERS: { id: Gender; label: string; weights: number[] }[] = [
@@ -43,19 +46,30 @@ const GENDERS: { id: Gender; label: string; weights: number[] }[] = [
   { id: "female", label: "女性", weights: WOMEN_WEIGHTS },
 ];
 
-// スクワットで組む重さの例に使う体格とレベル。
+// スクワットで組む重さの例に使う1RM（体重70kgの男性・中級者の目安と同じ値）。
 const SAMPLE_BW = 70;
+
+const fiveByFive = SET_SCHEMES.find((s) => s.label === "5×5")!;
+const threeByEight = SET_SCHEMES.find((s) => s.label === "3×8")!;
+const threeByTen = SET_SCHEMES.find((s) => s.label === "3×10")!;
+
+// 脚の日のメニュー表。並びは dayOrder.ts の「脚の日」と同じ。
+const MENU = [
+  { name: "スクワット", scheme: `${fiveByFive.label}か${threeByEight.label}`, rest: fiveByFive.rest },
+  { name: "レッグプレス", scheme: threeByEight.label, rest: threeByEight.rest },
+  { name: "ルーマニアンデッドリフト", scheme: threeByEight.label, rest: threeByEight.rest },
+  { name: "レッグエクステンション・レッグカール", scheme: threeByTen.label, rest: threeByTen.rest },
+  { name: "カーフレイズ", scheme: threeByTen.label, rest: threeByTen.rest },
+];
 
 export default function LegTrainingPage() {
   const legDay = dayOrderFor("脚の日");
-  const [fiveByFive, threeByEight, threeByTen] = [
-    SET_SCHEMES.find((s) => s.label === "5×5")!,
-    SET_SCHEMES.find((s) => s.label === "3×8")!,
-    SET_SCHEMES.find((s) => s.label === "3×10")!,
-  ];
   const squatMid = squatRows.find((r) => r.level === "中級者")!;
   const sample1RM = targetWeight(SAMPLE_BW, squatMid.ratio);
+  const five = schemeWeight(sample1RM, fiveByFive.reps);
+  const eight = schemeWeight(sample1RM, threeByEight.reps);
   const large = recoveryFor("large");
+  const core = recoveryFor("core");
   const rdl = findExerciseDetail("ルーマニアンデッドリフト");
   const bulgarian = findExerciseDetail("ブルガリアンスクワット");
 
@@ -65,7 +79,7 @@ export default function LegTrainingPage() {
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
           <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
-            脚トレのやり方｜脚の日のメニューと順番、スクワットとゴブレットスクワットの重さの目安
+            脚トレメニューと順番｜スクワットで組む重さと、ゴブレットスクワットは何kg？
           </h1>
 
           <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
@@ -74,7 +88,7 @@ export default function LegTrainingPage() {
                 脚は体の中でいちばん大きな筋肉が集まっている部位です。そのぶん1回の疲れも大きく、何をどの順番でやるかで、その日にできる量が変わります。
               </p>
               <p className="mt-2">
-                この記事では、脚の3つの部分と鍛える種目、ジムでの脚の日の順番、スクワットで組む重さの出し方、自宅でできる種目と重さの目安の順に説明します。
+                この記事では、脚の3つの部分と鍛える種目、ジムでの脚の日のメニューと順番、スクワットで組む重さの出し方、自宅でできる種目と重さの目安の順に説明します。
               </p>
             </section>
 
@@ -83,9 +97,9 @@ export default function LegTrainingPage() {
                 脚の3つの部分と鍛える種目
               </h2>
               <DiagramFigure
-                title="スクワットだけでは太もも裏とお尻が足りなくなりやすい"
-                label={`脚の3つの部分。${PARTS.map((p) => `${p.name}は${p.role}、主な種目は${p.exercises.join("と")}`).join("。")}。`}
-                caption="スクワットは太もも前とお尻の両方に効きます。太もも裏は、スクワットだけでは使い切れないので別に足します。"
+                title="スクワットだけでは太もも裏が足りなくなりやすい"
+                label={`脚の3つの部分。${PARTS.map((p) => `${p.name}は${p.role}、主な種目は${p.exercises.join("と")}`).join("。")}。RDLはルーマニアンデッドリフト。`}
+                caption="太ももが床と平行になるまでしゃがむスクワットは、太もも前とお尻に効きます。太もも裏はスクワットではほとんど使い切れないので、別の種目で足します。RDL＝ルーマニアンデッドリフト。"
               >
                 <DeltoidPartsDiagram parts={PARTS} />
               </DiagramFigure>
@@ -100,29 +114,42 @@ export default function LegTrainingPage() {
 
             <section>
               <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
-                ジムでの脚の日のメニューと順番
+                ジムでの脚トレメニューと順番
               </h2>
               <p className="font-bold text-gray-800">{legDay.order}</p>
-              <p className="mt-2">
+              <div className="overflow-x-auto -mx-2 px-2 mt-3">
+                <table className="w-full text-xs md:text-sm border-collapse">
+                  <thead>
+                    <tr className="bg-orange-50">
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700">種目</th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        セット×回数
+                      </th>
+                      <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
+                        休憩
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {MENU.map((m) => (
+                      <tr key={m.name}>
+                        <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800">{m.name}</td>
+                        <td className="border border-gray-200 px-2 py-2 text-gray-700 whitespace-nowrap">{m.scheme}</td>
+                        <td className="border border-gray-200 px-2 py-2 text-gray-700 whitespace-nowrap">{m.rest}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-3">
                 <Link href="/column/training-order" className="text-orange-600 font-bold underline">
                   筋トレの順番
                 </Link>
-                と同じ、「重い種目から、小さい種目へ」の並びです。全部やる必要はありません。時間がない日は、スクワットと太もも裏の種目を1つずつで十分です。
+                と同じ、「重い種目から、軽い種目へ」の並びです。全部やる必要はありません。初めての人や時間がない日は、<span className="font-bold">スクワット・レッグプレス・レッグカールの3種目</span>からで十分です。
               </p>
-              <ul className="mt-3 space-y-2">
-                <li>
-                  ▸ <span className="font-bold">スクワット</span>：{fiveByFive.label}か{threeByEight.label}で重さを伸ばす
-                </li>
-                <li>
-                  ▸ <span className="font-bold">レッグプレス・ルーマニアンデッドリフト</span>：{threeByEight.label}〜{threeByTen.label}
-                </li>
-                <li>
-                  ▸ <span className="font-bold">レッグエクステンション・レッグカール・カーフレイズ</span>：{threeByTen.label}で、重さより効かせることを優先
-                </li>
-              </ul>
               {rdl && (
                 <p className="mt-3">
-                  ルーマニアンデッドリフトは太もも裏に効く代わりに、腰を丸めると腰を痛めやすい種目です。{rdl.formTips}。
+                  ルーマニアンデッドリフトは、腰を丸めると腰を痛めやすい種目です。{rdl.formTips}。床まで下ろす必要はなく、太もも裏が伸びたところ、背中が丸まり始める手前で止めます。バーは脚に沿わせて体から離さないでください。スクワットの後で疲れている3種目目なので、重さは控えめにします。腰の一点が刺すように痛む、しびれるときは、その日は中止してください。
                 </p>
               )}
             </section>
@@ -132,21 +159,32 @@ export default function LegTrainingPage() {
                 スクワットで組む重さの出し方
               </h2>
               <p>
-                組む重さは、1RM（1回だけ挙げられる重さ）から出します。たとえば体重{SAMPLE_BW}kgの男性で中級者の目安（体重×{squatMid.ratio}）なら、1RMは{sample1RM}kgです。ここから{fiveByFive.label}なら約{schemeWeight(sample1RM, fiveByFive.reps)}kg、{threeByEight.label}なら約{schemeWeight(sample1RM, threeByEight.reps)}kgが目安になります。
+                組む重さは、<span className="font-bold">自分の1RM（1回だけ挙げられる重さ）</span>から出します。1RMは測らなくても、「◯kgを◯回」の記録を
+                <Link href="/rm-calculator" className="text-orange-600 font-bold underline">
+                  RM計算機
+                </Link>
+                で換算すれば分かります。重さの決め方は「決めた回数＋{SET_RESERVE_REPS}回で限界が来る重さ」です。
               </p>
               <p className="mt-2">
-                自分の体重とレベルでの1RMの目安は
+                たとえば1RMが{sample1RM}kg（体重{SAMPLE_BW}kgの男性の中級者の目安と同じ）なら、{fiveByFive.label}は{fiveByFive.reps + SET_RESERVE_REPS}回で限界が来る約{five}kgで、プレートで組むなら{toPlate(five)}kgです。{threeByEight.label}なら約{eight}kg（組むなら{toPlate(eight)}kg）です。スクワットは計算より重く感じやすいので、1セット目で{SET_RESERVE_REPS}回の余裕が残らなかったら重さを下げてください。
+              </p>
+              <p className="mt-2">
+                体重とレベルごとの1RMの目安は
+                <Link href="/column/squat-average" className="text-orange-600 font-bold underline">
+                  スクワットの平均は何kg？
+                </Link>
+                に、今の重さが何レベルかは
                 <Link href="/column/squat-weight-level" className="text-orange-600 font-bold underline">
                   スクワット◯kgはすごい？
                 </Link>
-                で、セットの重さの決め方は
+                に、セットの重さの決め方は
                 <Link href="/column/sets-and-reps" className="text-orange-600 font-bold underline">
                   5×5・3×10の重量の決め方
                 </Link>
-                で確かめられます。
+                にあります。
               </p>
               <p className="mt-2">
-                <span className="font-bold">重いスクワットは、セーフティバーを正しい高さに合わせてから</span>行ってください。高さの決め方は
+                <span className="font-bold">重いスクワットは、セーフティバーを正しい高さに合わせてから</span>行ってください。しゃがむのは左右の柱のあいだです（ラックの外でしゃがむと、潰れてもバーがセーフティバーに乗りません）。セーフティバーのない台で限界を試すのはやめてください。高さの決め方は
                 <Link href="/column/power-rack" className="text-orange-600 font-bold underline">
                   パワーラックの使い方
                 </Link>
@@ -156,14 +194,14 @@ export default function LegTrainingPage() {
 
             <section>
               <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
-                自宅でやるなら：ゴブレットスクワットとブルガリアンスクワット
+                自宅でやるなら：ゴブレットスクワットは何kg？
               </h2>
               <p>
-                バーベルがなくても、ダンベル1個を胸の前で両手に持つ<span className="font-bold">ゴブレットスクワット</span>で始められます。重さの目安は、1個を両手で持って10回できる重さです。
+                バーベルがなくても、ダンベル1個を胸の前で両手に持つ<span className="font-bold">ゴブレットスクワット</span>で始められます。重さの目安は、1個を両手で持って10回で限界が来る重さです。
               </p>
               {GENDERS.map((g) => (
                 <div key={g.id} className="mt-3">
-                  <p className="font-bold text-gray-800 mb-2">{g.label}（ダンベル1個・10回できる重さ）</p>
+                  <p className="font-bold text-gray-800 mb-2">{g.label}（ダンベル1個・10回で限界が来る重さ）</p>
                   <div className="overflow-x-auto -mx-2 px-2">
                     <table className="w-full text-xs md:text-sm border-collapse">
                       <thead>
@@ -205,13 +243,21 @@ export default function LegTrainingPage() {
                   </div>
                 </div>
               ))}
-              <p className="mt-2 text-xs text-gray-500">
-                ※ 数字は
-                <Link href="/column/dumbbell-weight" className="text-orange-600 font-bold underline">
-                  ダンベルは何kgを買えばいい？
-                </Link>
-                の表と同じ基準です。公的な平均の統計はなく、サクトレの基準として体重比で出しています。
-              </p>
+              <ul className="mt-2 space-y-1 text-xs text-gray-500">
+                <li>
+                  ※ 数字は
+                  <Link href="/column/dumbbell-weight" className="text-orange-600 font-bold underline">
+                    ダンベルは何kgを買えばいい？
+                  </Link>
+                  の表と同じ基準です。公的な平均の統計はなく、サクトレの基準として体重比で出しています。
+                </li>
+                <li>
+                  ※ 表は「10回で限界が来る重さ」です。{threeByTen.label}のように何セットもそろえるときは、これより一段軽いダンベルで始めるか、表の重さで{threeByEight.label}から始めてください。
+                </li>
+                <li>
+                  ※ 表の中級者の重さは、脚より先に胸の前で支えきれなくなることがあります。そうなったらブルガリアンスクワットへ移ってください。
+                </li>
+              </ul>
               <p className="mt-3">
                 ゴブレットスクワットは、脚が強くなるとすぐに物足りなくなります。そうなったら、片脚ずつ行う<span className="font-bold">ブルガリアンスクワット</span>に移ると、同じダンベルでも重く感じられます。
                 {bulgarian && <>注意点は「{bulgarian.formTips}」です。</>}
@@ -223,9 +269,16 @@ export default function LegTrainingPage() {
                 週に何回やるか
               </h2>
               <p>
-                脚は「{large.part}」のグループに入り、回復の目安は{large.hours}、次に同じ部位を鍛えるまでの間隔は{large.interval}です。曜日の組み方は
+                脚は「{large.part}」のグループに入り、回復の目安は{large.hours}、次に同じ部位を鍛えるまでの間隔は{large.interval}です。つまり脚の日は、多くても週2回までが目安です。ただし、ふくらはぎは「{core.part}」のグループで、回復は{core.hours}と速めです。脚の日以外に足してもかまいません。
+              </p>
+              <p className="mt-2">
+                曜日の組み方は
                 <Link href="/column/split-routine" className="text-orange-600 font-bold underline">
                   分割法の早見表
+                </Link>
+                に、1週間の量の考え方は
+                <Link href="/column/frequency" className="text-orange-600 font-bold underline">
+                  週に何回筋トレすればいい？
                 </Link>
                 にあります。脚トレの翌日に強い筋肉痛が出たときの考え方は
                 <Link href="/column/muscle-soreness" className="text-orange-600 font-bold underline">
@@ -240,7 +293,7 @@ export default function LegTrainingPage() {
                 筆者（筋トレ歴15年・フィジーク大会入賞）の場合
               </p>
               <p className="text-xs leading-relaxed">
-                正直に書くと、私は脚トレを後回しにしてきた側です。フィジーク志向で上半身を優先してきたので、スクワットはベンチプレスと同じ120kgで止まっています。
+                正直に書くと、私はフィジーク志向で上半身を優先してきたので、スクワットはベンチプレスと同じ120kgで止まっています。
                 <Link href="/column/power-rack" className="text-orange-600 font-bold underline">
                   パワーラックの使い方
                 </Link>
@@ -263,7 +316,11 @@ export default function LegTrainingPage() {
                 <Link href="/column/women-muscle-slim" className="text-orange-600 font-bold underline">
                   女性が筋トレしても太くならない理由
                 </Link>
-                にまとめています。
+                にまとめています。長く続けて太さが気になってきたら、太もも前が主役になりやすい深いスクワットより、ヒップスラストとルーマニアンデッドリフト中心に組むと狙いを絞れます（
+                <Link href="/column/hip-training" className="text-orange-600 font-bold underline">
+                  お尻を鍛える筋トレ
+                </Link>
+                ）。
               </p>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
                 走っていれば、脚トレはしなくていいですか？
@@ -275,7 +332,7 @@ export default function LegTrainingPage() {
                 スクワットで膝が痛くなります。
               </h3>
               <p>
-                痛みが出る動きはその日は中止してください。重さを落としても痛む、痛みが続くといったときは、整形外科を受診してください。しゃがむと膝が内側に入るなら、筋力より足首などの硬さが原因のことも多いです。
+                痛みが出る動きはその日は中止してください。しゃがむと膝が内側に入るなら、足首の硬さや、お尻まわりの力不足が関わっていることがあります。まず重さを落として、膝とつま先を同じ方向に向けたまま、痛みの出ない深さで動きを確かめてください。重さを落としても痛む、痛みが続くといったときは、整形外科を受診してください。
               </p>
             </section>
 
@@ -288,16 +345,16 @@ export default function LegTrainingPage() {
                   ▸ 脚は<span className="font-bold">太もも前・太もも裏とお尻・ふくらはぎ</span>の3つ。太もも裏は別に鍛える
                 </li>
                 <li>
-                  ▸ 脚の日は<span className="font-bold">スクワットから始めて、小さい種目へ</span>
+                  ▸ 脚の日は<span className="font-bold">スクワットから始めて、軽い種目へ</span>。初めてなら3種目から
                 </li>
                 <li>
-                  ▸ スクワットの重さは1RMから出す。重いセットはセーフティバーを合わせてから
+                  ▸ スクワットの重さは自分の記録から出した1RMで決める。重いセットはセーフティバーを合わせてから
                 </li>
                 <li>
                   ▸ 自宅ならゴブレットスクワット。物足りなくなったらブルガリアンスクワットへ
                 </li>
                 <li>
-                  ▸ 脚は大きい筋肉なので、次の脚の日まで{large.interval}あける
+                  ▸ 脚の日は{large.interval}あけて週2回まで。ふくらはぎは回復が速い
                 </li>
               </ul>
             </section>
@@ -306,7 +363,7 @@ export default function LegTrainingPage() {
 
         <ShareButtons
           url="https://sakutore.jp/column/leg-training"
-          title="脚トレのやり方｜脚の日のメニューと順番、スクワットとゴブレットスクワットの重さの目安"
+          title="脚トレメニューと順番｜スクワットで組む重さと、ゴブレットスクワットは何kg？"
         />
 
         <AuthorBox />
