@@ -291,7 +291,11 @@ export default function HipTrainingPage() {
                 <Link href="/column/frequency" className="text-orange-600 font-bold underline">
                   週に何回筋トレすればいい？
                 </Link>
-                ）。
+                ）。脚全体の日の組み方は
+                <Link href="/column/leg-training" className="text-orange-600 font-bold underline">
+                  脚トレのやり方
+                </Link>
+                にあります。
               </p>
               <p className="mt-2">
                 そして正直に書いておくと、<span className="font-bold">お尻の形が変わるのは筋肉が増えたときだけではありません。</span>上に乗っている脂肪が減ったときにも、輪郭は大きく変わります。どちらか一方ではなく両方です。

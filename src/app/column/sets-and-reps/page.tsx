@@ -9,6 +9,7 @@ import {
   SET_RESERVE_REPS,
   WEIGHT_STEP_KG,
   schemeWeight,
+  toPlate,
   estimate1RM,
 } from "@/lib/strengthStandards";
 
@@ -31,8 +32,6 @@ const AUTHOR_START = { weight: 60, reps: 2 };
 // 筆者のベンチの自己ベスト（beginner-guide / big3-balance と同じ）。
 const AUTHOR_BEST_BENCH = 120;
 
-// プレートで作れる重さ（WEIGHT_STEP_KG 刻み）のうち、計算値以下でいちばん重いもの。
-const toPlate = (kg: number) => Math.floor(kg / WEIGHT_STEP_KG) * WEIGHT_STEP_KG;
 
 export default function SetsAndRepsPage() {
   const [fiveByFive, threeByEight, threeByTen] = SET_SCHEMES;

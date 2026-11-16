@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
+import { DAY_ORDER } from "@/lib/dayOrder";
 import AuthorBox from "@/components/AuthorBox";
 import DiagramFigure from "@/components/diagrams/DiagramFigure";
 import SessionFlowDiagram from "@/components/diagrams/SessionFlowDiagram";
@@ -55,26 +56,6 @@ const SESSION_FLOW = [
     name: "静的ストレッチ",
     time: "5分",
     detail: "ゆっくり伸ばすのはトレーニングが終わってから",
-  },
-];
-
-// 部位ごとの並べ方の例。どれも「大きい種目 → 小さい種目」で並べてある。
-const DAY_ORDER = [
-  {
-    day: "胸の日",
-    order: "ベンチプレス → インクラインダンベルプレス → ダンベルフライ → ケーブルクロスオーバー",
-  },
-  {
-    day: "背中の日",
-    order: "懸垂（またはラットプルダウン）→ ベントオーバーロウ → シーテッドロウ → ストレートアームプルダウン",
-  },
-  {
-    day: "脚の日",
-    order: "スクワット → レッグプレス → ルーマニアンデッドリフト → レッグエクステンション・レッグカール → カーフレイズ",
-  },
-  {
-    day: "肩・腕の日",
-    order: "ショルダープレス → サイドレイズ → リアレイズ → バーベルカール → トライセプスプッシュダウン",
   },
 ];
 
@@ -226,6 +207,10 @@ export default function TrainingOrderPage() {
                 に、お尻を狙うときの並べ方は
                 <Link href="/column/hip-training" className="text-orange-600 font-bold underline">
                   お尻を鍛える筋トレ
+                </Link>
+                に、脚の日の組み方と重さの目安は
+                <Link href="/column/leg-training" className="text-orange-600 font-bold underline">
+                  脚トレのやり方
                 </Link>
                 に書きました。
               </p>
