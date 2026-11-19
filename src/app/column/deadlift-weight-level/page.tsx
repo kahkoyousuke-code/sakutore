@@ -344,6 +344,10 @@ export default function DeadliftWeightLevelPage() {
                 <Link href="/column/muscle-soreness" className="text-orange-600 font-bold underline">
                   筋肉痛でも筋トレしていい？
                 </Link>
+                に、受診の目安と腰が痛い日の種目の組み替え方は
+                <Link href="/column/back-pain" className="text-orange-600 font-bold underline">
+                  筋トレで腰が痛いときは休む？
+                </Link>
                 にあります。
               </p>
             </section>
