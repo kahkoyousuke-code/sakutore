@@ -124,6 +124,8 @@ const config = {
     { kw: "腹筋", path: "/column/abs-body-fat" },
     { kw: "腹筋 種目", path: "/column/abs-training" },
     { kw: "停滞", path: "/column/plateau" },
+    { kw: "腰が痛い", path: "/column/back-pain" },
+    { kw: "腰痛 筋トレ", path: "/column/back-pain" },
     { kw: "脚トレ", path: "/column/leg-training" },
     { kw: "脚の日", path: "/column/leg-training" },
     { kw: "ゴブレット", path: "/column/leg-training" },

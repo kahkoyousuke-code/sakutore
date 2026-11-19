@@ -275,6 +275,10 @@ export default function LiftingBeltPage() {
                 <Link href="/column/muscle-soreness" className="text-orange-600 font-bold underline">
                   筋肉痛でも筋トレしていい？
                 </Link>
+                に、腰が痛い日の種目の組み替え方は
+                <Link href="/column/back-pain" className="text-orange-600 font-bold underline">
+                  筋トレで腰が痛いときは休む？
+                </Link>
                 にあります。
               </p>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
