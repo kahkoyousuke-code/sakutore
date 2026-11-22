@@ -43,26 +43,24 @@ npm run seo:report  # 取得結果から「次にどこを直すか」の一覧�
 Next.js 14 App Router / TypeScript / React 18 / Tailwind CSS 3.4 / Anthropic SDK（`claude-haiku-4-5-20251001`）。
 サーバDBなし、ユーザーデータは**すべてブラウザの localStorage**（`src/lib/workoutLog.ts`, `trainingMemo.ts`, `menuHistory.ts`）。
 
-## 絶対に守るルール：数字とプロフィールの単一ソース
+## 数字とプロフィールの単一ソース
 
-同じ問いに2つの答えを返すのはツール系サイトとして最悪。以下は**必ず共通モジュールを import して使う**。ページ側にハードコードしない。
+同じ問いに2つの答えを返すのはツール系サイトとして最悪。以下は共通モジュールを import して使い、ページ側にハードコードしない（どこで使っているかは grep で確認する）。
 
-| モジュール | 何の単一ソースか | 使っている場所 |
-|---|---|---|
-| `src/lib/strengthStandards.ts` | BIG3の体重比・レベル定義・目標重量計算 | `/weight-checker`, `/column/strength-standards`, `/column/bench-press-average`, `/column/squat-average`, `/column/deadlift-average` |
-| `src/lib/author.ts` | 運営者名・実績・SNS（E-E-A-T） | `AuthorBox`, `/about`, `/gear`, JSON-LD |
-| `src/lib/metadata.ts` | title/description/canonical/OGP | 全ページ（`pageMetadata()` 経由） |
-| `src/lib/exercises.ts` | 種目の手順・フォーム注意点・コツ | 結果画面の種目カード |
-| `src/lib/bodyweightStandards.ts` | 自重種目の負荷（体重比）・回数目安・懸垂と腹筋の5段階 | `/column/chest-home`, `/column/pushup-pullup-average`, `/column/pullup-progression`, `/column/home-back`, `/column/abs-training` |
-| `src/lib/fatConversion.ts` | 体脂肪1kg＝7,200kcalの換算 | `/calorie-calculator`, `/column/metabolism`, `/column/alcohol`, `/column/effect-timeline` |
-| `src/lib/recoveryStandards.ts` | 部位別の回復時間・筋肉痛（遅発性筋痛）の経過 | `/column/frequency`, `/column/split-routine`, `/column/muscle-soreness` |
-| `src/lib/dumbbellStandards.ts` | ダンベル種目で扱う重さ（体重比・10回できる重さ） | `/column/dumbbell-weight`, `/column/dumbbell-press-level`, `/column/shoulder-training`, `/column/home-back`, `/column/leg-training` |
-| `src/lib/dayOrder.ts` | 部位ごとの1日の種目の並べ方（胸・背中・脚・肩腕の日） | `/column/training-order`, `/column/leg-training` |
-| `src/lib/gear.ts` | Amazonで紹介する商品（ASIN・コメント・アソシエイトタグ） | `/gear`, 記事内の `GearPick`（strength-standards / squat-average / deadlift-average / dumbbell-weight） |
+| モジュール | 何の単一ソースか |
+|---|---|
+| `src/lib/strengthStandards.ts` | BIG3の体重比・レベル定義・目標重量計算 |
+| `src/lib/author.ts` | 運営者名・実績・SNS（E-E-A-T） |
+| `src/lib/metadata.ts` | title/description/canonical/OGP（`pageMetadata()` 経由） |
+| `src/lib/exercises.ts` | 種目の手順・フォーム注意点・コツ |
+| `src/lib/bodyweightStandards.ts` | 自重種目の負荷（体重比）・回数目安・懸垂と腹筋の5段階 |
+| `src/lib/fatConversion.ts` | 体脂肪1kg＝7,200kcalの換算 |
+| `src/lib/recoveryStandards.ts` | 部位別の回復時間・筋肉痛（遅発性筋痛）の経過 |
+| `src/lib/dumbbellStandards.ts` | ダンベル種目で扱う重さ（体重比・10回できる重さ） |
+| `src/lib/dayOrder.ts` | 部位ごとの1日の種目の並べ方（胸・背中・脚・肩腕の日） |
+| `src/lib/gear.ts` | Amazonで紹介する商品（ASIN・コメント・アソシエイトタグ） |
 
-過去に記事とツールでスクワットの目安が105kg／87.5kgと食い違う事故があり、`strengthStandards.ts` に一元化して解消した。**数字を足すときは必ずここに足す。**
-
-同じ事故が体脂肪の換算でも起きていた（計算機が1g＝7kcal、記事と解説カードが1kg＝7,200kcal）。`fatConversion.ts` に一元化済み。**記事に数字を書くときは、まず既存モジュールにあるか探すこと。**
+過去に記事とツールでスクワットの目安が105kg／87.5kgと食い違う事故があり、`strengthStandards.ts` に一元化して解消した。体脂肪の換算でも同じ事故があった（計算機が1g＝7kcal、記事が1kg＝7,200kcal）。記事に数字を書くときは、まず既存モジュールにあるか探し、なければモジュールに足してから使う。
 
 1RM換算は Epley式（`1RM = weight × (1 + reps / 30)`、1repは例外でそのまま）。`/rm-calculator` と各記事で同じ式を使う。
 
@@ -73,7 +71,7 @@ Next.js 14 App Router / TypeScript / React 18 / Tailwind CSS 3.4 / Anthropic SDK
 `src/app/column/<slug>/page.tsx` を作り、以下を**全部**やる。
 
 1. `pageMetadata({ title, description, path })` で metadata をエクスポート（直書きしない）
-2. `AuthorBox` を記事末尾に置く（54本中54本が設置済み。E-E-A-Tの一貫性のため例外を作らない）
+2. `AuthorBox` を記事末尾に置く（全記事に設置済み。E-E-A-Tの一貫性のため例外を作らない）
 3. `ShareButtons` を置く
 4. **`src/app/column/page.tsx` のリストに `href` / `title` / `description` を追記**（忘れると内部リンクが張られず、Googleに発見されない）
 5. `src/app/sitemap.ts` は `src/app/column` を読んで自動生成するので**追記不要**。ただし `LAST_MODIFIED` は更新する
@@ -140,6 +138,4 @@ SEOレポート用（どちらも任意・`npm run seo:fetch` だけが使う。
 
 ## コミット
 
-- 1コミット1目的。無関係な変更を混ぜない
-- **指示があるまでコミット・プッシュしない**
 - メッセージは日本語、`feat:` / `fix:` プレフィックス（例: `feat: スクワット平均の記事を追加しBIG3クラスタを3本に拡張`）
