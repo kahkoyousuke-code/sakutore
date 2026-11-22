@@ -48,7 +48,7 @@ const ex = (ratio: number) => targetWeight(AVG_EXAMPLE_WEIGHT, ratio);
 const exWomen = (ratio: number) => Math.round(AVG_EXAMPLE_WEIGHT_WOMEN * ratio);
 
 export const metadata = pageMetadata({
-  title: "BIG3の体重別レベル早見表｜平均・合計の目安を男女別に - サクトレ",
+  title: "BIG3の平均は何kg？男女・体重別のレベル早見表と合計の目安 - サクトレ",
   description: `BIG3の平均は何kg？公的な統計はないため、体重比の目安で答えます。体重${AVG_EXAMPLE_WEIGHT}kgの男性なら、${AVG_LEVEL}の目安は合計${ex(avgMen.total)}kg（ベンチ${ex(avgMen.bench)}・スクワット${ex(avgMen.squat)}・デッド${ex(avgMen.deadlift)}kg）。${MEN_WEIGHTS[0]}〜${MEN_WEIGHTS[MEN_WEIGHTS.length - 1]}kgの体重別・男女別の早見表と、${AUTHOR.credentials[0]}の筆者の実重量つき。`,
   path: "/column/strength-standards",
 });
@@ -228,11 +228,16 @@ export default function StrengthStandardsPage() {
                 BIG3の平均は何kg？【結論】{AVG_LEVEL}ラインで比べる
               </h2>
               <p>
-                <span className="font-bold">BIG3に「日本人の平均◯kg」と言える公的な統計はありません。</span>
-                ネットで見かける数字の多くは、出典が書かれていないか、アプリやサイトの利用者が自分で登録した記録の集計です。後者は鍛えている人ほど登録するので、一般の人の平均より高めに出やすいと考えられます。
+                <span className="font-bold">
+                  BIG3の平均を示す公的な統計はありません。物差しになる{AVG_LEVEL}ライン（トレ歴{LEVEL_EXPERIENCE[AVG_LEVEL]}）で答えると、体重{AVG_EXAMPLE_WEIGHT}kgの男性で合計{ex(avgMen.total)}kgです
+                </span>
+                （ベンチプレス{ex(avgMen.bench)}kg・スクワット{ex(avgMen.squat)}kg・デッドリフト{ex(avgMen.deadlift)}kg）。合計は体重の{formatRatio(avgMen.total)}倍にあたります。女性（体重{AVG_EXAMPLE_WEIGHT_WOMEN}kg）なら、同じ位置はベンチプレス{exWomen(avgWomen.bench)}kg・スクワット{exWomen(avgWomen.squat)}kg・デッドリフト{exWomen(avgWomen.deadlift)}kgです。
               </p>
               <p className="mt-2">
-                平均の代わりに物差しにしやすいのが、この記事の<span className="font-bold">「{AVG_LEVEL}」ライン</span>です。これは平均値ではなく、<span className="font-bold">トレ歴{LEVEL_EXPERIENCE[AVG_LEVEL]}の人が届く目安</span>です。BIG3合計なら体重の{formatRatio(avgMen.total)}倍で、体重{AVG_EXAMPLE_WEIGHT}kgの男性なら合計<span className="font-bold">{ex(avgMen.total)}kg</span>になります。超えていれば「数年続けた人の水準」、届いていなければ伸びしろが残っている、と読んでください。
+                平均と言い切らないのは、<span className="font-bold">BIG3に「日本人の平均◯kg」と言える公的な統計がない</span>からです。ネットで見かける数字の多くは、出典が書かれていないものか、アプリやサイトの利用者が自分で登録した記録を集計したものです。後者は鍛えている人ほど登録するので、一般の人の平均より高めに出やすいと考えられます。
+              </p>
+              <p className="mt-2">
+                そこでこの記事では、平均の代わりに<span className="font-bold">{AVG_LEVEL}ライン</span>を物差しにしています。超えていれば数年続けた人の水準、届いていなければまだ伸びしろがある、と読んでください。
               </p>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
                 <table className="w-full text-xs md:text-sm border-collapse">
@@ -293,6 +298,22 @@ export default function StrengthStandardsPage() {
                   BIG3合計◯kgはどのレベル？
                 </Link>
                 へ。
+              </p>
+              <h3 className="font-bold text-gray-800 mt-5 mb-2">
+                {AVG_LEVEL}の前後は？体重{AVG_EXAMPLE_WEIGHT}kgの男性でレベル別に見る
+              </h3>
+              <p className="text-sm">
+                {AVG_LEVEL}の前後も並べると、自分がどこにいるかがわかります。各レベルにあたるトレ歴の目安は、
+                {MEN_LEVELS.filter((level) => level !== "エリート")
+                  .map((level) => `${level}は${LEVEL_EXPERIENCE[level]}`)
+                  .join("、")}
+                です。
+              </p>
+              <div className="mt-2">
+                <BodyWeightTable weight={AVG_EXAMPLE_WEIGHT} />
+              </div>
+              <p className="mt-2 text-xs text-gray-500">
+                ※ すべて1RM（1回だけ挙げられる最大重量）です。3種目を足した数字が合計と一致するよう、0.5kg単位のまま載せています。
               </p>
               <DiagramFigure
                 title="レベルが1つ上がるごとに、必要な体重比はこう伸びる（男性）"
