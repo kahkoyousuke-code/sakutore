@@ -74,7 +74,7 @@ Next.js 14 App Router / TypeScript / React 18 / Tailwind CSS 3.4 / Anthropic SDK
 2. `AuthorBox` を記事末尾に置く（全記事に設置済み。E-E-A-Tの一貫性のため例外を作らない）
 3. `ShareButtons` を置く
 4. **`src/app/column/page.tsx` のリストに `href` / `title` / `description` を追記**（忘れると内部リンクが張られず、Googleに発見されない）
-5. `src/app/sitemap.ts` は `src/app/column` を読んで自動生成するので**追記不要**。ただし `LAST_MODIFIED` は更新する
+5. `src/app/sitemap.ts` は `src/app/column` を読んで自動生成するので**追記不要**。ただし **`src/lib/lastModified.ts` に `"/column/<slug>": "公開日"` を足す**（無いとビルドが止まる）。既存記事の本文・表・数字・リンクを変えたときも、そのページの日付だけを更新する。見た目だけの変更では動かさない。共通モジュールの数字を変えたら、数字が動いたページの日付を更新する（全ページに同じ日付を付けると、Googleが lastmod を信用しなくなる）
 6. 悩み系（ダイエット・40代・リバウンド等）の記事なら `RizapCta`（`lead` propで記事ごとの導線文）をまとめ直後に置く
 6.5. **図解を入れる**：仕組み・順番・時間の変化・比率・器具の位置関係など、文章と表だけでは伝わりにくい箇所があれば図にする（`diagram-master` エージェントを使ってよい）。目安は1記事1〜2枚、無理に入れない
    - 図本体は `src/components/diagrams/<PascalName>.tsx`（インラインSVG・`viewBox` ＋ `w-full h-auto`・スマホ幅340pxで文字11px以上）、記事では `DiagramFigure`（title / label / caption）で囲む

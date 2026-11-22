@@ -1,9 +1,9 @@
 import { MetadataRoute } from "next";
 import fs from "fs";
 import path from "path";
+import { lastModifiedFor } from "@/lib/lastModified";
 
 const BASE_URL = "https://sakutore.jp";
-const LAST_MODIFIED = new Date("2026-11-22");
 
 /**
  * 収録するのは読み物として実体のあるページだけにする。
@@ -12,21 +12,22 @@ const LAST_MODIFIED = new Date("2026-11-22");
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [
-    { url: BASE_URL, priority: 1.0 },
-    { url: `${BASE_URL}/column`, priority: 0.9 },
-    { url: `${BASE_URL}/questions`, priority: 0.8 },
-    { url: `${BASE_URL}/rm-calculator`, priority: 0.8 },
-    { url: `${BASE_URL}/weight-checker`, priority: 0.8 },
-    { url: `${BASE_URL}/calorie-calculator`, priority: 0.8 },
-    { url: `${BASE_URL}/guide`, priority: 0.7 },
-    { url: `${BASE_URL}/faq`, priority: 0.7 },
-    { url: `${BASE_URL}/gear`, priority: 0.6 },
-    { url: `${BASE_URL}/about`, priority: 0.5 },
-    { url: `${BASE_URL}/privacy`, priority: 0.3 },
-    { url: `${BASE_URL}/terms`, priority: 0.3 },
-  ].map(({ url, priority }) => ({
-    url,
-    lastModified: LAST_MODIFIED,
+    { path: "/", priority: 1.0 },
+    { path: "/column", priority: 0.9 },
+    { path: "/questions", priority: 0.8 },
+    { path: "/rm-calculator", priority: 0.8 },
+    { path: "/weight-checker", priority: 0.8 },
+    { path: "/calorie-calculator", priority: 0.8 },
+    { path: "/guide", priority: 0.7 },
+    { path: "/faq", priority: 0.7 },
+    { path: "/gear", priority: 0.6 },
+    { path: "/about", priority: 0.5 },
+    { path: "/privacy", priority: 0.3 },
+    { path: "/terms", priority: 0.3 },
+  ].map(({ path: pagePath, priority }) => ({
+    url: pagePath === "/" ? BASE_URL : `${BASE_URL}${pagePath}`,
+    // Each page carries its own last significant update (see lastModified.ts).
+    lastModified: lastModifiedFor(pagePath),
     changeFrequency: "monthly" as const,
     priority,
   }));
@@ -40,7 +41,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // コラムはサイトで最も中身のあるページ群なので優先度を高く申告する。
   const columnPages = columnSlugs.map((slug) => ({
     url: `${BASE_URL}/column/${slug}`,
-    lastModified: LAST_MODIFIED,
+    lastModified: lastModifiedFor(`/column/${slug}`),
     changeFrequency: "monthly" as const,
     priority: 0.8,
   }));
