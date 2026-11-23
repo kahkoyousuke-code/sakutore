@@ -14,7 +14,7 @@
  */
 export const PAGE_LAST_MODIFIED: Record<string, string> = {
   "/": "2026-08-11",
-  "/column": "2026-11-19",
+  "/column": "2026-11-23",
   "/questions": "2026-08-01",
   "/rm-calculator": "2026-11-08",
   "/weight-checker": "2026-11-08",
@@ -48,7 +48,7 @@ export const PAGE_LAST_MODIFIED: Record<string, string> = {
   "/column/effect-timeline": "2026-10-25",
   "/column/everyday-training": "2026-10-26",
   "/column/frequency": "2026-09-22",
-  "/column/gym-beginner": "2026-10-22",
+  "/column/gym-beginner": "2026-11-23",
   "/column/hip-training": "2026-11-16",
   "/column/home-back": "2026-11-05",
   "/column/leg-training": "2026-11-16",
@@ -67,7 +67,7 @@ export const PAGE_LAST_MODIFIED: Record<string, string> = {
   "/column/pushup-pullup-average": "2026-11-03",
   "/column/rest": "2026-10-25",
   "/column/sauna-bath": "2026-10-26",
-  "/column/sets-and-reps": "2026-11-16",
+  "/column/sets-and-reps": "2026-11-23",
   "/column/shoulder-training": "2026-10-29",
   "/column/sleep": "2026-11-03",
   "/column/split-routine": "2026-10-25",
@@ -75,11 +75,12 @@ export const PAGE_LAST_MODIFIED: Record<string, string> = {
   "/column/squat-weight-level": "2026-10-22",
   "/column/strength-standards": "2026-11-22",
   "/column/stretch": "2026-09-18",
-  "/column/training-order": "2026-11-16",
+  "/column/training-order": "2026-11-23",
   "/column/women-40s-training": "2026-09-22",
   "/column/women-big3": "2026-11-02",
   "/column/women-muscle-slim": "2026-09-22",
   "/column/women-training-timing": "2026-08-02",
+  "/column/warmup-sets": "2026-11-23",
 };
 
 /**

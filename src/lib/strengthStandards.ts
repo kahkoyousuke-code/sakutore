@@ -200,6 +200,40 @@ export const toPlate = (kg: number) => Math.floor(kg / WEIGHT_STEP_KG) * WEIGHT_
 export const schemeWeight = (oneRM: number, reps: number) =>
   weightForReps(oneRM, reps + SET_RESERVE_REPS);
 
+/** オリンピックバー（ジムの長いバーベル）の重さ（kg）。 */
+export const BAR_KG = 20;
+
+/**
+ * アップセット（本番の前に軽い重さから上げていくセット）の、サクトレの基準。
+ * pct は本番の重さに対する割合で、0 は「バーだけ」。
+ * /column/training-order の例（本番80kg → バーだけ10回 → 40kg×5回 → 60kg×3回）と同じ割合。
+ * アップで疲れないよう、重くなるほど回数を減らす。
+ */
+export const WARMUP_STEPS = [
+  { pct: 0, reps: 10, label: "バーだけ" },
+  { pct: 0.5, reps: 5, label: "本番の半分" },
+  { pct: 0.75, reps: 3, label: "本番の4分の3" },
+] as const;
+
+/** step は WARMUP_STEPS の何段目か（0 始まり）。飛ばした段は返さない。 */
+export type WarmupSet = { kg: number; reps: number; bar: boolean; step: number };
+
+/**
+ * 本番の重さ（kg）から、アップセットの重さと回数を出す。
+ * 重さはプレートで組める重さ（toPlate）に丸め、バーより軽い段、ひとつ前のセット以下の重さになる段、
+ * 本番の重さに届いてしまう段は飛ばす（本番が軽いほど段が減り、本番がバーだけならアップなし）。
+ */
+export const warmupSets = (workKg: number): WarmupSet[] => {
+  const sets: WarmupSet[] = [];
+  WARMUP_STEPS.forEach((step, i) => {
+    const kg = step.pct === 0 ? BAR_KG : toPlate(workKg * step.pct);
+    const prev = sets[sets.length - 1]?.kg ?? 0;
+    if (kg < BAR_KG || kg <= prev || kg >= workKg) return;
+    sets.push({ kg, reps: step.reps, bar: step.pct === 0, step: i });
+  });
+  return sets;
+};
+
 /** Target weight for one lift, rounded to 0.1kg as the tool has always done. */
 export const targetWeight = (bodyWeight: number, ratio: number) =>
   Math.round(bodyWeight * ratio * 10) / 10;
