@@ -2,6 +2,7 @@ import Link from "next/link";
 import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import { DAY_ORDER } from "@/lib/dayOrder";
+import { BAR_KG, warmupSets } from "@/lib/strengthStandards";
 import AuthorBox from "@/components/AuthorBox";
 import DiagramFigure from "@/components/diagrams/DiagramFigure";
 import SessionFlowDiagram from "@/components/diagrams/SessionFlowDiagram";
@@ -12,6 +13,9 @@ export const metadata = pageMetadata({
     "順番のルールは3つだけ。大きい種目から、高重量から、有酸素は筋トレの後。1回のトレーニングの流れを表にして、胸・背中・脚・肩腕それぞれの種目の並べ方と、腹筋をいつやるかまで解説します。筋トレ歴15年の筆者が実際に使っている順番つき。",
   path: "/column/training-order",
 });
+
+// アップセットの例に使う本番の重さ（kg）。/column/warmup-sets の図と同じ。
+const WARMUP_EXAMPLE_KG = 80;
 
 // 1回のトレーニングの流れ。時間は60分を確保できた日の配分。
 const SESSION_FLOW = [
@@ -313,7 +317,15 @@ export default function TrainingOrderPage() {
                 順番の話でいちばん抜けやすいのが、<span className="font-bold">その日の1種目目の入り方</span>です。ベンチプレスで80kgを扱う人が、1セット目からいきなり80kgを持つと、力も出ませんし怪我のリスクも上がります。
               </p>
               <p className="mt-2">
-                段階的に上げていきます。たとえば本番80kgなら、バーだけ（20kg）で10回 → 40kgで5回 → 60kgで3回 → 本番80kg、という具合です。<span className="font-bold">アップのセットで疲れないよう、回数は少なめに。</span>
+                段階的に上げていきます。たとえば本番{WARMUP_EXAMPLE_KG}kgなら、
+                {warmupSets(WARMUP_EXAMPLE_KG)
+                  .map((s) => (s.bar ? `バーだけ（${BAR_KG}kg）で${s.reps}回` : `${s.kg}kgで${s.reps}回`))
+                  .join(" → ")}
+                {" "}→ 本番{WARMUP_EXAMPLE_KG}kg、という具合です。<span className="font-bold">アップのセットで疲れないよう、回数は少なめに。</span>本番の重さ別の早見表は
+                <Link href="/column/warmup-sets" className="text-orange-600 font-bold underline">
+                  アップセットの重さと回数
+                </Link>
+                にあります。
               </p>
               <p className="mt-2">
                 自分の本番重量が今どのくらいかを確かめたいときは

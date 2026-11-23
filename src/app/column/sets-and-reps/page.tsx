@@ -284,7 +284,11 @@ export default function SetsAndRepsPage() {
                 <Link href="/column/training-order" className="text-orange-600 font-bold underline">
                   筋トレの順番
                 </Link>
-                の「最初の1種目は、いきなり本番の重量から入らない」の項にあります。
+                の「最初の1種目は、いきなり本番の重量から入らない」の項に、本番の重さ別の早見表は
+                <Link href="/column/warmup-sets" className="text-orange-600 font-bold underline">
+                  アップセットの重さと回数
+                </Link>
+                にあります。
               </p>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
                 {fiveByFive.label}は時間がかかりすぎませんか？
