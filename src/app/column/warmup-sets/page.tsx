@@ -4,10 +4,10 @@ import { pageMetadata } from "@/lib/metadata";
 import AuthorBox from "@/components/AuthorBox";
 import DiagramFigure from "@/components/diagrams/DiagramFigure";
 import WarmupRamp from "@/components/diagrams/WarmupRamp";
-import { BAR_KG, WARMUP_STEPS, warmupSets } from "@/lib/strengthStandards";
+import { BAR_KG, SET_SCHEMES, WARMUP_STEPS, warmupSets } from "@/lib/strengthStandards";
 
 export const metadata = pageMetadata({
-  title: "アップセットの重さと回数｜ベンチ・スクワット・デッドリフトのウォームアップは何kgから？ - サクトレ",
+  title: "アップセットの重量と回数｜ベンチプレス・スクワット・デッドリフトのウォームアップは何kgから？早見表つき - サクトレ",
   description:
     "アップセットは「バーだけ10回 → 本番の半分で5回 → 本番の4分の3で3回 → 本番」の3段で上げます。本番の重さ40〜140kgごとの早見表、デッドリフトでの例外、2種目目以降のアップ、アップで疲れないコツまでまとめました。",
   path: "/column/warmup-sets",
@@ -15,6 +15,8 @@ export const metadata = pageMetadata({
 
 // 図の例。/column/training-order の例（本番80kg）と同じ重さにしている。
 const SAMPLE_WORK_KG = 80;
+// 図の本番の回数。5×5 の回数（/column/sets-and-reps と同じ）。
+const SAMPLE_WORK_REPS = SET_SCHEMES.find((s) => s.label === "5×5")!.reps;
 
 // 早見表に並べる本番の重さ（kg）。
 const WORK_WEIGHTS = [40, 50, 60, 80, 100, 120, 140];
@@ -22,6 +24,9 @@ const WORK_WEIGHTS = [40, 50, 60, 80, 100, 120, 140];
 const half = WARMUP_STEPS.find((s) => s.pct === 0.5)!;
 const threeQuarter = WARMUP_STEPS.find((s) => s.pct === 0.75)!;
 const barStep = WARMUP_STEPS.find((s) => s.pct === 0)!;
+
+// 早見表の列見出し。WARMUP_STEPS の段の順。
+const COL_LABELS = WARMUP_STEPS.map((s) => s.label);
 
 // 早見表の列。WARMUP_STEPS の段ごとに、その本番の重さで何kgになるか（飛ばす段は null）。
 const rowFor = (work: number) => {
@@ -33,7 +38,7 @@ export default function WarmupSetsPage() {
   const sample = warmupSets(SAMPLE_WORK_KG);
   const ramp = [
     ...sample.map((s) => ({ kg: s.kg, reps: s.reps, label: s.bar ? "バーだけ" : "アップ" })),
-    { kg: SAMPLE_WORK_KG, reps: 5, label: "本番", main: true },
+    { kg: SAMPLE_WORK_KG, reps: SAMPLE_WORK_REPS, label: "本番", main: true },
   ];
 
   return (
@@ -42,16 +47,16 @@ export default function WarmupSetsPage() {
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
           <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
-            アップセットの重さと回数｜ベンチ・スクワット・デッドリフトのウォームアップは何kgから？
+            アップセットの重量と回数｜ベンチプレス・スクワット・デッドリフトのウォームアップは何kgから？早見表つき
           </h1>
 
           <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section>
               <p>
-                ベンチプレスやスクワットで、本番の重さをいきなり持つと、力が出にくく、けがのもとにもなります。本番の前に軽い重さから段階的に上げていくセットを、<span className="font-bold">アップセット</span>（ウォームアップのセット）と呼びます。
+                ベンチプレスやスクワットで、本番のセット（その日に決めた重さで行うセット）の重さをいきなり持つと、力が出にくく、けがのもとにもなりやすくなります。本番の前に軽い重さから段階的に上げていくセットを、<span className="font-bold">アップセット</span>（ウォームアップのセット）と呼びます。
               </p>
               <p className="mt-2">
-                「何kgから始めて、何回やればいいのか」で迷う人は多いと思います。この記事では、サクトレの基準として、本番の重さから計算できる決め方と早見表を紹介します。
+                「何kgから始めて、何回やればいいのか」で迷う人は多いと思います。結論から書くと、<span className="font-bold">バーだけ（{BAR_KG}kg）から始めて、本番の半分、4分の3と3段で上げます</span>。この記事では、サクトレの基準として、本番の重さから計算できる決め方と早見表を紹介します。
               </p>
             </section>
 
@@ -61,7 +66,7 @@ export default function WarmupSetsPage() {
               </h2>
               <ol className="space-y-1">
                 <li>
-                  1. <span className="font-bold">バーだけ（{BAR_KG}kg）で{barStep.reps}回</span>：フォームを確かめる
+                  1. <span className="font-bold">バーだけ（{BAR_KG}kg）で{barStep.reps}回</span>：フォームを確かめる（{BAR_KG}kgはジムの長いバーの場合。軽いバーを使うときは、そのバーの重さで同じように）
                 </li>
                 <li>
                   2. <span className="font-bold">本番の半分の重さで{half.reps}回</span>
@@ -91,7 +96,7 @@ export default function WarmupSetsPage() {
                 本番の重さ別・アップセットの早見表
               </h2>
               <p>
-                重さは、プレートで組める重さに切り下げています。本番が軽い日は、すぐ前のセットと同じ重さになる段や、本番の重さに届いてしまう段を飛ばすので、アップセットは少なくなります。
+                重さは、プレートで組める重さに切り下げています。本番が軽い日は、前のセット以下の重さ（バーの{BAR_KG}kgより軽いなど）になる段や、本番の重さに届いてしまう段を飛ばすので、アップセットは少なくなります。
               </p>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
                 <table className="w-full text-xs md:text-sm border-collapse">
@@ -101,13 +106,13 @@ export default function WarmupSetsPage() {
                         本番の重さ
                       </th>
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
-                        1セット目
+                        {COL_LABELS[0]}
                       </th>
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
-                        2セット目
+                        {COL_LABELS[1]}
                       </th>
                       <th className="border border-gray-200 px-2 py-2 text-left font-bold text-gray-700 whitespace-nowrap">
-                        3セット目
+                        {COL_LABELS[2]}
                       </th>
                     </tr>
                   </thead>
@@ -126,7 +131,7 @@ export default function WarmupSetsPage() {
                 </table>
               </div>
               <p className="mt-2 text-xs text-gray-500">
-                ※ 「—」は飛ばす段です。表にない重さは、本番の重さの半分と4分の3を計算して、組める重さに切り下げてください。
+                ※ 「—」は飛ばす段です。表にない重さは、本番の重さの半分と4分の3を計算して、組める重さに切り下げてください。前のセット以下の重さ（バーより軽いなど）になる段は飛ばします。本番が重い日に、4分の3から本番までの差が大きく感じたら、そのあいだに回数をさらに減らした段を1つ足してもかまいません。
               </p>
               <p className="mt-3">
                 本番の重さがまだ決まっていないなら、先に決めます。「◯kgを◯回」の記録から
@@ -147,7 +152,7 @@ export default function WarmupSetsPage() {
               </h2>
               <h3 className="font-bold text-gray-800 mt-4 mb-2">ベンチプレス・スクワット</h3>
               <p>
-                表のとおりで大丈夫です。スクワットは、セーフティバーの高さもアップセットのうちに確かめておくと、本番で慌てません（
+                表のとおりで大丈夫です。どちらも、<span className="font-bold">バーだけの1セット目で、セーフティバーの高さを確かめておく</span>と、本番で慌てません（
                 <Link href="/column/power-rack" className="text-orange-600 font-bold underline">
                   パワーラックの使い方
                 </Link>
@@ -155,11 +160,11 @@ export default function WarmupSetsPage() {
               </p>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">デッドリフト</h3>
               <p>
-                デッドリフトは、バーだけだと床からの高さが低く、本番と違う姿勢で引くことになります。<span className="font-bold">1セット目（バーだけ）は飛ばして、2セット目から始めてかまいません。</span>そのぶん、2セット目の前に、背中を丸めずに股関節から前に倒す動きを、何も持たずに確かめておきます。
+                デッドリフトは、直径の大きいプレート（20kg）を付けていないと、床からのバーの高さが低くなり、本番と違う姿勢で引くことになります。そこでバーだけの段は、床から引かずに、立った姿勢から<span className="font-bold">すねの高さまで下ろして戻す動きを{barStep.reps}回</span>に置き換えます。背中を丸めずに、股関節から上体を前に倒す練習です。半分の段も小さいプレートしか付けられないときは、床に置いたプレートの上にバーを載せて高さをそろえるか、大きいプレートを付けた重さから始めてください。
               </p>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">2種目目以降</h3>
               <p>
-                同じ部位の2種目目からは、すでに体が温まっています。表のように3段も踏まなくてよく、軽い重さで1セット動きを確かめる程度で十分です。違う部位の種目に移るときは、その種目の1種目目と考えて、表のとおりに上げてください。並べ方は
+                同じ部位の2種目目からは、すでに体が温まっています。表のように3段も踏まなくてよく、1〜2セット、軽い重さで動きを確かめれば足りることが多いです。まだ使っていない部位の種目（全身の日にベンチプレスの後でスクワットをするときなど）に移るときは、その部位の1種目目と考えて、表のとおりに上げてください。並べ方は
                 <Link href="/column/training-order" className="text-orange-600 font-bold underline">
                   筋トレの順番
                 </Link>
@@ -179,7 +184,7 @@ export default function WarmupSetsPage() {
                   ▸ <span className="font-bold">セットの間は短くてよい</span>：プレートを付け替えたら次へ。ただし、最後のアップセットと本番のあいだは、息が整うまで少し空けます
                 </li>
                 <li>
-                  ▸ <span className="font-bold">ベルトは本番だけ</span>：アップセットではベルトを外して、自分でお腹に力を入れる練習にします（
+                  ▸ <span className="font-bold">ベルトを使う人も、巻くのは本番だけ</span>：アップセットではベルトを外して、自分でお腹に力を入れる練習にします（
                   <Link href="/column/lifting-belt" className="text-orange-600 font-bold underline">
                     トレーニングベルトはいつから必要？
                   </Link>
@@ -228,6 +233,12 @@ export default function WarmupSetsPage() {
                 回数を減らしてください。表の回数は上限の目安で、少なくしても動きの確認はできます。それでも疲れるなら、本番の重さが今の自分には重すぎる可能性があります。
               </p>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
+                マシンでもアップは必要ですか？
+              </h3>
+              <p>
+                その日の最初の種目なら必要です。ピンを差す重さを、本番の半分くらい、4分の3くらいと下から上げ、回数は表と同じように減らしていきます。
+              </p>
+              <h3 className="font-bold text-gray-800 mt-5 mb-2">
                 ダンベルの種目でもアップは必要ですか？
               </h3>
               <p>
@@ -249,7 +260,7 @@ export default function WarmupSetsPage() {
                 </li>
                 <li>▸ 重くなるほど回数を減らす。アップで疲れたら本末転倒</li>
                 <li>▸ 本番が軽い日は、段を飛ばしてよい</li>
-                <li>▸ デッドリフトはバーだけの段を飛ばしてよい。2種目目以降は1セットで十分</li>
+                <li>▸ デッドリフトのバーだけの段は、すねまで下ろす練習に置き換える。同じ部位の2種目目は、軽い重さで1〜2セット確かめれば足りる</li>
                 <li>▸ 時間がない日も、削るのは種目の数。アップは残す</li>
               </ul>
             </section>
@@ -258,7 +269,7 @@ export default function WarmupSetsPage() {
 
         <ShareButtons
           url="https://sakutore.jp/column/warmup-sets"
-          title="アップセットの重さと回数｜ベンチ・スクワット・デッドリフトのウォームアップは何kgから？"
+          title="アップセットの重量と回数｜ベンチプレス・スクワット・デッドリフトのウォームアップは何kgから？早見表つき"
         />
 
         <AuthorBox />
