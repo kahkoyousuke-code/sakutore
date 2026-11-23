@@ -48,7 +48,7 @@ export const PAGE_LAST_MODIFIED: Record<string, string> = {
   "/column/effect-timeline": "2026-10-25",
   "/column/everyday-training": "2026-10-26",
   "/column/frequency": "2026-09-22",
-  "/column/gym-beginner": "2026-10-22",
+  "/column/gym-beginner": "2026-11-23",
   "/column/hip-training": "2026-11-16",
   "/column/home-back": "2026-11-05",
   "/column/leg-training": "2026-11-16",

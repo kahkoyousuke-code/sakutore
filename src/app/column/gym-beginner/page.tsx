@@ -219,7 +219,11 @@ export default function GymBeginnerPage() {
                   <div>
                     <p className="font-bold">ウォームアップをしない</p>
                     <p className="mt-1 text-gray-600">
-                      いきなり重い重量から始めると筋肉や関節が温まっておらず、怪我のリスクが高まります。最初は軽い重量で10〜15回のウォームアップセットを1〜2セット行ってから本番セットに入りましょう。
+                      いきなり重い重量から始めると筋肉や関節が温まっておらず、怪我のリスクが高まります。最初はバーだけなどの軽い重量から、回数を減らしながら段階的に重さを上げてから本番セットに入りましょう。重さと回数の目安は
+                      <Link href="/column/warmup-sets" className="text-orange-600 font-bold underline">
+                        アップセットの重さと回数
+                      </Link>
+                      にあります。
                     </p>
                   </div>
                 </div>
