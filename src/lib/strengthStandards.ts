@@ -175,10 +175,12 @@ export const weightForReps = (oneRM: number, reps: number) =>
  * （筋力 1〜5回・休憩3〜5分／筋肉を大きくする 6〜12回・休憩1〜2分）に合わせてある。
  * beginner-guide の表を変えたらここも直すこと。
  */
+const restLabel = (min: number, max: number) => `${min}〜${max}分`;
+
 export const SET_SCHEMES = [
-  { label: "5×5", sets: 5, reps: 5, rest: "3〜5分", purpose: "重量を伸ばす（筋力寄り）" },
-  { label: "3×8", sets: 3, reps: 8, rest: "1〜2分", purpose: "筋力と筋肥大の中間" },
-  { label: "3×10", sets: 3, reps: 10, rest: "1〜2分", purpose: "体を大きくする（筋肥大寄り）" },
+  { label: "5×5", sets: 5, reps: 5, restMin: 3, restMax: 5, rest: restLabel(3, 5), purpose: "重量を伸ばす（筋力寄り）" },
+  { label: "3×8", sets: 3, reps: 8, restMin: 1, restMax: 2, rest: restLabel(1, 2), purpose: "筋力と筋肥大の中間" },
+  { label: "3×10", sets: 3, reps: 10, restMin: 1, restMax: 2, rest: restLabel(1, 2), purpose: "体を大きくする（筋肥大寄り）" },
 ] as const;
 
 /**

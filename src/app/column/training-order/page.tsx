@@ -3,6 +3,7 @@ import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import { DAY_ORDER } from "@/lib/dayOrder";
 import { BAR_KG, warmupSets } from "@/lib/strengthStandards";
+import { SESSION_FLOW, SESSION_FLOW_TOTAL, flowTime } from "@/lib/sessionPlan";
 import AuthorBox from "@/components/AuthorBox";
 import DiagramFigure from "@/components/diagrams/DiagramFigure";
 import SessionFlowDiagram from "@/components/diagrams/SessionFlowDiagram";
@@ -17,51 +18,8 @@ export const metadata = pageMetadata({
 // アップセットの例に使う本番の重さ（kg）。/column/warmup-sets の図と同じ。
 const WARMUP_EXAMPLE_KG = 80;
 
-// 1回のトレーニングの流れ。時間は60分を確保できた日の配分。
-const SESSION_FLOW = [
-  {
-    step: "1",
-    name: "動的ストレッチ",
-    time: "5分",
-    detail: "関節を大きく動かす。座って伸ばすのはここではやらない",
-  },
-  {
-    step: "2",
-    name: "アップセット",
-    time: "5分",
-    detail: "その日の1種目目を、軽い重量から段階的に上げる",
-  },
-  {
-    step: "3",
-    name: "メイン種目（大きい種目）",
-    time: "20分",
-    detail: "ベンチプレス・スクワットなど、いちばん重いものを最初に",
-  },
-  {
-    step: "4",
-    name: "補助種目（小さい種目）",
-    time: "20分",
-    detail: "フライ・サイドレイズなど、1つの筋肉を狙うもの",
-  },
-  {
-    step: "5",
-    name: "腹筋",
-    time: "5分",
-    detail: "先にやると体幹が効かなくなるので最後",
-  },
-  {
-    step: "6",
-    name: "有酸素",
-    time: "任意",
-    detail: "やるならここ。筋トレの前ではなく後",
-  },
-  {
-    step: "7",
-    name: "静的ストレッチ",
-    time: "5分",
-    detail: "ゆっくり伸ばすのはトレーニングが終わってから",
-  },
-];
+// 1回のトレーニングの流れ（60分とれた日の配分）は src/lib/sessionPlan.ts から読む。
+const SESSION_STEPS = SESSION_FLOW.map((r) => ({ ...r, time: flowTime(r.minutes) }));
 
 // 有酸素をどこに置くかは目的で決まる。順番そのものは全部「筋トレが先」。
 const CARDIO_ROWS = [
@@ -121,10 +79,10 @@ export default function TrainingOrderPage() {
               </h2>
               <DiagramFigure
                 title="いちばん重いメイン種目を先に。腹筋・有酸素・静的ストレッチは後"
-                label={`1回のトレーニングの流れ。${SESSION_FLOW.map((r) => `${r.step}. ${r.name}（${r.time}）`).join("、")}の順。`}
-                caption="60分とれた日の配分。点線の有酸素はやるなら筋トレの後。30分しかない日は4と6を削ります。"
+                label={`1回のトレーニングの流れ。${SESSION_STEPS.map((r) => `${r.step}. ${r.name}（${r.time}）`).join("、")}の順。`}
+                caption={`${SESSION_FLOW_TOTAL}分とれた日の配分。点線の有酸素はやるなら筋トレの後。時間がない日は、有酸素の次に4の補助種目から減らします。`}
               >
-                <SessionFlowDiagram steps={SESSION_FLOW} highlightStep="3" />
+                <SessionFlowDiagram steps={SESSION_STEPS} highlightStep="3" />
               </DiagramFigure>
               <div className="overflow-x-auto -mx-2 px-2 mt-3">
                 <table className="w-full text-xs md:text-sm border-collapse">
@@ -142,7 +100,7 @@ export default function TrainingOrderPage() {
                     </tr>
                   </thead>
                   <tbody>
-                    {SESSION_FLOW.map((row) => (
+                    {SESSION_STEPS.map((row) => (
                       <tr key={row.step}>
                         <td className="border border-gray-200 px-2 py-2 font-bold text-gray-800 whitespace-nowrap">
                           {row.step}. {row.name}
@@ -159,7 +117,11 @@ export default function TrainingOrderPage() {
                 </table>
               </div>
               <p className="mt-3 text-xs text-gray-500">
-                ※ 60分とれた日の配分です。30分しかない日は4と6を削ります。
+                ※ {SESSION_FLOW_TOTAL}分とれた日の配分です。30分・45分しかない日の組み方は
+                <Link href="/column/workout-time" className="text-orange-600 font-bold underline">
+                  筋トレ1回は何分やればいい？
+                </Link>
+                にあります。
               </p>
               <p className="mt-3">
                 ストレッチが<span className="font-bold">前と後で種類が違う</span>点だけ補足しておきます。前は関節を動かす動的ストレッチ、後はゆっくり伸ばす静的ストレッチです。<span className="font-bold">トレーニング前に静的ストレッチを長くやると、直後の力が落ちます。</span>使い分けは
