@@ -6,10 +6,13 @@ import DiagramFigure from "@/components/diagrams/DiagramFigure";
 import SessionFlowDiagram from "@/components/diagrams/SessionFlowDiagram";
 import { SET_SCHEMES } from "@/lib/strengthStandards";
 import {
+  MAIN_SCHEME,
   SET_MINUTES,
   SESSION_FLOW,
   SESSION_FLOW_TOTAL,
   TIME_PLANS,
+  WARM_MINUTES,
+  aboutMinutes,
   blockMinutes,
   exerciseMinutes,
   flowTime,
@@ -17,10 +20,11 @@ import {
   type PlanBlock,
 } from "@/lib/sessionPlan";
 
+// description の「約60分」は aboutMinutes(SESSION_FLOW_TOTAL) と同じ値（seo.config.mjs が文字列のまま読むので直書き）。
 export const metadata = pageMetadata({
   title: "筋トレ1回は何分やればいい？30分・45分・60分の組み方と、時間がない日に削る順番 - サクトレ",
   description:
-    "筋トレ1回の時間は「セット数×（1セットの時間＋休憩）」で決まります。5×5・3×8・3×10で1種目に何分かかるかの表と、30分・45分・60分の組み方、時間がない日に削る順番（ストレッチとアップは残す）をまとめました。",
+    "筋トレ1回の目安は、一通りやって約60分。時間は「セット数×（1セットの時間＋休憩）」で決まります。5×5・3×8・3×10で1種目に何分かかるかの表と、30分・45分・60分の組み方、時間がない日に削る順番（動的ストレッチとアップセットは残す）をまとめました。",
   path: "/column/workout-time",
 });
 
@@ -31,6 +35,16 @@ const blockText = (b: PlanBlock) => ("fixed" in b ? b.name : `${b.name}（${b.sc
 export default function WorkoutTimePage() {
   const steps = SESSION_FLOW.map((r) => ({ ...r, time: flowTime(r.minutes) }));
   const fiveByFive = exerciseMinutes("5×5");
+  const threeByEight = exerciseMinutes("3×8");
+  const threeByTen = exerciseMinutes("3×10");
+  const about = aboutMinutes(SESSION_FLOW_TOTAL);
+  const perFiveByFive = Math.floor(fiveByFive.min / threeByTen.min);
+  const saved = { min: fiveByFive.min - threeByEight.min, max: fiveByFive.max - threeByEight.max };
+  const fullPlan = TIME_PLANS[0];
+  const beginnerFull = planMinutes(
+    fullPlan.blocks.map((b) => ("scheme" in b && b.scheme === MAIN_SCHEME ? { ...b, scheme: "3×10" as const } : b)),
+  );
+  const thirtyWithFive = WARM_MINUTES + fiveByFive.min + (blockMinutes(fullPlan.blocks[fullPlan.blocks.length - 1]).min);
 
   return (
     <main className="min-h-screen flex flex-col items-center px-4 py-8">
@@ -44,10 +58,10 @@ export default function WorkoutTimePage() {
           <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section>
               <p>
-                筋トレは1回何分やればいいのか。答えは「何を何セットやるか」で決まります。逆に言えば、使える時間が決まっていれば、そこに収まるメニューを組めます。
+                筋トレ1回の目安は、ストレッチからメイン種目・補助種目まで一通りやって<span className="font-bold">約{about}分</span>です。30分しかない日でも、種目と休憩を選べば組めます。
               </p>
               <p className="mt-2">
-                この記事では、1種目にかかる時間の出し方、サクトレで一通りやる{SESSION_FLOW_TOTAL}分の配分、30分・45分しかない日の組み方、時間がない日に削る順番を説明します。
+                時間は「何を何セットやるか」で決まります。この記事では、1種目にかかる時間の出し方、一通りやる日の配分、30分・45分しかない日の組み方、時間がない日に削る順番を説明します。
               </p>
             </section>
 
@@ -56,7 +70,7 @@ export default function WorkoutTimePage() {
                 時間の出し方：セット数×（1セットの時間＋休憩）
               </h2>
               <p>
-                1種目にかかる時間は、<span className="font-bold">セット数×（1セットの時間＋セット間の休憩）</span>で出せます。1セットは、重さの付け替えと動作を含めて約{SET_MINUTES}分で数えます。休憩は、セットの型ごとの目安（
+                1種目にかかる時間は、<span className="font-bold">セット数×（1セットの時間＋セット間の休憩）</span>で出せます。1セットは、動作と重さの付け替えを合わせて約{SET_MINUTES}分で数えます（サクトレの数え方です）。最後のセットの後の休憩も、次の種目への移動と準備の時間として数えるので、実際より少し余裕のある見積もりになります。休憩は、セットの型ごとの目安（
                 <Link href="/column/sets-and-reps" className="text-orange-600 font-bold underline">
                   5×5・3×10の重量はどう決める？
                 </Link>
@@ -87,25 +101,25 @@ export default function WorkoutTimePage() {
                 </table>
               </div>
               <p className="mt-3">
-                見てのとおり、<span className="font-bold">時間を食うのは5×5</span>です。休憩が長いぶん、1種目で{range(fiveByFive)}かかります。3×8や3×10なら、同じ時間で3種目ほどこなせます。
+                見てのとおり、<span className="font-bold">時間を食うのは5×5</span>です。休憩が長いぶん、1種目で{range(fiveByFive)}かかります。3×8や3×10なら、同じ時間で{perFiveByFive}種目ほどこなせます。
               </p>
             </section>
 
             <section>
               <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
-                一通りやるなら{SESSION_FLOW_TOTAL}分
+                一通りやるなら約{about}分
               </h2>
               <p>
-                ストレッチからアップセット、メイン種目、補助種目、腹筋まで一通りやると、{SESSION_FLOW_TOTAL}分ほどです。配分は
+                ストレッチからアップセット、メイン種目、補助種目、腹筋まで一通りやると、休憩を短めにとって{SESSION_FLOW_TOTAL}分です。配分は
                 <Link href="/column/training-order" className="text-orange-600 font-bold underline">
                   筋トレの順番
                 </Link>
                 と同じです。
               </p>
               <DiagramFigure
-                title={`${SESSION_FLOW_TOTAL}分の配分。いちばん長いのはメインと補助の種目`}
+                title={`一通りやる日の配分。いちばん長いのはメインと補助の種目`}
                 label={`1回のトレーニングの流れ。${steps.map((r) => `${r.step}. ${r.name}（${r.time}）`).join("、")}。`}
-                caption="右端は時間の目安です。点線の有酸素は任意で、やるなら筋トレの後です。"
+                caption={`右端は時間の目安で、休憩を短めにとった場合です（メインは${MAIN_SCHEME}を1種目、補助は下の60分の日と同じ種目数）。点線の有酸素は任意で、やるなら筋トレの後です。`}
               >
                 <SessionFlowDiagram steps={steps} highlightStep="3" />
               </DiagramFigure>
@@ -116,12 +130,12 @@ export default function WorkoutTimePage() {
                 30分・45分・60分の組み方
               </h2>
               <p>
-                使える時間ごとの組み方です。時間は、休憩を短い側でとった場合と長い側でとった場合の幅で出しています。
+                使える時間ごとの組み方です。<span className="font-bold">どの組み方も、休憩を目安の短い側でとれば、見出しの時間に収まります。</span>長い側でとると延びるので、カッコ内に書いています。
               </p>
               {TIME_PLANS.map((plan) => (
                 <div key={plan.label} className="mt-4">
                   <p className="font-bold text-gray-800 mb-2">
-                    {plan.label}の日（合計 {range(planMinutes(plan.blocks))}）
+                    {plan.label}の日：休憩短めで{planMinutes(plan.blocks).min}分（長めだと{planMinutes(plan.blocks).max}分）
                   </p>
                   <div className="overflow-x-auto -mx-2 px-2">
                     <table className="w-full text-xs md:text-sm border-collapse">
@@ -140,7 +154,17 @@ export default function WorkoutTimePage() {
                 </div>
               ))}
               <p className="mt-3 text-xs text-gray-500">
-                ※ 合計が使える時間を超えそうなら、休憩を短い側に寄せてください。それでも収まらない日は、次の「削る順番」で減らします。
+                ※ 30分の日だけメインを3×8にしています。{MAIN_SCHEME}は休憩を短めにとっても1種目で{fiveByFive.min}分かかり、ストレッチとアップセットを足すと{thirtyWithFive}分になって、30分に収まらないからです。
+              </p>
+              <p className="mt-2 text-xs text-gray-500">
+                ※ 始めたばかりで、メインも3×10で組んでいるなら、メインの時間は表の3×10の欄で数えてください。60分の日の組み方でも、休憩短めで{beginnerFull.min}分（長めだと{beginnerFull.max}分）です。
+              </p>
+              <p className="mt-2 text-xs text-gray-500">
+                ※ それでも収まらない日は、次の「削る順番」で減らします。種目の並べ方は、部位ごとに
+                <Link href="/column/training-order" className="text-orange-600 font-bold underline">
+                  筋トレの順番
+                </Link>
+                にあります。
               </p>
             </section>
 
@@ -150,13 +174,13 @@ export default function WorkoutTimePage() {
               </h2>
               <ol className="space-y-2">
                 <li>
-                  1. <span className="font-bold">有酸素</span>：筋トレの日に時間が足りないなら、まずここから。有酸素は別の日に回せます
+                  1. <span className="font-bold">有酸素</span>：上の時間には入っていません。筋トレの日に有酸素も予定していたなら、まずここから削り、別の日に回します
                 </li>
                 <li>
                   2. <span className="font-bold">補助種目の数と腹筋</span>：補助種目を1種目に減らし、腹筋は別の日に回します
                 </li>
                 <li>
-                  3. <span className="font-bold">メイン種目の型</span>：それでも収まらない日は、メインを5×5から3×8に替えます。休憩が短くなるぶん、時間が大きく浮きます
+                  3. <span className="font-bold">メイン種目の型</span>：それでも収まらない日は、メインを5×5から3×8に替えます。1種目あたり約{saved.min}〜{saved.max}分短くなります。3×8の重さの決め方は「5×5・3×10の重量はどう決める？」にあります
                 </li>
               </ol>
               <p className="mt-3">
@@ -167,7 +191,11 @@ export default function WorkoutTimePage() {
                 のよくある質問と同じ考え方です）。
               </p>
               <p className="mt-2">
-                反対に、<span className="font-bold">動的ストレッチとアップセットは削りません</span>。合わせても10分ほどで、けがの予防に直結する部分だからです。アップセットの重さと回数は
+                反対に、<span className="font-bold">動的ストレッチとアップセットは削りません</span>。合わせても{WARM_MINUTES}分ほどで、けがを防ぐための準備だからです。静的ストレッチも短いので、どの組み方にも残しています（こちらは体の柔らかさを保つためです。使い分けは
+                <Link href="/column/stretch" className="text-orange-600 font-bold underline">
+                  筋トレ前後のストレッチ
+                </Link>
+                ）。アップセットの重さと回数は
                 <Link href="/column/warmup-sets" className="text-orange-600 font-bold underline">
                   アップセットの重量と回数
                 </Link>
@@ -180,10 +208,10 @@ export default function WorkoutTimePage() {
                 筆者（筋トレ歴15年・フィジーク大会入賞）の場合
               </p>
               <p className="text-xs leading-relaxed">
-                私は40代で週5回トレーニングしています。年齢を重ねるほど、ウォームアップを削ったときのリスクは大きくなると感じていて、関節の違和感を放っておくと、数週間から数ヶ月トレーニングできなくなりかねません。
+                私は40代で週5回トレーニングしています。時間がない日は、種目の数を減らしてでもウォームアップは残す、という優先順位にしています。年齢を重ねるほど、ウォームアップを削ったときのリスクは大きくなると感じているからです。
                 <br />
                 <br />
-                だから、時間がない日は種目の数を減らしてでもウォームアップは残す、という優先順位にしています。この記事の「削る順番」でストレッチとアップセットを最後まで残しているのも、同じ理由です。
+                この記事の「削る順番」で動的ストレッチとアップセットを最後まで残しているのも、同じ理由です。準備は数分で終わります。削って浮く時間より、けがで休む時間のほうがずっと長くなります。
               </p>
             </section>
 
@@ -191,6 +219,12 @@ export default function WorkoutTimePage() {
               <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">
                 よくある質問
               </h2>
+              <h3 className="font-bold text-gray-800 mt-5 mb-2">
+                筋トレの適正時間は何分ですか？
+              </h3>
+              <p>
+                サクトレの目安では、一通りやって約{about}分です。ただ、決まった正解の時間があるわけではありません。何を何セットやるかで時間は変わるので、上の表で自分のメニューの時間を出してみてください。
+              </p>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
                 長くやるほど効果がありますか？
               </h3>
@@ -205,13 +239,13 @@ export default function WorkoutTimePage() {
                 予定より時間がかかってしまいます。
               </h3>
               <p>
-                多くの場合、原因は休憩です。セット間にスマホを見ていると、休憩が目安より長くなりがちです。タイマーを使って、型ごとの休憩の長いほうを超えないようにしてください。
+                よくあるのは、休憩が目安より長くなっていることです。セット間にスマホを見ていると、気づかないうちに延びがちです。タイマーを使って、型ごとの休憩の長いほうを超えないようにしてください。
               </p>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
                 自宅でやるときも同じですか？
               </h3>
               <p>
-                考え方は同じです。自宅の自重やダンベルの種目は3×10で組むことが多いので、1種目あたりの時間は表の3×10の欄が目安になります。
+                考え方は同じです。自宅の自重やダンベルの種目は、3セット・休憩{SET_SCHEMES.find((x) => x.label === "3×10")!.rest}で組むことが多いので、1種目あたりの時間は表の3×8・3×10の欄（{range(threeByTen)}）が目安になります。
               </p>
             </section>
 
@@ -223,14 +257,14 @@ export default function WorkoutTimePage() {
                 <li>
                   ▸ 時間は<span className="font-bold">セット数×（1セットの時間＋休憩）</span>で出す。時間を食うのは5×5
                 </li>
-                <li>▸ 一通りやるなら{SESSION_FLOW_TOTAL}分。30分・45分の日は、上の組み方で収める</li>
+                <li>▸ 一通りやるなら約{about}分。30分・45分の日は、上の組み方で収める</li>
                 <li>
                   ▸ 削る順番は<span className="font-bold">有酸素 → 補助種目の数と腹筋 → メインの型</span>
                 </li>
                 <li>▸ 動的ストレッチとアップセットは削らない</li>
               </ul>
               <p className="mt-3">
-                サクトレのメニュー作成でも、最初の質問で1回に使える時間を選べます。
+                サクトレのメニュー作成でも、2問目で今日使える時間を選ぶと、その時間に合わせた種目数でメニューを出します。
               </p>
             </section>
           </div>

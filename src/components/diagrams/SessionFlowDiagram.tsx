@@ -1,3 +1,5 @@
+import { OPTIONAL_TIME } from "@/lib/sessionPlan";
+
 export type SessionStep = {
   step: string;
   name: string;
@@ -16,8 +18,7 @@ const BOX_H = 40;
 const GAP = 16;
 const PAD = 4;
 
-/** Steps whose time is not a fixed duration are drawn with a dashed border. */
-const OPTIONAL_TIME = "任意";
+/** Steps whose time is not a fixed duration (OPTIONAL_TIME) are drawn with a dashed border. */
 
 type Props = {
   steps: SessionStep[];

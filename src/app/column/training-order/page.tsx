@@ -3,7 +3,7 @@ import ShareButtons from "@/components/ShareButtons";
 import { pageMetadata } from "@/lib/metadata";
 import { DAY_ORDER } from "@/lib/dayOrder";
 import { BAR_KG, warmupSets } from "@/lib/strengthStandards";
-import { SESSION_FLOW, SESSION_FLOW_TOTAL, flowTime } from "@/lib/sessionPlan";
+import { SESSION_FLOW, SESSION_FLOW_TOTAL, aboutMinutes, flowTime } from "@/lib/sessionPlan";
 import AuthorBox from "@/components/AuthorBox";
 import DiagramFigure from "@/components/diagrams/DiagramFigure";
 import SessionFlowDiagram from "@/components/diagrams/SessionFlowDiagram";
@@ -80,7 +80,7 @@ export default function TrainingOrderPage() {
               <DiagramFigure
                 title="いちばん重いメイン種目を先に。腹筋・有酸素・静的ストレッチは後"
                 label={`1回のトレーニングの流れ。${SESSION_STEPS.map((r) => `${r.step}. ${r.name}（${r.time}）`).join("、")}の順。`}
-                caption={`${SESSION_FLOW_TOTAL}分とれた日の配分。点線の有酸素はやるなら筋トレの後。時間がない日は、有酸素の次に4の補助種目から減らします。`}
+                caption={`約${aboutMinutes(SESSION_FLOW_TOTAL)}分とれた日の配分。点線の有酸素はやるなら筋トレの後。時間がない日は、有酸素の次に4の補助種目から減らします。`}
               >
                 <SessionFlowDiagram steps={SESSION_STEPS} highlightStep="3" />
               </DiagramFigure>
@@ -117,7 +117,7 @@ export default function TrainingOrderPage() {
                 </table>
               </div>
               <p className="mt-3 text-xs text-gray-500">
-                ※ {SESSION_FLOW_TOTAL}分とれた日の配分です。30分・45分しかない日の組み方は
+                ※ 約{aboutMinutes(SESSION_FLOW_TOTAL)}分とれた日の配分です。30分・45分しかない日の組み方は
                 <Link href="/column/workout-time" className="text-orange-600 font-bold underline">
                   筋トレ1回は何分やればいい？
                 </Link>
@@ -363,7 +363,11 @@ export default function TrainingOrderPage() {
                 時間がない日は、どこから削ればいいですか？
               </h3>
               <p>
-                有酸素 → 補助種目 → 腹筋の順に削って、<span className="font-bold">メイン種目だけは残します。</span>20分しかなくても、メイン1種目を3セットやれば十分に意味があります。
+                有酸素 → 補助種目の数と腹筋 → メイン種目の型、の順に削ります。<span className="font-bold">メイン種目と、動的ストレッチ・アップセットは残します。</span>30分・45分の日の組み方は
+                <Link href="/column/workout-time" className="text-orange-600 font-bold underline">
+                  筋トレ1回は何分やればいい？
+                </Link>
+                にあります。
               </p>
             </section>
 
