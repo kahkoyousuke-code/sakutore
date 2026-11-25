@@ -294,7 +294,11 @@ export default function SetsAndRepsPage() {
                 {fiveByFive.label}は時間がかかりすぎませんか？
               </h3>
               <p>
-                5回の型はセット間の休憩が{fiveByFive.rest}と長めなので、1種目に時間がかかります。時間がない日は、<span className="font-bold">メインの1種目だけ{fiveByFive.label}にして、ほかの種目を減らす</span>ほうが、全種目のセット数を削るより重さの伸びを保ちやすくなります。
+                5回の型はセット間の休憩が{fiveByFive.rest}と長めなので、1種目に時間がかかります。時間がない日は、<span className="font-bold">メインの1種目だけ{fiveByFive.label}にして、ほかの種目を減らす</span>ほうが、全種目のセット数を削るより重さの伸びを保ちやすくなります。30分・45分の日の組み方は
+                <Link href="/column/workout-time" className="text-orange-600 font-bold underline">
+                  筋トレ1回は何分やればいい？
+                </Link>
+                にあります。
               </p>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
                 {WEIGHT_STEP_KG}kgずつ上げられないときは？
