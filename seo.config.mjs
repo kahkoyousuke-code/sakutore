@@ -145,6 +145,8 @@ const config = {
     { kw: "二頭", path: "/column/arm-training" },
     { kw: "三頭", path: "/column/arm-training" },
     { kw: "胸トレ ジム", path: "/column/chest-training" },
+    { kw: "胸トレ 順番", path: "/column/chest-training" },
+    { kw: "ジム 胸", path: "/column/chest-training" },
     { kw: "胸の日", path: "/column/chest-training" },
     { kw: "インクライン", path: "/column/chest-training" },
     { kw: "胸", path: "/column/chest-home" },

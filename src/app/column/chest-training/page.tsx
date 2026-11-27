@@ -22,7 +22,7 @@ import { findExerciseDetail } from "@/lib/exercises";
 import { recoveryFor } from "@/lib/recoveryStandards";
 
 export const metadata = pageMetadata({
-  title: "ジムでの胸トレメニューと順番｜ベンチプレス以外の種目と、ダンベルプレスで組む重さ - サクトレ",
+  title: "胸トレのジムメニューと順番｜胸の日の組み方と、インクラインダンベルプレスの重さ - サクトレ",
   description:
     "胸の日は、ベンチプレスから始めて、インクラインダンベルプレス、ダンベルフライ、ケーブルクロスオーバーの順に軽い種目へ進みます。胸の上部・全体・下部を鍛える種目、ベンチプレスで組む重さの出し方、ダンベルプレスの体重別の重さの目安、マシンを使うときのポイントをまとめました。",
   path: "/column/chest-training",
@@ -33,7 +33,7 @@ export const metadata = pageMetadata({
 const PARTS = [
   { name: "胸の上部", role: "斜め上へ押す", exercises: ["インクライン系"] },
   {
-    name: "胸全体",
+    name: "胸の中部",
     role: "前へ押す・寄せる",
     exercises: ["ベンチプレス", "ダンベルプレス", "チェストプレス", "フライ系"],
     main: true,
@@ -55,7 +55,7 @@ const threeByTen = SET_SCHEMES.find((s) => s.label === "3×10")!;
 
 // 胸の日のメニュー表。並びは dayOrder.ts の「胸の日」と同じ。
 const MENU = [
-  { name: "ベンチプレス", scheme: `${fiveByFive.label}か${threeByEight.label}`, rest: fiveByFive.rest },
+  { name: "ベンチプレス", scheme: `${fiveByFive.label}か${threeByEight.label}`, rest: `${fiveByFive.rest}（${threeByEight.label}なら${threeByEight.rest}）` },
   { name: "インクラインダンベルプレス", scheme: threeByEight.label, rest: threeByEight.rest },
   { name: "ダンベルフライ", scheme: threeByTen.label, rest: threeByTen.rest },
   { name: "ケーブルクロスオーバー", scheme: threeByTen.label, rest: threeByTen.rest },
@@ -72,6 +72,7 @@ export default function ChestTrainingPage() {
   const fly = findExerciseDetail("ダンベルフライ");
   const chestPress = findExerciseDetail("チェストプレス");
   const dips = findExerciseDetail("ディップス");
+  const incline = findExerciseDetail("インクラインダンベルプレス");
 
   return (
     <main className="min-h-screen flex flex-col items-center px-4 py-8">
@@ -79,13 +80,13 @@ export default function ChestTrainingPage() {
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
           <p className="text-xs text-orange-500 font-bold mb-2">コラム</p>
           <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">
-            ジムでの胸トレメニューと順番｜ベンチプレス以外の種目と、ダンベルプレスで組む重さ
+            胸トレのジムメニューと順番｜胸の日の組み方と、インクラインダンベルプレスの重さ
           </h1>
 
           <div className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
             <section>
               <p>
-                ジムで胸を鍛えるなら、中心はベンチプレスです。ただ、ベンチプレスだけでは胸の上の部分が鍛え足りなくなりやすく、ダンベルやマシンの種目を組み合わせると、胸全体をまんべんなく鍛えられます。
+                ジムで胸を鍛えるなら、中心はベンチプレスです。ベンチプレスでも胸の上の部分は使われますが、上の部分は斜め上へ押す種目のほうが狙いやすく、ダンベルやマシンの種目と組み合わせると、胸全体をまんべんなく鍛えられます。
               </p>
               <p className="mt-2">
                 この記事では、胸の3つの部分と種目、胸の日のメニューと順番、ベンチプレスとダンベルプレスで組む重さ、マシンを使うときのポイント、週に何回やるかの順に説明します。自宅で鍛える場合は「
@@ -101,15 +102,20 @@ export default function ChestTrainingPage() {
                 胸の3つの部分と鍛える種目
               </h2>
               <DiagramFigure
-                title="ベンチプレスは胸全体。上部は斜め上へ押す種目で足す"
+                title="ベンチプレスは中部が中心。上部は斜め上へ押す種目で足す"
                 label={`胸の3つの部分。${PARTS.map((p) => `${p.name}は${p.role}動き、主な種目は${p.exercises.join("・")}`).join("。")}。インクライン系はインクラインベンチプレスとインクラインダンベルプレス。`}
                 caption="インクライン系＝ベンチの背もたれを斜めに起こして行うインクラインベンチプレス・インクラインダンベルプレス。フライ系＝ダンベルフライ・ケーブルクロスオーバー・ペックフライ。"
               >
                 <DeltoidPartsDiagram parts={PARTS} />
               </DiagramFigure>
               <p className="mt-3">
-                ベンチプレスは胸全体に効きますが、胸の上の部分（鎖骨の下あたり）は、ベンチの背もたれを斜めに起こして<span className="font-bold">斜め上へ押す種目</span>で鍛えると狙いやすくなります。胸の下の部分は、体を少し前に倒して行うディップスが向いています。
+                ベンチプレスは胸の中部を中心に胸全体に効きますが、胸の上の部分（鎖骨の下あたり）は、ベンチの背もたれを斜めに起こして<span className="font-bold">斜め上へ押す種目</span>で鍛えると狙いやすくなります。胸の下の部分は、体を少し前に倒して行うディップスが向いています。下部はベンチプレスやフライでも使われるので、まずは上部の種目を足すのを優先してください。
               </p>
+              {dips && (
+                <p className="mt-2">
+                  ディップスは、自分の体重がそのまま重さになる種目です。ポイントは「{dips.formTips}」です。肩に痛みが出る人は無理に行わず、ほかの種目に替えてください。
+                </p>
+              )}
             </section>
 
             <section>
@@ -142,7 +148,7 @@ export default function ChestTrainingPage() {
                 <Link href="/column/training-order" className="text-orange-600 font-bold underline">
                   筋トレの順番
                 </Link>
-                」と同じ、重い種目から軽い種目への並びです。全部やる必要はありません。初めての人や時間がない日は、<span className="font-bold">ベンチプレスとインクラインダンベルプレスの2種目</span>からで十分です。1回に何分かかるかは「
+                」と同じ、重い種目から軽い種目への並びです。全部やる必要はありません。初めての人や時間がない日は、<span className="font-bold">ベンチプレスとインクラインダンベルプレスの2種目</span>からで十分です。ベンチプレスのフォームに不安があるうちは、1種目目をチェストプレスに替えてもかまいません。胸の上部が弱点なら、インクラインダンベルプレスを1種目目にしてもかまいません（「筋トレの順番」の「原則を破っていい場合」と同じ考え方です）。1回に何分かかるかは「
                 <Link href="/column/workout-time" className="text-orange-600 font-bold underline">
                   筋トレ1回は何分やればいい？
                 </Link>
@@ -150,7 +156,7 @@ export default function ChestTrainingPage() {
               </p>
               {fly && (
                 <p className="mt-3">
-                  ダンベルフライは、重さを追う種目ではありません。ポイントは「{fly.formTips}」です。腕を開いたところで胸が伸びるのを感じられる重さにしてください。重くしすぎると肘が曲がり、肩を痛めやすくなります。
+                  ダンベルフライは、重さを追う種目ではありません。ポイントは「{fly.formTips}」です。腕を開いたところで胸が伸びるのを感じられる重さにしてください。重くしすぎると、肘が大きく曲がって押す動きになり、胸が伸びなくなります。腕を開いたところで肩に負担もかかりやすくなります。
                 </p>
               )}
             </section>
@@ -167,11 +173,15 @@ export default function ChestTrainingPage() {
                 」で換算すれば分かります。目安は「決めた回数より{SET_RESERVE_REPS}回多くやったところで限界が来る重さ」です。
               </p>
               <p className="mt-2">
-                たとえば1RMが{sample1RM}kg（体重{SAMPLE_BW}kgの男性・中級者の目安と同じ）なら、{fiveByFive.label}は約{five}kgで、プレートで組むと{toPlate(five)}kgです。{threeByEight.label}なら約{eight}kg（プレートで組むと{toPlate(eight)}kg）です。
+                たとえば1RMが{sample1RM}kg（体重{SAMPLE_BW}kgの男性・中級者の目安と同じ）なら、{fiveByFive.label}は{fiveByFive.reps + SET_RESERVE_REPS}回で限界が来る約{five}kgで、プレートで組むと{toPlate(five)}kgです。{threeByEight.label}なら{threeByEight.reps + SET_RESERVE_REPS}回で限界が来る約{eight}kg{toPlate(eight) === eight ? "（そのままプレートで組めます）" : `（プレートで組むと${toPlate(eight)}kg）`}です。セットの組み方は「
+                <Link href="/column/sets-and-reps" className="text-orange-600 font-bold underline">
+                  5×5・3×10の重量はどう決める？
+                </Link>
+                」で説明しています。
               </p>
               {bench && <p className="mt-2">フォームのポイントは「{bench.formTips}」です。</p>}
               <p className="mt-2">
-                重いセットは、セーフティバーを胸より少し下の高さに合わせてから行ってください（「
+                重いセットは、セーフティバーを、胸を張ってバーを胸に付けた位置より少し下（胸の張りをゆるめるとバーが乗る高さ）に合わせてから行ってください。セーフティバーの無い台では、限界近くのセットは補助者がいるときだけにします（「
                 <Link href="/column/power-rack" className="text-orange-600 font-bold underline">
                   パワーラックの使い方
                 </Link>
@@ -235,12 +245,24 @@ export default function ChestTrainingPage() {
                   」で逆に引けます。
                 </li>
                 <li>
-                  ※ {threeByEight.label}や{threeByTen.label}のように同じ重さで何セットも続けるときは、表より一段軽いダンベルで始めてください。
+                  ※ 表は{threeByEight.reps + SET_RESERVE_REPS}回で限界が来る重さなので、{threeByEight.label}ならそのまま使えます。{threeByTen.label}で組むなら、表より一段軽いダンベルで始めてください。
                 </li>
               </ul>
               <p className="mt-3">
-                インクラインダンベルプレスは、平らなベンチより扱える重さが下がります。表の重さから一段か二段軽いダンベルで始め、10回で限界が来る重さを探してください。ダンベルフライは、さらに軽い重さで行います。
+                ダンベルフライは、表の重さよりさらに軽い重さで行います。
               </p>
+              <h3 className="font-bold text-gray-800 mt-5 mb-2">インクラインダンベルプレスの重さの決め方</h3>
+              <p>
+                インクラインダンベルプレスは、平らなベンチより扱える重さが下がり、背もたれの角度を付けるほど下がります。共通の目安の数字はないので、次の手順で決めます。
+              </p>
+              <ol className="mt-2 space-y-1">
+                <li>1. 上の表で、平らなベンチでの重さを確かめる</li>
+                <li>2. そこから一段か二段軽いダンベルで、{threeByEight.reps + SET_RESERVE_REPS}回やってみる</li>
+                <li>3. {threeByEight.reps + SET_RESERVE_REPS}回で限界が来たら、その重さで{threeByEight.label}。余裕があれば一段上げる</li>
+              </ol>
+              {incline && incline.muscleTips[0] && (
+                <p className="mt-2">背もたれの角度は「{incline.muscleTips[0]}」が目安です。</p>
+              )}
             </section>
 
             <section>
@@ -252,13 +274,8 @@ export default function ChestTrainingPage() {
                 {chestPress && <>チェストプレスのポイントは「{chestPress.formTips}」です。</>}
               </p>
               <p className="mt-2">
-                マシンの重さの表示は、機種によって同じ数字でも重さの感じ方が違います。ほかのマシンやダンベルの重さと比べず、そのマシンで決めた回数ができる重さを探してください。
+                マシンは、てこや滑車の作りが機種ごとに違うので、同じ数字でも実際の重さが違います。ほかのマシンやダンベルの重さと比べず、そのマシンで決めた回数ができる重さを探してください。
               </p>
-              {dips && (
-                <p className="mt-2">
-                  胸の下の部分を狙うディップスは、自分の体重がそのまま重さになる種目です。ポイントは「{dips.formTips}」です。肩に痛みが出る人は無理に行わず、ほかの種目に替えてください。
-                </p>
-              )}
             </section>
 
             <section>
@@ -270,7 +287,11 @@ export default function ChestTrainingPage() {
                 <Link href="/column/split-routine" className="text-orange-600 font-bold underline">
                   分割法の早見表
                 </Link>
-                」で紹介しています。
+                」で紹介しています。胸の日の翌日に肩の日を入れると、肩の前の部分が回復しきらないことがあります（「
+                <Link href="/column/shoulder-training" className="text-orange-600 font-bold underline">
+                  肩トレのメニュー
+                </Link>
+                」）。
               </p>
             </section>
 
@@ -294,13 +315,13 @@ export default function ChestTrainingPage() {
                 ベンチプレスだけでは足りませんか？
               </h3>
               <p>
-                ベンチプレスだけでも胸は鍛えられます。ただ、胸の上の部分は鍛え足りなくなりやすいので、時間があればインクラインダンベルプレスを1種目足すのがおすすめです。
+                ベンチプレスだけでも胸は鍛えられます。ただ、胸の上の部分は斜め上へ押す種目のほうが狙いやすいので、時間があればインクラインダンベルプレスを1種目足すのがおすすめです。
               </p>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
                 ベンチプレスをすると肩が痛くなります。
               </h3>
               <p>
-                痛みが出たら、その日はその種目を中止してください。肩がすくんで前に出ていると、肩を痛めやすくなります。まず重さを落として、肩甲骨を寄せて下げたまま押せているかを確かめてください。痛みが続くときは、整形外科を受診してください。
+                動かすと鋭く痛むときや、セット中に痛みが強くなるときは、その日はその種目を中止してください。肩がすくんで前に出ていると、肩を痛めやすくなります。まず重さを落として、肩甲骨を寄せて下げたまま押せているかを確かめてください。痛みが数日続く、夜に痛んで目が覚める、腕が上がらない、しびれるといった場合は、整形外科を受診してください。
               </p>
               <h3 className="font-bold text-gray-800 mt-5 mb-2">
                 ダンベルとマシン、どちらがいいですか？
@@ -314,11 +335,11 @@ export default function ChestTrainingPage() {
               <h2 className="font-bold text-orange-500 text-base md:text-lg mb-3">まとめ</h2>
               <ul className="space-y-2">
                 <li>
-                  ▸ 胸は「上部」「全体」「下部」の3つ。ベンチプレスに加えて、<span className="font-bold">上部はインクライン系</span>で足す
+                  ▸ 胸は「上部」「中部」「下部」の3つ。ベンチプレスに加えて、<span className="font-bold">上部はインクライン系</span>で足す
                 </li>
                 <li>▸ 胸の日はベンチプレスから始めて、軽い種目へ。初めてなら2種目から</li>
                 <li>▸ ベンチプレスは自分の1RMから組む。重いセットはセーフティバーを合わせてから</li>
-                <li>▸ ダンベルプレスの重さは表で確かめる。インクラインやフライはそれより軽く</li>
+                <li>▸ ダンベルプレスの重さは表で確かめる。インクラインは表から一段か二段軽くして10回で探す。フライはさらに軽く</li>
                 <li>▸ 胸の日は{large.interval}あけて、週2回まで</li>
               </ul>
             </section>
@@ -327,7 +348,7 @@ export default function ChestTrainingPage() {
 
         <ShareButtons
           url="https://sakutore.jp/column/chest-training"
-          title="ジムでの胸トレメニューと順番｜ベンチプレス以外の種目と、ダンベルプレスで組む重さ"
+          title="胸トレのジムメニューと順番｜胸の日の組み方と、インクラインダンベルプレスの重さ"
         />
 
         <AuthorBox />
