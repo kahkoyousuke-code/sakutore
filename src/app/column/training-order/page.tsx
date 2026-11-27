@@ -178,6 +178,10 @@ export default function TrainingOrderPage() {
                 <Link href="/column/leg-training" className="text-orange-600 font-bold underline">
                   脚トレのやり方
                 </Link>
+                に、胸の日は
+                <Link href="/column/chest-training" className="text-orange-600 font-bold underline">
+                  ジムでの胸トレメニュー
+                </Link>
                 に書きました。
               </p>
               <p className="mt-2">

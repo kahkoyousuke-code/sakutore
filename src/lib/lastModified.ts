@@ -14,7 +14,7 @@
  */
 export const PAGE_LAST_MODIFIED: Record<string, string> = {
   "/": "2026-08-11",
-  "/column": "2026-11-25",
+  "/column": "2026-11-27",
   "/questions": "2026-08-01",
   "/rm-calculator": "2026-11-08",
   "/weight-checker": "2026-11-08",
@@ -38,7 +38,7 @@ export const PAGE_LAST_MODIFIED: Record<string, string> = {
   "/column/big3-accessory": "2026-10-19",
   "/column/big3-balance": "2026-11-02",
   "/column/big3-total": "2026-11-02",
-  "/column/chest-home": "2026-11-07",
+  "/column/chest-home": "2026-11-27",
   "/column/deadlift-average": "2026-11-03",
   "/column/deadlift-grip": "2026-10-12",
   "/column/deadlift-weight-level": "2026-11-19",
@@ -75,13 +75,14 @@ export const PAGE_LAST_MODIFIED: Record<string, string> = {
   "/column/squat-weight-level": "2026-10-22",
   "/column/strength-standards": "2026-11-22",
   "/column/stretch": "2026-09-18",
-  "/column/training-order": "2026-11-25",
+  "/column/training-order": "2026-11-27",
   "/column/women-40s-training": "2026-09-22",
   "/column/women-big3": "2026-11-02",
   "/column/women-muscle-slim": "2026-09-22",
   "/column/women-training-timing": "2026-08-02",
   "/column/warmup-sets": "2026-11-23",
   "/column/workout-time": "2026-11-25",
+  "/column/chest-training": "2026-11-27",
 };
 
 /**
