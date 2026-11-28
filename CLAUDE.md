@@ -34,6 +34,7 @@ npm run build   # 本番ビルド。変更後は必ず通す
 npm run lint    # ESLint
 npm run seo:fetch   # Search Console から検索パフォーマンスを取得（.gsc/latest.json）
 npm run seo:report  # 取得結果から「次にどこを直すか」の一覧を Markdown で出す
+npm run indexnow -- /column/<slug>  # 本番反映後に Bing へ更新を通知（下の「Bing」節）
 ```
 
 テストは無い。**変更の検証は `npm run build` が通ることと、dev serverでの目視**で行う。
@@ -104,6 +105,19 @@ Next.js 14 App Router / TypeScript / React 18 / Tailwind CSS 3.4 / Anthropic SDK
 - 未着手の候補は `docs/column-backlog.md` の未チェック項目を読む
 - レポートの「打ち手」には、上の「このサイトのゴール」の実測（効くのは順位とCTR、
   新記事は競合の混雑度で決める）を反映してある
+
+## Bing（流入の最大の入口）
+
+**Search Console は Google の数字しか出さない。** 2026-11-28 に GA4 で流入元を見たら、
+過去28日271セッションのうち **bing 151（56%）・google 46（17%）** だった。
+`/rm-calculator` は Google では43位台でほぼ0なのに、Bing からは一番人が来ている。
+施策の効果を見るときは GSC だけで判定せず、GA4 の「セッションの参照元」と Bing Webmaster Tools も見る。
+
+- IndexNow で Bing に更新を知らせる。キーは `public/4d4bd46a0c28805899a32147c301d3b9.txt`
+  （公開して使う前提の値で、秘密ではない。ファイル名と中身を変えない）
+- 本番に反映されたあとに `npm run indexnow -- /column/<slug>` を実行する（複数可・`--dry-run` で送らずに中身だけ表示）。
+  記事を足したとき・本文を変えたときが対象。全ページを送り直すときは `--all`（sitemap.xml を読む）。
+  毎回全ページを送らない
 
 ## 収益導線（値はハードコードされている）
 
